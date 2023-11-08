@@ -11,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="DAO\Implementation\" />
+    <Folder Include="DAO\Interface\" />
+    <Folder Include="DAO\Helper\" />
+    <Folder Include="Front\Implementation\" />
+    <Folder Include="Front\Interface\" />
   </ItemGroup>
 
 </Project>

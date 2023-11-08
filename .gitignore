@@ -5,3 +5,13 @@
 /.vs/TUP_P2_TP_Hotel
 /.vs
 /.vs/TUP_P2_TP_Hotel/FileContentIndex
+/TUP_P2_Hotel/HotelAPI/bin
+/TUP_P2_Hotel/HotelAPI/obj
+/TUP_P2_Hotel/HotelAPI/obj/Debug/net6.0
+/TUP_P2_Hotel/.vs
+/TUP_P2_Hotel/HotelBackEnd/bin
+/TUP_P2_Hotel/HotelBackEnd/obj
+/TUP_P2_Hotel/HotelBackEnd/obj/Debug/net6.0
+/TUP_P2_Hotel/HotelForm/bin
+/TUP_P2_Hotel/HotelForm/obj
+/TUP_P2_Hotel/HotelForm/obj/Debug/net6.0-windows
