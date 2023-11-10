@@ -11,66 +11,66 @@ namespace HotelBackEnd.DAO.Helper
 {
     public class HelperDao
     {
-        private SqlConnection conexion;
+        private SqlConnection connection;
         private string stringConexion = "Data Source=DESKTOP-BNJA18M;Initial Catalog = HOTEL_DB;Integrated Security = True";
-        private static HelperDao instancia;
+        private static HelperDao instance;
 
         private HelperDao()
         {
-            conexion = new SqlConnection(stringConexion);
+            connection = new SqlConnection(stringConexion);
         }
 
-        public static HelperDao ObtenerInstancia()
+        public static HelperDao GetInstance()
         {
-            if (instancia == null)
+            if (instance == null)
             {
-                instancia = new HelperDao();
+                instance = new HelperDao();
             }
-            return instancia;
+            return instance;
         }
 
-        public SqlConnection ObtenerConexion()
+        public SqlConnection GetConnection()
         {
-            return this.conexion;
+            return this.connection;
         }
 
-        private void Conectar()
+        private void Connect()
         {
-            conexion.Open();
+            connection.Open();
         }
 
-        private void Desconectar()
+        private void Disconect()
         {
-            conexion.Close();
+            connection.Close();
         }
 
-        public int ObtenerEscalar(string sentencia, string nomParam)
+        public int GetScalar(string sentencia, string nomParam)
         {
             int aux = 0;
-            Conectar();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = conexion;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = sentencia;
+            Connect();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sentencia;
             SqlParameter param = new SqlParameter(nomParam, SqlDbType.Int);
             param.Direction = ParameterDirection.Output;
-            comando.Parameters.Add(param);
-            comando.ExecuteNonQuery();
-            Desconectar();
+            cmd.Parameters.Add(param);
+            cmd.ExecuteNonQuery();
+            Disconect();
             aux = (int)param.Value;
             return aux;
         }
 
-        internal DataTable Consultar(string nombreSP)
+        internal DataTable GetConsult(string nombreSP)
         {
-            conexion.Open();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = conexion;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = nombreSP;
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = nombreSP;
             DataTable tabla = new DataTable();
-            tabla.Load(comando.ExecuteReader());
-            conexion.Close();
+            tabla.Load(cmd.ExecuteReader());
+            connection.Close();
             return tabla;
         }
 
