@@ -10,27 +10,27 @@ namespace HotelBackEnd.Front.Implementation
 {
     internal class ReservaFront : IReservaFront
     {
-        List<ClienteModel> IReservaFront.GetClientes()
+        public List<ClienteModel> GetClientes()
         {
             throw new NotImplementedException();
         }
 
-        List<HabitacionHotelModel> IReservaFront.GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
+        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
         {
             throw new NotImplementedException();
         }
 
-        List<HotelModel> IReservaFront.GetHoteles()
+        public List<HotelModel> GetHoteles()
         {
             throw new NotImplementedException();
         }
 
-        List<LocalidadModel> IReservaFront.GetLocalidad()
+        public List<LocalidadModel> GetLocalidad()
         {
             throw new NotImplementedException();
         }
 
-        List<ProvinciaModel> IReservaFront.GetProvincia()
+        public List<ProvinciaModel> GetProvincia()
         {
             throw new NotImplementedException();
         }
