@@ -28,536 +28,361 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cboClienteReserva = new ComboBox();
-            cboCategoriaHabitacion = new ComboBox();
-            cboHabitacionDisponible = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            dgvNuevaReserva = new DataGridView();
-            btnCargarReserva = new Button();
-            btnSalirReserva = new Button();
-            btnCancelarReserva = new Button();
-            lblCliente = new Label();
-            lblAdultos = new Label();
-            lblNiños = new Label();
-            lblFechaReserva = new Label();
-            lblCategoriaHabitacion = new Label();
-            lblHabitacionDisponible = new Label();
-            btnAgregarResumen = new Button();
-            panelPagoReserva = new Panel();
-            lblIMPUESTOS = new Label();
-            lblTOTAL = new Label();
-            lblADELANTO = new Label();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            cboAlternativaPago = new ComboBox();
-            chbPagoAlterReserva = new CheckBox();
-            cboFormaPago = new ComboBox();
-            lblPagoReserva = new Label();
-            btnvistapreviaReserva = new Button();
-            lblAdvertencia = new Label();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            cboEstadoReserva = new ComboBox();
-            lblEstadoReserva = new Label();
-            lblSUBTOTAL = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvNuevaReserva).BeginInit();
-            panelPagoReserva.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            SuspendLayout();
+            this.cboClienteReserva = new System.Windows.Forms.ComboBox();
+            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
+            this.btnCargarReserva = new System.Windows.Forms.Button();
+            this.btnSalirReserva = new System.Windows.Forms.Button();
+            this.btnCancelarReserva = new System.Windows.Forms.Button();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.lblDesde = new System.Windows.Forms.Label();
+            this.lblAdvertencia = new System.Windows.Forms.Label();
+            this.gbFechas = new System.Windows.Forms.GroupBox();
+            this.lblHasta = new System.Windows.Forms.Label();
+            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblHabReserv = new System.Windows.Forms.Label();
+            this.lblHabDisp = new System.Windows.Forms.Label();
+            this.lblHotel = new System.Windows.Forms.Label();
+            this.cboHotel = new System.Windows.Forms.ComboBox();
+            this.lblLocalidad = new System.Windows.Forms.Label();
+            this.cboLocalidad = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAgregarResumen = new System.Windows.Forms.Button();
+            this.lblProvincias = new System.Windows.Forms.Label();
+            this.dgvNuevaReserva = new System.Windows.Forms.DataGridView();
+            this.cboProvincia = new System.Windows.Forms.ComboBox();
+            this.gbFechas.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNuevaReserva)).BeginInit();
+            this.SuspendLayout();
             // 
             // cboClienteReserva
             // 
-            cboClienteReserva.Anchor = AnchorStyles.None;
-            cboClienteReserva.FormattingEnabled = true;
-            cboClienteReserva.Location = new Point(14, 62);
-            cboClienteReserva.Name = "cboClienteReserva";
-            cboClienteReserva.Size = new Size(181, 23);
-            cboClienteReserva.TabIndex = 0;
-            cboClienteReserva.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            this.cboClienteReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboClienteReserva.FormattingEnabled = true;
+            this.cboClienteReserva.Location = new System.Drawing.Point(67, 41);
+            this.cboClienteReserva.Name = "cboClienteReserva";
+            this.cboClienteReserva.Size = new System.Drawing.Size(381, 23);
+            this.cboClienteReserva.TabIndex = 0;
             // 
-            // cboCategoriaHabitacion
+            // dtpDesde
             // 
-            cboCategoriaHabitacion.Anchor = AnchorStyles.None;
-            cboCategoriaHabitacion.FormattingEnabled = true;
-            cboCategoriaHabitacion.Location = new Point(264, 119);
-            cboCategoriaHabitacion.Name = "cboCategoriaHabitacion";
-            cboCategoriaHabitacion.Size = new Size(184, 23);
-            cboCategoriaHabitacion.TabIndex = 3;
-            // 
-            // cboHabitacionDisponible
-            // 
-            cboHabitacionDisponible.Anchor = AnchorStyles.None;
-            cboHabitacionDisponible.FormattingEnabled = true;
-            cboHabitacionDisponible.Location = new Point(14, 185);
-            cboHabitacionDisponible.Name = "cboHabitacionDisponible";
-            cboHabitacionDisponible.Size = new Size(162, 23);
-            cboHabitacionDisponible.TabIndex = 5;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Anchor = AnchorStyles.None;
-            dateTimePicker1.Location = new Point(14, 119);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 6;
-            // 
-            // dgvNuevaReserva
-            // 
-            dgvNuevaReserva.Anchor = AnchorStyles.None;
-            dgvNuevaReserva.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNuevaReserva.Location = new Point(14, 250);
-            dgvNuevaReserva.Name = "dgvNuevaReserva";
-            dgvNuevaReserva.RowTemplate.Height = 25;
-            dgvNuevaReserva.Size = new Size(434, 173);
-            dgvNuevaReserva.TabIndex = 7;
+            this.dtpDesde.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpDesde.Location = new System.Drawing.Point(53, 31);
+            this.dtpDesde.Name = "dtpDesde";
+            this.dtpDesde.Size = new System.Drawing.Size(240, 23);
+            this.dtpDesde.TabIndex = 6;
             // 
             // btnCargarReserva
             // 
-            btnCargarReserva.Anchor = AnchorStyles.None;
-            btnCargarReserva.Location = new Point(232, 443);
-            btnCargarReserva.Name = "btnCargarReserva";
-            btnCargarReserva.Size = new Size(75, 23);
-            btnCargarReserva.TabIndex = 9;
-            btnCargarReserva.Text = "Cargar";
-            btnCargarReserva.UseVisualStyleBackColor = true;
+            this.btnCargarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCargarReserva.Location = new System.Drawing.Point(232, 443);
+            this.btnCargarReserva.Name = "btnCargarReserva";
+            this.btnCargarReserva.Size = new System.Drawing.Size(75, 23);
+            this.btnCargarReserva.TabIndex = 9;
+            this.btnCargarReserva.Text = "Cargar";
+            this.btnCargarReserva.UseVisualStyleBackColor = true;
             // 
             // btnSalirReserva
             // 
-            btnSalirReserva.Anchor = AnchorStyles.None;
-            btnSalirReserva.Location = new Point(349, 443);
-            btnSalirReserva.Name = "btnSalirReserva";
-            btnSalirReserva.Size = new Size(75, 23);
-            btnSalirReserva.TabIndex = 10;
-            btnSalirReserva.Text = "Salir";
-            btnSalirReserva.UseVisualStyleBackColor = true;
-            btnSalirReserva.Click += btnSalirReserva_Click;
+            this.btnSalirReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalirReserva.Location = new System.Drawing.Point(349, 443);
+            this.btnSalirReserva.Name = "btnSalirReserva";
+            this.btnSalirReserva.Size = new System.Drawing.Size(75, 23);
+            this.btnSalirReserva.TabIndex = 10;
+            this.btnSalirReserva.Text = "Salir";
+            this.btnSalirReserva.UseVisualStyleBackColor = true;
             // 
             // btnCancelarReserva
             // 
-            btnCancelarReserva.Anchor = AnchorStyles.None;
-            btnCancelarReserva.Location = new Point(459, 443);
-            btnCancelarReserva.Name = "btnCancelarReserva";
-            btnCancelarReserva.Size = new Size(75, 23);
-            btnCancelarReserva.TabIndex = 11;
-            btnCancelarReserva.Text = "Cancelar";
-            btnCancelarReserva.UseVisualStyleBackColor = true;
+            this.btnCancelarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancelarReserva.Location = new System.Drawing.Point(459, 443);
+            this.btnCancelarReserva.Name = "btnCancelarReserva";
+            this.btnCancelarReserva.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarReserva.TabIndex = 11;
+            this.btnCancelarReserva.Text = "Cancelar";
+            this.btnCancelarReserva.UseVisualStyleBackColor = true;
             // 
             // lblCliente
             // 
-            lblCliente.Anchor = AnchorStyles.None;
-            lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(14, 44);
-            lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(110, 15);
-            lblCliente.TabIndex = 12;
-            lblCliente.Text = "Seleccionar Cliente:";
+            this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Location = new System.Drawing.Point(14, 44);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(47, 15);
+            this.lblCliente.TabIndex = 12;
+            this.lblCliente.Text = "Cliente:";
             // 
-            // lblAdultos
+            // lblDesde
             // 
-            lblAdultos.Anchor = AnchorStyles.None;
-            lblAdultos.AutoSize = true;
-            lblAdultos.Location = new Point(216, 46);
-            lblAdultos.Name = "lblAdultos";
-            lblAdultos.Size = new Size(118, 15);
-            lblAdultos.TabIndex = 13;
-            lblAdultos.Text = "Cantidad de Adultos:";
-            
-            // 
-            // lblNiños
-            // 
-            lblNiños.Anchor = AnchorStyles.None;
-            lblNiños.AutoSize = true;
-            lblNiños.Location = new Point(340, 46);
-            lblNiños.Name = "lblNiños";
-            lblNiños.Size = new Size(108, 15);
-            lblNiños.TabIndex = 14;
-            lblNiños.Text = "Cantidad de Niños:";
-            // 
-            // lblFechaReserva
-            // 
-            lblFechaReserva.Anchor = AnchorStyles.None;
-            lblFechaReserva.AutoSize = true;
-            lblFechaReserva.Location = new Point(14, 101);
-            lblFechaReserva.Name = "lblFechaReserva";
-            lblFechaReserva.Size = new Size(102, 15);
-            lblFechaReserva.TabIndex = 15;
-            lblFechaReserva.Text = "Seleccionar fecha:";
-            // 
-            // lblCategoriaHabitacion
-            // 
-            lblCategoriaHabitacion.Anchor = AnchorStyles.None;
-            lblCategoriaHabitacion.AutoSize = true;
-            lblCategoriaHabitacion.Location = new Point(264, 101);
-            lblCategoriaHabitacion.Name = "lblCategoriaHabitacion";
-            lblCategoriaHabitacion.Size = new Size(138, 15);
-            lblCategoriaHabitacion.TabIndex = 16;
-            lblCategoriaHabitacion.Text = "Categoria de Habitacion:";
-            // 
-            // lblHabitacionDisponible
-            // 
-            lblHabitacionDisponible.Anchor = AnchorStyles.None;
-            lblHabitacionDisponible.AutoSize = true;
-            lblHabitacionDisponible.Location = new Point(14, 167);
-            lblHabitacionDisponible.Name = "lblHabitacionDisponible";
-            lblHabitacionDisponible.Size = new Size(127, 15);
-            lblHabitacionDisponible.TabIndex = 18;
-            lblHabitacionDisponible.Text = "Habitacion Disponible:";
-            // 
-            // btnAgregarResumen
-            // 
-            btnAgregarResumen.Anchor = AnchorStyles.None;
-            btnAgregarResumen.Location = new Point(202, 221);
-            btnAgregarResumen.Name = "btnAgregarResumen";
-            btnAgregarResumen.Size = new Size(75, 23);
-            btnAgregarResumen.TabIndex = 19;
-            btnAgregarResumen.Text = "Agregar ";
-            btnAgregarResumen.UseVisualStyleBackColor = true;
-            // 
-            // panelPagoReserva
-            // 
-            panelPagoReserva.Anchor = AnchorStyles.None;
-            panelPagoReserva.BackColor = SystemColors.ActiveCaption;
-            panelPagoReserva.Controls.Add(lblSUBTOTAL);
-            panelPagoReserva.Controls.Add(lblIMPUESTOS);
-            panelPagoReserva.Controls.Add(lblTOTAL);
-            panelPagoReserva.Controls.Add(lblADELANTO);
-            panelPagoReserva.Controls.Add(label10);
-            panelPagoReserva.Controls.Add(label9);
-            panelPagoReserva.Controls.Add(label8);
-            panelPagoReserva.Controls.Add(label7);
-            panelPagoReserva.Controls.Add(label6);
-            panelPagoReserva.Controls.Add(label5);
-            panelPagoReserva.Controls.Add(label4);
-            panelPagoReserva.Controls.Add(label3);
-            panelPagoReserva.Controls.Add(label2);
-            panelPagoReserva.Controls.Add(textBox1);
-            panelPagoReserva.Controls.Add(label1);
-            panelPagoReserva.Controls.Add(cboAlternativaPago);
-            panelPagoReserva.Controls.Add(chbPagoAlterReserva);
-            panelPagoReserva.Controls.Add(cboFormaPago);
-            panelPagoReserva.Controls.Add(lblPagoReserva);
-            panelPagoReserva.Controls.Add(btnvistapreviaReserva);
-            panelPagoReserva.Location = new Point(476, 26);
-            panelPagoReserva.Name = "panelPagoReserva";
-            panelPagoReserva.Size = new Size(251, 397);
-            panelPagoReserva.TabIndex = 20;
-            // 
-            // lblIMPUESTOS
-            // 
-            lblIMPUESTOS.AutoSize = true;
-            lblIMPUESTOS.Location = new Point(167, 291);
-            lblIMPUESTOS.Name = "lblIMPUESTOS";
-            lblIMPUESTOS.Size = new Size(43, 15);
-            lblIMPUESTOS.TabIndex = 37;
-            lblIMPUESTOS.Text = "$$$$$$";
-            // 
-            // lblTOTAL
-            // 
-            lblTOTAL.AutoSize = true;
-            lblTOTAL.Location = new Point(167, 276);
-            lblTOTAL.Name = "lblTOTAL";
-            lblTOTAL.Size = new Size(43, 15);
-            lblTOTAL.TabIndex = 36;
-            lblTOTAL.Text = "$$$$$$";
-            // 
-            // lblADELANTO
-            // 
-            lblADELANTO.AutoSize = true;
-            lblADELANTO.Location = new Point(167, 306);
-            lblADELANTO.Name = "lblADELANTO";
-            lblADELANTO.Size = new Size(43, 15);
-            lblADELANTO.TabIndex = 35;
-            lblADELANTO.Text = "$$$$$$";
-           
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(138, 341);
-            label10.Name = "label10";
-            label10.Size = new Size(13, 15);
-            label10.TabIndex = 34;
-            label10.Text = "$";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(17, 321);
-            label9.Name = "label9";
-            label9.Size = new Size(217, 15);
-            label9.TabIndex = 33;
-            label9.Text = "__________________________________________";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(17, 341);
-            label8.Name = "label8";
-            label8.Size = new Size(59, 15);
-            label8.TabIndex = 27;
-            label8.Text = "SUBTOTAL";
-        
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(28, 306);
-            label7.Name = "label7";
-            label7.Size = new Size(55, 15);
-            label7.TabIndex = 32;
-            label7.Text = "Adelanto";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(29, 291);
-            label6.Name = "label6";
-            label6.Size = new Size(62, 15);
-            label6.TabIndex = 31;
-            label6.Text = "Impuestos";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(28, 276);
-            label5.Name = "label5";
-            label5.Size = new Size(32, 15);
-            label5.TabIndex = 27;
-            label5.Text = "Total";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(18, 244);
-            label4.Name = "label4";
-            label4.Size = new Size(110, 15);
-            label4.TabIndex = 30;
-            label4.Text = "Resumen de Pagos:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(20, 90);
-            label3.Name = "label3";
-            label3.Size = new Size(13, 15);
-            label3.TabIndex = 29;
-            label3.Text = "$";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(19, 69);
-            label2.Name = "label2";
-            label2.Size = new Size(101, 15);
-            label2.TabIndex = 28;
-            label2.Text = "Adelanto de Pago";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(39, 87);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(94, 23);
-            textBox1.TabIndex = 27;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(18, 152);
-            label1.Name = "label1";
-            label1.Size = new Size(145, 15);
-            label1.TabIndex = 24;
-            label1.Text = "Forma de pago alternativa";
-
-            // 
-            // cboAlternativaPago
-            // 
-            cboAlternativaPago.FormattingEnabled = true;
-            cboAlternativaPago.Location = new Point(18, 170);
-            cboAlternativaPago.Name = "cboAlternativaPago";
-            cboAlternativaPago.Size = new Size(115, 23);
-            cboAlternativaPago.TabIndex = 23;
-            cboAlternativaPago.SelectedIndexChanged += cboAlternativaPago_SelectedIndexChanged;
-            // 
-            // chbPagoAlterReserva
-            // 
-            chbPagoAlterReserva.AutoSize = true;
-            chbPagoAlterReserva.Location = new Point(19, 120);
-            chbPagoAlterReserva.Name = "chbPagoAlterReserva";
-            chbPagoAlterReserva.Size = new Size(114, 19);
-            chbPagoAlterReserva.TabIndex = 21;
-            chbPagoAlterReserva.Text = "Pago Alternativo";
-            chbPagoAlterReserva.UseVisualStyleBackColor = true;
-            // 
-            // cboFormaPago
-            // 
-            cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Location = new Point(18, 36);
-            cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(114, 23);
-            cboFormaPago.TabIndex = 22;
-            // 
-            // lblPagoReserva
-            // 
-            lblPagoReserva.AutoSize = true;
-            lblPagoReserva.Location = new Point(18, 18);
-            lblPagoReserva.Name = "lblPagoReserva";
-            lblPagoReserva.Size = new Size(87, 15);
-            lblPagoReserva.TabIndex = 21;
-            lblPagoReserva.Text = "Forma de pago";
-            // 
-            // btnvistapreviaReserva
-            // 
-            btnvistapreviaReserva.Anchor = AnchorStyles.None;
-            btnvistapreviaReserva.Location = new Point(45, 208);
-            btnvistapreviaReserva.Name = "btnvistapreviaReserva";
-            btnvistapreviaReserva.Size = new Size(155, 23);
-            btnvistapreviaReserva.TabIndex = 8;
-            btnvistapreviaReserva.Text = "Mostrar Resumen";
-            btnvistapreviaReserva.UseVisualStyleBackColor = true;
+            this.lblDesde.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDesde.AutoSize = true;
+            this.lblDesde.Location = new System.Drawing.Point(6, 37);
+            this.lblDesde.Name = "lblDesde";
+            this.lblDesde.Size = new System.Drawing.Size(42, 15);
+            this.lblDesde.TabIndex = 15;
+            this.lblDesde.Text = "Desde:";
             // 
             // lblAdvertencia
             // 
-            lblAdvertencia.AutoSize = true;
-            lblAdvertencia.BackColor = Color.Transparent;
-            lblAdvertencia.ForeColor = Color.Red;
-            lblAdvertencia.Location = new Point(14, 9);
-            lblAdvertencia.Name = "lblAdvertencia";
-            lblAdvertencia.Size = new Size(217, 15);
-            lblAdvertencia.TabIndex = 21;
-            lblAdvertencia.Text = "INGRESE LOS DATOS POR HABITACION*";
+            this.lblAdvertencia.AutoSize = true;
+            this.lblAdvertencia.BackColor = System.Drawing.Color.Transparent;
+            this.lblAdvertencia.ForeColor = System.Drawing.Color.Red;
+            this.lblAdvertencia.Location = new System.Drawing.Point(14, 9);
+            this.lblAdvertencia.Name = "lblAdvertencia";
+            this.lblAdvertencia.Size = new System.Drawing.Size(217, 15);
+            this.lblAdvertencia.TabIndex = 21;
+            this.lblAdvertencia.Text = "INGRESE LOS DATOS POR HABITACION*";
             // 
-            // numericUpDown1
+            // gbFechas
             // 
-            numericUpDown1.Anchor = AnchorStyles.None;
-            numericUpDown1.Location = new Point(216, 63);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(49, 23);
-            numericUpDown1.TabIndex = 25;
+            this.gbFechas.Controls.Add(this.lblHasta);
+            this.gbFechas.Controls.Add(this.dtpHasta);
+            this.gbFechas.Controls.Add(this.lblDesde);
+            this.gbFechas.Controls.Add(this.dtpDesde);
+            this.gbFechas.Location = new System.Drawing.Point(14, 79);
+            this.gbFechas.Name = "gbFechas";
+            this.gbFechas.Size = new System.Drawing.Size(713, 85);
+            this.gbFechas.TabIndex = 29;
+            this.gbFechas.TabStop = false;
+            this.gbFechas.Text = "Fechas de la Reserva";
             // 
-            // numericUpDown2
+            // lblHasta
             // 
-            numericUpDown2.Anchor = AnchorStyles.None;
-            numericUpDown2.Location = new Point(340, 62);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(49, 23);
-            numericUpDown2.TabIndex = 26;
+            this.lblHasta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHasta.AutoSize = true;
+            this.lblHasta.Location = new System.Drawing.Point(337, 35);
+            this.lblHasta.Name = "lblHasta";
+            this.lblHasta.Size = new System.Drawing.Size(40, 15);
+            this.lblHasta.TabIndex = 17;
+            this.lblHasta.Text = "Hasta:";
             // 
-            // cboEstadoReserva
+            // dtpHasta
             // 
-            cboEstadoReserva.FormattingEnabled = true;
-            cboEstadoReserva.Location = new Point(327, 185);
-            cboEstadoReserva.Name = "cboEstadoReserva";
-            cboEstadoReserva.Size = new Size(121, 23);
-            cboEstadoReserva.TabIndex = 27;
+            this.dtpHasta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpHasta.Location = new System.Drawing.Point(384, 29);
+            this.dtpHasta.Name = "dtpHasta";
+            this.dtpHasta.Size = new System.Drawing.Size(240, 23);
+            this.dtpHasta.TabIndex = 16;
             // 
-            // lblEstadoReserva
+            // tabControl1
             // 
-            lblEstadoReserva.AutoSize = true;
-            lblEstadoReserva.Location = new Point(327, 167);
-            lblEstadoReserva.Name = "lblEstadoReserva";
-            lblEstadoReserva.Size = new Size(45, 15);
-            lblEstadoReserva.TabIndex = 28;
-            lblEstadoReserva.Text = "Estado:";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(14, 170);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(713, 267);
+            this.tabControl1.TabIndex = 38;
             // 
-            // lblSUBTOTAL
+            // tabPage1
             // 
-            lblSUBTOTAL.AutoSize = true;
-            lblSUBTOTAL.Location = new Point(160, 341);
-            lblSUBTOTAL.Name = "lblSUBTOTAL";
-            lblSUBTOTAL.Size = new Size(50, 15);
-            lblSUBTOTAL.TabIndex = 38;
-            lblSUBTOTAL.Text = "subtotal";
+            this.tabPage1.Controls.Add(this.lblHabReserv);
+            this.tabPage1.Controls.Add(this.lblHabDisp);
+            this.tabPage1.Controls.Add(this.lblHotel);
+            this.tabPage1.Controls.Add(this.cboHotel);
+            this.tabPage1.Controls.Add(this.lblLocalidad);
+            this.tabPage1.Controls.Add(this.cboLocalidad);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.btnAgregarResumen);
+            this.tabPage1.Controls.Add(this.lblProvincias);
+            this.tabPage1.Controls.Add(this.dgvNuevaReserva);
+            this.tabPage1.Controls.Add(this.cboProvincia);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(705, 239);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // NuevaReserva
+            // tabPage2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(739, 478);
-            Controls.Add(lblEstadoReserva);
-            Controls.Add(cboEstadoReserva);
-            Controls.Add(numericUpDown2);
-            Controls.Add(numericUpDown1);
-            Controls.Add(lblAdvertencia);
-            Controls.Add(panelPagoReserva);
-            Controls.Add(btnAgregarResumen);
-            Controls.Add(lblHabitacionDisponible);
-            Controls.Add(lblCategoriaHabitacion);
-            Controls.Add(lblFechaReserva);
-            Controls.Add(lblNiños);
-            Controls.Add(lblAdultos);
-            Controls.Add(lblCliente);
-            Controls.Add(btnCancelarReserva);
-            Controls.Add(btnSalirReserva);
-            Controls.Add(btnCargarReserva);
-            Controls.Add(dgvNuevaReserva);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(cboHabitacionDisponible);
-            Controls.Add(cboCategoriaHabitacion);
-            Controls.Add(cboClienteReserva);
-            Name = "NuevaReserva";
-            Text = "NuevaReserva";
-            Load += NuevaReserva_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvNuevaReserva).EndInit();
-            panelPagoReserva.ResumeLayout(false);
-            panelPagoReserva.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(705, 239);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lblHabReserv
+            // 
+            this.lblHabReserv.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHabReserv.AutoSize = true;
+            this.lblHabReserv.Location = new System.Drawing.Point(389, 40);
+            this.lblHabReserv.Name = "lblHabReserv";
+            this.lblHabReserv.Size = new System.Drawing.Size(140, 15);
+            this.lblHabReserv.TabIndex = 49;
+            this.lblHabReserv.Text = "Habitaciones Reservadas:";
+            // 
+            // lblHabDisp
+            // 
+            this.lblHabDisp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHabDisp.AutoSize = true;
+            this.lblHabDisp.Location = new System.Drawing.Point(6, 40);
+            this.lblHabDisp.Name = "lblHabDisp";
+            this.lblHabDisp.Size = new System.Drawing.Size(143, 15);
+            this.lblHabDisp.TabIndex = 48;
+            this.lblHabDisp.Text = "Habitaciones Disponibles:";
+            // 
+            // lblHotel
+            // 
+            this.lblHotel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHotel.AutoSize = true;
+            this.lblHotel.Location = new System.Drawing.Point(473, 15);
+            this.lblHotel.Name = "lblHotel";
+            this.lblHotel.Size = new System.Drawing.Size(39, 15);
+            this.lblHotel.TabIndex = 47;
+            this.lblHotel.Text = "Hotel:";
+            // 
+            // cboHotel
+            // 
+            this.cboHotel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboHotel.FormattingEnabled = true;
+            this.cboHotel.Location = new System.Drawing.Point(518, 7);
+            this.cboHotel.Name = "cboHotel";
+            this.cboHotel.Size = new System.Drawing.Size(162, 23);
+            this.cboHotel.TabIndex = 46;
+            // 
+            // lblLocalidad
+            // 
+            this.lblLocalidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblLocalidad.AutoSize = true;
+            this.lblLocalidad.Location = new System.Drawing.Point(240, 10);
+            this.lblLocalidad.Name = "lblLocalidad";
+            this.lblLocalidad.Size = new System.Drawing.Size(61, 15);
+            this.lblLocalidad.TabIndex = 45;
+            this.lblLocalidad.Text = "Localidad:";
+            // 
+            // cboLocalidad
+            // 
+            this.cboLocalidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboLocalidad.FormattingEnabled = true;
+            this.cboLocalidad.Location = new System.Drawing.Point(305, 7);
+            this.cboLocalidad.Name = "cboLocalidad";
+            this.cboLocalidad.Size = new System.Drawing.Size(162, 23);
+            this.cboLocalidad.TabIndex = 44;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(322, 146);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 23);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "<";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(389, 58);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(310, 173);
+            this.dataGridView1.TabIndex = 42;
+            // 
+            // btnAgregarResumen
+            // 
+            this.btnAgregarResumen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAgregarResumen.Location = new System.Drawing.Point(322, 86);
+            this.btnAgregarResumen.Name = "btnAgregarResumen";
+            this.btnAgregarResumen.Size = new System.Drawing.Size(61, 23);
+            this.btnAgregarResumen.TabIndex = 41;
+            this.btnAgregarResumen.Text = ">";
+            this.btnAgregarResumen.UseVisualStyleBackColor = true;
+            // 
+            // lblProvincias
+            // 
+            this.lblProvincias.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblProvincias.AutoSize = true;
+            this.lblProvincias.Location = new System.Drawing.Point(-4, 10);
+            this.lblProvincias.Name = "lblProvincias";
+            this.lblProvincias.Size = new System.Drawing.Size(59, 15);
+            this.lblProvincias.TabIndex = 40;
+            this.lblProvincias.Text = "Provincia:";
+            // 
+            // dgvNuevaReserva
+            // 
+            this.dgvNuevaReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgvNuevaReserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNuevaReserva.Location = new System.Drawing.Point(6, 58);
+            this.dgvNuevaReserva.Name = "dgvNuevaReserva";
+            this.dgvNuevaReserva.RowTemplate.Height = 25;
+            this.dgvNuevaReserva.Size = new System.Drawing.Size(310, 173);
+            this.dgvNuevaReserva.TabIndex = 39;
+            // 
+            // cboProvincia
+            // 
+            this.cboProvincia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboProvincia.FormattingEnabled = true;
+            this.cboProvincia.Location = new System.Drawing.Point(61, 7);
+            this.cboProvincia.Name = "cboProvincia";
+            this.cboProvincia.Size = new System.Drawing.Size(162, 23);
+            this.cboProvincia.TabIndex = 38;
+            // 
+            // frmNuevaReserva
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(739, 478);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.gbFechas);
+            this.Controls.Add(this.lblAdvertencia);
+            this.Controls.Add(this.lblCliente);
+            this.Controls.Add(this.btnCancelarReserva);
+            this.Controls.Add(this.btnSalirReserva);
+            this.Controls.Add(this.btnCargarReserva);
+            this.Controls.Add(this.cboClienteReserva);
+            this.Name = "frmNuevaReserva";
+            this.Text = "NuevaReserva";
+            this.gbFechas.ResumeLayout(false);
+            this.gbFechas.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNuevaReserva)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
 
         private ComboBox cboClienteReserva;
-        private ComboBox cboCategoriaHabitacion;
-        private ComboBox cboHabitacionDisponible;
-        private DateTimePicker dateTimePicker1;
-        private DataGridView dgvNuevaReserva;
+        private DateTimePicker dtpDesde;
         private Button btnCargarReserva;
         private Button btnSalirReserva;
         private Button btnCancelarReserva;
         private Label lblCliente;
-        private Label lblAdultos;
-        private Label lblNiños;
-        private Label lblFechaReserva;
-        private Label lblCategoriaHabitacion;
-        private Label lblHabitacionDisponible;
-        private Button btnAgregarResumen;
-        private Panel panelPagoReserva;
-        private Label lblPagoReserva;
-        private ComboBox cboAlternativaPago;
-        private CheckBox chbPagoAlterReserva;
-        private ComboBox cboFormaPago;
+        private Label lblDesde;
         private Label lblAdvertencia;
-        private Label label2;
-        private TextBox textBox1;
-        private Label label1;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private Label label3;
-        private Label label8;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Button btnvistapreviaReserva;
-        private Label lblADELANTO;
-        private Label label10;
-        private Label label9;
-        private Label lblIMPUESTOS;
-        private Label lblTOTAL;
-        private ComboBox cboEstadoReserva;
-        private Label lblEstadoReserva;
-        private Label lblSUBTOTAL;
+        private GroupBox gbFechas;
+        private Label lblHasta;
+        private DateTimePicker dtpHasta;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private Label lblHabReserv;
+        private Label lblHabDisp;
+        private Label lblHotel;
+        private ComboBox cboHotel;
+        private Label lblLocalidad;
+        private ComboBox cboLocalidad;
+        private Button button1;
+        private DataGridView dataGridView1;
+        private Button btnAgregarResumen;
+        private Label lblProvincias;
+        private DataGridView dgvNuevaReserva;
+        private ComboBox cboProvincia;
+        private TabPage tabPage2;
     }
 }
