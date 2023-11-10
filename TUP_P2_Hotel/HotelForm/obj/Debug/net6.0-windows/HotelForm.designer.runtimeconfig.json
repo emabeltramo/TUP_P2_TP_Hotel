@@ -9,12 +9,15 @@
       {
         "name": "Microsoft.WindowsDesktop.App",
         "version": "6.0.0"
+      },
+      {
+        "name": "Microsoft.AspNetCore.App",
+        "version": "6.0.0"
       }
     ],
     "additionalProbingPaths": [
       "C:\\Users\\Federico gonzalez\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Usuario\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\Federico gonzalez\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
