@@ -9,7 +9,7 @@ namespace HotelForm.Service.Interface
 {
     public interface IReservaService
     {
-        List<ClienteModel> GetClientes();
+        Task<List<ClienteModel>> GetClientesAsync();
         List<HotelModel> GetHoteles();
         List<ProvinciaModel> GetProvincia();
         List<LocalidadModel> GetLocalidad();

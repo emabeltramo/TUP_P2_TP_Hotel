@@ -1,4 +1,5 @@
-﻿using HotelForm.Factory.Interface;
+﻿using HotelBackEnd.Model;
+using HotelForm.Factory.Interface;
 using HotelForm.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -21,32 +22,35 @@ namespace HotelForm.View.Reserva
             this.factory = factory;
             service = factory.CreateReservaService();
             InitializeComponent();
+            this.Load += FrmNuevaReserva_Load;
+
+           
+
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void FrmNuevaReserva_Load(object? sender, EventArgs e)
         {
+            cboClienteReserva.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            CargarCombos();
         }
-
-        private void NuevaReserva_Load(object sender, EventArgs e)
+        private async void CargarCombos()
         {
+            cboClienteReserva.DataSource = new List<ClienteModel>();
+            cboClienteReserva.DisplayMember = "NombreCompleto";
+            cboClienteReserva.ValueMember = "Id_Cliente";
+            List<ClienteModel> clients = await service.GetClientesAsync();
+            cboClienteReserva.DataSource = clients;
 
         }
-
         private void btnSalirReserva_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboAlternativaPago_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
     }
 }

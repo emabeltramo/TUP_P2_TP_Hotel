@@ -11,7 +11,7 @@ namespace HotelForm.HTTPClient
         private static ClientSingleton instance;
         private HttpClient client;
 
-        public ClientSingleton()
+        private ClientSingleton()
         {
             client = new HttpClient();
         }
@@ -36,8 +36,7 @@ namespace HotelForm.HTTPClient
 
                 content = await result.Content.ReadAsStringAsync();
             }
-            Console.WriteLine(content);
-            return new HttpResponse(result.StatusCode, content);
+            return new HttpResponse(result.StatusCode, content,result.IsSuccessStatusCode);
         }
 
         public async Task<HttpResponse> PostAsync(string url, string data)
@@ -53,7 +52,7 @@ namespace HotelForm.HTTPClient
 
                 reply = await result.Content.ReadAsStringAsync();
             }
-            return new HttpResponse(result.StatusCode, reply);
+            return new HttpResponse(result.StatusCode, reply,result.IsSuccessStatusCode);
 
 
             //
