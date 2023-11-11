@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Kg25r5s9b/BV1AWFTxNdm17/hWXYuuUwxvzp05pHFQVcboWQ/M1o3JGSEekyXjKJGNXV2eIlsU/CujO+v2XqOg==",
+  "dgSpecHash": "r9ouH7pZl4OMKrKKuagLaYapShjz+deD/Cr3+AlZO//5w2hklvsA51a9NRWgKoZykuk095QInFdircWoEuexeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dborl\\OneDrive\\Escritorio\\TP LC PII\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+  "projectFilePath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dborl\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\dborl\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
@@ -20,12 +20,5 @@
     "C:\\Users\\dborl\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\dborl\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\dborl\\OneDrive\\Escritorio\\TP LC PII\\TUP_P2_Hotel\\HotelForm\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

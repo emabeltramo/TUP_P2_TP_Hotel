@@ -475,11 +475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dborl\\OneDrive\\Escritorio\\TP LC PII\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
       "projectName": "HotelBackEnd",
-      "projectPath": "C:\\Users\\dborl\\OneDrive\\Escritorio\\TP LC PII\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+      "projectPath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
       "packagesPath": "C:\\Users\\dborl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dborl\\OneDrive\\Escritorio\\TP LC PII\\TUP_P2_Hotel\\HotelBackEnd\\obj\\",
+      "outputPath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dborl\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -532,13 +532,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\dborl\\OneDrive\\Escritorio\\TP LC PII\\TUP_P2_Hotel\\HotelBackEnd\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
