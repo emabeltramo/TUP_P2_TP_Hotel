@@ -15,6 +15,7 @@ namespace HotelAPI.Controllers
         {
             front = new ReservaFront();
         }
+        [HttpGet("/GetProvincias")]
         public IActionResult GetProvincias()
         {
             List<ProvinciaModel> lstProv;
@@ -28,6 +29,7 @@ namespace HotelAPI.Controllers
                 return StatusCode(500, "Error Interno!! Intente luego");
             }
         }
+        [HttpGet("/GetLocalidades")]
         public IActionResult GetLocalidades ()
         {
             List<LocalidadModel> lstLoc;
@@ -41,6 +43,8 @@ namespace HotelAPI.Controllers
                 return StatusCode(500, "Error Interno!! Intente luego");
             }
         }
+        [HttpGet("/GetHoteles")]
+
         public IActionResult GetHoteles()
         {
             List<HotelModel> lstHotel;
