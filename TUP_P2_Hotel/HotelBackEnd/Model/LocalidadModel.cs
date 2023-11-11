@@ -8,10 +8,16 @@ namespace HotelBackEnd.Model
 {
     public class LocalidadModel : ProvinciaModel
     {
-        public LocalidadModel(int id, string nombre) : base(id, nombre)
+        public LocalidadModel(int id, string nombre, int id_Provincia) : base()
         {
             Id_Localidad = id;
-            Descri_Localidad= nombre;
+            Descri_Localidad = nombre;
+            Id_Provincia = id_Provincia;
+        }
+        public LocalidadModel(int id, string nombre)
+        {
+            Id_Localidad = id;
+            Descri_Localidad = nombre;
         }
 
         public int Id_Localidad { get; set; }
