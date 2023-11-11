@@ -18,5 +18,20 @@ namespace HotelBackEnd.Model
         public string Celular { get; set; }
         public TipoClienteModel TCliente { get; set; }
         public string RazonSocial { get; set; }
+
+        public ClienteModel()
+        {
+            Id_Cliente = 0;
+            Nombre = string.Empty;
+            Apellido = string.Empty;
+            TDoc = new TipoDocumentoModel();
+            DNI = string.Empty;
+            CUIL = string.Empty;
+            Email = string.Empty;   
+            Celular = string.Empty; 
+            TCliente = new TipoClienteModel();
+            RazonSocial = string.Empty;
+
+        }
     }
 }

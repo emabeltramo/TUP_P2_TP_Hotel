@@ -10,5 +10,7 @@ namespace HotelBackEnd.Model
     {
         public int Id { get; set; }
         public string Descri { get; set; }
+
+
     }
 }

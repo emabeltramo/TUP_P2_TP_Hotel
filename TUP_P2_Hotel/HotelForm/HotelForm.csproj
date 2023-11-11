@@ -17,6 +17,7 @@
     <Folder Include="Factory\Interface\" />
     <Folder Include="Service\Interface\" />
     <Folder Include="Service\Implementation\" />
+    <Folder Include="View\Cliente\" />
   </ItemGroup>
 
 </Project>
