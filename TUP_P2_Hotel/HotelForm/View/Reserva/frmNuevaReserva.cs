@@ -19,7 +19,7 @@ namespace HotelForm.View.Reserva
         public frmNuevaReserva(IFactoryService factory)
         {
             this.factory = factory;
-            service = factory.CreateService();
+            service = factory.CreateReservaService();
             InitializeComponent();
         }
 
