@@ -1,4 +1,5 @@
-﻿using HotelForm.View.Login;
+﻿using HotelForm.Factory.Interface;
+using HotelForm.View.Login;
 using HotelForm.View.Reserva;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,10 @@ namespace HotelForm.View.Principal
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private IFactoryService factory;
+        public frmMain(IFactoryService factory)
         {
+            this.factory = factory;
             InitializeComponent();
         }
 
@@ -150,7 +153,7 @@ namespace HotelForm.View.Principal
            DialogResult result = MessageBox.Show("Desea cerrar sesión?","Cerrar Sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (result == DialogResult.Yes) {
                 this.Dispose();
-            AbrirFormHijo(new frmLogin());
+            AbrirFormHijo(new frmLogin(factory));
                 
             }
         }

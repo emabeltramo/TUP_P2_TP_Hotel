@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelForm.Factory.Interface;
+using HotelForm.Service.Interface;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +14,12 @@ namespace HotelForm.View.Reserva
 {
     public partial class frmNuevaReserva : Form
     {
-        public frmNuevaReserva()
+        IFactoryService factory;
+        IReservaService service;
+        public frmNuevaReserva(IFactoryService factory)
         {
+            this.factory = factory;
+            service = factory.CreateService();
             InitializeComponent();
         }
 

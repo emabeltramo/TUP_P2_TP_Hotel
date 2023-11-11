@@ -25,7 +25,7 @@ namespace HotelForm.HTTPClient
             }
             return instance;
         }
-        public async Task<string> GetAsync(string url)
+        public async Task<HttpResponse> GetAsync(string url)
         {
             var result = await client.GetAsync(url);
             var content = "";
@@ -37,10 +37,10 @@ namespace HotelForm.HTTPClient
                 content = await result.Content.ReadAsStringAsync();
             }
             Console.WriteLine(content);
-            return content;
+            return new HttpResponse(result.StatusCode, content);
         }
 
-        public async Task<string> PostAsync(string url, string data)
+        public async Task<HttpResponse> PostAsync(string url, string data)
         {
 
 
@@ -53,8 +53,7 @@ namespace HotelForm.HTTPClient
 
                 reply = await result.Content.ReadAsStringAsync();
             }
-            Console.WriteLine(content);
-            return reply;
+            return new HttpResponse(result.StatusCode, reply);
 
 
             //
