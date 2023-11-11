@@ -17,5 +17,9 @@ namespace HotelBackEnd.Model
                 Id_Provincia=id;
                 Descri_Prov=nombre;
         }
+        public ProvinciaModel()
+        {
+                
+        }
     }
 }

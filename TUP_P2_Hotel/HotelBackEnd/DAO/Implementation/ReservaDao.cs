@@ -133,32 +133,84 @@ namespace HotelBackEnd.DAO.Implementation
             return lstHoteles;
         }
 
-        public List<LocalidadModel> GetLocalidad()
+        public List<LocalidadModel> GetLocalidades()
         {
             List<LocalidadModel> lstLocalidades = new List<LocalidadModel>();
-            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM LOCALIDADES ORDER BY 2 ");
-            foreach (DataRow row in table.Rows)
+
+            try
             {
-                int id = int.Parse(row["ID_LOCALIDAD"].ToString());
-                string nameLoc = row["NOMBRE"].ToString();
-                LocalidadModel p = new LocalidadModel(id, nameLoc);
-                lstLocalidades.Add(p);
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM LOCALIDADES ORDER BY 2 ");
+
+                foreach (DataRow row in table.Rows)
+                {
+                    int id = int.Parse(row["ID_LOCALIDAD"].ToString());
+                    string nameLoc = row["NOMBRE"].ToString();
+                    LocalidadModel localidad = new LocalidadModel(id, nameLoc);
+                    lstLocalidades.Add(localidad);
+                }
             }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Error en GetLocalidades: {ex.Message}");
+               
+            }
+
             return lstLocalidades;
         }
 
-        public List<ProvinciaModel> GetProvincia()
+
+
+
+        public List<ProvinciaModel> GetProvincias()
         {
             List<ProvinciaModel> lstProvincias = new List<ProvinciaModel>();
-            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM PROVINCIAS ORDER BY 2 ");
-            foreach (DataRow row in table.Rows)
+
+            try
             {
-                int id = int.Parse(row["ID_PROVINCIAS"].ToString());
-                string nameProv = row["NOMBRE"].ToString();
-                ProvinciaModel p = new ProvinciaModel(id, nameProv);
-                lstProvincias.Add(p);
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM PROVINCIAS ORDER BY 2 ");
+
+                foreach (DataRow row in table.Rows)
+                {
+                    int id = int.Parse(row["ID_PROVINCIAS"].ToString());
+                    string nameProv = row["NOMBRE"].ToString();
+                    ProvinciaModel p = new ProvinciaModel(id, nameProv);
+                    lstProvincias.Add(p);
+                }
             }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Error en GetProvincias: {ex.Message}");
+            }
+
             return lstProvincias;
         }
+
+        List<ClienteModel> IReservaDao.GetClientes()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<HabitacionHotelModel> IReservaDao.GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<HotelModel> IReservaDao.GetHoteles()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<LocalidadModel> IReservaDao.GetLocalidad()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<ProvinciaModel> IReservaDao.GetProvincia()
+        {
+            throw new NotImplementedException();
+        }
     }
+    
 }
