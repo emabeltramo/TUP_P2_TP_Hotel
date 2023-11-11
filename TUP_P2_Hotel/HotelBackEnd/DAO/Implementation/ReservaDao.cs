@@ -133,7 +133,7 @@ namespace HotelBackEnd.DAO.Implementation
             return lstHoteles;
         }
 
-        public List<LocalidadModel> GetLocalidad()
+        public List<LocalidadModel> GetLocalidades()
         {
             List<LocalidadModel> lstLocalidades = new List<LocalidadModel>();
             try
@@ -156,7 +156,7 @@ namespace HotelBackEnd.DAO.Implementation
             return lstLocalidades;
         }
 
-        public List<ProvinciaModel> GetProvincia()
+        public List<ProvinciaModel> GetProvincias()
         {
             List<ProvinciaModel> lstProvincias = new List<ProvinciaModel>();
             try

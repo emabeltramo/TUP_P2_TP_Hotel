@@ -1,4 +1,6 @@
-﻿using HotelBackEnd.Front.Interface;
+﻿using HotelBackEnd.DAO.Implementation;
+using HotelBackEnd.DAO.Interface;
+using HotelBackEnd.Front.Interface;
 using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,11 @@ namespace HotelBackEnd.Front.Implementation
 {
     internal class ReservaFront : IReservaFront
     {
+        private IReservaDao reservaDao;
+        public ReservaFront()
+        {
+            reservaDao = new ReservaDao();
+        }
         public List<ClienteModel> GetClientes()
         {
             throw new NotImplementedException();
