@@ -19,12 +19,12 @@ namespace HotelBackEnd.Front.Implementation
         }
         public List<ClienteModel> GetClientes()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetClientes();
         }
 
         public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
         {
-            throw new NotImplementedException();
+            return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
         }
 
         public List<HotelModel> GetHoteles()
