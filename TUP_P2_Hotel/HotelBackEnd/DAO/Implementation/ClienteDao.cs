@@ -13,7 +13,7 @@ namespace HotelBackEnd.DAO.Implementation
 {
     public class ClienteDao : IClienteDao
     {
-        p public bool ActualizarCliente(ClienteModel cliente)
+        public bool ActualizarCliente(ClienteModel cliente)
         {
             throw new NotImplementedException();
         }

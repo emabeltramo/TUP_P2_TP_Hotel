@@ -75,6 +75,19 @@ namespace HotelBackEnd.DAO.Helper
             connection.Close();
             return tabla;
         }
+        public DataTable GetConsultSp(string nombreSp, string nomTabla)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = nombreSp;
+            cmd.Parameters.AddWithValue("@tabla", nomTabla);
+            DataTable tabla = new DataTable();
+            tabla.Load(cmd.ExecuteReader());
+            connection.Close();
+            return tabla;
+        }
 
         //internal DataTable Consultar(string nombreSP, List<Parametro> lParams)
         //{
