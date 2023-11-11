@@ -29,17 +29,19 @@ namespace HotelBackEnd.Front.Implementation
 
         public List<HotelModel> GetHoteles()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetHoteles();
+
         }
 
         public List<LocalidadModel> GetLocalidad()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetLocalidades();
+
         }
 
         public List<ProvinciaModel> GetProvincia()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetProvincias();
         }
     }
 }
