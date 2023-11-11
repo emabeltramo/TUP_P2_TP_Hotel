@@ -120,18 +120,30 @@ namespace HotelBackEnd.DAO.Implementation
         public List<HotelModel> GetHoteles()
         {
             List<HotelModel> lstHoteles = new List<HotelModel>();
-            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 5 ASC ");
-            foreach (DataRow row in table.Rows)
+            try
             {
-                int idhotel = int.Parse(row["ID"].ToString());
-                string adress = row["DIRECCION"].ToString();
-                string name = row["NOMBRE"].ToString();
-                bool enabled = (bool)row["HABILITADO"];
-                HotelModel lh = new HotelModel(idhotel,adress,name,enabled);
-                lstHoteles.Add(lh);
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 5 ASC ");
+                foreach (DataRow row in table.Rows)
+                {
+                    int idHotel = int.Parse(row["ID"].ToString());
+                    string adress = row["DIRECCION"].ToString();
+                    string name = row["NOMBRE"].ToString();
+                    bool enabled = (bool)row["HABILITADO"];
+                    int localidad = int.Parse(row["LOCALIDAD"].ToString());
+
+                    HotelModel lh = new HotelModel(idHotel, adress, name, enabled);
+                    lh.Localidad = new LocalidadModel(localidad, "");
+                    lstHoteles.Add(lh);
+                }
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en GetHoteles", ex);
+            }
+
             return lstHoteles;
         }
+
 
         public List<LocalidadModel> GetLocalidades()
         {
@@ -143,16 +155,17 @@ namespace HotelBackEnd.DAO.Implementation
                 {
                     int id = int.Parse(row["ID_LOCALIDAD"].ToString());
                     string nameLoc = row["NOMBRE"].ToString();
-                    LocalidadModel p = new LocalidadModel(id, nameLoc);
+                    int  idprov= int.Parse(row["ID_PROVINCIAS"].ToString());
+                    LocalidadModel p = new LocalidadModel(id, nameLoc,idprov);
                     lstLocalidades.Add(p);
                 }
             }
             catch (Exception ex)
             {
 
-                Console.WriteLine($"Error en GetLocalidades: {ex.Message}");
+                throw new Exception("Error en GetLocalidades", ex);
             }
-            
+    
             return lstLocalidades;
         }
 
@@ -173,7 +186,7 @@ namespace HotelBackEnd.DAO.Implementation
             catch (Exception ex)
             {
 
-                Console.WriteLine($"Error en GetProvincia: {ex.Message}");
+                throw new Exception("Error en GetProvincias", ex);
             }
             
             return lstProvincias;
