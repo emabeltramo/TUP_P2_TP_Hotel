@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,20 @@ namespace HotelBackEnd.Model
             TCliente = new TipoClienteModel();
             RazonSocial = string.Empty;
 
+        }
+
+        public ClienteModel(int id, string nom , string ape, TipoDocumentoModel tDoc,string dni,string cuil,string mail, string cel,TipoClienteModel tCli,string razSoc)
+        {
+            Id_Cliente= id;
+            Nombre= nom;
+            Apellido= ape;
+            TDoc = tDoc;
+            DNI = dni;
+            CUIL = cuil;
+            Email = mail;
+            Celular = cel;
+            TCliente= tCli;
+            RazonSocial = razSoc;
         }
     }
 }

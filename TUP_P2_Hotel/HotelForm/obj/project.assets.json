@@ -720,19 +720,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Federico gonzalez\\.nuget\\packages\\": {}
+    "C:\\Users\\claudio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+      "projectUniqueName": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
       "projectName": "HotelForm",
-      "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
-      "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\",
+      "projectPath": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+      "packagesPath": "C:\\Users\\claudio\\.nuget\\packages\\",
+      "outputPath": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\claudio\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -746,8 +746,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
-              "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj"
+            "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
+              "projectPath": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj"
             }
           }
         }
@@ -780,7 +780,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
