@@ -187,30 +187,7 @@ namespace HotelBackEnd.DAO.Implementation
             return lstProvincias;
         }
 
-        List<ClienteModel> IReservaDao.GetClientes()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<HabitacionHotelModel> IReservaDao.GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<HotelModel> IReservaDao.GetHoteles()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<LocalidadModel> IReservaDao.GetLocalidad()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<ProvinciaModel> IReservaDao.GetProvincia()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
     
 }
