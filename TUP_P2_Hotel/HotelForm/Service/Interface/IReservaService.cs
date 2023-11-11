@@ -10,9 +10,9 @@ namespace HotelForm.Service.Interface
     public interface IReservaService
     {
         Task<List<ClienteModel>> GetClientesAsync();
-        List<HotelModel> GetHoteles();
-        List<ProvinciaModel> GetProvincia();
-        List<LocalidadModel> GetLocalidad();
-        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
+        Task<List<HotelModel>> GetHotelesAsync();
+        Task<List<ProvinciaModel>> GetProvinciaAsync();
+        Task<List<LocalidadModel>> GetLocalidadAsync();
+        Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel);
     }
 }

@@ -27,22 +27,22 @@ namespace HotelForm.Service.Implementation
             return result;
         }
 
-        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
+        public Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel)
         {
             throw new NotImplementedException();
         }
 
-        public List<HotelModel> GetHoteles()
+        public Task<List<HotelModel>> GetHotelesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public List<LocalidadModel> GetLocalidad()
+        public Task<List<LocalidadModel>> GetLocalidadAsync()
         {
             throw new NotImplementedException();
         }
 
-        public List<ProvinciaModel> GetProvincia()
+        public Task<List<ProvinciaModel>> GetProvinciaAsync()
         {
             throw new NotImplementedException();
         }
