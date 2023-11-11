@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelBackEnd.Front.Interface
 {
-    internal interface IReservaFront
+    public interface IReservaFront
     {
         List<ClienteModel> GetClientes();
         List<HotelModel> GetHoteles();

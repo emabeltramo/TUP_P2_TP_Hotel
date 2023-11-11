@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HotelBackEnd.Front.Implementation
 {
-    internal class ReservaFront : IReservaFront
+    public class ReservaFront : IReservaFront
     {
         private IReservaDao reservaDao;
         public ReservaFront()
