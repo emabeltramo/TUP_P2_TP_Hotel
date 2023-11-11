@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "JAYLtS47sgVgIOYb1kHzo6ks0EUcz88MVhUwgvdqRS+m+W31uRBPcq/+DpiEAVzggfxVnOM2AdVVIaALrXJSvg==",
+=======
+  "dgSpecHash": "/n2vDSla4fGDHthHvZwep+b66o/SHiRnt+5RZ0igzmXx9Lb9Kldn0hWQEmHWnhgjmNhY8b3QyCLE5ml7LzGLGw==",
+>>>>>>> 92d79fbe86ab88d527bef88b265ae89d11e5cc41
   "success": true,
-  "projectFilePath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+  "projectFilePath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel-FEDE\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dborl\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\dborl\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
