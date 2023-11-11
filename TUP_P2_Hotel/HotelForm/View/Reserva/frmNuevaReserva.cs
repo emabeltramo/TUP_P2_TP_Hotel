@@ -17,6 +17,7 @@ namespace HotelForm.View.Reserva
     {
         IFactoryService factory;
         IReservaService service;
+        
         public frmNuevaReserva(IFactoryService factory)
         {
             this.factory = factory;
@@ -24,11 +25,41 @@ namespace HotelForm.View.Reserva
             InitializeComponent();
             this.Load += FrmNuevaReserva_Load;
 
-           
+            
+            dtpDesde.ValueChanged += DtpDesde_ValueChanged;
+            dtpHasta.ValueChanged += DtpHasta_ValueChanged;
+            
+
+        }
+        private void InitComponent()
+        {
+            #region DataPicker
+            dtpDesde.MinDate = DateTime.Now.Date;
+            dtpHasta.MinDate = DateTime.Now.Date;
+            dtpHasta.Value = DateTime.Now.AddMonths(1).Date;
+            #endregion
+            #region Combos
+            cboClienteReserva.DataSource = new List<ClienteModel>();
+            cboClienteReserva.DisplayMember = "NombreCompleto";
+            cboClienteReserva.ValueMember = "Id_Cliente";
+            #endregion
+        }
+        private void DtpHasta_ValueChanged(object? sender, EventArgs e)
+        {
+            
+                dtpDesde.MaxDate = dtpHasta.Value;
+              
+            
 
         }
 
-        
+        private void DtpDesde_ValueChanged(object? sender, EventArgs e)
+        {
+            
+                dtpHasta.MinDate = dtpDesde.Value;
+
+            
+        }
 
         private void FrmNuevaReserva_Load(object? sender, EventArgs e)
         {
@@ -38,9 +69,7 @@ namespace HotelForm.View.Reserva
         }
         private async void CargarCombos()
         {
-            cboClienteReserva.DataSource = new List<ClienteModel>();
-            cboClienteReserva.DisplayMember = "NombreCompleto";
-            cboClienteReserva.ValueMember = "Id_Cliente";
+            
             List<ClienteModel> clients = await service.GetClientesAsync();
             cboClienteReserva.DataSource = clients;
 
