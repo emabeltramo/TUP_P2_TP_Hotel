@@ -21,7 +21,7 @@ namespace HotelAPI.Controllers
             try
             {
                 var result = front.GetClientes();
-                if (result==null)
+                if (result == null)
                 {
                     return StatusCode(500, "Se produjo un error al procesar los clientes");
                 }
@@ -34,11 +34,11 @@ namespace HotelAPI.Controllers
             }
         }
         [HttpGet("/GetHabDispo")]
-        public IActionResult GetHabDisponibles([FromQuery]DateTime desde, [FromQuery] DateTime hasta, [FromQuery] int idHotel)
+        public IActionResult GetHabDisponibles([FromQuery] DateTime desde, [FromQuery] DateTime hasta, [FromQuery] int idHotel)
         {
             try
             {
-               
+
 
                 if (desde > hasta)
                 {
@@ -52,7 +52,7 @@ namespace HotelAPI.Controllers
                     return StatusCode(500, "Se produjo un error al procesar las habitaciones");
                 }
                 return Ok(result);
-                
+
             }
             catch (Exception)
             {
@@ -61,7 +61,7 @@ namespace HotelAPI.Controllers
             }
         }
 
-    }
+
         [HttpGet("/GetProvincias")]
         public IActionResult GetProvincias()
         {
@@ -77,7 +77,7 @@ namespace HotelAPI.Controllers
             }
         }
         [HttpGet("/GetLocalidades")]
-        public IActionResult GetLocalidades ()
+        public IActionResult GetLocalidades()
         {
             List<LocalidadModel> lstLoc;
             try
