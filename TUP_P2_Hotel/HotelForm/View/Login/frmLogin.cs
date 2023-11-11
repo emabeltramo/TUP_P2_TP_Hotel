@@ -19,8 +19,7 @@ namespace HotelForm.View.Login
             {
                 frmMain formGestion = new frmMain(factory);
                 formGestion.Show();
-                this.Close();
-                this.Dispose();
+                this.Hide();
             }
             else
             {

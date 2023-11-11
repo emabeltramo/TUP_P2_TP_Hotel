@@ -71,7 +71,7 @@ namespace HotelForm.View.Principal
         private void btnNvaReserv_Click(object sender, EventArgs e)
         {
 
-            AbrirFormHijo(new frmNuevaReserva());
+            AbrirFormHijo(new frmNuevaReserva(factory));
             //...
             OcultarSubmenu();
         }
