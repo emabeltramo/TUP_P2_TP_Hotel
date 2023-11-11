@@ -1,3 +1,4 @@
+using HotelForm.Factory.Interface;
 using HotelForm.View.Principal;
 using System.Windows.Forms;
 
@@ -5,8 +6,10 @@ namespace HotelForm.View.Login
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        private IFactoryService factory;
+        public frmLogin(IFactoryService factory)
         {
+            this.factory = factory;
             InitializeComponent();
         }
 
@@ -14,8 +17,9 @@ namespace HotelForm.View.Login
         {
             if (cboUsuario.SelectedIndex >= 0)
             {
-                frmMain formGestion = new frmMain();
+                frmMain formGestion = new frmMain(factory);
                 formGestion.Show();
+                this.Hide();
             }
             else
             {

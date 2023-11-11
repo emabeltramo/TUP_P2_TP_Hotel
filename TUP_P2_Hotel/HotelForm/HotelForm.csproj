@@ -9,14 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HotelAPI\HotelAPI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Factory\Implementation\" />
-    <Folder Include="Factory\Interface\" />
-    <Folder Include="Service\Interface\" />
-    <Folder Include="Service\Implementation\" />
+    <ProjectReference Include="..\HotelBackEnd\HotelBackEnd.csproj" />
   </ItemGroup>
 
 </Project>
