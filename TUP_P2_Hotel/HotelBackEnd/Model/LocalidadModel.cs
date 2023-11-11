@@ -8,7 +8,7 @@ namespace HotelBackEnd.Model
 {
     public class LocalidadModel : ProvinciaModel
     {
-        public LocalidadModel(int id, string nombre) : base(id, nombre)
+        public LocalidadModel(int id, string nombre) : base()
         {
             Id_Localidad = id;
             Descri_Localidad= nombre;
