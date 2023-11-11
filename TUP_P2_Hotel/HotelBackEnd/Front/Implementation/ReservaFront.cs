@@ -22,7 +22,7 @@ namespace HotelBackEnd.Front.Implementation
             return reservaDao.GetClientes();
         }
 
-        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
+        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
         {
             return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
         }

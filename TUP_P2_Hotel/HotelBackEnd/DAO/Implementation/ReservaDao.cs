@@ -35,11 +35,11 @@ namespace HotelBackEnd.DAO.Implementation
                             Apellido = reg.FirstOrDefault(m => m.Campo.ToUpper() == "APELLIDO").Valor ?? string.Empty,
                             Nombre = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NOMBRE").Valor ?? string.Empty,
                             DNI = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DNI").Valor ?? string.Empty,
-                            Id_Cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_CLIENTE").Valor ?? 0,
+                            Id_Cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
                             CUIL = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CUIL").Valor ?? string.Empty,
                             Email = reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMAIL").Valor ?? string.Empty,
                             Celular = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CELULAR").Valor ?? string.Empty,
-                            RazonSocial = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RAZONSOCIAL").Valor ?? string.Empty,
+                            RazonSocial = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RAZON_SOCIAL").Valor ?? string.Empty,
 
 
 
@@ -61,7 +61,7 @@ namespace HotelBackEnd.DAO.Implementation
             return result;
         }
 
-        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
+        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
         {
             ProccesData procces = new ProccesData();
             SqlCommand cmd = new SqlCommand();
@@ -87,8 +87,8 @@ namespace HotelBackEnd.DAO.Implementation
                         var habitacion = new HabitacionHotelModel()
                         {
                             Id_Habitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_HABITACION").Valor ?? 0,
-                            CamaMax = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CAM_MAX").Valor ?? 0,
-                            Codigo= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO").Valor ?? string.Empty,
+                            CamaMax = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CAMA_MAX").Valor ?? 0,
+                            Codigo= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO_HABITACION").Valor ?? string.Empty,
                             Telefono= reg.FirstOrDefault(m => m.Campo.ToUpper() == "TELEFONO").Valor ?? 0,
                             
                         };
@@ -106,7 +106,7 @@ namespace HotelBackEnd.DAO.Implementation
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 result = null;
             }

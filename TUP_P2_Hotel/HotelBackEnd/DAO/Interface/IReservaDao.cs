@@ -13,6 +13,6 @@ namespace HotelBackEnd.DAO.Interface
         List<HotelModel> GetHoteles();
         List<ProvinciaModel> GetProvincias();
         List<LocalidadModel> GetLocalidades();
-        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel);
+        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
     }
 }

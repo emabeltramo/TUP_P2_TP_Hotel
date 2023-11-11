@@ -13,6 +13,6 @@ namespace HotelBackEnd.Front.Interface
         List<HotelModel> GetHoteles();
         List<ProvinciaModel> GetProvincia();
         List<LocalidadModel> GetLocalidad();
-        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel);
+        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
     }
 }
