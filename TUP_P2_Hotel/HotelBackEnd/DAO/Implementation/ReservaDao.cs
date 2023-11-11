@@ -69,7 +69,7 @@ namespace HotelBackEnd.DAO.Implementation
         public List<HotelModel> GetHoteles()
         {
             List<HotelModel> lstHoteles = new List<HotelModel>();
-            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 2 ");
+            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 5 ASC ");
             foreach (DataRow row in table.Rows)
             {
                 int idhotel = int.Parse(row["ID"].ToString());
