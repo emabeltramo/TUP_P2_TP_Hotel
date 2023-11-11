@@ -133,43 +133,35 @@ namespace HotelBackEnd.DAO.Implementation
             return lstHoteles;
         }
 
-        public List<LocalidadModel> GetLocalidades()
+        public List<LocalidadModel> GetLocalidad()
         {
             List<LocalidadModel> lstLocalidades = new List<LocalidadModel>();
-
             try
             {
                 DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM LOCALIDADES ORDER BY 2 ");
-
                 foreach (DataRow row in table.Rows)
                 {
                     int id = int.Parse(row["ID_LOCALIDAD"].ToString());
                     string nameLoc = row["NOMBRE"].ToString();
-                    LocalidadModel localidad = new LocalidadModel(id, nameLoc);
-                    lstLocalidades.Add(localidad);
+                    LocalidadModel p = new LocalidadModel(id, nameLoc);
+                    lstLocalidades.Add(p);
                 }
             }
             catch (Exception ex)
             {
-                
-                Console.WriteLine($"Error en GetLocalidades: {ex.Message}");
-               
-            }
 
+                Console.WriteLine($"Error en GetLocalidades: {ex.Message}");
+            }
+            
             return lstLocalidades;
         }
 
-
-
-
-        public List<ProvinciaModel> GetProvincias()
+        public List<ProvinciaModel> GetProvincia()
         {
             List<ProvinciaModel> lstProvincias = new List<ProvinciaModel>();
-
             try
             {
                 DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM PROVINCIAS ORDER BY 2 ");
-
                 foreach (DataRow row in table.Rows)
                 {
                     int id = int.Parse(row["ID_PROVINCIAS"].ToString());
@@ -180,10 +172,10 @@ namespace HotelBackEnd.DAO.Implementation
             }
             catch (Exception ex)
             {
-                
-                Console.WriteLine($"Error en GetProvincias: {ex.Message}");
-            }
 
+                Console.WriteLine($"Error en GetProvincia: {ex.Message}");
+            }
+            
             return lstProvincias;
         }
 
