@@ -3,6 +3,7 @@ using HotelBackEnd.DAO.Interface;
 using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -67,17 +68,46 @@ namespace HotelBackEnd.DAO.Implementation
 
         public List<HotelModel> GetHoteles()
         {
-            throw new NotImplementedException();
+            List<HotelModel> lstHoteles = new List<HotelModel>();
+            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 2 ");
+            foreach (DataRow row in table.Rows)
+            {
+                int idhotel = int.Parse(row["ID"].ToString());
+                string adress = row["DIRECCION"].ToString();
+                string name = row["NOMBRE"].ToString();
+                bool enabled = (bool)row["HABILITADO"];
+                HotelModel lh = new HotelModel(idhotel,adress,name,enabled);
+                lstHoteles.Add(lh);
+            }
+            return lstHoteles;
         }
 
         public List<LocalidadModel> GetLocalidad()
         {
-            throw new NotImplementedException();
+            List<LocalidadModel> lstLocalidades = new List<LocalidadModel>();
+            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM LOCALIDADES ORDER BY 2 ");
+            foreach (DataRow row in table.Rows)
+            {
+                int id = int.Parse(row["ID_LOCALIDAD"].ToString());
+                string nameLoc = row["NOMBRE"].ToString();
+                LocalidadModel p = new LocalidadModel(id, nameLoc);
+                lstLocalidades.Add(p);
+            }
+            return lstLocalidades;
         }
 
         public List<ProvinciaModel> GetProvincia()
         {
-            throw new NotImplementedException();
+            List<ProvinciaModel> lstProvincias = new List<ProvinciaModel>();
+            DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM PROVINCIAS ORDER BY 2 ");
+            foreach (DataRow row in table.Rows)
+            {
+                int id = int.Parse(row["ID_PROVINCIAS"].ToString());
+                string nameProv = row["NOMBRE"].ToString();
+                ProvinciaModel p = new ProvinciaModel(id, nameProv);
+                lstProvincias.Add(p);
+            }
+            return lstProvincias;
         }
     }
 }

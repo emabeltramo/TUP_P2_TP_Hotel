@@ -63,13 +63,13 @@ namespace HotelBackEnd.DAO.Helper
             return aux;
         }
 
-        internal DataTable GetConsult(string nombreSP)
+        internal DataTable GetConsult(string consulta)
         {
             connection.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = nombreSP;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = consulta;
             DataTable tabla = new DataTable();
             tabla.Load(cmd.ExecuteReader());
             connection.Close();

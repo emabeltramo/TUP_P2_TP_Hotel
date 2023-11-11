@@ -12,5 +12,10 @@ namespace HotelBackEnd.Model
         public int Id_Provincia { get; set; }
         public string Descri_Prov { get; set; }
 
+        public ProvinciaModel(int id, string nombre)
+        {
+                Id_Provincia=id;
+                Descri_Prov=nombre;
+        }
     }
 }
