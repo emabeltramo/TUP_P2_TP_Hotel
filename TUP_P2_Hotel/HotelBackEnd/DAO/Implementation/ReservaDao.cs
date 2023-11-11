@@ -63,7 +63,58 @@ namespace HotelBackEnd.DAO.Implementation
 
         public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
         {
-            throw new NotImplementedException();
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<HabitacionHotelModel> result = new List<HabitacionHotelModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_HabDisponibles";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                var p = new List<SqlParameter>();
+                p.Add(new SqlParameter("@desde", (object)desde ?? DBNull.Value));
+                p.Add(new SqlParameter("@hasta", (object)hasta ?? DBNull.Value));
+                p.Add(new SqlParameter("@hotel", (object)idHotel ?? DBNull.Value));
+                cmd.Parameters.AddRange(p.ToArray());
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var habitacion = new HabitacionHotelModel()
+                        {
+                            Id_Habitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_HABITACION").Valor ?? 0,
+                            CamaMax = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CAM_MAX").Valor ?? 0,
+                            Codigo= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO").Valor ?? string.Empty,
+                            Telefono= reg.FirstOrDefault(m => m.Campo.ToUpper() == "TELEFONO").Valor ?? 0,
+                            
+                        };
+                        var categoria = new CatHabitacionModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_CATEGORIA").Valor ?? 0,
+                            Descri= reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty,
+                            Precio= reg.FirstOrDefault(m => m.Campo.ToUpper() == "PRECIO").Valor ?? 0,
+
+                        };
+                        habitacion.Categoria = categoria;
+                        result.Add(habitacion);
+                    }
+                }
+
+
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
         }
 
         public List<HotelModel> GetHoteles()
