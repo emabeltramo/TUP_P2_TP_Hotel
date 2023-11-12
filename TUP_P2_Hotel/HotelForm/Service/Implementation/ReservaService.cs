@@ -43,7 +43,7 @@ namespace HotelForm.Service.Implementation
         {
             string url = host + "/GetTipoCliente";
             List<TipoClienteModel> result = new List<TipoClienteModel>();
-            var response = await ClientSingleton.GetInstance().PatchAsync(url);
+            var response = await ClientSingleton.GetInstance().GetAsync(url);
             if (response != null && response.SuccessStatus)
             {
 
@@ -92,7 +92,7 @@ namespace HotelForm.Service.Implementation
         {
             string url = host + "/PutCliente";
             string cuerpo = JsonConvert.SerializeObject(cliente);
-            var response = await ClientSingleton.GetInstance().PatchAsync(url, cuerpo);
+            var response = await ClientSingleton.GetInstance().PutAsync(url, cuerpo);
             if (response != null && response.SuccessStatus)
             {
                 MessageBox.Show("Cliente actualizado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
