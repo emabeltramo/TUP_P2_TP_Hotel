@@ -19,6 +19,7 @@ namespace HotelForm.View.Login
             {
                 frmMain formGestion = new frmMain(factory);
                 formGestion.Show();
+                
             }
             else
             {
@@ -26,6 +27,7 @@ namespace HotelForm.View.Login
                 MessageBox.Show("Necesita Ingresar un Usuario", caption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
 
             }
+
         }
 
         private void cboUsuario_SelectedIndexChanged(object sender, EventArgs e)

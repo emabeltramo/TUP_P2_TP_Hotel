@@ -21,5 +21,10 @@ namespace HotelForm.View.Clientes
         {
 
         }
+
+        private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

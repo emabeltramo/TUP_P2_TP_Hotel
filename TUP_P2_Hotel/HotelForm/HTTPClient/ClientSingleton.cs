@@ -74,5 +74,20 @@ namespace HotelForm.HTTPClient
             Console.WriteLine(content);
             return reply;
         }
+
+        public async Task<string> DeleteAsync(string url, string data)
+        {
+            var result = await client.DeleteAsync(url);
+
+            var reply = "";
+
+            if (result.IsSuccessStatusCode)
+            {
+                reply = await result.Content.ReadAsStringAsync();
+            }
+
+            Console.WriteLine(reply);
+            return reply;
+        }
     }
 }

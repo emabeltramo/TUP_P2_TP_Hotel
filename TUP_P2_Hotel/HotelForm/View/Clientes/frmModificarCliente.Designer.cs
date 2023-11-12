@@ -48,13 +48,15 @@
             btnCancelar = new Button();
             btnSalirCliente = new Button();
             btnCargarCliente = new Button();
+            cboCliente = new ComboBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label7.Location = new Point(12, 29);
+            label7.Location = new Point(8, 9);
             label7.Name = "label7";
             label7.Size = new Size(450, 25);
             label7.TabIndex = 81;
@@ -238,11 +240,34 @@
             btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
             // 
+            // cboCliente
+            // 
+            cboCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCliente.FormattingEnabled = true;
+            cboCliente.Location = new Point(117, 56);
+            cboCliente.Name = "cboCliente";
+            cboCliente.Size = new Size(121, 23);
+            cboCliente.TabIndex = 83;
+            cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.Location = new Point(22, 59);
+            label8.Name = "label8";
+            label8.Size = new Size(89, 15);
+            label8.TabIndex = 82;
+            label8.Text = "Tipo de Cliente:";
+            // 
             // frmModificarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(739, 478);
+            Controls.Add(cboCliente);
+            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(txtTelefono);
             Controls.Add(label6);
@@ -292,5 +317,7 @@
         private Button btnCancelar;
         private Button btnSalirCliente;
         private Button btnCargarCliente;
+        private ComboBox cboCliente;
+        private Label label8;
     }
 }

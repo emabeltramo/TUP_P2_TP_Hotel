@@ -162,7 +162,7 @@ namespace HotelForm.View.Principal
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void panelTopSideleft_Paint(object sender, PaintEventArgs e)

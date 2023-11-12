@@ -50,25 +50,29 @@ namespace HotelForm.View.Clientes
 
         private void btnCargarCliente_Click(object sender, EventArgs e)
         {
-            ClienteModel cliente = new ClienteModel();
-            cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
-            cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
-            if (cboTipoCliente.SelectedIndex== 0)//aca seria tipo particular por ej
-            { 
-            cliente.Nombre= txtNombre.Text;
-            cliente.Apellido= txtApellido.Text;
-                cliente.DNI = txtNroDocumento.Text;
-            }
-            else {
-                cliente.Nombre = string.Empty;
-                cliente.Apellido = string.Empty;
-                cliente.RazonSocial= txtRazonSocial.Text;
-                cliente.DNI = string.Empty;
-                cliente.CUIL= txtNroDocumento.Text;
-            }
-            cliente.Email= txtEmail.Text;
-            cliente.Celular= txtTelefono.Text;
-             service.AltaCliente(cliente); 
+            if (Validar()) 
+                {
+                    ClienteModel cliente = new ClienteModel();
+                    cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
+                    cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
+                    if (cboTipoCliente.SelectedIndex == 0)//aca seria tipo particular por ej
+                    {
+                        cliente.Nombre = txtNombre.Text;
+                        cliente.Apellido = txtApellido.Text;
+                        cliente.DNI = txtNroDocumento.Text;
+                    }
+                    else
+                    {
+                        cliente.Nombre = string.Empty;
+                        cliente.Apellido = string.Empty;
+                        cliente.RazonSocial = txtRazonSocial.Text;
+                        cliente.DNI = string.Empty;
+                        cliente.CUIL = txtNroDocumento.Text;
+                    }
+                    cliente.Email = txtEmail.Text;
+                    cliente.Celular = txtTelefono.Text;
+                    service.AltaCliente(cliente);
+                }
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -92,6 +96,57 @@ namespace HotelForm.View.Clientes
                 cboTipoDocumento.SelectedIndex = -1;
 
             }
+        }
+
+        private bool Validar()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (string.IsNullOrEmpty(control.Text))
+                    {
+                        MessageBox.Show("Debe completar todos los campos!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+            }
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is ComboBox combo)
+                {
+
+                    if (combo.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Debe seleccionar una opcion de cada menu.!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+            }
+
+            foreach (Char c in txtNroDocumento.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    MessageBox.Show("Solo se pueden ingresar numeros!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                break;
+            }
+
+            foreach (Char c in txtTelefono.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    MessageBox.Show("Solo se pueden ingresar numeros!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                break;
+            }
+
+            return true;
+
         }
     }
 }
