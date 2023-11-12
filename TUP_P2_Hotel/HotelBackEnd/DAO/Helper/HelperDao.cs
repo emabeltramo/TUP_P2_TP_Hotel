@@ -88,7 +88,18 @@ namespace HotelBackEnd.DAO.Helper
             connection.Close();
             return tabla;
         }
-
+        public DataTable GetSp(string nombreSp)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = nombreSp;
+            DataTable tabla = new DataTable();
+            tabla.Load(cmd.ExecuteReader());
+            connection.Close();
+            return tabla;
+        }
         //internal DataTable Consultar(string nombreSP, List<Parametro> lParams)
         //{
         //    conexion.Open();

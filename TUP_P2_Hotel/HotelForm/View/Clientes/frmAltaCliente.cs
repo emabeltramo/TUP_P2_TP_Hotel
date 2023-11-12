@@ -1,7 +1,9 @@
 ﻿using HotelBackEnd.Model;
 using HotelForm.Factory.Interface;
+using HotelForm.HTTPClient;
 using HotelForm.Service.Interface;
 using HotelForm.View.Login;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,16 +31,18 @@ namespace HotelForm.View.Clientes
 
         private async void frmAgregarCliente_Load(object sender, EventArgs e)
         {
-            List<TipoDocumentoModel> tipoDocumento = await service.GetTipoDocumentosAsync();
-            List<TipoClienteModel> tipoCliente = await service.GetTipoClientesAsync();
-            cboTipoCliente.DataSource = tipoCliente;
-            cboTipoCliente.ValueMember = "Id";
-            cboTipoCliente.DisplayMember = "Descri";
-            cboTipoDocumento.DataSource = tipoDocumento;
-            cboTipoDocumento.ValueMember = "Id";
-            cboTipoDocumento.DisplayMember = "Descri";
-        }
 
+            CargarProductosAsync();
+        }
+        private async void CargarProductosAsync()
+        {
+            List<TipoDocumentoModel> tipoDocumento = await service.GetTipoDocumentosAsync();
+            cboTipoDocumento.DataSource = tipoDocumento;
+            cboTipoDocumento.DisplayMember = "Descri";
+            cboTipoDocumento.ValueMember = "Id";
+
+
+        }
         private void txtNroDocumento_TextChanged(object sender, EventArgs e)
         {
 

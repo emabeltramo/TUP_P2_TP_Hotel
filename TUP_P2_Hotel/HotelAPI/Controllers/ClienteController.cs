@@ -75,7 +75,7 @@ namespace HotelAPI.Controllers
             }
         }
 
-        [HttpPatch("/PatchCliente")]
+        [HttpPatch("/PutCliente")]
         
         public IActionResult PutCliente(ClienteModel cliente)
         {

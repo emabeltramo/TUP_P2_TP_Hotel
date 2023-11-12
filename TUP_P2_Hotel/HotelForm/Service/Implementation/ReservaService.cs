@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace HotelForm.Service.Implementation
 {
+    //
     public class ReservaService : IReservaService
     {
         private const string host = "https://localhost:7107";
@@ -28,29 +29,29 @@ namespace HotelForm.Service.Implementation
         }
         public async Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync()
         {
-            string url = host + "/GetTipoDocumento";
-            List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
-            var response = await ClientSingleton.GetInstance().GetAsync(url);
-            if (response != null && response.SuccessStatus)
+            string url = "https://localhost:7107/GetTipoDocumento"; 
+
+            var result = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(result);
+            if (result != null )
             {
+                MessageBox.Show("Cliente registrado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                result = JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(response.Data);
             }
+            else MessageBox.Show("ERROR. No se pudo registrar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            return result;
+
+
+            return lst;
         }
         public async Task<List<TipoClienteModel>> GetTipoClientesAsync()
         {
-            string url = host + "/GetTipoCliente";
-            List<TipoClienteModel> result = new List<TipoClienteModel>();
-            var response = await ClientSingleton.GetInstance().GetAsync(url);
-            if (response != null && response.SuccessStatus)
-            {
+            string url = host+"/GetTipoCliente";
+            var result = await ClientSingleton.GetInstance().GetAsync(url);
+            var lst = JsonConvert.DeserializeObject<List<TipoClienteModel>>(result);
+           
 
-                result = JsonConvert.DeserializeObject<List<TipoClienteModel>>(response.Data);
-            }
-
-            return result;
+            return lst;
         }
 
         public Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel)

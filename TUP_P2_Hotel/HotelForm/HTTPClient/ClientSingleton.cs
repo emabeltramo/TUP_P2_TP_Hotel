@@ -29,14 +29,8 @@ namespace HotelForm.HTTPClient
         {
             var result = await client.GetAsync(url);
             var content = "";
-
-
             if (result.IsSuccessStatusCode)
-            {
-
                 content = await result.Content.ReadAsStringAsync();
-            }
-            Console.WriteLine(content);
             return content;
         }
 

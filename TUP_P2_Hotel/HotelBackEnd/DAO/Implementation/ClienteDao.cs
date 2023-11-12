@@ -137,7 +137,7 @@ namespace HotelBackEnd.DAO.Implementation
         public List<TipoClienteModel> GetTipoCliente()
         {
             List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
-            DataTable tabla = HelperDao.GetInstance().GetConsultSp("SP_CONSULTAR_TIPOCLIENTE", "TIPOS_CLIENTES");
+            DataTable tabla = HelperDao.GetInstance().GetSp("SP_CONSULTAR_TIPOCLIENTE");
             foreach (DataRow r in tabla.Rows)
             {
                 int id = Convert.ToInt32(r["ID"].ToString());
@@ -151,7 +151,7 @@ namespace HotelBackEnd.DAO.Implementation
         public List<TipoDocumentoModel> GetTipoDocumento()
         {
             List<TipoDocumentoModel> lTipoDoc = new List<TipoDocumentoModel>();
-            DataTable tabla = HelperDao.GetInstance().GetConsultSp("SP_CONSULTAR_TIPODOCUMENTO", "TIPOS_CLIENTES");
+            DataTable tabla = HelperDao.GetInstance().GetSp("SP_CONSULTAR_TIPODOCUMENTO");
             foreach (DataRow r in tabla.Rows)
             {
                 int id = Convert.ToInt32(r["ID"].ToString());

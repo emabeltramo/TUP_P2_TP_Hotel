@@ -12,7 +12,13 @@ namespace HotelBackEnd.Front.Implementation
 {
     public class ClienteFront : IClienteFront
     {
-        IClienteDao dao; 
+        private IClienteDao dao;
+
+        public ClienteFront()
+        {
+            this.dao = new ClienteDao();
+        }
+
         public bool ActualizarCliente(ClienteModel cliente)
         {
             return dao.ActualizarCliente(cliente);
