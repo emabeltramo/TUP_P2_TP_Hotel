@@ -12,8 +12,10 @@ using System.Threading.Tasks;
 
 namespace HotelBackEnd.DAO.Implementation
 {
-    internal class ReservaDao : IReservaDao
+    public class ReservaDao : IReservaDao
     {
+        private string error = string.Empty;
+        
         public List<ClienteModel> GetClientes()
         {
             ProccesData procces = new ProccesData();
@@ -59,6 +61,11 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.Connection.Close();
             }
             return result;
+        }
+
+        public string GetError()
+        {
+            return error;
         }
 
         public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
@@ -192,7 +199,129 @@ namespace HotelBackEnd.DAO.Implementation
             return lstProvincias;
         }
 
-        
+        public List<HotelServicioModel> GetServiciosHotel(int idHotel)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<HotelServicioModel> result = new List<HotelServicioModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "select HOTEL_SERVICIOS.ID as hs_id,TIPOS_SERVICIOS.ID as ts_id," +
+                    "TIPOS_SERVICIOS.DESCRIPCION as ts_desc,PRECIO as hs_precio " +
+                    "from HOTEL_SERVICIOS " +
+                    "inner join TIPOS_SERVICIOS on HOTEL_SERVICIOS.SERVICIO=TIPOS_SERVICIOS.ID " +
+                    "where HOTEL_SERVICIOS.HOTEL=@idHotel";
+                cmd.Parameters.Add(new SqlParameter("@idHotel",(object)idHotel));
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var servicio = new HotelServicioModel()
+                        {
+                            IdServicioHotel = reg.FirstOrDefault(m => m.Campo.ToUpper() == "HS_ID").Valor ?? 0,
+                            Precio = reg.FirstOrDefault(m => m.Campo.ToUpper() == "HS_PRECIO").Valor ?? 0
+                        };
+                         servicio.Servicio = new TipoServicioModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TS_ID").Valor ?? 0,
+                            Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TS_DESC").Valor ?? 0
+                        };
+
+                        result.Add(servicio);
+                    }
+                }
+
+
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public bool PostReserva(ReservaModel reserva)
+        {
+            bool result = false;
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction t = null;
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.Connection.Open();
+                t = cmd.Connection.BeginTransaction();
+                cmd.Transaction = t;
+                SqlParameter p = new SqlParameter("@id", SqlDbType.Int);
+                p.Direction = ParameterDirection.Output;
+                cmd.CommandText = "ps_InsertReserva";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(p);
+                cmd.Parameters.AddWithValue("@cliente",(object)reserva.Cliente.Id_Cliente);
+                cmd.Parameters.AddWithValue("@ingreso", (object)reserva.Ingreso);
+                cmd.Parameters.AddWithValue("@salida", (object)reserva.Salida);
+                //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
+                cmd.Parameters.AddWithValue("@empleado", (object)1);
+
+                cmd.ExecuteNonQuery();
+                reserva.IdReserva = (int)p.Value;
+                foreach (var item in reserva.Habitaciones)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@reserva", (object)reserva.IdReserva);
+                    cmd.Parameters.AddWithValue("@habitacion", (object)item.Habitacion.Id_Habitacion);
+                    cmd.Parameters.AddWithValue("@monto", (object)item.Monto);
+                    cmd.CommandText = "ps_InsertReservaHabitacion";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if(cmd.ExecuteNonQuery()!=1)
+                    {
+                        this.error = "No se inserto habitacion en reserva";
+                        t.Rollback();
+                        cmd.Connection.Close();
+                        return false;
+                    }
+                }
+                foreach (var item in reserva.Cuenta)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@reserva", (object)reserva.IdReserva);
+                    cmd.Parameters.AddWithValue("@servicio", (object)item.Servicio.Id);
+                    cmd.Parameters.AddWithValue("@monto", (object)item.Monto);
+                    cmd.Parameters.AddWithValue("@bonificado", (object)item.Bonificado);
+                    cmd.Parameters.AddWithValue("@cantidad", (object)item.Cantidad);
+
+                    cmd.CommandText = "ps_InsertReservaCuenta";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (cmd.ExecuteNonQuery() != 1)
+                    {
+                        this.error = "No se inserto el servicio en reserva";
+                        t.Rollback();
+                        cmd.Connection.Close();
+                        return false;
+                    }
+                }
+                t.Commit();
+                result = true;
+            }
+            catch (Exception ex)
+            {
+
+                t.Rollback();
+                error = ex.Message;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
     }
     
 }

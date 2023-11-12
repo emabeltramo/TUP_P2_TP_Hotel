@@ -10,5 +10,11 @@ namespace HotelBackEnd.Model
     {
         public int IdEstadoReserva { get; set; }
         public string Descri { get; set; }
+
+        public EstadoReservaModel()
+        {
+            IdEstadoReserva = 0;
+            Descri = string.Empty;
+        }
     }
 }

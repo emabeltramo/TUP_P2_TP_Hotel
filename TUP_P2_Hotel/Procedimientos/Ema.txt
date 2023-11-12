@@ -1,0 +1,57 @@
+create procedure ps_HabDisponibles @desde date, @hasta date, @hotel int
+as
+begin
+select HABITACION_HOTEL.ID as 'Id_Habitacion',HABITACION_HOTEL.CODIGO as 'Codigo_Habitacion',
+HABITACION_HOTEL.CAMA_MAX,HABITACION_HOTEL.TELEFONO,
+CATEGORIA_HABITACIONES.ID as 'Id_Categoria',CATEGORIA_HABITACIONES.DESCRIPCION,CATEGORIA_HABITACIONES.PRECIO
+from HABITACION_HOTEL
+inner join PISOS_HOTEL on PISOS_HOTEL.ID=HABITACION_HOTEL.PISO
+inner join HOTELES on PISOS_HOTEL.HOTEL=HOTELES.ID
+inner join CATEGORIA_HABITACIONES on HABITACION_HOTEL.CATEGORIA=CATEGORIA_HABITACIONES.ID
+where HABITACION_HOTEL.ID not in (
+select HABITACION from RESERVA_HABITACIONES 
+inner join RESERVAS on RESERVAS.ID=RESERVA_HABITACIONES.RESERVA
+where RESERVAS.ESTADO!=3 and
+(@desde between INGRESO and SALIDA or @hasta between INGRESO and SALIDA) or 
+( INGRESO between @desde and @hasta or SALIDA between @desde and @hasta) 
+) and HOTELES.ID=@hotel and HOTELES.HABILITADO=1
+end;
+
+
+
+create procedure ps_InsertReserva
+@cliente int,
+@ingreso date,
+@salida date,
+@empleado int,
+@id int output
+as
+begin
+insert into RESERVAS(ESTADO,CLIENTE,INGRESO,SALIDA,FECHA_RESERVA,Empleado)
+values (1,@cliente,@ingreso,@salida,GETDATE(),@empleado);
+select @id= SCOPE_IDENTITY();
+end;
+
+
+
+create procedure ps_InsertReservaHabitacion
+@reserva int,
+@habitacion int,
+@monto int
+as
+begin
+insert into RESERVA_HABITACIONES(RESERVA,HABITACION,MONTO_HABITACION)
+values (@reserva,@habitacion,@monto);
+end;
+
+create procedure ps_InsertReservaCuenta
+@reserva int,
+@servicio int,
+@monto decimal(10,2),
+@bonificado bit,
+@cantidad int
+as
+begin
+insert into RESERVA_CUENTA(RESERVA,SERVICIO,MONTO,BONIFICADO,CANTIDAD)
+values (@reserva,@servicio,@monto,@bonificado,@cantidad);
+end;

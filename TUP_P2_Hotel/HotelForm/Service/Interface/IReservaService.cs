@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HotelBackEnd.Model;
+using HotelForm.HTTPClient;
 
 namespace HotelForm.Service.Interface
 {
@@ -14,5 +15,7 @@ namespace HotelForm.Service.Interface
         Task<List<ProvinciaModel>> GetProvinciaAsync();
         Task<List<LocalidadModel>> GetLocalidadAsync();
         Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel);
+        Task<List<HotelServicioModel>> GetServiciosHotelAsync(int idHotel);
+        Task<HttpResponse> PostReservaAsync(ReservaModel Reservar);
     }
 }

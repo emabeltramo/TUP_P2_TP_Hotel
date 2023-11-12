@@ -8,14 +8,6 @@ namespace HotelBackEnd.Model
 {
     public class HotelModel
     {
-        public HotelModel(int idHotel, string direccion, string nombre, bool habilitado)
-        {
-            IdHotel = idHotel;
-            Direccion = direccion;
-            Nombre = nombre;
-            Habilitado = habilitado;
-        }
-
         public int IdHotel { get; set; }
         public string Direccion { get; set; }
         public LocalidadModel Localidad { get; set; }
@@ -26,5 +18,17 @@ namespace HotelBackEnd.Model
         public List<HotelPisoModel> Pisos { get; set; }
         public List<HotelContactoModel> Contactos { get; set; }
 
+        public HotelModel(int idHotel, string direccion, string nombre, bool habilitado)
+        {
+            IdHotel = idHotel;
+            Direccion = direccion;
+            Nombre = nombre;
+            Habilitado = habilitado;
+            Localidad = new LocalidadModel();
+        }
+        public HotelModel()
+        {
+
+        }
     }
 }

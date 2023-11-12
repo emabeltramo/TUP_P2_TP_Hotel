@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace HotelBackEnd.DAO.Interface
 {
-    internal interface IReservaDao
+    public interface IReservaDao
     {
         List<ClienteModel> GetClientes();
         List<HotelModel> GetHoteles();
         List<ProvinciaModel> GetProvincias();
         List<LocalidadModel> GetLocalidades();
         List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
+        List<HotelServicioModel> GetServiciosHotel(int idHotel);
+        bool PostReserva(ReservaModel reserva);
+        string GetError();
     }
 }

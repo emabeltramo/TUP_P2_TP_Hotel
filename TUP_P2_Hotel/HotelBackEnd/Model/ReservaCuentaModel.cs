@@ -13,5 +13,13 @@ namespace HotelBackEnd.Model
         public decimal Monto { get; set; }
         public bool Bonificado { get; set; }
         public int Cantidad { get; set; }
+        public ReservaCuentaModel()
+        {
+            IdResCuenta = 0;
+            Servicio = new TipoServicioModel();
+            Monto = 0;
+            Bonificado = false;
+            Cantidad = 0;
+        }
     }
 }

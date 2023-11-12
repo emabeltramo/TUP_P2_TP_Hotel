@@ -17,5 +17,19 @@ namespace HotelBackEnd.Model
         public EmpleadoModel Empleado { get; set; }
         public List<ReservaCuentaModel> Cuenta { get; set; }
         public List<ReservaHabitacionModel> Habitaciones { get; set; }
+
+        public ReservaModel()
+        {
+            IdReserva = 0;
+            Estado = new EstadoReservaModel();
+            Cliente = new ClienteModel();
+            Ingreso = DateTime.Now.Date;
+            Salida = DateTime.Now.Date;
+            Fecha = DateTime.Now.Date;
+            Empleado = new EmpleadoModel();
+            Cuenta = new List<ReservaCuentaModel>();
+            Habitaciones = new List<ReservaHabitacionModel>();
+        }
     }
+
 }

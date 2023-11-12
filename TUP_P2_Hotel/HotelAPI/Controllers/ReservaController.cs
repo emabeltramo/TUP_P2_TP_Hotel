@@ -15,7 +15,7 @@ namespace HotelAPI.Controllers
         {
             front = new ReservaFront();
         }
-        [HttpGet("/GetCleintes")]
+        [HttpGet("/GetClientes")]
         public IActionResult GetClientes()
         {
             try
@@ -91,7 +91,6 @@ namespace HotelAPI.Controllers
             }
         }
         [HttpGet("/GetHoteles")]
-
         public IActionResult GetHoteles()
         {
             List<HotelModel> lstHotel;
@@ -105,6 +104,49 @@ namespace HotelAPI.Controllers
                 return StatusCode(500, "Error Interno!! Intente luego");
             }
         }
+        [HttpGet("/GetHoteServ")]
+        public IActionResult GetHabDisponibles(int idHotel)
+        {
+            try
+            {
 
+                var result = front.GetServiciosHotel(idHotel);
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar los servicios");
+                }
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+        [HttpPost("/PostReserva")]
+        public IActionResult PostReserva(ReservaModel reserva)
+        {
+            try
+            {
+                if (reserva.Habitaciones.Count() < 1)
+                    return StatusCode(401, "La reserva debe contener habitaciones");
+                if (reserva.Cliente.Id_Cliente<1)
+                    return StatusCode(401, "La reserva debe contener un cliente");
+                if (reserva.Ingreso<DateTime.Now.Date)
+                    return StatusCode(401, "La fecha de ingreso no puede ser menor a la del dia de hoy");
+                var result = front.PostReserva(reserva);
+                if (string.IsNullOrEmpty(result))
+                {
+                    return StatusCode(500, result);
+                }
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
     }
 }

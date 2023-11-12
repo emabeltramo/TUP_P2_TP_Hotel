@@ -15,7 +15,11 @@ namespace HotelBackEnd.Model
         public int Telefono { get; set; }
         public HabitacionHotelModel()
         {
+            Id_Habitacion = 0;
+            Codigo = string.Empty;
+            CamaMax = 0;
             Categoria = new CatHabitacionModel();
+            Telefono = 0;
         }
     }
 

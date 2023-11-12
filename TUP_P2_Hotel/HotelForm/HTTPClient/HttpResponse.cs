@@ -19,5 +19,6 @@ namespace HotelForm.HTTPClient
             Data = data;
             SuccessStatus = successStatus;
         }
+        
     }
 }

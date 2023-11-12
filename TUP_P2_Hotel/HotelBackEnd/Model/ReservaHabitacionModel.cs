@@ -11,5 +11,12 @@ namespace HotelBackEnd.Model
         public int IdResHabitacion { get; set; }
         public HabitacionHotelModel Habitacion { get; set; }
         public decimal Monto { get; set; }
+
+        public ReservaHabitacionModel()
+        {
+            IdResHabitacion = 0;
+            Habitacion = new HabitacionHotelModel();
+            Monto = 0;
+        }
     }
 }

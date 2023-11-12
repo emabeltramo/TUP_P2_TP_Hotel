@@ -43,16 +43,24 @@ namespace HotelForm.HTTPClient
         {
 
 
-            var content = new StringContent(data, Encoding.UTF8, "application/json");
-            var result = await client.PostAsync(url, content);
-            var reply = "";
+            try
+            {
+                var content = new StringContent(data, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync(url, content);
+                var reply = "";
 
-            if (result.IsSuccessStatusCode)
+                if (result.IsSuccessStatusCode)
+                {
+
+                    reply = await result.Content.ReadAsStringAsync();
+                }
+                return new HttpResponse(result.StatusCode, reply, result.IsSuccessStatusCode);
+            }
+            catch (Exception ex)
             {
 
-                reply = await result.Content.ReadAsStringAsync();
+                return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
-            return new HttpResponse(result.StatusCode, reply,result.IsSuccessStatusCode);
 
 
             //

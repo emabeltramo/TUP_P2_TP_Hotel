@@ -43,5 +43,17 @@ namespace HotelBackEnd.Front.Implementation
         {
             return reservaDao.GetProvincias();
         }
+
+        public List<HotelServicioModel> GetServiciosHotel(int idHotel)
+        {
+            return reservaDao.GetServiciosHotel(idHotel);
+        }
+
+        public string PostReserva(ReservaModel reserva)
+        {
+            if (!reservaDao.PostReserva(reserva))
+                return reservaDao.GetError();
+            return string.Empty;
+        }
     }
 }

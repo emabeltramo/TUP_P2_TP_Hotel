@@ -13,5 +13,14 @@ namespace HotelBackEnd.Model
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public EmpleadoModel()
+        {
+            Legajo = 0;
+            TDoc = new TipoDocumentoModel();
+            DNI = 0;
+            Nombre = string.Empty;
+            Apellido = string.Empty;
+
+        }
     }
 }
