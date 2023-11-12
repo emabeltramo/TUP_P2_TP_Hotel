@@ -59,5 +59,20 @@ namespace HotelForm.HTTPClient
 
             //
         }
+        public async Task<string> PutAsync(string url, string data)
+        {
+            var content = new StringContent(data, Encoding.UTF8, "application/json");
+            var result = await client.PutAsync(url, content); // Asumiendo que HttpClient no tiene un método PatchAsync, puedes extenderlo o buscar una implementación existente
+
+            var reply = "";
+
+            if (result.IsSuccessStatusCode)
+            {
+                reply = await result.Content.ReadAsStringAsync();
+            }
+
+            Console.WriteLine(content);
+            return reply;
+        }
     }
 }

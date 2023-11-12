@@ -15,7 +15,7 @@ namespace HotelAPI.Controllers
         {
             front = new ReservaFront();
         }
-        [HttpGet("/GetCleintes")]
+        [HttpGet("/GetClientes")]
         public IActionResult GetClientes()
         {
             try

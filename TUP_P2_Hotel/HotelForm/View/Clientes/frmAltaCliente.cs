@@ -18,6 +18,8 @@ namespace HotelForm.View.Clientes
     {
         IFactoryService factory;
         IReservaService service;
+        
+        
         public frmAltaCliente(IFactoryService factory)
         {
             this.factory = factory;
@@ -44,7 +46,25 @@ namespace HotelForm.View.Clientes
 
         private void btnCargarCliente_Click(object sender, EventArgs e)
         {
-
+            ClienteModel cliente = new ClienteModel();
+            cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
+            cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
+            if (cboTipoCliente.SelectedIndex== 0)//aca seria tipo particular por ej
+            { 
+            cliente.Nombre= txtNombre.Text;
+            cliente.Apellido= txtApellido.Text;
+                cliente.DNI = txtNroDocumento.Text;
+            }
+            else {
+                cliente.Nombre = string.Empty;
+                cliente.Apellido = string.Empty;
+                cliente.RazonSocial= txtRazonSocial.Text;
+                cliente.DNI = string.Empty;
+                cliente.CUIL= txtNroDocumento.Text;
+            }
+            cliente.Email= txtEmail.Text;
+            cliente.Celular= txtTelefono.Text;
+             service.AltaCliente(cliente); 
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)

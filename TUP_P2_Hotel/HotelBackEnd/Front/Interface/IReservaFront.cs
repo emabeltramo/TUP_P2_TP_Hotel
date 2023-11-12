@@ -9,6 +9,7 @@ namespace HotelBackEnd.Front.Interface
 {
     public interface IReservaFront
     {
+ 
         List<ClienteModel> GetClientes();
         List<HotelModel> GetHoteles();
         List<ProvinciaModel> GetProvincia();

@@ -28,22 +28,22 @@ namespace HotelForm.Service.Implementation
         }
         public async Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync()
         {
-            string url = host + "/GetTipoDocumentos";
-            List<TipoDocumentoModel> result= new List<TipoDocumentoModel>();
+            string url = host + "/GetTipoDocumento";
+            List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
             var response = await ClientSingleton.GetInstance().GetAsync(url);
-            if(response != null && response.SuccessStatus)
+            if (response != null && response.SuccessStatus)
             {
 
-                result= JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(response.Data);
+                result = JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(response.Data);
             }
 
             return result;
         }
         public async Task<List<TipoClienteModel>> GetTipoClientesAsync()
         {
-            string url = host + "/GetTipoClientes";
+            string url = host + "/GetTipoCliente";
             List<TipoClienteModel> result = new List<TipoClienteModel>();
-            var response = await ClientSingleton.GetInstance().GetAsync(url);
+            var response = await ClientSingleton.GetInstance().PatchAsync(url);
             if (response != null && response.SuccessStatus)
             {
 
@@ -72,5 +72,41 @@ namespace HotelForm.Service.Implementation
         {
             throw new NotImplementedException();
         }
+
+        public async Task AltaCliente(ClienteModel cliente)
+        {
+            string url = host + "/PostCliente";
+            string cuerpo = JsonConvert.SerializeObject(cliente);
+            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
+            if (response != null && response.SuccessStatus)
+            {
+                MessageBox.Show("Cliente registrado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
+            }
+            else MessageBox.Show("ERROR. No se pudo registrar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+
+        public async Task ActualizarCliente(ClienteModel cliente)
+        {
+            string url = host + "/PutCliente";
+            string cuerpo = JsonConvert.SerializeObject(cliente);
+            var response = await ClientSingleton.GetInstance().PatchAsync(url, cuerpo);
+            if (response != null && response.SuccessStatus)
+            {
+                MessageBox.Show("Cliente actualizado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else MessageBox.Show("ERROR. No se pudo actualizar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        public async Task BajaCliente(int numero)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
+
