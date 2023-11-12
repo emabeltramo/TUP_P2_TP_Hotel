@@ -32,7 +32,11 @@ namespace HotelForm.View.Clientes
             List<TipoDocumentoModel> tipoDocumento = await service.GetTipoDocumentosAsync();
             List<TipoClienteModel> tipoCliente = await service.GetTipoClientesAsync();
             cboTipoCliente.DataSource = tipoCliente;
+            cboTipoCliente.ValueMember = "Id";
+            cboTipoCliente.DisplayMember = "Descri";
             cboTipoDocumento.DataSource = tipoDocumento;
+            cboTipoDocumento.ValueMember = "Id";
+            cboTipoDocumento.DisplayMember = "Descri";
         }
 
         private void txtNroDocumento_TextChanged(object sender, EventArgs e)

@@ -104,7 +104,16 @@ namespace HotelForm.Service.Implementation
 
         public async Task BajaCliente(int numero)
         {
-            throw new NotImplementedException();
+            string url = host + "/PutCliente";
+            string cuerpo = JsonConvert.SerializeObject(cliente);
+            var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
+            if (response != null && response.SuccessStatus)
+            {
+                MessageBox.Show("Cliente actualizado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else MessageBox.Show("ERROR. No se pudo actualizar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
     }
 }
