@@ -1,5 +1,6 @@
 ﻿using HotelBackEnd.Model;
 using HotelForm.HTTPClient;
+using HotelForm.Service.Interface;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace HotelForm.Service.Implementation
 {
-    internal class ClienteService
+    internal class ClienteService: IClienteService
     {
-
+        private const string host = "https://localhost:7107";
         public async Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync()
         {
             string url = "https://localhost:7107/GetTipoDocumento";
@@ -80,6 +81,11 @@ namespace HotelForm.Service.Implementation
             }
             else MessageBox.Show("ERROR. No se pudo actualizar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        public Task<List<ClienteModel>> GetClientesAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }
