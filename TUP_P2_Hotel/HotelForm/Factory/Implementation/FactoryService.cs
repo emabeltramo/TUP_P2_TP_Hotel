@@ -16,5 +16,9 @@ namespace HotelForm.Factory.Implementation
         {
             return new ReservaService();
         }
+        public IReservaService CreateClienteService()
+        {
+            return new ClienteService();
+        }
     }
 }

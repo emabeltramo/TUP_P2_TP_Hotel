@@ -13,10 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Factory\Implementation\" />
     <Folder Include="Factory\Interface\" />
     <Folder Include="Service\Interface\" />
-    <Folder Include="Service\Implementation\" />
   </ItemGroup>
 
   <ItemGroup>
