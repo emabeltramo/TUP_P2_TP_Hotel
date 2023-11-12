@@ -1,5 +1,6 @@
 ﻿using HotelForm.View.Login;
 using HotelForm.View.Reserva;
+using HotelForm.View.Clientes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -147,12 +148,19 @@ namespace HotelForm.View.Principal
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             //hay q cinfigurar esto
-           DialogResult result = MessageBox.Show("Desea cerrar sesión?","Cerrar Sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) {
+            DialogResult result = MessageBox.Show("Desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
                 this.Dispose();
-            AbrirFormHijo(new frmLogin());
-                
+                AbrirFormHijo(new frmLogin());
+
             }
+        }
+
+        private void btnNvoCliente_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new frmAltaCliente());
+            OcultarSubmenu();
         }
     }
 }

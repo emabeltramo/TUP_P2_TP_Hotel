@@ -30,7 +30,6 @@
         {
             lblCliente = new Label();
             btnCancelar = new Button();
-            btnSalirCliente = new Button();
             btnCargarCliente = new Button();
             txtNombre = new TextBox();
             txtApellido = new TextBox();
@@ -69,16 +68,7 @@
             btnCancelar.TabIndex = 42;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnSalirCliente
-            // 
-            btnSalirCliente.Anchor = AnchorStyles.Bottom;
-            btnSalirCliente.Location = new Point(316, 446);
-            btnSalirCliente.Name = "btnSalirCliente";
-            btnSalirCliente.Size = new Size(75, 23);
-            btnSalirCliente.TabIndex = 41;
-            btnSalirCliente.Text = "Salir";
-            btnSalirCliente.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnCargarCliente
             // 
@@ -87,8 +77,9 @@
             btnCargarCliente.Name = "btnCargarCliente";
             btnCargarCliente.Size = new Size(75, 23);
             btnCargarCliente.TabIndex = 40;
-            btnCargarCliente.Text = "Cargar";
+            btnCargarCliente.Text = "Guardar";
             btnCargarCliente.UseVisualStyleBackColor = true;
+            btnCargarCliente.Click += btnCargarCliente_Click;
             // 
             // txtNombre
             // 
@@ -240,7 +231,7 @@
             label7.TabIndex = 61;
             label7.Text = "CARGA DE CLIENTES DEL HOTEL SHIBUYA";
             // 
-            // frmAgregarCliente
+            // frmAltaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -263,9 +254,8 @@
             Controls.Add(txtNombre);
             Controls.Add(lblCliente);
             Controls.Add(btnCancelar);
-            Controls.Add(btnSalirCliente);
             Controls.Add(btnCargarCliente);
-            Name = "frmAgregarCliente";
+            Name = "frmAltaCliente";
             Text = "frmAgregarCliente";
             Load += frmAgregarCliente_Load;
             ResumeLayout(false);
@@ -276,7 +266,6 @@
 
         private Label lblCliente;
         private Button btnCancelar;
-        private Button btnSalirCliente;
         private Button btnCargarCliente;
         private TextBox txtNombre;
         private TextBox txtApellido;

@@ -720,24 +720,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\claud\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\claudio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\claud\\OneDrive\\Escritorio\\Proyectos\\C#\\Proyecto_FInal_C#\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+      "projectUniqueName": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
       "projectName": "HotelForm",
-      "projectPath": "C:\\Users\\claud\\OneDrive\\Escritorio\\Proyectos\\C#\\Proyecto_FInal_C#\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
-      "packagesPath": "C:\\Users\\claud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\claud\\OneDrive\\Escritorio\\Proyectos\\C#\\Proyecto_FInal_C#\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\",
+      "projectPath": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+      "packagesPath": "C:\\Users\\claudio\\.nuget\\packages\\",
+      "outputPath": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\claud\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\claudio\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -751,8 +746,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\claud\\OneDrive\\Escritorio\\Proyectos\\C#\\Proyecto_FInal_C#\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
-              "projectPath": "C:\\Users\\claud\\OneDrive\\Escritorio\\Proyectos\\C#\\Proyecto_FInal_C#\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj"
+            "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
+              "projectPath": "I:\\Proyectos\\C#\\Proyecto_Final_Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj"
             }
           }
         }
@@ -785,7 +780,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

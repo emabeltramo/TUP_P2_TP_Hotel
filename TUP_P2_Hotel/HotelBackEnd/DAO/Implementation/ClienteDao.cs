@@ -32,6 +32,7 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
                 cmd.Parameters.AddWithValue("@dni", cliente.DNI);
                 cmd.Parameters.AddWithValue("@email", cliente.Email);
+                cmd.Parameters.AddWithValue("@celular", cliente.Celular);
                 cmd.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
                 cmd.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
                 cmd.ExecuteNonQuery();
@@ -73,7 +74,9 @@ namespace HotelBackEnd.DAO.Implementation
                 comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
                 comando.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
                 comando.Parameters.AddWithValue("@dni", cliente.DNI);
+                comando.Parameters.AddWithValue("@cuil", cliente.CUIL);
                 comando.Parameters.AddWithValue("@email", cliente.Email);
+                comando.Parameters.AddWithValue("@celular", cliente.Celular);
                 comando.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
                 comando.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
                
