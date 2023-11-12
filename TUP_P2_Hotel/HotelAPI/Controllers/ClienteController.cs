@@ -102,6 +102,7 @@ namespace HotelAPI.Controllers
         {
             try
             {
+
                 var result = front.BajaCliente(numero);
                 if (result == null)
                 {
