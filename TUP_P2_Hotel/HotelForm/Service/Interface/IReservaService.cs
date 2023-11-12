@@ -10,6 +10,8 @@ namespace HotelForm.Service.Interface
     public interface IReservaService
     {
         Task<List<ClienteModel>> GetClientesAsync();
+        Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync();
+        Task<List<TipoClienteModel>> GetTipoClientesAsync();
         Task<List<HotelModel>> GetHotelesAsync();
         Task<List<ProvinciaModel>> GetProvinciaAsync();
         Task<List<LocalidadModel>> GetLocalidadAsync();

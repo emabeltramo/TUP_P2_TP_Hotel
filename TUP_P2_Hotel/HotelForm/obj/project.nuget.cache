@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JAYLtS47sgVgIOYb1kHzo6ks0EUcz88MVhUwgvdqRS+m+W31uRBPcq/+DpiEAVzggfxVnOM2AdVVIaALrXJSvg==",
+  "dgSpecHash": "Sp53aDFuqlo+jBG96wl0j1AukLbtMjQ+m+HGxc7JlKqFV+YXFFKX9Ai01V+CAbDuGyVwH32/TMrkrcWBx53OGw==",
   "success": true,
   "projectFilePath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
   "expectedPackageFiles": [
@@ -21,12 +21,5 @@
     "C:\\Users\\dborl\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\dborl\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

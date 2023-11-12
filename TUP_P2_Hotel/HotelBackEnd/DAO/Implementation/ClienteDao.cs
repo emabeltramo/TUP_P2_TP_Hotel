@@ -15,7 +15,50 @@ namespace HotelBackEnd.DAO.Implementation
     {
         public bool ActualizarCliente(ClienteModel cliente)
         {
-            throw new NotImplementedException();
+            bool ok = true;
+            SqlConnection cnn = HelperDao.GetInstance().GetConnection();
+            SqlTransaction t = null;
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cnn.Open();
+                t = cnn.BeginTransaction();
+                cmd.Connection = cnn;
+                cmd.Transaction = t;
+                cmd.CommandText = "SP_MODIFICAR_CLIENTE";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@id", cliente.Id_Cliente);
+                cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                cmd.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
+                cmd.Parameters.AddWithValue("@dni", cliente.DNI);
+                cmd.Parameters.AddWithValue("@email", cliente.Email);
+                cmd.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
+                cmd.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
+                cmd.ExecuteNonQuery();
+
+               
+                
+                t.Commit();
+            }
+
+            catch (Exception)
+            {
+                if (t != null)
+                    t.Rollback();
+                ok = false;
+            }
+
+            finally
+            {
+                if (cnn != null && cnn.State == ConnectionState.Open)
+                    cnn.Close();
+            }
+
+            return ok;
         }
 
         public bool AltaCliente(ClienteModel cliente)

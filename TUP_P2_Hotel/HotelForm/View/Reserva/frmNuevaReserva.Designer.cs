@@ -28,332 +28,332 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboClienteReserva = new System.Windows.Forms.ComboBox();
-            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
-            this.btnCargarReserva = new System.Windows.Forms.Button();
-            this.btnSalirReserva = new System.Windows.Forms.Button();
-            this.btnCancelarReserva = new System.Windows.Forms.Button();
-            this.lblCliente = new System.Windows.Forms.Label();
-            this.lblDesde = new System.Windows.Forms.Label();
-            this.lblAdvertencia = new System.Windows.Forms.Label();
-            this.gbFechas = new System.Windows.Forms.GroupBox();
-            this.lblHasta = new System.Windows.Forms.Label();
-            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblHabReserv = new System.Windows.Forms.Label();
-            this.lblHabDisp = new System.Windows.Forms.Label();
-            this.lblHotel = new System.Windows.Forms.Label();
-            this.cboHotel = new System.Windows.Forms.ComboBox();
-            this.lblLocalidad = new System.Windows.Forms.Label();
-            this.cboLocalidad = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAgregarResumen = new System.Windows.Forms.Button();
-            this.lblProvincias = new System.Windows.Forms.Label();
-            this.dgvNuevaReserva = new System.Windows.Forms.DataGridView();
-            this.cboProvincia = new System.Windows.Forms.ComboBox();
-            this.gbFechas.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNuevaReserva)).BeginInit();
-            this.SuspendLayout();
+            cboClienteReserva = new ComboBox();
+            dtpDesde = new DateTimePicker();
+            btnCargarReserva = new Button();
+            btnSalirReserva = new Button();
+            btnCancelarReserva = new Button();
+            lblCliente = new Label();
+            lblDesde = new Label();
+            lblAdvertencia = new Label();
+            gbFechas = new GroupBox();
+            lblHasta = new Label();
+            dtpHasta = new DateTimePicker();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            lblHabReserv = new Label();
+            lblHabDisp = new Label();
+            lblHotel = new Label();
+            cboHotel = new ComboBox();
+            lblLocalidad = new Label();
+            cboLocalidad = new ComboBox();
+            button1 = new Button();
+            dataGridView1 = new DataGridView();
+            btnAgregarResumen = new Button();
+            lblProvincias = new Label();
+            dgvNuevaReserva = new DataGridView();
+            cboProvincia = new ComboBox();
+            tabPage2 = new TabPage();
+            gbFechas.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNuevaReserva).BeginInit();
+            SuspendLayout();
             // 
             // cboClienteReserva
             // 
-            this.cboClienteReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboClienteReserva.FormattingEnabled = true;
-            this.cboClienteReserva.Location = new System.Drawing.Point(67, 41);
-            this.cboClienteReserva.Name = "cboClienteReserva";
-            this.cboClienteReserva.Size = new System.Drawing.Size(381, 23);
-            this.cboClienteReserva.TabIndex = 0;
+            cboClienteReserva.Anchor = AnchorStyles.None;
+            cboClienteReserva.FormattingEnabled = true;
+            cboClienteReserva.Location = new Point(67, 41);
+            cboClienteReserva.Name = "cboClienteReserva";
+            cboClienteReserva.Size = new Size(381, 23);
+            cboClienteReserva.TabIndex = 0;
             // 
             // dtpDesde
             // 
-            this.dtpDesde.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpDesde.Location = new System.Drawing.Point(53, 31);
-            this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(240, 23);
-            this.dtpDesde.TabIndex = 6;
+            dtpDesde.Anchor = AnchorStyles.None;
+            dtpDesde.Location = new Point(53, 31);
+            dtpDesde.Name = "dtpDesde";
+            dtpDesde.Size = new Size(240, 23);
+            dtpDesde.TabIndex = 6;
             // 
             // btnCargarReserva
             // 
-            this.btnCargarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCargarReserva.Location = new System.Drawing.Point(232, 443);
-            this.btnCargarReserva.Name = "btnCargarReserva";
-            this.btnCargarReserva.Size = new System.Drawing.Size(75, 23);
-            this.btnCargarReserva.TabIndex = 9;
-            this.btnCargarReserva.Text = "Cargar";
-            this.btnCargarReserva.UseVisualStyleBackColor = true;
+            btnCargarReserva.Anchor = AnchorStyles.None;
+            btnCargarReserva.Location = new Point(232, 443);
+            btnCargarReserva.Name = "btnCargarReserva";
+            btnCargarReserva.Size = new Size(75, 23);
+            btnCargarReserva.TabIndex = 9;
+            btnCargarReserva.Text = "Cargar";
+            btnCargarReserva.UseVisualStyleBackColor = true;
             // 
             // btnSalirReserva
             // 
-            this.btnSalirReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalirReserva.Location = new System.Drawing.Point(349, 443);
-            this.btnSalirReserva.Name = "btnSalirReserva";
-            this.btnSalirReserva.Size = new System.Drawing.Size(75, 23);
-            this.btnSalirReserva.TabIndex = 10;
-            this.btnSalirReserva.Text = "Salir";
-            this.btnSalirReserva.UseVisualStyleBackColor = true;
+            btnSalirReserva.Anchor = AnchorStyles.None;
+            btnSalirReserva.Location = new Point(349, 443);
+            btnSalirReserva.Name = "btnSalirReserva";
+            btnSalirReserva.Size = new Size(75, 23);
+            btnSalirReserva.TabIndex = 10;
+            btnSalirReserva.Text = "Salir";
+            btnSalirReserva.UseVisualStyleBackColor = true;
             // 
             // btnCancelarReserva
             // 
-            this.btnCancelarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelarReserva.Location = new System.Drawing.Point(459, 443);
-            this.btnCancelarReserva.Name = "btnCancelarReserva";
-            this.btnCancelarReserva.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarReserva.TabIndex = 11;
-            this.btnCancelarReserva.Text = "Cancelar";
-            this.btnCancelarReserva.UseVisualStyleBackColor = true;
+            btnCancelarReserva.Anchor = AnchorStyles.None;
+            btnCancelarReserva.Location = new Point(459, 443);
+            btnCancelarReserva.Name = "btnCancelarReserva";
+            btnCancelarReserva.Size = new Size(75, 23);
+            btnCancelarReserva.TabIndex = 11;
+            btnCancelarReserva.Text = "Cancelar";
+            btnCancelarReserva.UseVisualStyleBackColor = true;
             // 
             // lblCliente
             // 
-            this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(14, 44);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(47, 15);
-            this.lblCliente.TabIndex = 12;
-            this.lblCliente.Text = "Cliente:";
+            lblCliente.Anchor = AnchorStyles.None;
+            lblCliente.AutoSize = true;
+            lblCliente.Location = new Point(14, 44);
+            lblCliente.Name = "lblCliente";
+            lblCliente.Size = new Size(47, 15);
+            lblCliente.TabIndex = 12;
+            lblCliente.Text = "Cliente:";
             // 
             // lblDesde
             // 
-            this.lblDesde.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDesde.AutoSize = true;
-            this.lblDesde.Location = new System.Drawing.Point(6, 37);
-            this.lblDesde.Name = "lblDesde";
-            this.lblDesde.Size = new System.Drawing.Size(42, 15);
-            this.lblDesde.TabIndex = 15;
-            this.lblDesde.Text = "Desde:";
+            lblDesde.Anchor = AnchorStyles.None;
+            lblDesde.AutoSize = true;
+            lblDesde.Location = new Point(6, 37);
+            lblDesde.Name = "lblDesde";
+            lblDesde.Size = new Size(42, 15);
+            lblDesde.TabIndex = 15;
+            lblDesde.Text = "Desde:";
             // 
             // lblAdvertencia
             // 
-            this.lblAdvertencia.AutoSize = true;
-            this.lblAdvertencia.BackColor = System.Drawing.Color.Transparent;
-            this.lblAdvertencia.ForeColor = System.Drawing.Color.Red;
-            this.lblAdvertencia.Location = new System.Drawing.Point(14, 9);
-            this.lblAdvertencia.Name = "lblAdvertencia";
-            this.lblAdvertencia.Size = new System.Drawing.Size(217, 15);
-            this.lblAdvertencia.TabIndex = 21;
-            this.lblAdvertencia.Text = "INGRESE LOS DATOS POR HABITACION*";
+            lblAdvertencia.AutoSize = true;
+            lblAdvertencia.BackColor = Color.Transparent;
+            lblAdvertencia.ForeColor = Color.Red;
+            lblAdvertencia.Location = new Point(14, 9);
+            lblAdvertencia.Name = "lblAdvertencia";
+            lblAdvertencia.Size = new Size(217, 15);
+            lblAdvertencia.TabIndex = 21;
+            lblAdvertencia.Text = "INGRESE LOS DATOS POR HABITACION*";
             // 
             // gbFechas
             // 
-            this.gbFechas.Controls.Add(this.lblHasta);
-            this.gbFechas.Controls.Add(this.dtpHasta);
-            this.gbFechas.Controls.Add(this.lblDesde);
-            this.gbFechas.Controls.Add(this.dtpDesde);
-            this.gbFechas.Location = new System.Drawing.Point(14, 79);
-            this.gbFechas.Name = "gbFechas";
-            this.gbFechas.Size = new System.Drawing.Size(713, 85);
-            this.gbFechas.TabIndex = 29;
-            this.gbFechas.TabStop = false;
-            this.gbFechas.Text = "Fechas de la Reserva";
+            gbFechas.Controls.Add(lblHasta);
+            gbFechas.Controls.Add(dtpHasta);
+            gbFechas.Controls.Add(lblDesde);
+            gbFechas.Controls.Add(dtpDesde);
+            gbFechas.Location = new Point(14, 79);
+            gbFechas.Name = "gbFechas";
+            gbFechas.Size = new Size(713, 85);
+            gbFechas.TabIndex = 29;
+            gbFechas.TabStop = false;
+            gbFechas.Text = "Fechas de la Reserva";
             // 
             // lblHasta
             // 
-            this.lblHasta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblHasta.AutoSize = true;
-            this.lblHasta.Location = new System.Drawing.Point(337, 35);
-            this.lblHasta.Name = "lblHasta";
-            this.lblHasta.Size = new System.Drawing.Size(40, 15);
-            this.lblHasta.TabIndex = 17;
-            this.lblHasta.Text = "Hasta:";
+            lblHasta.Anchor = AnchorStyles.None;
+            lblHasta.AutoSize = true;
+            lblHasta.Location = new Point(337, 35);
+            lblHasta.Name = "lblHasta";
+            lblHasta.Size = new Size(40, 15);
+            lblHasta.TabIndex = 17;
+            lblHasta.Text = "Hasta:";
             // 
             // dtpHasta
             // 
-            this.dtpHasta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpHasta.Location = new System.Drawing.Point(384, 29);
-            this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(240, 23);
-            this.dtpHasta.TabIndex = 16;
+            dtpHasta.Anchor = AnchorStyles.None;
+            dtpHasta.Location = new Point(384, 29);
+            dtpHasta.Name = "dtpHasta";
+            dtpHasta.Size = new Size(240, 23);
+            dtpHasta.TabIndex = 16;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(14, 170);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(713, 267);
-            this.tabControl1.TabIndex = 38;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(14, 170);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(713, 267);
+            tabControl1.TabIndex = 38;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lblHabReserv);
-            this.tabPage1.Controls.Add(this.lblHabDisp);
-            this.tabPage1.Controls.Add(this.lblHotel);
-            this.tabPage1.Controls.Add(this.cboHotel);
-            this.tabPage1.Controls.Add(this.lblLocalidad);
-            this.tabPage1.Controls.Add(this.cboLocalidad);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.btnAgregarResumen);
-            this.tabPage1.Controls.Add(this.lblProvincias);
-            this.tabPage1.Controls.Add(this.dgvNuevaReserva);
-            this.tabPage1.Controls.Add(this.cboProvincia);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(705, 239);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(705, 239);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(lblHabReserv);
+            tabPage1.Controls.Add(lblHabDisp);
+            tabPage1.Controls.Add(lblHotel);
+            tabPage1.Controls.Add(cboHotel);
+            tabPage1.Controls.Add(lblLocalidad);
+            tabPage1.Controls.Add(cboLocalidad);
+            tabPage1.Controls.Add(button1);
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Controls.Add(btnAgregarResumen);
+            tabPage1.Controls.Add(lblProvincias);
+            tabPage1.Controls.Add(dgvNuevaReserva);
+            tabPage1.Controls.Add(cboProvincia);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(705, 239);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // lblHabReserv
             // 
-            this.lblHabReserv.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblHabReserv.AutoSize = true;
-            this.lblHabReserv.Location = new System.Drawing.Point(389, 40);
-            this.lblHabReserv.Name = "lblHabReserv";
-            this.lblHabReserv.Size = new System.Drawing.Size(140, 15);
-            this.lblHabReserv.TabIndex = 49;
-            this.lblHabReserv.Text = "Habitaciones Reservadas:";
+            lblHabReserv.Anchor = AnchorStyles.None;
+            lblHabReserv.AutoSize = true;
+            lblHabReserv.Location = new Point(389, 40);
+            lblHabReserv.Name = "lblHabReserv";
+            lblHabReserv.Size = new Size(140, 15);
+            lblHabReserv.TabIndex = 49;
+            lblHabReserv.Text = "Habitaciones Reservadas:";
             // 
             // lblHabDisp
             // 
-            this.lblHabDisp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblHabDisp.AutoSize = true;
-            this.lblHabDisp.Location = new System.Drawing.Point(6, 40);
-            this.lblHabDisp.Name = "lblHabDisp";
-            this.lblHabDisp.Size = new System.Drawing.Size(143, 15);
-            this.lblHabDisp.TabIndex = 48;
-            this.lblHabDisp.Text = "Habitaciones Disponibles:";
+            lblHabDisp.Anchor = AnchorStyles.None;
+            lblHabDisp.AutoSize = true;
+            lblHabDisp.Location = new Point(6, 40);
+            lblHabDisp.Name = "lblHabDisp";
+            lblHabDisp.Size = new Size(143, 15);
+            lblHabDisp.TabIndex = 48;
+            lblHabDisp.Text = "Habitaciones Disponibles:";
             // 
             // lblHotel
             // 
-            this.lblHotel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblHotel.AutoSize = true;
-            this.lblHotel.Location = new System.Drawing.Point(473, 15);
-            this.lblHotel.Name = "lblHotel";
-            this.lblHotel.Size = new System.Drawing.Size(39, 15);
-            this.lblHotel.TabIndex = 47;
-            this.lblHotel.Text = "Hotel:";
+            lblHotel.Anchor = AnchorStyles.None;
+            lblHotel.AutoSize = true;
+            lblHotel.Location = new Point(473, 15);
+            lblHotel.Name = "lblHotel";
+            lblHotel.Size = new Size(39, 15);
+            lblHotel.TabIndex = 47;
+            lblHotel.Text = "Hotel:";
             // 
             // cboHotel
             // 
-            this.cboHotel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboHotel.FormattingEnabled = true;
-            this.cboHotel.Location = new System.Drawing.Point(518, 7);
-            this.cboHotel.Name = "cboHotel";
-            this.cboHotel.Size = new System.Drawing.Size(162, 23);
-            this.cboHotel.TabIndex = 46;
+            cboHotel.Anchor = AnchorStyles.None;
+            cboHotel.FormattingEnabled = true;
+            cboHotel.Location = new Point(518, 7);
+            cboHotel.Name = "cboHotel";
+            cboHotel.Size = new Size(162, 23);
+            cboHotel.TabIndex = 46;
             // 
             // lblLocalidad
             // 
-            this.lblLocalidad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblLocalidad.AutoSize = true;
-            this.lblLocalidad.Location = new System.Drawing.Point(240, 10);
-            this.lblLocalidad.Name = "lblLocalidad";
-            this.lblLocalidad.Size = new System.Drawing.Size(61, 15);
-            this.lblLocalidad.TabIndex = 45;
-            this.lblLocalidad.Text = "Localidad:";
+            lblLocalidad.Anchor = AnchorStyles.None;
+            lblLocalidad.AutoSize = true;
+            lblLocalidad.Location = new Point(240, 10);
+            lblLocalidad.Name = "lblLocalidad";
+            lblLocalidad.Size = new Size(61, 15);
+            lblLocalidad.TabIndex = 45;
+            lblLocalidad.Text = "Localidad:";
             // 
             // cboLocalidad
             // 
-            this.cboLocalidad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboLocalidad.FormattingEnabled = true;
-            this.cboLocalidad.Location = new System.Drawing.Point(305, 7);
-            this.cboLocalidad.Name = "cboLocalidad";
-            this.cboLocalidad.Size = new System.Drawing.Size(162, 23);
-            this.cboLocalidad.TabIndex = 44;
+            cboLocalidad.Anchor = AnchorStyles.None;
+            cboLocalidad.FormattingEnabled = true;
+            cboLocalidad.Location = new Point(305, 7);
+            cboLocalidad.Name = "cboLocalidad";
+            cboLocalidad.Size = new Size(162, 23);
+            cboLocalidad.TabIndex = 44;
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(322, 146);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 23);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "<";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.Anchor = AnchorStyles.None;
+            button1.Location = new Point(322, 146);
+            button1.Name = "button1";
+            button1.Size = new Size(61, 23);
+            button1.TabIndex = 43;
+            button1.Text = "<";
+            button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(389, 58);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(310, 173);
-            this.dataGridView1.TabIndex = 42;
+            dataGridView1.Anchor = AnchorStyles.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(389, 58);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(310, 173);
+            dataGridView1.TabIndex = 42;
             // 
             // btnAgregarResumen
             // 
-            this.btnAgregarResumen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAgregarResumen.Location = new System.Drawing.Point(322, 86);
-            this.btnAgregarResumen.Name = "btnAgregarResumen";
-            this.btnAgregarResumen.Size = new System.Drawing.Size(61, 23);
-            this.btnAgregarResumen.TabIndex = 41;
-            this.btnAgregarResumen.Text = ">";
-            this.btnAgregarResumen.UseVisualStyleBackColor = true;
+            btnAgregarResumen.Anchor = AnchorStyles.None;
+            btnAgregarResumen.Location = new Point(322, 86);
+            btnAgregarResumen.Name = "btnAgregarResumen";
+            btnAgregarResumen.Size = new Size(61, 23);
+            btnAgregarResumen.TabIndex = 41;
+            btnAgregarResumen.Text = ">";
+            btnAgregarResumen.UseVisualStyleBackColor = true;
             // 
             // lblProvincias
             // 
-            this.lblProvincias.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblProvincias.AutoSize = true;
-            this.lblProvincias.Location = new System.Drawing.Point(-4, 10);
-            this.lblProvincias.Name = "lblProvincias";
-            this.lblProvincias.Size = new System.Drawing.Size(59, 15);
-            this.lblProvincias.TabIndex = 40;
-            this.lblProvincias.Text = "Provincia:";
+            lblProvincias.Anchor = AnchorStyles.None;
+            lblProvincias.AutoSize = true;
+            lblProvincias.Location = new Point(-4, 10);
+            lblProvincias.Name = "lblProvincias";
+            lblProvincias.Size = new Size(59, 15);
+            lblProvincias.TabIndex = 40;
+            lblProvincias.Text = "Provincia:";
             // 
             // dgvNuevaReserva
             // 
-            this.dgvNuevaReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgvNuevaReserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNuevaReserva.Location = new System.Drawing.Point(6, 58);
-            this.dgvNuevaReserva.Name = "dgvNuevaReserva";
-            this.dgvNuevaReserva.RowTemplate.Height = 25;
-            this.dgvNuevaReserva.Size = new System.Drawing.Size(310, 173);
-            this.dgvNuevaReserva.TabIndex = 39;
+            dgvNuevaReserva.Anchor = AnchorStyles.None;
+            dgvNuevaReserva.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNuevaReserva.Location = new Point(6, 58);
+            dgvNuevaReserva.Name = "dgvNuevaReserva";
+            dgvNuevaReserva.RowTemplate.Height = 25;
+            dgvNuevaReserva.Size = new Size(310, 173);
+            dgvNuevaReserva.TabIndex = 39;
             // 
             // cboProvincia
             // 
-            this.cboProvincia.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(61, 7);
-            this.cboProvincia.Name = "cboProvincia";
-            this.cboProvincia.Size = new System.Drawing.Size(162, 23);
-            this.cboProvincia.TabIndex = 38;
+            cboProvincia.Anchor = AnchorStyles.None;
+            cboProvincia.FormattingEnabled = true;
+            cboProvincia.Location = new Point(61, 7);
+            cboProvincia.Name = "cboProvincia";
+            cboProvincia.Size = new Size(162, 23);
+            cboProvincia.TabIndex = 38;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(705, 239);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // frmNuevaReserva
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 478);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.gbFechas);
-            this.Controls.Add(this.lblAdvertencia);
-            this.Controls.Add(this.lblCliente);
-            this.Controls.Add(this.btnCancelarReserva);
-            this.Controls.Add(this.btnSalirReserva);
-            this.Controls.Add(this.btnCargarReserva);
-            this.Controls.Add(this.cboClienteReserva);
-            this.Name = "frmNuevaReserva";
-            this.Text = "NuevaReserva";
-            this.gbFechas.ResumeLayout(false);
-            this.gbFechas.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNuevaReserva)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(739, 478);
+            Controls.Add(tabControl1);
+            Controls.Add(gbFechas);
+            Controls.Add(lblAdvertencia);
+            Controls.Add(lblCliente);
+            Controls.Add(btnCancelarReserva);
+            Controls.Add(btnSalirReserva);
+            Controls.Add(btnCargarReserva);
+            Controls.Add(cboClienteReserva);
+            Name = "frmNuevaReserva";
+            Text = "NuevaReserva";
+            Load += frmNuevaReserva_Load_2;
+            gbFechas.ResumeLayout(false);
+            gbFechas.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNuevaReserva).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

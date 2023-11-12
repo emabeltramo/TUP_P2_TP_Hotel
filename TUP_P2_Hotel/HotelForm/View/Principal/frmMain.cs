@@ -1,4 +1,5 @@
-﻿using HotelForm.View.Clientes;
+﻿using HotelForm.Factory.Interface;
+using HotelForm.View.Clientes;
 using HotelForm.View.Login;
 using HotelForm.View.Reserva;
 using System;
@@ -15,8 +16,10 @@ namespace HotelForm.View.Principal
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private IFactoryService factory;
+        public frmMain(IFactoryService factory)
         {
+            this.factory = factory;
             InitializeComponent();
         }
 
@@ -69,7 +72,7 @@ namespace HotelForm.View.Principal
         private void btnNvaReserv_Click(object sender, EventArgs e)
         {
 
-            AbrirFormHijo(new frmNuevaReserva());
+            AbrirFormHijo(new frmNuevaReserva(factory));
             //...
             OcultarSubmenu();
         }
@@ -98,13 +101,13 @@ namespace HotelForm.View.Principal
 
         private void btnNvoCliente_Click(object sender, EventArgs e)
         {
-            //...
+            AbrirFormHijo(new frmAltaCliente(factory));
             OcultarSubmenu();
         }
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
-            //...
+            AbrirFormHijo(new frmModificarCliente());
             OcultarSubmenu();
         }
         #endregion
@@ -147,20 +150,24 @@ namespace HotelForm.View.Principal
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            //hay q cinfigurar esto
+            
             DialogResult result = MessageBox.Show("Desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Dispose();
-                AbrirFormHijo(new frmLogin());
+                AbrirFormHijo(new frmLogin(factory));
 
             }
         }
 
-        private void btnNvoCliente_Click_1(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
-            AbrirFormHijo(new frmAltaCliente());
-            OcultarSubmenu();
+
+        }
+
+        private void panelTopSideleft_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

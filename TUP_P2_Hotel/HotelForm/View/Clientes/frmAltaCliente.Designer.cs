@@ -69,6 +69,7 @@
             btnCancelar.TabIndex = 42;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnSalirCliente
             // 
@@ -79,6 +80,7 @@
             btnSalirCliente.TabIndex = 41;
             btnSalirCliente.Text = "Salir";
             btnSalirCliente.UseVisualStyleBackColor = true;
+            btnSalirCliente.Click += btnSalirCliente_Click;
             // 
             // btnCargarCliente
             // 
@@ -89,6 +91,7 @@
             btnCargarCliente.TabIndex = 40;
             btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
+            btnCargarCliente.Click += btnCargarCliente_Click;
             // 
             // txtNombre
             // 
@@ -240,7 +243,7 @@
             label7.TabIndex = 61;
             label7.Text = "CARGA DE CLIENTES DEL HOTEL SHIBUYA";
             // 
-            // frmAgregarCliente
+            // frmAltaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -265,7 +268,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnSalirCliente);
             Controls.Add(btnCargarCliente);
-            Name = "frmAgregarCliente";
+            Name = "frmAltaCliente";
             Text = "frmAgregarCliente";
             Load += frmAgregarCliente_Load;
             ResumeLayout(false);

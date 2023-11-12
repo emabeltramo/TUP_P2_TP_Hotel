@@ -204,6 +204,7 @@
             btnModificarCliente.Text = "Modificar";
             btnModificarCliente.TextAlign = ContentAlignment.MiddleLeft;
             btnModificarCliente.UseVisualStyleBackColor = true;
+            btnModificarCliente.Click += btnModificarCliente_Click;
             // 
             // btnNvoCliente
             // 
@@ -219,7 +220,7 @@
             btnNvoCliente.Text = "Nuevo";
             btnNvoCliente.TextAlign = ContentAlignment.MiddleLeft;
             btnNvoCliente.UseVisualStyleBackColor = true;
-            btnNvoCliente.Click += btnNvoCliente_Click_1;
+            btnNvoCliente.Click += btnNvoCliente_Click;
             // 
             // btnCLIENTES
             // 
@@ -304,6 +305,7 @@
             panelTopSideleft.Name = "panelTopSideleft";
             panelTopSideleft.Size = new Size(200, 107);
             panelTopSideleft.TabIndex = 0;
+            panelTopSideleft.Paint += panelTopSideleft_Paint;
             // 
             // panelbottomform
             // 
@@ -347,6 +349,7 @@
             Name = "frmMain";
             Padding = new Padding(6, 0, 0, 0);
             Text = "Form2";
+            Load += frmMain_Load;
             panelSide.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panelMedio3.ResumeLayout(false);
