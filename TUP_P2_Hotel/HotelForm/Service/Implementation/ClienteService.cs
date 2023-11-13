@@ -37,16 +37,7 @@ namespace HotelForm.Service.Implementation
             }
             return result;
         }
-        public async Task<HttpResponse> PostClienteAsync(ClienteModel cliente)
-        {
-            string url = host + "/PostCliente";
-            var cuerpo = JsonConvert.SerializeObject(cliente);
-            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
-
-
-            return response; 
-
-        }
+  
 
 
         public async Task<HttpResponse> ActualizarCliente(ClienteModel cliente)
@@ -64,6 +55,7 @@ namespace HotelForm.Service.Implementation
             var cuerpo = JsonConvert.SerializeObject(numero);
             var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
            
+            throw new NotImplementedException();
         }
 
         public Task<List<ClienteModel>> GetClientesAsync()
@@ -71,9 +63,14 @@ namespace HotelForm.Service.Implementation
             throw new NotImplementedException();
         }
 
-        public Task<HttpResponse> AltaCliente(ClienteModel cliente)
+        public async Task<HttpResponse> AltaCliente(ClienteModel cliente)
         {
-            throw new NotImplementedException();
+            string url = host + "/PostCliente";
+            var cuerpo = JsonConvert.SerializeObject(cliente);
+            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
+
+
+            return response;
         }
     }
 }

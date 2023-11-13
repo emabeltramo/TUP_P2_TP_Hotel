@@ -11,6 +11,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,17 +43,17 @@ namespace HotelForm.View.Clientes
         private async void CargarCombosAsync()
         {
 
-            Debug.WriteLine(tipoDocumento.Count());
+
             tipoDocumento = await clienteService.GetTipoDocumentosAsync();
             cboTipoDocumento.DataSource = tipoDocumento;
             cboTipoDocumento.DisplayMember = "Descri";
             cboTipoDocumento.ValueMember = "Id";
-             tipoCliente = await clienteService.GetTipoClientesAsync();
+            tipoCliente = await clienteService.GetTipoClientesAsync();
             cboTipoCliente.DataSource = tipoCliente;
             cboTipoCliente.DisplayMember = "Descri";
             cboTipoCliente.ValueMember = "Id";
 
-    }
+        }
 
         private void txtNroDocumento_TextChanged(object sender, EventArgs e)
         {
@@ -63,30 +64,45 @@ namespace HotelForm.View.Clientes
         {
         }
 
-        private void btnCargarCliente_Click(object sender, EventArgs e)
+        private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
             if (Validar())
             {
                 ClienteModel cliente = new ClienteModel();
                 cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
                 cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
-                if (cboTipoCliente.SelectedIndex == 0)//aca seria tipo particular por ej
+                if (cboTipoCliente.SelectedIndex == 0)
                 {
-                    cliente.Nombre = txtNombre.Text;
-                    cliente.Apellido = txtApellido.Text;
-                    cliente.DNI = txtNroDocumento.Text;
+
+                    cliente.Nombre = "-";
+                    cliente.Apellido = "-";
+                    cliente.DNI = string.Empty;
+                    cliente.RazonSocial = txtRazonSocial.Text;
+                    cliente.CUIL = txtNroDocumento.Text;
+
                 }
                 else
                 {
-                    cliente.Nombre = string.Empty;
-                    cliente.Apellido = string.Empty;
+
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellido = txtApellido.Text;
                     cliente.RazonSocial = txtRazonSocial.Text;
-                    cliente.DNI = string.Empty;
-                    cliente.CUIL = txtNroDocumento.Text;
+                    cliente.DNI = txtNroDocumento.Text;
+                    cliente.CUIL = string.Empty;
+
                 }
                 cliente.Email = txtEmail.Text;
                 cliente.Celular = txtTelefono.Text;
-                clienteService.AltaCliente(cliente);
+                var result = await clienteService.AltaCliente(cliente);
+                if (result.SuccessStatus)
+                {
+                    MessageBox.Show("Cliente generado con exito", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar cliente : " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
@@ -100,7 +116,6 @@ namespace HotelForm.View.Clientes
             DialogResult result = MessageBox.Show("Desea cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                this.Dispose();
                 txtApellido.Text = string.Empty;
                 txtNombre.Text = string.Empty;
                 txtEmail.Text = string.Empty;
@@ -167,6 +182,32 @@ namespace HotelForm.View.Clientes
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTipoCliente.SelectedIndex == 0)
+            {
+                txtRazonSocial.Enabled = true;
+                txtNombre.Text = "-";
+                txtApellido.Text = "-";
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+                cboTipoDocumento.SelectedIndex = 1;
+                cboTipoDocumento.Enabled = false;
+                txtRazonSocial.Text = string.Empty;
+            }
+            else
+            {
+                txtRazonSocial.Text = "-";
+                cboTipoDocumento.SelectedIndex = 0;
+                cboTipoDocumento.Enabled = true;
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                txtRazonSocial.Enabled = false;
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
+            }
         }
     }
 }

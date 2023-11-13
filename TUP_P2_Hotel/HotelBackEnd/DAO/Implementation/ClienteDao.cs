@@ -28,7 +28,7 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.Transaction = t;
                 cmd.CommandText = "SP_MODIFICAR_CLIENTE";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandType = CommandType.StoredProcedure;
+                
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", cliente.Id_Cliente);
                 cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
@@ -76,7 +76,9 @@ namespace HotelBackEnd.DAO.Implementation
                 comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
                 comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
                 comando.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
+                comando.Parameters.AddWithValue("@cuil", cliente.CUIL);
                 comando.Parameters.AddWithValue("@dni", cliente.DNI);
+                comando.Parameters.AddWithValue("@celular", cliente.Celular);
                 comando.Parameters.AddWithValue("@email", cliente.Email);
                 comando.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
                 comando.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
@@ -84,6 +86,7 @@ namespace HotelBackEnd.DAO.Implementation
                 comando.ExecuteNonQuery();
 
                 t.Commit();
+                resultado = true;
             }
             catch
             {

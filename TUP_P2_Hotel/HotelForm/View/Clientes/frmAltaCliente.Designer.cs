@@ -44,10 +44,10 @@
             label5 = new Label();
             txtTelefono = new TextBox();
             label6 = new Label();
-            textBox6 = new TextBox();
-            txtEmail = new Label();
             label7 = new Label();
             cboTipoDocumento = new ComboBox();
+            txtEmail = new TextBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // lblCliente
@@ -66,7 +66,7 @@
             btnCancelar.Location = new Point(426, 446);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 42;
+            btnCancelar.TabIndex = 10;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -77,7 +77,7 @@
             btnSalirCliente.Location = new Point(316, 446);
             btnSalirCliente.Name = "btnSalirCliente";
             btnSalirCliente.Size = new Size(75, 23);
-            btnSalirCliente.TabIndex = 41;
+            btnSalirCliente.TabIndex = 9;
             btnSalirCliente.Text = "Salir";
             btnSalirCliente.UseVisualStyleBackColor = true;
             btnSalirCliente.Click += btnSalirCliente_Click;
@@ -88,7 +88,7 @@
             btnCargarCliente.Location = new Point(199, 446);
             btnCargarCliente.Name = "btnCargarCliente";
             btnCargarCliente.Size = new Size(75, 23);
-            btnCargarCliente.TabIndex = 40;
+            btnCargarCliente.TabIndex = 8;
             btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
             btnCargarCliente.Click += btnCargarCliente_Click;
@@ -99,7 +99,7 @@
             txtNombre.Location = new Point(172, 134);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(163, 23);
-            txtNombre.TabIndex = 45;
+            txtNombre.TabIndex = 1;
             // 
             // txtApellido
             // 
@@ -107,7 +107,7 @@
             txtApellido.Location = new Point(448, 134);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(163, 23);
-            txtApellido.TabIndex = 47;
+            txtApellido.TabIndex = 2;
             // 
             // label1
             // 
@@ -147,7 +147,8 @@
             cboTipoCliente.Location = new Point(553, 66);
             cboTipoCliente.Name = "cboTipoCliente";
             cboTipoCliente.Size = new Size(121, 23);
-            cboTipoCliente.TabIndex = 53;
+            cboTipoCliente.TabIndex = 0;
+            cboTipoCliente.SelectedIndexChanged += cboTipoCliente_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -165,7 +166,7 @@
             txtNroDocumento.Location = new Point(170, 270);
             txtNroDocumento.Name = "txtNroDocumento";
             txtNroDocumento.Size = new Size(163, 23);
-            txtNroDocumento.TabIndex = 54;
+            txtNroDocumento.TabIndex = 4;
             txtNroDocumento.TextChanged += txtNroDocumento_TextChanged;
             // 
             // txtRazonSocial
@@ -174,7 +175,7 @@
             txtRazonSocial.Location = new Point(458, 270);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(163, 23);
-            txtRazonSocial.TabIndex = 56;
+            txtRazonSocial.TabIndex = 5;
             // 
             // label5
             // 
@@ -193,7 +194,7 @@
             txtTelefono.Location = new Point(480, 347);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(163, 23);
-            txtTelefono.TabIndex = 60;
+            txtTelefono.TabIndex = 7;
             // 
             // label6
             // 
@@ -204,24 +205,6 @@
             label6.Size = new Size(107, 15);
             label6.TabIndex = 59;
             label6.Text = "Telefono Contacto:";
-            // 
-            // textBox6
-            // 
-            textBox6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox6.Location = new Point(112, 347);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(163, 23);
-            textBox6.TabIndex = 58;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.AutoSize = true;
-            txtEmail.Location = new Point(52, 350);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(44, 15);
-            txtEmail.TabIndex = 57;
-            txtEmail.Text = "E-mail:";
             // 
             // label7
             // 
@@ -241,20 +224,38 @@
             cboTipoDocumento.Location = new Point(553, 206);
             cboTipoDocumento.Name = "cboTipoDocumento";
             cboTipoDocumento.Size = new Size(121, 23);
-            cboTipoDocumento.TabIndex = 62;
+            cboTipoDocumento.TabIndex = 3;
             cboTipoDocumento.SelectedIndexChanged += cboTipoDocumento_SelectedIndexChanged;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtEmail.Location = new Point(172, 347);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(163, 23);
+            txtEmail.TabIndex = 6;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.Location = new Point(112, 355);
+            label8.Name = "label8";
+            label8.Size = new Size(44, 15);
+            label8.TabIndex = 63;
+            label8.Text = "E-Mail:";
             // 
             // frmAltaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(739, 478);
+            Controls.Add(txtEmail);
+            Controls.Add(label8);
             Controls.Add(cboTipoDocumento);
             Controls.Add(label7);
             Controls.Add(txtTelefono);
             Controls.Add(label6);
-            Controls.Add(textBox6);
-            Controls.Add(txtEmail);
             Controls.Add(txtRazonSocial);
             Controls.Add(label5);
             Controls.Add(txtNroDocumento);
@@ -294,9 +295,9 @@
         private Label label5;
         private TextBox txtTelefono;
         private Label label6;
-        private TextBox textBox6;
-        private Label txtEmail;
         private Label label7;
         private ComboBox cboTipoDocumento;
+        private TextBox txtEmail;
+        private Label label8;
     }
 }
