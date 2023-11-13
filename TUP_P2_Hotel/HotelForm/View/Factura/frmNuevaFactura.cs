@@ -25,10 +25,10 @@ namespace HotelForm.View.Factura
         private void frmNuevaFactura_Load(object sender, EventArgs e)
         {
             ProximoPresupuesto();
-            //CargarClienteAsync();
-            //CargarTipoFacturaAsync();
-            //CargarFormaPagoAsync();
-            //CargarServicioAsync();
+            CargarClienteAsync();
+            CargarTipoFacturaAsync();
+            CargarFormaPagoAsync();
+            CargarServicioAsync();
             Limpiar();
             //this.ActiveControl = cboServicio;
         }
@@ -52,7 +52,7 @@ namespace HotelForm.View.Factura
 
         private async Task CargarClienteAsync()
         {
-            string url = //"https://localhost:7107/api/OrdenProduccion/componentes"; 
+            string url;  //"https://localhost:7107/api/OrdenProduccion/componentes"; 
             var result = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<ClienteModel>>(result);
             cboCliente.DataSource = lst;
