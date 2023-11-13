@@ -58,9 +58,16 @@ namespace HotelForm.Service.Implementation
             throw new NotImplementedException();
         }
 
-        public Task<List<ClienteModel>> GetClientesAsync()
+        public async Task<List<ClienteModel>> GetClientesAsync()
         {
-            throw new NotImplementedException();
+            string url = host + "/GetClientes";
+            List<ClienteModel> result = new List<ClienteModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ClienteModel>>(response.Data);
+            }
+            return result;
         }
 
         public async Task<HttpResponse> AltaCliente(ClienteModel cliente)

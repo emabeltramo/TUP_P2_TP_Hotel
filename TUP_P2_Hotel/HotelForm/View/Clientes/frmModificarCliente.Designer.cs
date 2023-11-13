@@ -247,7 +247,7 @@
             cboCliente.FormattingEnabled = true;
             cboCliente.Location = new Point(117, 56);
             cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(121, 23);
+            cboCliente.Size = new Size(289, 23);
             cboCliente.TabIndex = 83;
             cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
             // 
@@ -257,9 +257,9 @@
             label8.AutoSize = true;
             label8.Location = new Point(22, 59);
             label8.Name = "label8";
-            label8.Size = new Size(89, 15);
+            label8.Size = new Size(47, 15);
             label8.TabIndex = 82;
-            label8.Text = "Tipo de Cliente:";
+            label8.Text = "Cliente:";
             // 
             // frmModificarCliente
             // 

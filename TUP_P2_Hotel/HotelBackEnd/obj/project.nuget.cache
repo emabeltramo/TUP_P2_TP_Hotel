@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tLQtDQRuqUKuv1elnwvd5fodw+cuVI9H1DpnvHDcvHZrUAfps9G8vT2Gv5lBl5asK3OSBlAnT1mkdY9s/jrKNg==",
+  "dgSpecHash": "VsFPAAbjd0gjqmP8EJspzV3bSrOj8R4TYfzfDn3BqmIafHY++to9QQUYYwTrbtm7NNROUep+f27EXcwjIex0UA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dborl\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+  "projectFilePath": "D:\\INFORMACION NO BORRAR\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dborl\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\dborl\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

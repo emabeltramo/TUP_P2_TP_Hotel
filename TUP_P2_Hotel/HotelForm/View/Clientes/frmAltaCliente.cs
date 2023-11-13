@@ -21,7 +21,6 @@ namespace HotelForm.View.Clientes
     public partial class frmAltaCliente : Form
     {
         IFactoryService factory;
-        IReservaService service;
         IClienteService clienteService;
         private List<TipoDocumentoModel> tipoDocumento;
         private List<TipoClienteModel> tipoCliente;
@@ -29,7 +28,6 @@ namespace HotelForm.View.Clientes
         public frmAltaCliente(IFactoryService factory)
         {
             this.factory = factory;
-            service = factory.CreateReservaService();
             clienteService = factory.CreateClienteService();
             InitializeComponent();
 
