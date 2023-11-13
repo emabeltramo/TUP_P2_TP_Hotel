@@ -16,6 +16,6 @@ namespace HotelBackEnd.DAO.Interface
         List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
         List<HotelServicioModel> GetServiciosHotel(int idHotel);
         bool PostReserva(ReservaModel reserva);
-        string GetError();
+        string GetMensaje();
     }
 }

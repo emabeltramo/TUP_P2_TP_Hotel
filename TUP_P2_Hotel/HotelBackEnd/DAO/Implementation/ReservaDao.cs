@@ -14,7 +14,7 @@ namespace HotelBackEnd.DAO.Implementation
 {
     public class ReservaDao : IReservaDao
     {
-        private string error = string.Empty;
+        private string mensaje = string.Empty;
         
         public List<ClienteModel> GetClientes()
         {
@@ -63,9 +63,9 @@ namespace HotelBackEnd.DAO.Implementation
             return result;
         }
 
-        public string GetError()
+        public string GetMensaje()
         {
-            return error;
+            return mensaje;
         }
 
         public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
@@ -282,7 +282,7 @@ namespace HotelBackEnd.DAO.Implementation
                     cmd.CommandType = CommandType.StoredProcedure;
                     if(cmd.ExecuteNonQuery()!=1)
                     {
-                        this.error = "No se inserto habitacion en reserva";
+                        this.mensaje = "No se inserto habitacion en reserva";
                         t.Rollback();
                         cmd.Connection.Close();
                         return false;
@@ -301,7 +301,7 @@ namespace HotelBackEnd.DAO.Implementation
                     cmd.CommandType = CommandType.StoredProcedure;
                     if (cmd.ExecuteNonQuery() != 1)
                     {
-                        this.error = "No se inserto el servicio en reserva";
+                        this.mensaje = "No se inserto el servicio en reserva";
                         t.Rollback();
                         cmd.Connection.Close();
                         return false;
@@ -309,12 +309,13 @@ namespace HotelBackEnd.DAO.Implementation
                 }
                 t.Commit();
                 result = true;
+                mensaje = reserva.IdReserva.ToString();
             }
             catch (Exception ex)
             {
 
                 t.Rollback();
-                error = ex.Message;
+                mensaje = ex.Message;
             }
             if (cmd.Connection.State == System.Data.ConnectionState.Open)
             {

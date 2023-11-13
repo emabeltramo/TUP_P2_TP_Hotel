@@ -136,11 +136,12 @@ namespace HotelAPI.Controllers
                 if (reserva.Ingreso<DateTime.Now.Date)
                     return StatusCode(401, "La fecha de ingreso no puede ser menor a la del dia de hoy");
                 var result = front.PostReserva(reserva);
-                if (string.IsNullOrEmpty(result))
+                var mensaje = front.GetMensaje();
+                if (!result)
                 {
-                    return StatusCode(500, result);
+                    return StatusCode(500, mensaje);
                 }
-                return Ok();
+                return StatusCode(201,mensaje);
             }
             catch (Exception)
             {

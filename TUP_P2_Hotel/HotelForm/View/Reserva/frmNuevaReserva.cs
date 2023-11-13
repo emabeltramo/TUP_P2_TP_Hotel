@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -21,6 +22,8 @@ namespace HotelForm.View.Reserva
         private List<LocalidadModel> localidades;
         private List<HotelModel> hoteles;
         private List<ProvinciaModel> provincias;
+        
+
         public frmNuevaReserva(IFactoryService factory)
         {
             this.factory = factory;
@@ -36,7 +39,56 @@ namespace HotelForm.View.Reserva
             cboProvincia.SelectedValueChanged += CboProvincia_SelectedValueChanged;
             cboLocalidad.SelectedValueChanged += CboLocalidad_SelectedValueChanged;
             
+            dgvNuevaReserva.CellContentClick += DgvNuevaReserva_CellContentClick;
+            dgvServicios.CellEndEdit += DgvServicios_CellEndEdit;
+            dgvServicios.CellContentClick += DgvServicios_CellContentClick;
+        }
+       private void Total()
+        {
+            var srv = ReadDgvServicios();
+            var hab = ReadDgvHabitaciones();
+            var subTotalSrv = srv.Where(m => !m.Bonificado).Sum(m => m.Cantidad * m.Monto);
+            var subTotalHab = hab.Sum(m => m.Monto) * int.Parse(txbNoches.Text);
+            txbTotal.Text = $"$ {(subTotalHab + subTotalSrv).ToString("#.##")}";
 
+        }
+        private void DgvServicios_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dgvServicios.Rows[e.RowIndex].Cells["Bonificado"].ColumnIndex == e.ColumnIndex)
+            {
+
+                dgvServicios.Rows[e.RowIndex].Cells["Bonificado"].Value = !(bool)dgvServicios.Rows[e.RowIndex].Cells["Bonificado"].Value;
+                Total();
+            }
+        }
+
+        private void DgvServicios_CellEndEdit(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dgvServicios.Rows[e.RowIndex].Cells["Cantidad"].ColumnIndex == e.ColumnIndex)
+            {
+                Total();
+            }
+        }
+
+        private void DgvNuevaReserva_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            
+            if(e.RowIndex>-1 && dgvNuevaReserva.Rows[e.RowIndex].Cells["Reservar"].ColumnIndex == e.ColumnIndex)
+            {
+
+                dgvNuevaReserva.Rows[e.RowIndex].Cells["Reservar"].Value = !(bool)dgvNuevaReserva.Rows[e.RowIndex].Cells["Reservar"].Value;
+                //var valor=(decimal)dgvNuevaReserva.Rows[e.RowIndex].Cells["Precio"].Value;
+                //var reservar = (bool)dgvNuevaReserva.Rows[e.RowIndex].Cells["Reservar"].Value;
+                //if (reservar)
+                //{
+                //    totelHab += int.Parse(txbNoches.Text) * valor;
+                //}
+                //else
+                //{
+                //    totelHab -= int.Parse(txbNoches.Text) * valor;
+                //}
+                Total();
+            }
         }
 
         private async void BtnCargarReserva_Click(object? sender, EventArgs e)
@@ -54,9 +106,11 @@ namespace HotelForm.View.Reserva
             modelo.Ingreso = dtpDesde.Value.Date;
             modelo.Salida = dtpHasta.Value.Date;
             var result = await service.PostReservaAsync(modelo);
-            if (result.SuccessStatus)
+            if (result.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                MessageBox.Show("Reserva generada con exito","Atencion",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show($"Reserva generada con exito\nNumero:{result.Data}",
+                    "Atencion",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                btnReiniciar.PerformClick();
             }
             else
             {
@@ -112,6 +166,10 @@ namespace HotelForm.View.Reserva
             gbHotel.Enabled = true;
             btnCargarReserva.Enabled = false;
             tab.Enabled = false;
+            dgvNuevaReserva.Rows.Clear();
+            dgvServicios.Rows.Clear();
+            Total();
+
         }
 
         private async void BtnBuscar_Click(object? sender, EventArgs e)
@@ -224,23 +282,23 @@ namespace HotelForm.View.Reserva
             txbNoches.Text = ((int)(hasta - desde).TotalDays).ToString();
         }
 
-        private void FrmNuevaReserva_Load(object? sender, EventArgs e)
+        private async void FrmNuevaReserva_Load(object? sender, EventArgs e)
         {
             
 
-            CargarComboCliente();
-            ObtenerListas();
+            await CargarComboCliente();
+            await ObtenerListas();
             Noches();
             
         }
-        private async void CargarComboCliente()
+        private async Task CargarComboCliente()
         {
             
             List<ClienteModel> clients = await service.GetClientesAsync();
             cboClienteReserva.DataSource = clients;
 
         }
-        private async void ObtenerListas()
+        private async Task ObtenerListas()
         {
             hoteles = await service.GetHotelesAsync();
             localidades = await service.GetLocalidadAsync();
@@ -266,7 +324,7 @@ namespace HotelForm.View.Reserva
                     item.Categoria.Descri,
                     item.CamaMax,
                     item.Categoria.Precio,
-                    false,
+                    false
                 });
             }
             //cboClienteReserva.DataSource = habitaciones;

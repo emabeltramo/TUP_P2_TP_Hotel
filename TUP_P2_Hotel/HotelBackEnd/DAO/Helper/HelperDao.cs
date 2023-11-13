@@ -38,12 +38,14 @@ namespace HotelBackEnd.DAO.Helper
 
         private void Connect()
         {
+            if(connection.State == ConnectionState.Closed)
             connection.Open();
         }
 
         private void Disconect()
         {
-            connection.Close();
+            if (connection.State != ConnectionState.Closed)
+                connection.Close();
         }
 
         public int GetScalar(string sentencia, string nomParam)
@@ -65,14 +67,14 @@ namespace HotelBackEnd.DAO.Helper
 
         internal DataTable GetConsult(string consulta)
         {
-            connection.Open();
+            Connect();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = consulta;
             DataTable tabla = new DataTable();
             tabla.Load(cmd.ExecuteReader());
-            connection.Close();
+            Disconect();
             return tabla;
         }
 

@@ -51,6 +51,11 @@
             this.Reservar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tbpServicio = new System.Windows.Forms.TabPage();
             this.dgvServicios = new System.Windows.Forms.DataGridView();
+            this.IdSrv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioSrv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bonificado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbHotel = new System.Windows.Forms.GroupBox();
             this.lblHotel = new System.Windows.Forms.Label();
             this.cboHotel = new System.Windows.Forms.ComboBox();
@@ -60,11 +65,8 @@
             this.cboProvincia = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnReiniciar = new System.Windows.Forms.Button();
-            this.IdSrv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioSrv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bonificado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txbTotal = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.gbFechas.SuspendLayout();
             this.tab.SuspendLayout();
             this.tbpHabitacion.SuspendLayout();
@@ -78,7 +80,7 @@
             // 
             this.cboClienteReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboClienteReserva.FormattingEnabled = true;
-            this.cboClienteReserva.Location = new System.Drawing.Point(67, 6);
+            this.cboClienteReserva.Location = new System.Drawing.Point(67, 2);
             this.cboClienteReserva.Name = "cboClienteReserva";
             this.cboClienteReserva.Size = new System.Drawing.Size(559, 23);
             this.cboClienteReserva.TabIndex = 0;
@@ -86,7 +88,7 @@
             // btnCargarReserva
             // 
             this.btnCargarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCargarReserva.Location = new System.Drawing.Point(232, 443);
+            this.btnCargarReserva.Location = new System.Drawing.Point(208, 443);
             this.btnCargarReserva.Name = "btnCargarReserva";
             this.btnCargarReserva.Size = new System.Drawing.Size(75, 23);
             this.btnCargarReserva.TabIndex = 9;
@@ -96,7 +98,7 @@
             // btnSalirReserva
             // 
             this.btnSalirReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalirReserva.Location = new System.Drawing.Point(349, 443);
+            this.btnSalirReserva.Location = new System.Drawing.Point(325, 443);
             this.btnSalirReserva.Name = "btnSalirReserva";
             this.btnSalirReserva.Size = new System.Drawing.Size(75, 23);
             this.btnSalirReserva.TabIndex = 10;
@@ -106,7 +108,7 @@
             // btnCancelarReserva
             // 
             this.btnCancelarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelarReserva.Location = new System.Drawing.Point(459, 443);
+            this.btnCancelarReserva.Location = new System.Drawing.Point(435, 443);
             this.btnCancelarReserva.Name = "btnCancelarReserva";
             this.btnCancelarReserva.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarReserva.TabIndex = 11;
@@ -117,7 +119,7 @@
             // 
             this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(14, 9);
+            this.lblCliente.Location = new System.Drawing.Point(14, 5);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(47, 15);
             this.lblCliente.TabIndex = 12;
@@ -195,7 +197,7 @@
             // 
             this.tab.Controls.Add(this.tbpHabitacion);
             this.tab.Controls.Add(this.tbpServicio);
-            this.tab.Location = new System.Drawing.Point(14, 207);
+            this.tab.Location = new System.Drawing.Point(14, 179);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
             this.tab.Size = new System.Drawing.Size(713, 230);
@@ -295,6 +297,37 @@
             this.dgvServicios.Size = new System.Drawing.Size(699, 196);
             this.dgvServicios.TabIndex = 0;
             // 
+            // IdSrv
+            // 
+            this.IdSrv.HeaderText = "Id";
+            this.IdSrv.Name = "IdSrv";
+            this.IdSrv.ReadOnly = true;
+            this.IdSrv.Visible = false;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // PrecioSrv
+            // 
+            this.PrecioSrv.HeaderText = "Precio";
+            this.PrecioSrv.Name = "PrecioSrv";
+            this.PrecioSrv.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Bonificado
+            // 
+            this.Bonificado.HeaderText = "Bonificado";
+            this.Bonificado.Name = "Bonificado";
+            this.Bonificado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bonificado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // gbHotel
             // 
             this.gbHotel.Controls.Add(this.lblHotel);
@@ -387,42 +420,31 @@
             this.btnReiniciar.Text = "Reiniciar";
             this.btnReiniciar.UseVisualStyleBackColor = true;
             // 
-            // IdSrv
+            // txbTotal
             // 
-            this.IdSrv.HeaderText = "Id";
-            this.IdSrv.Name = "IdSrv";
-            this.IdSrv.ReadOnly = true;
-            this.IdSrv.Visible = false;
+            this.txbTotal.Location = new System.Drawing.Point(616, 407);
+            this.txbTotal.Name = "txbTotal";
+            this.txbTotal.ReadOnly = true;
+            this.txbTotal.Size = new System.Drawing.Size(100, 23);
+            this.txbTotal.TabIndex = 77;
             // 
-            // Descripcion
+            // lblTotal
             // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // PrecioSrv
-            // 
-            this.PrecioSrv.HeaderText = "Precio";
-            this.PrecioSrv.Name = "PrecioSrv";
-            this.PrecioSrv.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Bonificado
-            // 
-            this.Bonificado.HeaderText = "Bonificado";
-            this.Bonificado.Name = "Bonificado";
-            this.Bonificado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Bonificado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(560, 412);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(35, 15);
+            this.lblTotal.TabIndex = 76;
+            this.lblTotal.Text = "Total:";
             // 
             // frmNuevaReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 478);
+            this.Controls.Add(this.txbTotal);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.btnReiniciar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.gbHotel);
@@ -488,5 +510,7 @@
         private DataGridViewTextBoxColumn PrecioSrv;
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewCheckBoxColumn Bonificado;
+        private TextBox txbTotal;
+        private Label lblTotal;
     }
 }

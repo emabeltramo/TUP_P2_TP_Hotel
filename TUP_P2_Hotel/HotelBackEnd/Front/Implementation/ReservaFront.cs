@@ -12,10 +12,12 @@ namespace HotelBackEnd.Front.Implementation
 {
     public class ReservaFront : IReservaFront
     {
+        private string mensaje;
         private IReservaDao reservaDao;
         public ReservaFront()
         {
             reservaDao = new ReservaDao();
+            mensaje = string.Empty;
         }
         public List<ClienteModel> GetClientes()
         {
@@ -39,6 +41,11 @@ namespace HotelBackEnd.Front.Implementation
 
         }
 
+        public string GetMensaje()
+        {
+            return mensaje;
+        }
+
         public List<ProvinciaModel> GetProvincia()
         {
             return reservaDao.GetProvincias();
@@ -49,11 +56,12 @@ namespace HotelBackEnd.Front.Implementation
             return reservaDao.GetServiciosHotel(idHotel);
         }
 
-        public string PostReserva(ReservaModel reserva)
+        public bool PostReserva(ReservaModel reserva)
         {
-            if (!reservaDao.PostReserva(reserva))
-                return reservaDao.GetError();
-            return string.Empty;
+           var result = reservaDao.PostReserva(reserva);
+            mensaje = reservaDao.GetMensaje();
+            return result;
+            
         }
     }
 }
