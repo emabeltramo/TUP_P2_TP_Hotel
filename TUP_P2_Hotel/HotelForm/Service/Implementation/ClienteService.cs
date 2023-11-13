@@ -28,7 +28,7 @@ namespace HotelForm.Service.Implementation
         }
         public async Task<List<TipoClienteModel>> GetTipoClientesAsync()
         {
-            string url = host + "/GetTipoDocumento";
+            string url = host + "/GetTipoCliente";
             List<TipoClienteModel> result = new List<TipoClienteModel>();
             var response = await ClientSingleton.GetInstance().GetAsync(url);
             if (response != null && response.SuccessStatus)
@@ -63,13 +63,7 @@ namespace HotelForm.Service.Implementation
             string url = host + "/DeleteCliente";
             var cuerpo = JsonConvert.SerializeObject(numero);
             var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
-            if (response != null && response.SuccessStatus)
-            {
-                MessageBox.Show("Cliente actualizado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else MessageBox.Show("ERROR. No se pudo actualizar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+           
         }
 
         public Task<List<ClienteModel>> GetClientesAsync()
