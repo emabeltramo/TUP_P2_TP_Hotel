@@ -8,6 +8,8 @@ namespace HotelBackEnd.Model
 {
     public class ClienteModel
     {
+     
+
         public int Id_Cliente { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

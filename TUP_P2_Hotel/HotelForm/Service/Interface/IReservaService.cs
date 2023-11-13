@@ -15,5 +15,7 @@ namespace HotelForm.Service.Interface
         Task<List<ProvinciaModel>> GetProvinciaAsync();
         Task<List<LocalidadModel>> GetLocalidadAsync();
         Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel);
+
+
     }
 }

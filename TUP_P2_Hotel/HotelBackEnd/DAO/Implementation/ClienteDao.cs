@@ -178,8 +178,87 @@ namespace HotelBackEnd.DAO.Implementation
 
             return result;
         }
-    }
+
+        public List<ClienteModel> BuscarClientes(string busqueda)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<ClienteModel> result = new List<ClienteModel>();
+
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "SP_LISTA_CLIENTES";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@Busqueda", SqlDbType.NVarChar, 100)
+                {
+                    Value = (object)busqueda ?? DBNull.Value
+                });
+
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            var reg = procces.MakeReg(reader);
+
+                            var cliente = new ClienteModel()
+                            {
+                                Id_Cliente = Convert.ToInt32(reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_CLIENTE").Valor ?? 0),
+                                Nombre = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NOMBRE").Valor as string ?? string.Empty,
+                                Apellido = reg.FirstOrDefault(m => m.Campo.ToUpper() == "APELLIDO").Valor as string ?? string.Empty,
+                                DNI = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DNI").Valor as string ?? string.Empty,
+                                CUIL = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CUIL").Valor as string ?? string.Empty,
+                                Email = reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMAIL").Valor as string ?? string.Empty,
+                                Celular = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CELULAR").Valor as string ?? string.Empty,
+                                RazonSocial = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RAZON_SOCIAL").Valor as string ?? string.Empty,
+                                TDoc = new TipoDocumentoModel()
+                                {
+                                    Id = Convert.ToInt32(reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_TIPO_DOCUMENTO").Valor ?? 0),
+                                    Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_DOCUMENTO_DESCRIPCION").Valor as string ?? string.Empty
+                                },
+                                TCliente = new TipoClienteModel()
+                                {
+                                    Id = Convert.ToInt32(reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_TIPO_CLIENTE").Valor ?? 0),
+                                    Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_CLIENTE_DESCRIPCION").Valor as string ?? string.Empty
+                                },
+                            };
+
+                            result.Add(cliente);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error al procesar una fila: {ex.Message}");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No hay filas en el lector.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error durante la ejecución del método BuscarClientes: {ex.Message}");
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+
+            return result;
+        }
 
 
+
     }
+}
+
+
+    
 

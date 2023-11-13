@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,19 @@ namespace HotelForm.Service.Implementation
             {
                 result = JsonConvert.DeserializeObject<List<ClienteModel>>(response.Data);
             }
+            return result;
+        }
+        public async Task<DataTable> GetClientesTAsync(string busqueda)
+        {
+            string url = host + "/GetTablaClientes";
+            DataTable result = new DataTable();
+            var response = await ClientSingleton.GetInstance().PostAsync(url, JsonConvert.SerializeObject(new { Busqueda = busqueda }));
+
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<DataTable>(response.Data);
+            }
+
             return result;
         }
 
