@@ -52,7 +52,7 @@ namespace HotelForm.View.Factura
 
         private async Task CargarClienteAsync()
         {
-            string url = "https://localhost:7107/api/OrdenProduccion/componentes"; 
+            string url = //"https://localhost:7107/api/OrdenProduccion/componentes"; 
             var result = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<ClienteModel>>(result);
             cboCliente.DataSource = lst;
@@ -92,7 +92,7 @@ namespace HotelForm.View.Factura
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnAgregarFormaPago_Click(object sender, EventArgs e)
