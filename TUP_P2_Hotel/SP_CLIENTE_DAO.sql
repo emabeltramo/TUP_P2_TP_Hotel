@@ -19,7 +19,7 @@ END;
 
 --INSERTAR CLIENTE
 CREATE PROCEDURE SP_INSERTAR_CLIENTE
-@id int,@nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil int,
+@nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil int,
 @dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int
 AS 
 BEGIN 
@@ -39,7 +39,7 @@ END;
 
 --SELECT TIPOCLIENTE
 CREATE PROCEDURE SP_CONSULTAR_TIPOCLIENTE
-@id int
+
 AS 
 BEGIN 
 	SELECT * FROM TIPOS_CLIENTES
@@ -47,8 +47,11 @@ END;
 
 --SELECT TIPODOCUMENTO
 CREATE PROCEDURE SP_CONSULTAR_TIPODOCUMENTO
-@id int
+
 AS 
 BEGIN 
 	SELECT * FROM TIPO_DOCUMENTOS
 END;
+
+
+exec SP_CONSULTAR_TIPOCLIENTE

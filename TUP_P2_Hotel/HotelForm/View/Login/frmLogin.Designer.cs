@@ -29,117 +29,111 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSingIn = new System.Windows.Forms.Button();
-            this.cboUsuario = new System.Windows.Forms.ComboBox();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.lblObligatorio = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            btnSingIn = new Button();
+            cboUsuario = new ComboBox();
+            lblUsuario = new Label();
+            lblObligatorio = new Label();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(984, 612);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(984, 574);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click_1;
             // 
             // btnSingIn
             // 
-            this.btnSingIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSingIn.AutoSize = true;
-            this.btnSingIn.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnSingIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSingIn.Font = new System.Drawing.Font("Eras Medium ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSingIn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSingIn.Location = new System.Drawing.Point(414, 410);
-            this.btnSingIn.Name = "btnSingIn";
-            this.btnSingIn.Size = new System.Drawing.Size(143, 26);
-            this.btnSingIn.TabIndex = 1;
-            this.btnSingIn.Text = "Inciar Sesión";
-            this.btnSingIn.UseVisualStyleBackColor = false;
-            this.btnSingIn.Click += new System.EventHandler(this.btnSingIn_Click);
+            btnSingIn.Anchor = AnchorStyles.None;
+            btnSingIn.AutoSize = true;
+            btnSingIn.BackColor = Color.Gainsboro;
+            btnSingIn.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSingIn.Font = new Font("Eras Medium ITC", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSingIn.ImageAlign = ContentAlignment.TopCenter;
+            btnSingIn.Location = new Point(414, 384);
+            btnSingIn.Name = "btnSingIn";
+            btnSingIn.Size = new Size(143, 24);
+            btnSingIn.TabIndex = 1;
+            btnSingIn.Text = "Inciar Sesión";
+            btnSingIn.UseVisualStyleBackColor = false;
+            btnSingIn.Click += btnSingIn_Click;
             // 
             // cboUsuario
             // 
-            this.cboUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboUsuario.FormattingEnabled = true;
-            this.cboUsuario.Items.AddRange(new object[] {
-            "mateo",
-            "delfi",
-            "ema",
-            "claudio",
-            "fede",
-            "mati"});
-            this.cboUsuario.Location = new System.Drawing.Point(371, 349);
-            this.cboUsuario.Name = "cboUsuario";
-            this.cboUsuario.Size = new System.Drawing.Size(224, 24);
-            this.cboUsuario.TabIndex = 2;
+            cboUsuario.Anchor = AnchorStyles.None;
+            cboUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboUsuario.FormattingEnabled = true;
+            cboUsuario.Items.AddRange(new object[] { "mateo", "delfi", "ema", "claudio", "fede", "mati" });
+            cboUsuario.Location = new Point(371, 327);
+            cboUsuario.Name = "cboUsuario";
+            cboUsuario.Size = new Size(224, 23);
+            cboUsuario.TabIndex = 2;
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsuario.Font = new System.Drawing.Font("Eras Medium ITC", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUsuario.Location = new System.Drawing.Point(370, 253);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(154, 18);
-            this.lblUsuario.TabIndex = 3;
-            this.lblUsuario.Text = "INGRESE SU USUARIO";
+            lblUsuario.Anchor = AnchorStyles.None;
+            lblUsuario.AutoSize = true;
+            lblUsuario.BackColor = Color.Transparent;
+            lblUsuario.Font = new Font("Eras Medium ITC", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUsuario.Location = new Point(370, 237);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(154, 18);
+            lblUsuario.TabIndex = 3;
+            lblUsuario.Text = "INGRESE SU USUARIO";
             // 
             // lblObligatorio
             // 
-            this.lblObligatorio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblObligatorio.AutoSize = true;
-            this.lblObligatorio.BackColor = System.Drawing.Color.Transparent;
-            this.lblObligatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblObligatorio.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblObligatorio.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblObligatorio.Location = new System.Drawing.Point(521, 251);
-            this.lblObligatorio.Name = "lblObligatorio";
-            this.lblObligatorio.Size = new System.Drawing.Size(15, 20);
-            this.lblObligatorio.TabIndex = 4;
-            this.lblObligatorio.Text = "*";
+            lblObligatorio.Anchor = AnchorStyles.None;
+            lblObligatorio.AutoSize = true;
+            lblObligatorio.BackColor = Color.Transparent;
+            lblObligatorio.FlatStyle = FlatStyle.Flat;
+            lblObligatorio.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblObligatorio.ForeColor = Color.Firebrick;
+            lblObligatorio.Location = new Point(521, 235);
+            lblObligatorio.Name = "lblObligatorio";
+            lblObligatorio.Size = new Size(15, 20);
+            lblObligatorio.TabIndex = 4;
+            lblObligatorio.Text = "*";
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(370, 274);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 16);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Este campo es obligatorio";
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = Color.Firebrick;
+            label1.Location = new Point(370, 257);
+            label1.Name = "label1";
+            label1.Size = new Size(143, 15);
+            label1.TabIndex = 5;
+            label1.Text = "Este campo es obligatorio";
             // 
-            // Form1
+            // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 612);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblObligatorio);
-            this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.cboUsuario);
-            this.Controls.Add(this.btnSingIn);
-            this.Controls.Add(this.pictureBox1);
-            this.MinimumSize = new System.Drawing.Size(1000, 651);
-            this.Name = "Form1";
-            this.Text = "Iniciar Sesion";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(984, 574);
+            Controls.Add(label1);
+            Controls.Add(lblObligatorio);
+            Controls.Add(lblUsuario);
+            Controls.Add(cboUsuario);
+            Controls.Add(btnSingIn);
+            Controls.Add(pictureBox1);
+            MinimumSize = new Size(1000, 613);
+            Name = "frmLogin";
+            Text = "Iniciar Sesion";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

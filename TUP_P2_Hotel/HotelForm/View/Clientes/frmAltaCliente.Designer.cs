@@ -30,12 +30,12 @@
         {
             lblCliente = new Label();
             btnCancelar = new Button();
+            btnSalirCliente = new Button();
             btnCargarCliente = new Button();
             txtNombre = new TextBox();
             txtApellido = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            cboTipoDocumento = new ComboBox();
             label3 = new Label();
             cboTipoCliente = new ComboBox();
             label4 = new Label();
@@ -47,6 +47,7 @@
             textBox6 = new TextBox();
             txtEmail = new Label();
             label7 = new Label();
+            cboTipoDocumento = new ComboBox();
             SuspendLayout();
             // 
             // lblCliente
@@ -70,6 +71,17 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // btnSalirCliente
+            // 
+            btnSalirCliente.Anchor = AnchorStyles.Bottom;
+            btnSalirCliente.Location = new Point(316, 446);
+            btnSalirCliente.Name = "btnSalirCliente";
+            btnSalirCliente.Size = new Size(75, 23);
+            btnSalirCliente.TabIndex = 41;
+            btnSalirCliente.Text = "Salir";
+            btnSalirCliente.UseVisualStyleBackColor = true;
+            btnSalirCliente.Click += btnSalirCliente_Click;
+            // 
             // btnCargarCliente
             // 
             btnCargarCliente.Anchor = AnchorStyles.Bottom;
@@ -77,7 +89,7 @@
             btnCargarCliente.Name = "btnCargarCliente";
             btnCargarCliente.Size = new Size(75, 23);
             btnCargarCliente.TabIndex = 40;
-            btnCargarCliente.Text = "Guardar";
+            btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
             btnCargarCliente.Click += btnCargarCliente_Click;
             // 
@@ -116,16 +128,6 @@
             label2.Size = new Size(120, 15);
             label2.TabIndex = 48;
             label2.Text = "Numero Documento:";
-            // 
-            // cboTipoDocumento
-            // 
-            cboTipoDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            cboTipoDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTipoDocumento.FormattingEnabled = true;
-            cboTipoDocumento.Location = new Point(553, 203);
-            cboTipoDocumento.Name = "cboTipoDocumento";
-            cboTipoDocumento.Size = new Size(121, 23);
-            cboTipoDocumento.TabIndex = 51;
             // 
             // label3
             // 
@@ -231,11 +233,23 @@
             label7.TabIndex = 61;
             label7.Text = "CARGA DE CLIENTES DEL HOTEL SHIBUYA";
             // 
+            // cboTipoDocumento
+            // 
+            cboTipoDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cboTipoDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipoDocumento.FormattingEnabled = true;
+            cboTipoDocumento.Location = new Point(553, 206);
+            cboTipoDocumento.Name = "cboTipoDocumento";
+            cboTipoDocumento.Size = new Size(121, 23);
+            cboTipoDocumento.TabIndex = 62;
+            cboTipoDocumento.SelectedIndexChanged += cboTipoDocumento_SelectedIndexChanged;
+            // 
             // frmAltaCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(739, 478);
+            Controls.Add(cboTipoDocumento);
             Controls.Add(label7);
             Controls.Add(txtTelefono);
             Controls.Add(label6);
@@ -246,7 +260,6 @@
             Controls.Add(txtNroDocumento);
             Controls.Add(cboTipoCliente);
             Controls.Add(label4);
-            Controls.Add(cboTipoDocumento);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(txtApellido);
@@ -254,6 +267,7 @@
             Controls.Add(txtNombre);
             Controls.Add(lblCliente);
             Controls.Add(btnCancelar);
+            Controls.Add(btnSalirCliente);
             Controls.Add(btnCargarCliente);
             Name = "frmAltaCliente";
             Text = "frmAgregarCliente";
@@ -266,12 +280,12 @@
 
         private Label lblCliente;
         private Button btnCancelar;
+        private Button btnSalirCliente;
         private Button btnCargarCliente;
         private TextBox txtNombre;
         private TextBox txtApellido;
         private Label label1;
         private Label label2;
-        private ComboBox cboTipoDocumento;
         private Label label3;
         private ComboBox cboTipoCliente;
         private Label label4;
@@ -283,5 +297,6 @@
         private TextBox textBox6;
         private Label txtEmail;
         private Label label7;
+        private ComboBox cboTipoDocumento;
     }
 }

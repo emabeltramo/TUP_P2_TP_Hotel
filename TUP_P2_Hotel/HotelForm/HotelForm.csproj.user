@@ -7,6 +7,9 @@
     <Compile Update="View\Clientes\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Clientes\frmModificarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\Consultas\frmConsultarReserva.cs">
       <SubType>Form</SubType>
     </Compile>

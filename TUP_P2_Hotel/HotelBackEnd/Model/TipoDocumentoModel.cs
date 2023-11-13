@@ -10,17 +10,18 @@ namespace HotelBackEnd.Model
     {
         public int Id { get; set; }
         public string Descri { get; set; }
+    
 
-        public TipoDocumentoModel()
-        {
-            Id = 0;
-            Descri = string.Empty;
-        }
-
-        public TipoDocumentoModel(int id,string descri)
-        {
-            Id=id;
-            Descri=descri;  
-        }
+    public TipoDocumentoModel()
+    {
+        Id = 0;
+        Descri = string.Empty;
     }
+
+    public TipoDocumentoModel(int id, string descri)
+    {
+        Id = id;
+        Descri = descri;
+    }
+}
 }

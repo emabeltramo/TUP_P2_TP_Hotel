@@ -1,4 +1,6 @@
-﻿using HotelBackEnd.Front.Interface;
+﻿using HotelBackEnd.DAO.Implementation;
+using HotelBackEnd.DAO.Interface;
+using HotelBackEnd.Front.Interface;
 using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
@@ -8,31 +10,38 @@ using System.Threading.Tasks;
 
 namespace HotelBackEnd.Front.Implementation
 {
-    internal class ReservaFront : IReservaFront
+    public class ReservaFront : IReservaFront
     {
+        private IReservaDao reservaDao;
+        public ReservaFront()
+        {
+            reservaDao = new ReservaDao();
+        }
         public List<ClienteModel> GetClientes()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetClientes();
         }
 
-        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateOnly desde, DateOnly hasta, int idHotel)
+        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
         {
-            throw new NotImplementedException();
+            return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
         }
 
         public List<HotelModel> GetHoteles()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetHoteles();
+
         }
 
         public List<LocalidadModel> GetLocalidad()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetLocalidades();
+
         }
 
         public List<ProvinciaModel> GetProvincia()
         {
-            throw new NotImplementedException();
+            return reservaDao.GetProvincias();
         }
     }
 }

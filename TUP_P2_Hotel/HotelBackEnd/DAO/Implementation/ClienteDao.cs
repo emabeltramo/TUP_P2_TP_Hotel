@@ -18,12 +18,16 @@ namespace HotelBackEnd.DAO.Implementation
             bool ok = true;
             SqlConnection cnn = HelperDao.GetInstance().GetConnection();
             SqlTransaction t = null;
+            SqlCommand cmd = new SqlCommand();
 
             try
             {
                 cnn.Open();
                 t = cnn.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("SP_MODIFICAR_CLIENTE", cnn, t);
+                cmd.Connection = cnn;
+                cmd.Transaction = t;
+                cmd.CommandText = "SP_MODIFICAR_CLIENTE";
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", cliente.Id_Cliente);
@@ -32,13 +36,12 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
                 cmd.Parameters.AddWithValue("@dni", cliente.DNI);
                 cmd.Parameters.AddWithValue("@email", cliente.Email);
-                cmd.Parameters.AddWithValue("@celular", cliente.Celular);
                 cmd.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
                 cmd.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
                 cmd.ExecuteNonQuery();
 
-
-
+               
+                
                 t.Commit();
             }
 
@@ -67,19 +70,17 @@ namespace HotelBackEnd.DAO.Implementation
             {
                 conexion.Open();
                 t = conexion.BeginTransaction();
-                SqlCommand comando = new SqlCommand("SP_INSERTAR_CLIENTE",conexion,t);
+                SqlCommand comando = new SqlCommand("SP_INSERTAR_CLIENTE", conexion, t);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
                 comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
                 comando.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
                 comando.Parameters.AddWithValue("@dni", cliente.DNI);
-                comando.Parameters.AddWithValue("@cuil", cliente.CUIL);
                 comando.Parameters.AddWithValue("@email", cliente.Email);
-                comando.Parameters.AddWithValue("@celular", cliente.Celular);
                 comando.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
                 comando.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
-               
+
                 comando.ExecuteNonQuery();
 
                 t.Commit();
@@ -133,10 +134,26 @@ namespace HotelBackEnd.DAO.Implementation
             return resultado;
         }
 
+        //public List<TipoClienteModel> GetTipoCliente()
+        //{
+        //    List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
+        //    DataTable tabla = HelperDao.GetInstance().GetSp("SP_CONSULTAR_TIPOCLIENTE");
+        //    foreach (DataRow r in tabla.Rows)
+        //    {
+        //        int id = Convert.ToInt32(r["ID"].ToString());
+        //        string descripcion = r["Descripcion"].ToString();
+        //        TipoClienteModel oTipoCliente = new TipoClienteModel(id, descripcion);
+        //        lTipoClientes.Add(oTipoCliente);
+        //    }
+        //    return lTipoClientes;
+        //}
+
+
         public List<TipoClienteModel> GetTipoCliente()
         {
             List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
-            DataTable tabla = HelperDao.GetInstance().GetConsultSp("SP_CONSULTAR_TIPOCLIENTE", "TIPOS_CLIENTES");
+            
+            DataTable tabla = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPOS_CLIENTES ORDER BY 2");
             foreach (DataRow r in tabla.Rows)
             {
                 int id = Convert.ToInt32(r["ID"].ToString());
@@ -147,18 +164,33 @@ namespace HotelBackEnd.DAO.Implementation
             return lTipoClientes;
         }
 
+
         public List<TipoDocumentoModel> GetTipoDocumento()
         {
-            List<TipoDocumentoModel> lTipoDoc = new List<TipoDocumentoModel>();
-            DataTable tabla = HelperDao.GetInstance().GetConsultSp("SP_CONSULTAR_TIPODOCUMENTO", "TIPOS_CLIENTES");
-            foreach (DataRow r in tabla.Rows)
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
+            try
             {
-                int id = Convert.ToInt32(r["ID"].ToString());
-                string descripcion = r["TIPO_DOCUMENTO"].ToString();
-                TipoDocumentoModel oTipoDoc = new TipoDocumentoModel(id, descripcion);
-                lTipoDoc.Add(oTipoDoc);
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPO_DOCUMENTOS ORDER BY 2");
+                foreach (DataRow row in table.Rows)
+                {
+                    int id = int.Parse(row["ID"].ToString());
+                    string Descri = row["TIPO_DOCUMENTO"].ToString();
+                    TipoDocumentoModel p = new TipoDocumentoModel(id, Descri);
+                    result.Add(p);
+                }
             }
-            return lTipoDoc;
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error en GetTiposDocumento", ex);
+            }
+
+            return result;
         }
     }
-}
+
+
+    }
+
