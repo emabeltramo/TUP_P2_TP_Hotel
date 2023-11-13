@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,13 +40,15 @@ namespace HotelForm.View.Clientes
         }
         private async void CargarCombosAsync()
         {
+
+            Debug.WriteLine(tipoDocumento.Count());
             tipoDocumento = await clienteService.GetTipoDocumentosAsync();
             cboTipoDocumento.DataSource = tipoDocumento;
             cboTipoDocumento.DisplayMember = "Descri";
             cboTipoDocumento.ValueMember = "Id";
 
-
         }
+
         private void txtNroDocumento_TextChanged(object sender, EventArgs e)
         {
 

@@ -53,7 +53,7 @@ namespace HotelForm.Service.Implementation
         {
             string url = host + "/PutCliente";
             var cuerpo = JsonConvert.SerializeObject(cliente);
-            var response = await ClientSingleton.GetInstance().PutAsync(url, cuerpo);
+            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
 
             return response;
         }
