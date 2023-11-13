@@ -10,7 +10,7 @@
     <Compile Update="View\Principal\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\Reserva\frmModificarReserva.cs">
+    <Compile Update="View\Reserva\frmReservas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\Reserva\frmNuevaReserva.cs">

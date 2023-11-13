@@ -15,7 +15,9 @@ namespace HotelForm.Service.Interface
         Task<List<ProvinciaModel>> GetProvinciaAsync();
         Task<List<LocalidadModel>> GetLocalidadAsync();
         Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel);
+        Task<List<EstadoReservaModel>> GetEstadosReservaAsync();
         Task<List<HotelServicioModel>> GetServiciosHotelAsync(int idHotel);
+        Task<List<ReservaModel>> GetReservasAsync(DateTime desde, DateTime hasta, int idHotel, int idCliente, int idEstado);
         Task<HttpResponse> PostReservaAsync(ReservaModel Reservar);
     }
 }

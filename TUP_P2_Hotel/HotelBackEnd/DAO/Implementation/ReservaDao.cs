@@ -15,7 +15,7 @@ namespace HotelBackEnd.DAO.Implementation
     public class ReservaDao : IReservaDao
     {
         private string mensaje = string.Empty;
-        
+
         public List<ClienteModel> GetClientes()
         {
             ProccesData procces = new ProccesData();
@@ -27,7 +27,7 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.CommandText = "select * from clientes order by apellido, nombre";
                 cmd.Connection.Open();
                 var reader = cmd.ExecuteReader();
-                if(reader.HasRows)
+                if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
@@ -50,7 +50,7 @@ namespace HotelBackEnd.DAO.Implementation
                     }
                 }
 
-                
+
             }
             catch (Exception)
             {
@@ -95,15 +95,15 @@ namespace HotelBackEnd.DAO.Implementation
                         {
                             Id_Habitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_HABITACION").Valor ?? 0,
                             CamaMax = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CAMA_MAX").Valor ?? 0,
-                            Codigo= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO_HABITACION").Valor ?? string.Empty,
-                            Telefono= reg.FirstOrDefault(m => m.Campo.ToUpper() == "TELEFONO").Valor ?? 0,
-                            
+                            Codigo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO_HABITACION").Valor ?? string.Empty,
+                            Telefono = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TELEFONO").Valor ?? 0,
+
                         };
                         var categoria = new CatHabitacionModel()
                         {
                             Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID_CATEGORIA").Valor ?? 0,
-                            Descri= reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty,
-                            Precio= reg.FirstOrDefault(m => m.Campo.ToUpper() == "PRECIO").Valor ?? 0,
+                            Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty,
+                            Precio = reg.FirstOrDefault(m => m.Campo.ToUpper() == "PRECIO").Valor ?? 0,
 
                         };
                         habitacion.Categoria = categoria;
@@ -162,8 +162,8 @@ namespace HotelBackEnd.DAO.Implementation
                 {
                     int id = int.Parse(row["ID_LOCALIDAD"].ToString());
                     string nameLoc = row["NOMBRE"].ToString();
-                    int  idprov= int.Parse(row["ID_PROVINCIAS"].ToString());
-                    LocalidadModel p = new LocalidadModel(id, nameLoc,idprov);
+                    int idprov = int.Parse(row["ID_PROVINCIAS"].ToString());
+                    LocalidadModel p = new LocalidadModel(id, nameLoc, idprov);
                     lstLocalidades.Add(p);
                 }
             }
@@ -172,7 +172,7 @@ namespace HotelBackEnd.DAO.Implementation
 
                 throw new Exception("Error en GetLocalidades", ex);
             }
-    
+
             return lstLocalidades;
         }
 
@@ -195,7 +195,7 @@ namespace HotelBackEnd.DAO.Implementation
 
                 throw new Exception("Error en GetProvincias", ex);
             }
-            
+
             return lstProvincias;
         }
 
@@ -212,7 +212,7 @@ namespace HotelBackEnd.DAO.Implementation
                     "from HOTEL_SERVICIOS " +
                     "inner join TIPOS_SERVICIOS on HOTEL_SERVICIOS.SERVICIO=TIPOS_SERVICIOS.ID " +
                     "where HOTEL_SERVICIOS.HOTEL=@idHotel";
-                cmd.Parameters.Add(new SqlParameter("@idHotel",(object)idHotel));
+                cmd.Parameters.Add(new SqlParameter("@idHotel", (object)idHotel));
                 cmd.Connection.Open();
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -225,7 +225,7 @@ namespace HotelBackEnd.DAO.Implementation
                             IdServicioHotel = reg.FirstOrDefault(m => m.Campo.ToUpper() == "HS_ID").Valor ?? 0,
                             Precio = reg.FirstOrDefault(m => m.Campo.ToUpper() == "HS_PRECIO").Valor ?? 0
                         };
-                         servicio.Servicio = new TipoServicioModel()
+                        servicio.Servicio = new TipoServicioModel()
                         {
                             Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TS_ID").Valor ?? 0,
                             Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TS_DESC").Valor ?? 0
@@ -264,7 +264,7 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.CommandText = "ps_InsertReserva";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(p);
-                cmd.Parameters.AddWithValue("@cliente",(object)reserva.Cliente.Id_Cliente);
+                cmd.Parameters.AddWithValue("@cliente", (object)reserva.Cliente.Id_Cliente);
                 cmd.Parameters.AddWithValue("@ingreso", (object)reserva.Ingreso);
                 cmd.Parameters.AddWithValue("@salida", (object)reserva.Salida);
                 //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
@@ -280,7 +280,7 @@ namespace HotelBackEnd.DAO.Implementation
                     cmd.Parameters.AddWithValue("@monto", (object)item.Monto);
                     cmd.CommandText = "ps_InsertReservaHabitacion";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    if(cmd.ExecuteNonQuery()!=1)
+                    if (cmd.ExecuteNonQuery() != 1)
                     {
                         this.mensaje = "No se inserto habitacion en reserva";
                         t.Rollback();
@@ -323,6 +323,146 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
+
+        public List<EstadoReservaModel> GetEstadosReserva()
+        {
+
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<EstadoReservaModel> result = new List<EstadoReservaModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "select * from ESTADOS_RESERVA";
+
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var model = new EstadoReservaModel()
+                        {
+                            IdEstadoReserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty
+                        };
+
+                        result.Add(model);
+                    }
+                }
+
+
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public List<ReservaModel> GetReservas(DateTime desde, DateTime hasta, int idHotel)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<ReservaModel> result = new List<ReservaModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_Reservas";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                var p = new List<SqlParameter>();
+                p.Add(new SqlParameter("@desde", (object)desde ?? DBNull.Value));
+                p.Add(new SqlParameter("@hasta", (object)hasta ?? DBNull.Value));
+                p.Add(new SqlParameter("@hotel", (object)idHotel ?? DBNull.Value));
+
+                cmd.Parameters.AddRange(p.ToArray());
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var model = new ReservaModel()
+                        {
+                            IdReserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            Ingreso = reg.FirstOrDefault(m => m.Campo.ToUpper() == "INGRESO").Valor ?? DateTime.Now.Date,
+                            Salida = reg.FirstOrDefault(m => m.Campo.ToUpper() == "SALIDA").Valor ?? DateTime.Now.Date,
+                            Fecha = reg.FirstOrDefault(m => m.Campo.ToUpper() == "FECHA_RESERVA").Valor ?? DateTime.Now.Date,
+
+                        };
+                        model.Estado.IdEstadoReserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ESTADO").Valor ?? 0;
+                        model.Cliente.Id_Cliente= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? 0;
+                        model.Empleado.Legajo= reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMPLEADO").Valor ?? 0;
+
+
+                        result.Add(model);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public List<EmpleadoModel> GetEmpleados()
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<EmpleadoModel> result = new List<EmpleadoModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "select legajo,DNI,NOMBRE,APELLIDO,TIPO_DNI,TIPO_DOCUMENTO " +
+                    "from EMPLEADO inner join TIPO_DOCUMENTOS on EMPLEADO.TIPO_DNI=TIPO_DOCUMENTOS.ID";
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var cliente = new EmpleadoModel()
+                        {
+                            Apellido = reg.FirstOrDefault(m => m.Campo.ToUpper() == "APELLIDO").Valor ?? string.Empty,
+                            Nombre = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NOMBRE").Valor ?? string.Empty,
+                            DNI = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DNI").Valor ?? 0,
+                           Legajo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "LEGAJO").Valor ?? 0,
+
+
+
+                        };
+                        cliente.TDoc.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_DNI").Valor ?? 0;
+                        cliente.TDoc.Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_DOCUMENTO").Valor ?? string.Empty;
+                        result.Add(cliente);
+                    }
+                }
+
+
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
     }
-    
 }

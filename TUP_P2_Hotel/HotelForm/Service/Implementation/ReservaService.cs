@@ -30,6 +30,18 @@ namespace HotelForm.Service.Implementation
             return result;
         }
 
+        public async Task<List<EstadoReservaModel>> GetEstadosReservaAsync()
+        {
+            string url = host + "/GetEstadosR";
+            List<EstadoReservaModel> result = new List<EstadoReservaModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<EstadoReservaModel>>(response.Data);
+            }
+            return result;
+        }
+
         public async Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel)
         {
             string url = host + "/GetHabDispo?";
@@ -79,6 +91,27 @@ namespace HotelForm.Service.Implementation
             if (response != null && response.SuccessStatus)
             {
                 result = JsonConvert.DeserializeObject<List<ProvinciaModel>>(response.Data);
+            }
+            return result;
+        }
+
+        public async Task<List<ReservaModel>> GetReservasAsync(DateTime desde, DateTime hasta, int idHotel, int idCliente,int idEstado)
+        {
+            string url = host + "/GetReservas?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["desde"] = desde.ToString("MM/dd/yyyy");
+            query["hasta"] = hasta.ToString("MM/dd/yyyy");
+            query["idHotel"] = idHotel.ToString();
+            query["idCliente"] = idCliente.ToString();
+            query["idEstado"] = idEstado.ToString();
+
+
+
+            List<ReservaModel> result = new List<ReservaModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ReservaModel>>(response.Data);
             }
             return result;
         }

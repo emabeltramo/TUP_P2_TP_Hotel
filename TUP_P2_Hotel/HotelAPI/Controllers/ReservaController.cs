@@ -104,6 +104,20 @@ namespace HotelAPI.Controllers
                 return StatusCode(500, "Error Interno!! Intente luego");
             }
         }
+        [HttpGet("/GetEstadosR")]
+        public IActionResult GetEstadosReserva()
+        {
+            List<EstadoReservaModel> lsEstados;
+            try
+            {
+                lsEstados = front.GetEstadosReserva();
+                return Ok(lsEstados);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Error Interno!! Intente luego");
+            }
+        }
         [HttpGet("/GetHoteServ")]
         public IActionResult GetHabDisponibles(int idHotel)
         {
@@ -142,6 +156,51 @@ namespace HotelAPI.Controllers
                     return StatusCode(500, mensaje);
                 }
                 return StatusCode(201,mensaje);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+        [HttpGet("/GetReservas")]
+        public IActionResult GetReservas([FromQuery] DateTime desde, [FromQuery] DateTime hasta, 
+            [FromQuery] int idHotel,[FromQuery] int idCliente, [FromQuery] int idEstado)
+        {
+            try
+            {
+
+
+                if (desde > hasta)
+                {
+                    var temp = desde;
+                    desde = hasta;
+                    hasta = temp;
+                }
+                var result = front.GetReservas(desde, hasta,idHotel);
+                var clientes = front.GetClientes();
+                var empleados = front.GetEmpleados();
+                var estados = front.GetEstadosReserva();
+
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar las reservas");
+                }
+                if (idCliente != 0)
+                    result.RemoveAll(m => m.Cliente.Id_Cliente != idCliente);
+                if(idEstado !=0)
+                    result.RemoveAll(m => m.Estado.IdEstadoReserva != idEstado);
+
+                foreach (var item in result)
+                {
+                    item.Estado = estados.FirstOrDefault(m=>m.IdEstadoReserva ==item.Estado.IdEstadoReserva);
+                    item.Cliente = clientes.FirstOrDefault(m => m.Id_Cliente == item.Cliente.Id_Cliente);
+                    item.Empleado = empleados.FirstOrDefault(m => m.Legajo == item.Empleado.Legajo);
+                }
+
+
+                return Ok(result);
+
             }
             catch (Exception)
             {

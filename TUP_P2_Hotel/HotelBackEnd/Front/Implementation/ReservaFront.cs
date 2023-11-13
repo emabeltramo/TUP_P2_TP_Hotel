@@ -24,6 +24,16 @@ namespace HotelBackEnd.Front.Implementation
             return reservaDao.GetClientes();
         }
 
+        public List<EmpleadoModel> GetEmpleados()
+        {
+            return reservaDao.GetEmpleados();
+        }
+
+        public List<EstadoReservaModel> GetEstadosReserva()
+        {
+            return reservaDao.GetEstadosReserva();
+        }
+
         public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
         {
             return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
@@ -49,6 +59,11 @@ namespace HotelBackEnd.Front.Implementation
         public List<ProvinciaModel> GetProvincia()
         {
             return reservaDao.GetProvincias();
+        }
+
+        public List<ReservaModel> GetReservas(DateTime desde, DateTime hasta, int idHotel)
+        {
+            return reservaDao.GetReservas(desde, hasta,idHotel);
         }
 
         public List<HotelServicioModel> GetServiciosHotel(int idHotel)
