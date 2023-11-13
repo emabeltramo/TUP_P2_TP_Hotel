@@ -986,11 +986,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+      "projectUniqueName": "C:\\Users\\dborl\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
       "projectName": "HotelForm",
-      "projectPath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
+      "projectPath": "C:\\Users\\dborl\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\HotelForm.csproj",
       "packagesPath": "C:\\Users\\dborl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\",
+      "outputPath": "C:\\Users\\dborl\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelForm\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dborl\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1007,8 +1007,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
-              "projectPath": "C:\\Users\\dborl\\OneDrive\\Documentos\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj"
+            "C:\\Users\\dborl\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
+              "projectPath": "C:\\Users\\dborl\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj"
             }
           }
         }

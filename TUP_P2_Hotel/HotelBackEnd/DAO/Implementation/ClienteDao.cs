@@ -134,19 +134,22 @@ namespace HotelBackEnd.DAO.Implementation
             return resultado;
         }
 
-        public List<TipoClienteModel> GetTipoCliente()
-        {
-            List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
-            DataTable tabla = HelperDao.GetInstance().GetSp("SP_CONSULTAR_TIPOCLIENTE");
-            foreach (DataRow r in tabla.Rows)
+      
+            public List<TipoClienteModel> GetTipoCliente()
             {
-                int id = Convert.ToInt32(r["ID"].ToString());
-                string descripcion = r["Descripcion"].ToString();
-                TipoClienteModel oTipoCliente = new TipoClienteModel(id, descripcion);
-                lTipoClientes.Add(oTipoCliente);
+                List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
+
+                DataTable tabla = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPOS_CLIENTES ORDER BY 2");
+                foreach (DataRow r in tabla.Rows)
+                {
+                    int id = Convert.ToInt32(r["ID"].ToString());
+                    string descripcion = r["Descripcion"].ToString();
+                    TipoClienteModel oTipoCliente = new TipoClienteModel(id, descripcion);
+                    lTipoClientes.Add(oTipoCliente);
+                }
+                return lTipoClientes;
             }
-            return lTipoClientes;
-        }
+        
 
         public List<TipoDocumentoModel> GetTipoDocumento()
         {

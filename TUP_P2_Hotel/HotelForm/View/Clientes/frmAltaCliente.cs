@@ -23,6 +23,7 @@ namespace HotelForm.View.Clientes
         IReservaService service;
         IClienteService clienteService;
         private List<TipoDocumentoModel> tipoDocumento;
+        private List<TipoClienteModel> tipoCliente;
 
         public frmAltaCliente(IFactoryService factory)
         {
@@ -46,8 +47,12 @@ namespace HotelForm.View.Clientes
             cboTipoDocumento.DataSource = tipoDocumento;
             cboTipoDocumento.DisplayMember = "Descri";
             cboTipoDocumento.ValueMember = "Id";
+             tipoCliente = await clienteService.GetTipoClientesAsync();
+            cboTipoCliente.DataSource = tipoCliente;
+            cboTipoCliente.DisplayMember = "Descri";
+            cboTipoCliente.ValueMember = "Id";
 
-        }
+    }
 
         private void txtNroDocumento_TextChanged(object sender, EventArgs e)
         {
