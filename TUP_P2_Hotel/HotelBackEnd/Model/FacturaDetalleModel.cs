@@ -12,5 +12,9 @@ namespace HotelBackEnd.Model
         public TipoServicioModel Servicio { get; set; }
         public int Cantidad { get; set; }
         public decimal Monto { get; set; }
+        public double CalcularSubTotal()
+        {
+            return Monto * Cantidad;
+        }
     }
 }

@@ -18,5 +18,11 @@ namespace HotelBackEnd.Model
         public string Celular { get; set; }
         public TipoClienteModel TCliente { get; set; }
         public string RazonSocial { get; set; }
+
+        public string NombreCompleto
+        {
+            get { return $"{Apellido} - {Nombre}"; }
+        }
+        
     }
 }
