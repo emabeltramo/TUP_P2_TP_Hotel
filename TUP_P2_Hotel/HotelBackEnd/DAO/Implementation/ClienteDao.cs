@@ -150,18 +150,30 @@ namespace HotelBackEnd.DAO.Implementation
 
         public List<TipoDocumentoModel> GetTipoDocumento()
         {
-            List<TipoDocumentoModel> lTipoDoc = new List<TipoDocumentoModel>();
-            DataTable tabla = HelperDao.GetInstance().GetSp("SP_CONSULTAR_TIPODOCUMENTO");
-            foreach (DataRow r in tabla.Rows)
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
+            try
             {
-                int id = Convert.ToInt32(r["ID"].ToString());
-                string descripcion = r["TIPO_DOCUMENTO"].ToString();
-                TipoDocumentoModel oTipoDoc = new TipoDocumentoModel(id, descripcion);
-                lTipoDoc.Add(oTipoDoc);
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPO_DOCUMENTOS ORDER BY 2");
+                foreach (DataRow row in table.Rows)
+                {
+                    int id = int.Parse(row["ID"].ToString());
+                    string Descri = row["TIPO_DOCUMENTO"].ToString();
+                    TipoDocumentoModel p = new TipoDocumentoModel(id, Descri);
+                    result.Add(p);
+                }
             }
-            return lTipoDoc;
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error en GetTiposDocumento", ex);
+            }
+
+            return result;
         }
+    }
 
 
     }
-}
+

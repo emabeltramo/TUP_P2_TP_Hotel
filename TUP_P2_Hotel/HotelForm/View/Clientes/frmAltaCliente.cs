@@ -20,26 +20,28 @@ namespace HotelForm.View.Clientes
     {
         IFactoryService factory;
         IReservaService service;
-        
-        
+        IClienteService clienteService;
+        private List<TipoDocumentoModel> tipoDocumento;
+
         public frmAltaCliente(IFactoryService factory)
         {
             this.factory = factory;
             service = factory.CreateReservaService();
+            clienteService = factory.CreateClienteService();
             InitializeComponent();
+
         }
 
         private async void frmAgregarCliente_Load(object sender, EventArgs e)
         {
 
-            CargarProductosAsync();
+            CargarCombosAsync();
         }
-        private async void CargarProductosAsync()
+        private async void CargarCombosAsync()
         {
-            List<TipoDocumentoModel> tipoDocumento = await service.GetTipoDocumentosAsync();
+            tipoDocumento = await clienteService.GetTipoDocumentosAsync();
             cboTipoDocumento.DataSource = tipoDocumento;
-            cboTipoDocumento.DisplayMember = "Descri";
-            cboTipoDocumento.ValueMember = "Id";
+
 
 
         }
@@ -54,29 +56,29 @@ namespace HotelForm.View.Clientes
 
         private void btnCargarCliente_Click(object sender, EventArgs e)
         {
-            if (Validar()) 
+            if (Validar())
+            {
+                ClienteModel cliente = new ClienteModel();
+                cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
+                cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
+                if (cboTipoCliente.SelectedIndex == 0)//aca seria tipo particular por ej
                 {
-                    ClienteModel cliente = new ClienteModel();
-                    cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
-                    cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
-                    if (cboTipoCliente.SelectedIndex == 0)//aca seria tipo particular por ej
-                    {
-                        cliente.Nombre = txtNombre.Text;
-                        cliente.Apellido = txtApellido.Text;
-                        cliente.DNI = txtNroDocumento.Text;
-                    }
-                    else
-                    {
-                        cliente.Nombre = string.Empty;
-                        cliente.Apellido = string.Empty;
-                        cliente.RazonSocial = txtRazonSocial.Text;
-                        cliente.DNI = string.Empty;
-                        cliente.CUIL = txtNroDocumento.Text;
-                    }
-                    cliente.Email = txtEmail.Text;
-                    cliente.Celular = txtTelefono.Text;
-                    service.AltaCliente(cliente);
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellido = txtApellido.Text;
+                    cliente.DNI = txtNroDocumento.Text;
                 }
+                else
+                {
+                    cliente.Nombre = string.Empty;
+                    cliente.Apellido = string.Empty;
+                    cliente.RazonSocial = txtRazonSocial.Text;
+                    cliente.DNI = string.Empty;
+                    cliente.CUIL = txtNroDocumento.Text;
+                }
+                cliente.Email = txtEmail.Text;
+                cliente.Celular = txtTelefono.Text;
+                clienteService.AltaCliente(cliente);
+            }
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -150,6 +152,12 @@ namespace HotelForm.View.Clientes
             }
 
             return true;
+
+        }
+
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCombosAsync();
 
         }
     }

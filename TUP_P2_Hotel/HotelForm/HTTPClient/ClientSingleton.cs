@@ -11,7 +11,7 @@ namespace HotelForm.HTTPClient
         private static ClientSingleton instance;
         private HttpClient client;
 
-        public ClientSingleton()
+        private ClientSingleton()
         {
             client = new HttpClient();
         }
@@ -25,34 +25,47 @@ namespace HotelForm.HTTPClient
             }
             return instance;
         }
-        public async Task<string> GetAsync(string url)
+        public async Task<HttpResponse> GetAsync(string url)
         {
             var result = await client.GetAsync(url);
             var content = "";
-            if (result.IsSuccessStatusCode)
-                content = await result.Content.ReadAsStringAsync();
-            return content;
-        }
 
-        public async Task<string> PostAsync(string url, string data)
-        {
-
-
-            var content = new StringContent(data, Encoding.UTF8, "application/json");
-            var result = await client.PostAsync(url, content);
-            var reply = "";
 
             if (result.IsSuccessStatusCode)
             {
 
-                reply = await result.Content.ReadAsStringAsync();
+                content = await result.Content.ReadAsStringAsync();
             }
-            Console.WriteLine(content);
-            return reply;
+            return new HttpResponse(result.StatusCode, content, result.IsSuccessStatusCode);
+        }
+
+        public async Task<HttpResponse> PostAsync(string url, string data)
+        {
+
+
+            try
+            {
+                var content = new StringContent(data, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync(url, content);
+                var reply = "";
+
+                if (result.IsSuccessStatusCode)
+                {
+
+                    reply = await result.Content.ReadAsStringAsync();
+                }
+                return new HttpResponse(result.StatusCode, reply, result.IsSuccessStatusCode);
+            }
+            catch (Exception ex)
+            {
+
+                return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
+            }
 
 
             //
         }
+
         public async Task<string> PutAsync(string url, string data)
         {
             var content = new StringContent(data, Encoding.UTF8, "application/json");

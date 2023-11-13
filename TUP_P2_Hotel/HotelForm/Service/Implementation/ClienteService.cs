@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HotelForm.Service.Implementation
 {
@@ -16,63 +17,51 @@ namespace HotelForm.Service.Implementation
         private const string host = "https://localhost:7107";
         public async Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync()
         {
-            string url = "https://localhost:7107/GetTipoDocumento";
-
-            var result = await ClientSingleton.GetInstance().GetAsync(url);
-            var lst = JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(result);
-            if (result != null)
+            string url = host + "/GetTipoDocumento";
+            List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url); 
+            if (response != null && response.SuccessStatus)
             {
-                MessageBox.Show("Cliente registrado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                result = JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(response.Data);
             }
-            else MessageBox.Show("ERROR. No se pudo registrar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
-
-            return lst;
+            return result;
         }
         public async Task<List<TipoClienteModel>> GetTipoClientesAsync()
         {
-            string url = host + "/GetTipoCliente";
-            var result = await ClientSingleton.GetInstance().GetAsync(url);
-            var lst = JsonConvert.DeserializeObject<List<TipoClienteModel>>(result);
-
-
-            return lst;
+            string url = host + "/GetTipoDocumento";
+            List<TipoClienteModel> result = new List<TipoClienteModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url);
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<TipoClienteModel>>(response.Data);
+            }
+            return result;
         }
-        public async Task AltaCliente(ClienteModel cliente)
+        public async Task<HttpResponse> PostClienteAsync(ClienteModel cliente)
         {
             string url = host + "/PostCliente";
-            string cuerpo = JsonConvert.SerializeObject(cliente);
+            var cuerpo = JsonConvert.SerializeObject(cliente);
             var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
-            if (response != null && response.SuccessStatus)
-            {
-                MessageBox.Show("Cliente registrado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
-            else MessageBox.Show("ERROR. No se pudo registrar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return response; 
 
         }
 
 
-        public async Task ActualizarCliente(ClienteModel cliente)
+        public async Task<HttpResponse> ActualizarCliente(ClienteModel cliente)
         {
             string url = host + "/PutCliente";
-            string cuerpo = JsonConvert.SerializeObject(cliente);
+            var cuerpo = JsonConvert.SerializeObject(cliente);
             var response = await ClientSingleton.GetInstance().PutAsync(url, cuerpo);
-            if (response != null && response.SuccessStatus)
-            {
-                MessageBox.Show("Cliente actualizado", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
-            else MessageBox.Show("ERROR. No se pudo actualizar el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            return response;
         }
 
-        public async Task BajaCliente(int numero)
+        public async Task<HttpResponse> BajaCliente(int numero)
         {
             string url = host + "/DeleteCliente";
-            string cuerpo = JsonConvert.SerializeObject(numero);
+            var cuerpo = JsonConvert.SerializeObject(numero);
             var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
             if (response != null && response.SuccessStatus)
             {
@@ -84,6 +73,11 @@ namespace HotelForm.Service.Implementation
         }
 
         public Task<List<ClienteModel>> GetClientesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpResponse> AltaCliente(ClienteModel cliente)
         {
             throw new NotImplementedException();
         }

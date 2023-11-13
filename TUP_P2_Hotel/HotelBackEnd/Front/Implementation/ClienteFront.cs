@@ -16,7 +16,7 @@ namespace HotelBackEnd.Front.Implementation
 
         public ClienteFront()
         {
-            this.dao = new ClienteDao();
+            dao = new ClienteDao();
         }
 
         public bool ActualizarCliente(ClienteModel cliente)

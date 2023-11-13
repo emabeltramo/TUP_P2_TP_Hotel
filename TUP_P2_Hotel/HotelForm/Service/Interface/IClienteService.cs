@@ -1,4 +1,5 @@
 ﻿using HotelBackEnd.Model;
+using HotelForm.HTTPClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace HotelForm.Service.Interface
 {
-    internal interface IClienteService
+    public interface IClienteService
     {
 
-        Task AltaCliente(ClienteModel cliente);
-        Task ActualizarCliente(ClienteModel cliente);
-        Task BajaCliente(int numero);
+        Task<HttpResponse> AltaCliente(ClienteModel cliente);
+        Task<HttpResponse> ActualizarCliente(ClienteModel cliente);
+        Task<HttpResponse> BajaCliente(int numero);
         Task<List<ClienteModel>> GetClientesAsync();
         Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync();
         Task<List<TipoClienteModel>> GetTipoClientesAsync();

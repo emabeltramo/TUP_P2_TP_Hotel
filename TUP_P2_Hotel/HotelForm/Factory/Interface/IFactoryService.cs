@@ -10,5 +10,6 @@ namespace HotelForm.Factory.Interface
     public interface IFactoryService
     {
         IReservaService CreateReservaService();
+        IClienteService CreateClienteService();
     }
 }
