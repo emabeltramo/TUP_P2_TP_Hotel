@@ -392,6 +392,7 @@ namespace HotelBackEnd.DAO.Implementation
                         var model = new ReservaModel()
                         {
                             IdReserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            IdHotel = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDHOTEL").Valor ?? 0,
                             Ingreso = reg.FirstOrDefault(m => m.Campo.ToUpper() == "INGRESO").Valor ?? DateTime.Now.Date,
                             Salida = reg.FirstOrDefault(m => m.Campo.ToUpper() == "SALIDA").Valor ?? DateTime.Now.Date,
                             Fecha = reg.FirstOrDefault(m => m.Campo.ToUpper() == "FECHA_RESERVA").Valor ?? DateTime.Now.Date,
@@ -455,6 +456,117 @@ namespace HotelBackEnd.DAO.Implementation
 
             }
             catch (Exception)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public List<ReservaHabitacionModel> GetReservaHab(int idReserva)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<ReservaHabitacionModel> result = new List<ReservaHabitacionModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_ReservaHabitaciones";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                
+
+                cmd.Parameters.Add(new SqlParameter("@reserva", (object)idReserva ?? DBNull.Value));
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var model = new ReservaHabitacionModel()
+                        {
+                            IdResHabitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDRESHAB").Valor ?? 0,
+                            Monto = reg.FirstOrDefault(m => m.Campo.ToUpper() == "MONTOHAB").Valor ?? 0,
+                            
+
+                        };
+                        model.Habitacion.Id_Habitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDHABITACION").Valor ?? 0;
+                        model.Habitacion.Codigo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO").Valor ?? string.Empty;
+                        model.Habitacion.CamaMax = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CAMA_MAX").Valor ?? 0;
+                        model.Habitacion.Telefono = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TELEFONO").Valor ?? 0;
+                        model.Habitacion.Categoria.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDCATEGORIA").Valor ?? 0;
+                        model.Habitacion.Categoria.Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CATEGORIADESC").Valor ?? string.Empty;
+
+
+
+
+
+                        result.Add(model);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public List<ReservaCuentaModel> GetReservaCuenta(int idReserva)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<ReservaCuentaModel> result = new List<ReservaCuentaModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_ReservaCuentas";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+
+
+                cmd.Parameters.Add(new SqlParameter("@reserva", (object)idReserva ?? DBNull.Value));
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var model = new ReservaCuentaModel()
+                        {
+                            IdResCuenta = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDCUENTA").Valor ?? 0,
+                            Monto = reg.FirstOrDefault(m => m.Campo.ToUpper() == "MONTO").Valor ?? 0,
+                            Bonificado = reg.FirstOrDefault(m => m.Campo.ToUpper() == "BONIFICADO").Valor ?? false,
+                            Cantidad= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CANTIDAD").Valor ?? 0,
+
+
+                        };
+                        model.Servicio.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDSRV").Valor ?? 0;
+                        model.Servicio.Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty;
+                       ;
+
+
+
+
+
+                        result.Add(model);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
             {
                 result = null;
             }

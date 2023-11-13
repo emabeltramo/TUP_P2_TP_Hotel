@@ -18,6 +18,8 @@ namespace HotelBackEnd.Front.Interface
         List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
         List<HotelServicioModel> GetServiciosHotel(int idHotel);
         List<ReservaModel> GetReservas(DateTime desde, DateTime hasta, int idHotel);
+        List<ReservaHabitacionModel> GetReservaHab(int idReserva);
+        List<ReservaCuentaModel> GetReservaCuenta(int idReserva);
         List<EstadoReservaModel> GetEstadosReserva();
         bool PostReserva(ReservaModel reserva);
         string GetMensaje();

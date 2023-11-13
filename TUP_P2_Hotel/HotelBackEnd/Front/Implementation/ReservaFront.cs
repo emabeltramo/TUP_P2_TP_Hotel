@@ -61,6 +61,16 @@ namespace HotelBackEnd.Front.Implementation
             return reservaDao.GetProvincias();
         }
 
+        public List<ReservaCuentaModel> GetReservaCuenta(int idReserva)
+        {
+           return reservaDao.GetReservaCuenta(idReserva);
+        }
+
+        public List<ReservaHabitacionModel> GetReservaHab(int idReserva)
+        {
+            return reservaDao.GetReservaHab(idReserva);
+        }
+
         public List<ReservaModel> GetReservas(DateTime desde, DateTime hasta, int idHotel)
         {
             return reservaDao.GetReservas(desde, hasta,idHotel);

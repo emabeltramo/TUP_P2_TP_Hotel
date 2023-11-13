@@ -16,5 +16,8 @@
     <Compile Update="View\Reserva\frmNuevaReserva.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Reserva\frmViewReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

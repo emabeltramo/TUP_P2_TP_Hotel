@@ -9,6 +9,7 @@ namespace HotelBackEnd.Model
     public class ReservaModel
     {
         public int IdReserva { get; set; }
+        public int IdHotel { get; set; }
         public EstadoReservaModel Estado { get; set; }
         public ClienteModel Cliente { get; set; }
         public DateTime Ingreso { get; set; }
@@ -21,6 +22,7 @@ namespace HotelBackEnd.Model
         public ReservaModel()
         {
             IdReserva = 0;
+            IdHotel = 0;
             Estado = new EstadoReservaModel();
             Cliente = new ClienteModel();
             Ingreso = DateTime.Now.Date;

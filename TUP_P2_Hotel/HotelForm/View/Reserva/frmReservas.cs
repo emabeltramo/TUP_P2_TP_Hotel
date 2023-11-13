@@ -17,15 +17,30 @@ namespace HotelForm.View.Reserva
     {
         IReservaService service;
         IFactoryService factory;
+        private List<ReservaModel> reservas;
         public frmReservas(IFactoryService factory)
         {
             service = factory.CreateReservaService();
+            this.factory = factory;
             InitializeComponent();
             InitComponent();
             dtpDesde.ValueChanged += DtpDesde_ValueChanged;
             dtpHasta.ValueChanged += DtpHasta_ValueChanged;
             this.Load += FrmReservas_Load;
             btnFiltrar.Click += BtnFiltrar_Click;
+            reservas = new List<ReservaModel>();
+            dgvReserva.CellClick += DgvReserva_CellClick;
+        }
+
+        private void DgvReserva_CellClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>=0 && dgvReserva.Rows[e.RowIndex].Cells["Ver"].ColumnIndex ==e.ColumnIndex)
+            {
+                var idReserva = int.Parse(dgvReserva.Rows[e.RowIndex].Cells["Reserva"].Value.ToString());
+                var reserva = reservas.FirstOrDefault(m => m.IdReserva == idReserva);
+                var form = new frmViewReserva(factory, reserva);
+                form.ShowDialog();
+            }
         }
 
         private async void BtnFiltrar_Click(object? sender, EventArgs e)
@@ -57,6 +72,7 @@ namespace HotelForm.View.Reserva
                     "Ver"
                 });
             }
+            this.reservas = reservas;
             //cboClienteReserva.DataSource = habitaciones;
 
         }

@@ -56,13 +56,14 @@ insert into RESERVA_CUENTA(RESERVA,SERVICIO,MONTO,BONIFICADO,CANTIDAD)
 values (@reserva,@servicio,@monto,@bonificado,@cantidad);
 end;
 
-ALTER procedure ps_Reservas @desde date, @hasta date, @hotel int
+
+CREATE procedure ps_Reservas @desde date, @hasta date, @hotel int
 as
 BEGIN
 IF(@hotel !=0)
 BEGIN
 select RESERVAS.ID,RESERVAS.ESTADO,RESERVAS.CLIENTE,RESERVAS.INGRESO,RESERVAS.SALIDA,
-RESERVAS.FECHA_RESERVA,RESERVAS.Empleado
+RESERVAS.FECHA_RESERVA,RESERVAS.Empleado,HOTELES.ID as IdHotel
 from RESERVAS
 inner join RESERVA_HABITACIONES on RESERVAS.ID=RESERVA_HABITACIONES.RESERVA
 inner join HABITACION_HOTEL on HABITACION_HOTEL.ID=RESERVA_HABITACIONES.HABITACION
@@ -73,13 +74,13 @@ where(
 ( INGRESO between @desde and @hasta or SALIDA between @desde and @hasta) 
 )and HOTELES.ID=@hotel
 group by RESERVAS.ID,RESERVAS.ESTADO,RESERVAS.CLIENTE,RESERVAS.INGRESO,RESERVAS.SALIDA,
-RESERVAS.FECHA_RESERVA,RESERVAS.Empleado
+RESERVAS.FECHA_RESERVA,RESERVAS.Empleado,HOTELES.ID
 RETURN
 END
 ELSE
 BEGIN
 select RESERVAS.ID,RESERVAS.ESTADO,RESERVAS.CLIENTE,RESERVAS.INGRESO,RESERVAS.SALIDA,
-RESERVAS.FECHA_RESERVA,RESERVAS.Empleado
+RESERVAS.FECHA_RESERVA,RESERVAS.Empleado,HOTELES.ID as IdHotel
 from RESERVAS
 inner join RESERVA_HABITACIONES on RESERVAS.ID=RESERVA_HABITACIONES.RESERVA
 inner join HABITACION_HOTEL on HABITACION_HOTEL.ID=RESERVA_HABITACIONES.HABITACION
@@ -90,6 +91,34 @@ where(
 ( INGRESO between @desde and @hasta or SALIDA between @desde and @hasta) 
 )
 group by RESERVAS.ID,RESERVAS.ESTADO,RESERVAS.CLIENTE,RESERVAS.INGRESO,RESERVAS.SALIDA,
-RESERVAS.FECHA_RESERVA,RESERVAS.Empleado
+RESERVAS.FECHA_RESERVA,RESERVAS.Empleado,HOTELES.ID
 END
 END
+
+
+create procedure ps_ReservaHabitaciones @reserva int
+as
+select 
+rh.ID as 'IdResHab',
+rh.MONTO_HABITACION as 'montoHab',
+hh.ID as 'IdHabitacion',
+hh.CODIGO, hh.CAMA_MAX,
+hh.TELEFONO,ch.ID as 'IdCategoria',ch.DESCRIPCION as 'CategoriaDesc' 
+
+from RESERVA_HABITACIONES  rh
+inner join HABITACION_HOTEL hh on rh.HABITACION=hh.ID
+inner join CATEGORIA_HABITACIONES ch on hh.CATEGORIA=ch.ID
+where RESERVA= @reserva
+
+
+create procedure ps_ReservaCuentas @reserva int
+as
+select rc.ID as 'IdCuenta',
+rc.MONTO,
+rc.BONIFICADO,
+rc.CANTIDAD,
+ts.ID as 'IdSrv',
+ts.DESCRIPCION
+from RESERVA_CUENTA rc
+inner join TIPOS_SERVICIOS ts on rc.SERVICIO=ts.ID
+where RESERVA =@reserva

@@ -208,5 +208,45 @@ namespace HotelAPI.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpGet("/GetResHab")]
+        public IActionResult GetReservaHab(int idReserva)
+        {
+            try
+            {
+
+                var result = front.GetReservaHab(idReserva);
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar las habitaciones");
+                }
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+        [HttpGet("/GetResCuenta")]
+        public IActionResult GetReservaCuenta(int idReserva)
+        {
+            try
+            {
+
+                var result = front.GetReservaCuenta(idReserva);
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar los servicios");
+                }
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
     }
 }

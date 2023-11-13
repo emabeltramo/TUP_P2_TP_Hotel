@@ -95,6 +95,34 @@ namespace HotelForm.Service.Implementation
             return result;
         }
 
+        public async Task<List<ReservaCuentaModel>> GetReservaCuentaAsync(int idReserva)
+        {
+            string url = host + "/GetResCuenta?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["idReserva"] = idReserva.ToString();
+            List<ReservaCuentaModel> result = new List<ReservaCuentaModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ReservaCuentaModel>>(response.Data);
+            }
+            return result;
+        }
+
+        public async Task<List<ReservaHabitacionModel>> GetReservaHabAsync(int idReserva)
+        {
+            string url = host + "/GetResHab?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["idReserva"] = idReserva.ToString();
+            List<ReservaHabitacionModel> result = new List<ReservaHabitacionModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ReservaHabitacionModel>>(response.Data);
+            }
+            return result;
+        }
+
         public async Task<List<ReservaModel>> GetReservasAsync(DateTime desde, DateTime hasta, int idHotel, int idCliente,int idEstado)
         {
             string url = host + "/GetReservas?";
