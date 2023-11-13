@@ -136,6 +136,7 @@
             cboCliente.Name = "cboCliente";
             cboCliente.Size = new Size(260, 23);
             cboCliente.TabIndex = 2;
+            cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
             // 
             // btnCargar
             // 

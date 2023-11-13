@@ -25,10 +25,10 @@ namespace HotelForm.View.Factura
         private void frmNuevaFactura_Load(object sender, EventArgs e)
         {
             ProximoPresupuesto();
-            CargarClienteAsync();
-            CargarTipoFacturaAsync();
-            CargarFormaPagoAsync();
-            CargarServicioAsync();
+            //CargarClienteAsync();
+            //CargarTipoFacturaAsync();
+            //CargarFormaPagoAsync();
+            //CargarServicioAsync();
             Limpiar();
             //this.ActiveControl = cboServicio;
         }
@@ -52,7 +52,7 @@ namespace HotelForm.View.Factura
 
         private async Task CargarClienteAsync()
         {
-            string url ; //De donde saco la URL
+            string url = "https://localhost:7107/api/OrdenProduccion/componentes"; 
             var result = await ClientSingleton.GetInstance().GetAsync(url);
             var lst = JsonConvert.DeserializeObject<List<ClienteModel>>(result);
             cboCliente.DataSource = lst;
@@ -116,7 +116,7 @@ namespace HotelForm.View.Factura
             FormaPagoModel f = (FormaPagoModel)cboFormaPago.SelectedItem;
 
             //lista de FacturaPago?
-            dgvDetalles.Rows.Add(new object[] { f.Id, f.Descripcion});
+            dgvDetalles.Rows.Add(new object[] { f.Id, f.Descripcion });
         }
 
         private void dgvFormasPago_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -124,7 +124,7 @@ namespace HotelForm.View.Factura
             if (dgvFormasPago.CurrentCell.ColumnIndex == 2)
             {
                 dgvFormasPago.Rows.Remove(dgvFormasPago.CurrentRow);
-                
+
                 CalcularTotal();
 
             }
@@ -180,9 +180,9 @@ namespace HotelForm.View.Factura
             if (dgvDetalles.CurrentCell.ColumnIndex == 4)
             {
                 nuevo.QuitarDetalle(dgvDetalles.CurrentRow.Index);
-                
+
                 dgvDetalles.Rows.Remove(dgvDetalles.CurrentRow);
-               
+
                 CalcularTotal();
 
             }
@@ -223,6 +223,11 @@ namespace HotelForm.View.Factura
             //GUARDAR
 
             Limpiar();
+        }
+
+        private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
