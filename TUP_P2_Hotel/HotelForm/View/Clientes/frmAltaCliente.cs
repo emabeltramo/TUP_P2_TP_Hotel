@@ -41,7 +41,8 @@ namespace HotelForm.View.Clientes
         {
             tipoDocumento = await clienteService.GetTipoDocumentosAsync();
             cboTipoDocumento.DataSource = tipoDocumento;
-
+            cboTipoDocumento.DisplayMember = "Descri";
+            cboTipoDocumento.ValueMember = "Id";
 
 
         }
@@ -157,7 +158,6 @@ namespace HotelForm.View.Clientes
 
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarCombosAsync();
 
         }
     }
