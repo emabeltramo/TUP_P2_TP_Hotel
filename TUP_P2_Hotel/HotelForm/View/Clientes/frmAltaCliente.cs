@@ -36,13 +36,11 @@ namespace HotelForm.View.Clientes
 
         private async void frmAgregarCliente_Load(object sender, EventArgs e)
         {
-
             CargarCombosAsync();
         }
         private async void CargarCombosAsync()
         {
 
-            //Debug.WriteLine(tipoDocumento.Count());
             tipoDocumento = await clienteService.GetTipoDocumentosAsync();
             cboTipoDocumento.DataSource = tipoDocumento;
             cboTipoDocumento.DisplayMember = "Descri";
@@ -64,30 +62,30 @@ namespace HotelForm.View.Clientes
         {
         }
 
-        private void btnCargarCliente_Click(object sender, EventArgs e)
+        private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
             if (Validar())
             {
                 ClienteModel cliente = new ClienteModel();
                 cliente.TDoc = (TipoDocumentoModel)cboTipoDocumento.SelectedItem;
                 cliente.TCliente = (TipoClienteModel)cboTipoCliente.SelectedItem;
-                if (cboTipoCliente.SelectedIndex == 0)//aca seria tipo particular por ej
+                cliente.Nombre = txtNombre.Text;
+                cliente.Apellido = txtApellido.Text;
+                cliente.RazonSocial = txtRazonSocial.Text;
+                cliente.DNI = txtNroDocumento.Text;
+                cliente.CUIL = txtNroDocumento.Text;
+                cliente.Email = txtEmail.Text;
+                cliente.Celular = txtTelefono.Text;
+
+                var result = await clienteService.AltaCliente(cliente);
+                if (result.SuccessStatus)
                 {
-                    cliente.Nombre = txtNombre.Text;
-                    cliente.Apellido = txtApellido.Text;
-                    cliente.DNI = txtNroDocumento.Text;
+                    MessageBox.Show("Cliente guardado con exito", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    cliente.Nombre = string.Empty;
-                    cliente.Apellido = string.Empty;
-                    cliente.RazonSocial = txtRazonSocial.Text;
-                    cliente.DNI = string.Empty;
-                    cliente.CUIL = txtNroDocumento.Text;
+                    MessageBox.Show(result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                cliente.Email = txtEmail.Text;
-                cliente.Celular = txtTelefono.Text;
-                clienteService.AltaCliente(cliente);
             }
         }
 

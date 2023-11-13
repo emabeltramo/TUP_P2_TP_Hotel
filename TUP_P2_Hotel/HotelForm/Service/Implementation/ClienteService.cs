@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace HotelForm.Service.Implementation
             }
             return result;
         }
-        public async Task<HttpResponse> PostClienteAsync(ClienteModel cliente)
+        public async Task<HttpResponse> AltaCliente(ClienteModel cliente)
         {
             string url = host + "/PostCliente";
             var cuerpo = JsonConvert.SerializeObject(cliente);
@@ -66,15 +67,18 @@ namespace HotelForm.Service.Implementation
         //    return response;
         //}
 
-        public Task<List<ClienteModel>> GetClientesAsync()
+        public async Task<DataTable> GetClientesTAsync()
         {
-            throw new NotImplementedException();
+            string url = host + "/GetTablaClientes";
+            DataTable result = new DataTable();
+            var response = await ClientSingleton.GetInstance().GetAsync(url);
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<DataTable>(response.Data);
+            }
+            return result;
         }
 
-        public Task<HttpResponse> AltaCliente(ClienteModel cliente)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<HttpResponse> BajaCliente(int numero)
         {

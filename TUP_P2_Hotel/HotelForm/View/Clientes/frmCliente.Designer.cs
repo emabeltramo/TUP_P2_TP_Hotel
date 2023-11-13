@@ -29,18 +29,11 @@
         private void InitializeComponent()
         {
             dgvClientes = new DataGridView();
-            ColId = new DataGridViewTextBoxColumn();
-            ColTipoCliente = new DataGridViewTextBoxColumn();
-            ColNombre = new DataGridViewTextBoxColumn();
-            ColDoc = new DataGridViewTextBoxColumn();
-            ColCuil = new DataGridViewTextBoxColumn();
-            ColTipoRazonSocial = new DataGridViewTextBoxColumn();
-            ColEmail = new DataGridViewTextBoxColumn();
-            ColModificar = new DataGridViewButtonColumn();
-            ColEliminar = new DataGridViewButtonColumn();
             btnBuscar = new Button();
             txtBuscar = new TextBox();
             btnAtras = new Button();
+            ColModificar = new DataGridViewButtonColumn();
+            ColEliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -49,71 +42,13 @@
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { ColId, ColTipoCliente, ColNombre, ColDoc, ColCuil, ColTipoRazonSocial, ColEmail, ColModificar, ColEliminar });
-            dgvClientes.Location = new Point(48, 84);
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { ColModificar, ColEliminar });
+            dgvClientes.Location = new Point(37, 97);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.RowTemplate.Height = 25;
             dgvClientes.Size = new Size(626, 246);
             dgvClientes.TabIndex = 0;
-            // 
-            // ColId
-            // 
-            ColId.HeaderText = "Id";
-            ColId.Name = "ColId";
-            ColId.ReadOnly = true;
-            // 
-            // ColTipoCliente
-            // 
-            ColTipoCliente.HeaderText = "Tipo Cliente";
-            ColTipoCliente.Name = "ColTipoCliente";
-            ColTipoCliente.ReadOnly = true;
-            // 
-            // ColNombre
-            // 
-            ColNombre.HeaderText = "Nombre Cliente";
-            ColNombre.Name = "ColNombre";
-            ColNombre.ReadOnly = true;
-            // 
-            // ColDoc
-            // 
-            ColDoc.HeaderText = "Documento";
-            ColDoc.Name = "ColDoc";
-            ColDoc.ReadOnly = true;
-            // 
-            // ColCuil
-            // 
-            ColCuil.HeaderText = "CUIL";
-            ColCuil.Name = "ColCuil";
-            ColCuil.ReadOnly = true;
-            // 
-            // ColTipoRazonSocial
-            // 
-            ColTipoRazonSocial.HeaderText = "Razon Social";
-            ColTipoRazonSocial.Name = "ColTipoRazonSocial";
-            ColTipoRazonSocial.ReadOnly = true;
-            // 
-            // ColEmail
-            // 
-            ColEmail.HeaderText = "Email";
-            ColEmail.Name = "ColEmail";
-            ColEmail.ReadOnly = true;
-            // 
-            // ColModificar
-            // 
-            ColModificar.HeaderText = "Modificar";
-            ColModificar.Name = "ColModificar";
-            ColModificar.ReadOnly = true;
-            ColModificar.ToolTipText = "Modificar";
-            ColModificar.UseColumnTextForButtonValue = true;
-            // 
-            // ColEliminar
-            // 
-            ColEliminar.HeaderText = "Eliminar";
-            ColEliminar.Name = "ColEliminar";
-            ColEliminar.ReadOnly = true;
-            ColEliminar.Text = "Eliminar";
-            ColEliminar.UseColumnTextForButtonValue = true;
             // 
             // btnBuscar
             // 
@@ -140,6 +75,22 @@
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = true;
             // 
+            // ColModificar
+            // 
+            ColModificar.HeaderText = "Modificar";
+            ColModificar.Name = "ColModificar";
+            ColModificar.ReadOnly = true;
+            ColModificar.Text = "Modificar";
+            ColModificar.UseColumnTextForButtonValue = true;
+            // 
+            // ColEliminar
+            // 
+            ColEliminar.HeaderText = "Eliminar";
+            ColEliminar.Name = "ColEliminar";
+            ColEliminar.ReadOnly = true;
+            ColEliminar.Text = "Eliminar";
+            ColEliminar.UseColumnTextForButtonValue = true;
+            // 
             // frmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -151,6 +102,7 @@
             Controls.Add(dgvClientes);
             Name = "frmCliente";
             Text = "Clientes";
+            Load += frmCliente_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -159,17 +111,10 @@
         #endregion
 
         private DataGridView dgvClientes;
-        private DataGridViewTextBoxColumn ColId;
-        private DataGridViewTextBoxColumn ColTipoCliente;
-        private DataGridViewTextBoxColumn ColNombre;
-        private DataGridViewTextBoxColumn ColDoc;
-        private DataGridViewTextBoxColumn ColCuil;
-        private DataGridViewTextBoxColumn ColTipoRazonSocial;
-        private DataGridViewTextBoxColumn ColEmail;
-        private DataGridViewButtonColumn ColModificar;
-        private DataGridViewButtonColumn ColEliminar;
         private Button btnBuscar;
         private TextBox txtBuscar;
         private Button btnAtras;
+        private DataGridViewButtonColumn ColModificar;
+        private DataGridViewButtonColumn ColEliminar;
     }
 }

@@ -33,7 +33,6 @@ namespace HotelForm.HTTPClient
 
             if (result.IsSuccessStatusCode)
             {
-
                 content = await result.Content.ReadAsStringAsync();
             }
             return new HttpResponse(result.StatusCode, content, result.IsSuccessStatusCode);

@@ -66,7 +66,7 @@
             btnCancelar.Location = new Point(426, 446);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 42;
+            btnCancelar.TabIndex = 10;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -77,7 +77,7 @@
             btnSalirCliente.Location = new Point(316, 446);
             btnSalirCliente.Name = "btnSalirCliente";
             btnSalirCliente.Size = new Size(75, 23);
-            btnSalirCliente.TabIndex = 41;
+            btnSalirCliente.TabIndex = 9;
             btnSalirCliente.Text = "Salir";
             btnSalirCliente.UseVisualStyleBackColor = true;
             btnSalirCliente.Click += btnSalirCliente_Click;
@@ -88,7 +88,7 @@
             btnCargarCliente.Location = new Point(199, 446);
             btnCargarCliente.Name = "btnCargarCliente";
             btnCargarCliente.Size = new Size(75, 23);
-            btnCargarCliente.TabIndex = 40;
+            btnCargarCliente.TabIndex = 8;
             btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
             btnCargarCliente.Click += btnCargarCliente_Click;
@@ -99,7 +99,7 @@
             txtNombre.Location = new Point(172, 134);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(163, 23);
-            txtNombre.TabIndex = 45;
+            txtNombre.TabIndex = 1;
             // 
             // txtApellido
             // 
@@ -107,7 +107,7 @@
             txtApellido.Location = new Point(448, 134);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(163, 23);
-            txtApellido.TabIndex = 47;
+            txtApellido.TabIndex = 2;
             // 
             // label1
             // 
@@ -147,7 +147,7 @@
             cboTipoCliente.Location = new Point(553, 66);
             cboTipoCliente.Name = "cboTipoCliente";
             cboTipoCliente.Size = new Size(121, 23);
-            cboTipoCliente.TabIndex = 53;
+            cboTipoCliente.TabIndex = 0;
             // 
             // label4
             // 
@@ -165,7 +165,7 @@
             txtNroDocumento.Location = new Point(170, 270);
             txtNroDocumento.Name = "txtNroDocumento";
             txtNroDocumento.Size = new Size(163, 23);
-            txtNroDocumento.TabIndex = 54;
+            txtNroDocumento.TabIndex = 4;
             txtNroDocumento.TextChanged += txtNroDocumento_TextChanged;
             // 
             // txtRazonSocial
@@ -174,7 +174,7 @@
             txtRazonSocial.Location = new Point(458, 270);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(163, 23);
-            txtRazonSocial.TabIndex = 56;
+            txtRazonSocial.TabIndex = 5;
             // 
             // label5
             // 
@@ -193,7 +193,7 @@
             txtTelefono.Location = new Point(480, 347);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(163, 23);
-            txtTelefono.TabIndex = 60;
+            txtTelefono.TabIndex = 7;
             // 
             // label6
             // 
@@ -211,7 +211,7 @@
             textBox6.Location = new Point(112, 347);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(163, 23);
-            textBox6.TabIndex = 58;
+            textBox6.TabIndex = 6;
             // 
             // txtEmail
             // 
@@ -241,7 +241,7 @@
             cboTipoDocumento.Location = new Point(553, 206);
             cboTipoDocumento.Name = "cboTipoDocumento";
             cboTipoDocumento.Size = new Size(121, 23);
-            cboTipoDocumento.TabIndex = 62;
+            cboTipoDocumento.TabIndex = 3;
             cboTipoDocumento.SelectedIndexChanged += cboTipoDocumento_SelectedIndexChanged;
             // 
             // frmAltaCliente

@@ -4,6 +4,7 @@ using HotelBackEnd.Front.Interface;
 using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,11 @@ namespace HotelBackEnd.Front.Implementation
         public bool BajaCliente(int numero)
         {
             return dao.BajaCliente(numero);
+        }
+
+        public DataTable GetTablaClientes()
+        {
+            return dao.GetClientes();
         }
 
         public List<TipoClienteModel> GetTipoCliente()

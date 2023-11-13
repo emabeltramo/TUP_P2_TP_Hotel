@@ -117,5 +117,26 @@ namespace HotelAPI.Controllers
                 return StatusCode(500);
             }
         }
+
+
+        [HttpGet("/GetTablaClientes")]
+        public IActionResult GetTablaClientes()
+        {
+
+            try
+            {
+                var result = front.GetTablaClientes;
+                if (result == null)
+                {
+                    return StatusCode(500, " Se produjo un error al buscar los tipos de clientes");
+                }
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }

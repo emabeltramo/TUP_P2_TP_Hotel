@@ -76,10 +76,12 @@ namespace HotelBackEnd.DAO.Implementation
                 comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
                 comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
                 comando.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
+                comando.Parameters.AddWithValue("@cuil", cliente.CUIL);
                 comando.Parameters.AddWithValue("@dni", cliente.DNI);
                 comando.Parameters.AddWithValue("@email", cliente.Email);
                 comando.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
                 comando.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
+                comando.Parameters.AddWithValue("@celular", cliente.Celular);
 
                 comando.ExecuteNonQuery();
 
@@ -188,6 +190,19 @@ namespace HotelBackEnd.DAO.Implementation
             }
 
             return result;
+        }
+
+        public DataTable GetClientes()
+        {
+            try
+            {
+                DataTable dt = HelperDao.GetInstance().GetSp("SP_LISTA_CLIENTES");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en GetTiposDocumento", ex);
+            }
         }
     }
 
