@@ -86,7 +86,7 @@ namespace HotelForm.View.Clientes
                     cliente.Apellido = txtApellido.Text;
                     cliente.RazonSocial = txtRazonSocial.Text;
                     cliente.DNI = txtNroDocumento.Text;
-                    cliente.CUIL = "20"+txtNroDocumento.Text+"1";
+                    cliente.CUIL = "20" + txtNroDocumento.Text + "1";
 
                 }
                 cliente.Email = txtEmail.Text;

@@ -52,7 +52,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label7.Location = new Point(8, 9);
+            label7.Location = new Point(148, 38);
             label7.Name = "label7";
             label7.Size = new Size(450, 25);
             label7.TabIndex = 81;
@@ -61,7 +61,7 @@
             // txtTelefono
             // 
             txtTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTelefono.Location = new Point(495, 337);
+            txtTelefono.Location = new Point(472, 329);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(163, 23);
             txtTelefono.TabIndex = 80;
@@ -70,7 +70,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(373, 340);
+            label6.Location = new Point(350, 332);
             label6.Name = "label6";
             label6.Size = new Size(107, 15);
             label6.TabIndex = 79;
@@ -79,7 +79,7 @@
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(127, 337);
+            txtEmail.Location = new Point(148, 326);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(163, 23);
             txtEmail.TabIndex = 78;
@@ -88,7 +88,7 @@
             // 
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(67, 340);
+            lblEmail.Location = new Point(88, 329);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(44, 15);
             lblEmail.TabIndex = 77;
@@ -97,7 +97,7 @@
             // txtRazonSocial
             // 
             txtRazonSocial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtRazonSocial.Location = new Point(473, 260);
+            txtRazonSocial.Location = new Point(472, 246);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(163, 23);
             txtRazonSocial.TabIndex = 76;
@@ -106,7 +106,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(382, 263);
+            label5.Location = new Point(381, 249);
             label5.Name = "label5";
             label5.Size = new Size(76, 15);
             label5.TabIndex = 75;
@@ -115,7 +115,7 @@
             // txtNroDocumento
             // 
             txtNroDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNroDocumento.Location = new Point(185, 260);
+            txtNroDocumento.Location = new Point(175, 246);
             txtNroDocumento.Name = "txtNroDocumento";
             txtNroDocumento.Size = new Size(163, 23);
             txtNroDocumento.TabIndex = 74;
@@ -124,7 +124,7 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(59, 263);
+            label2.Location = new Point(49, 249);
             label2.Name = "label2";
             label2.Size = new Size(120, 15);
             label2.TabIndex = 69;
@@ -133,7 +133,7 @@
             // txtApellido
             // 
             txtApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtApellido.Location = new Point(463, 124);
+            txtApellido.Location = new Point(472, 173);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(163, 23);
             txtApellido.TabIndex = 68;
@@ -142,7 +142,7 @@
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(394, 132);
+            label1.Location = new Point(403, 181);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 67;
@@ -151,7 +151,7 @@
             // txtNombre
             // 
             txtNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNombre.Location = new Point(187, 124);
+            txtNombre.Location = new Point(175, 173);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(163, 23);
             txtNombre.TabIndex = 66;
@@ -160,7 +160,7 @@
             // 
             lblCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(127, 132);
+            lblCliente.Location = new Point(115, 173);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(54, 15);
             lblCliente.TabIndex = 65;
@@ -175,6 +175,7 @@
             btnCancelar.TabIndex = 64;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnSalirCliente
             // 
@@ -185,11 +186,12 @@
             btnSalirCliente.TabIndex = 63;
             btnSalirCliente.Text = "Salir";
             btnSalirCliente.UseVisualStyleBackColor = true;
+            btnSalirCliente.Click += btnSalirCliente_Click;
             // 
             // btnCargarCliente
             // 
             btnCargarCliente.Anchor = AnchorStyles.Bottom;
-            btnCargarCliente.Location = new Point(214, 436);
+            btnCargarCliente.Location = new Point(205, 436);
             btnCargarCliente.Name = "btnCargarCliente";
             btnCargarCliente.Size = new Size(75, 23);
             btnCargarCliente.TabIndex = 62;
@@ -203,7 +205,7 @@
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCliente.FormattingEnabled = true;
             cboCliente.ItemHeight = 15;
-            cboCliente.Location = new Point(117, 56);
+            cboCliente.Location = new Point(148, 111);
             cboCliente.MaxDropDownItems = 35;
             cboCliente.Name = "cboCliente";
             cboCliente.Size = new Size(289, 23);
@@ -214,7 +216,7 @@
             // 
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
-            label8.Location = new Point(22, 59);
+            label8.Location = new Point(53, 114);
             label8.Name = "label8";
             label8.Size = new Size(47, 15);
             label8.TabIndex = 82;
@@ -244,7 +246,7 @@
             Controls.Add(btnSalirCliente);
             Controls.Add(btnCargarCliente);
             Name = "frmModificarCliente";
-            Text = "frmModificarCliente";
+            Text = "Modificar Cliente";
             Load += frmModificarCliente_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -90,15 +90,15 @@ namespace HotelForm.View.Clientes
         {
             try
             {
-                if (cboCliente.SelectedItem != null )
+                if (cboCliente.SelectedItem != null)
                 {
                     ClienteModel cliente = new ClienteModel();
                     ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
                     cliente.RazonSocial = txtRazonSocial.Text;
-                    cliente.CUIL = txtNroDocumento.Text; 
+                    cliente.CUIL = txtNroDocumento.Text;
                     cliente.Nombre = txtNombre.Text;
                     cliente.Apellido = txtApellido.Text;
-                    cliente.DNI = txtNroDocumento.Text; 
+                    cliente.DNI = txtNroDocumento.Text;
                     cliente.Email = txtEmail.Text;
                     cliente.Celular = txtTelefono.Text;
 
@@ -123,9 +123,30 @@ namespace HotelForm.View.Clientes
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnSalirCliente_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                txtApellido.Text = string.Empty;
+                txtNombre.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtNroDocumento.Text = string.Empty;
+                txtRazonSocial.Text = string.Empty;
+                txtTelefono.Text = string.Empty;
+
+
+            }
+        }
     }
 }
 
 
-    
+
 
