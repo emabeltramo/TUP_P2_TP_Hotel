@@ -39,9 +39,18 @@ namespace HotelForm.View.Clientes
 
             List<ClienteModel> clients = await clienteService.GetClientesAsync();
             cboCliente.DataSource = clients;
-
             cboCliente.DisplayMember = "NombreCompleto";
             cboCliente.ValueMember = "Id_Cliente";
+            List<TipoDocumentoModel> tdoc = await clienteService.GetTipoDocumentosAsync();
+            cboTipoDocumento.DataSource = tdoc;
+            cboTipoDocumento.DisplayMember = "Id";
+            cboTipoDocumento.ValueMember = "Descri";
+            List<TipoClienteModel> tcli = await clienteService.GetTipoClientesAsync();
+            cboTipoCliente.DataSource = tcli;
+            cboTipoCliente.DisplayMember = "Id";
+            cboTipoCliente.ValueMember = "Descri";
+
+
         }
 
         private async void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,8 +60,9 @@ namespace HotelForm.View.Clientes
                 ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
                 txtApellido.Text = c.Apellido;
                 txtNombre.Text = c.Nombre;
-                TipoClienteModel tipoClienteModel = c.TCliente;
-                if (tipoClienteModel != null && tipoClienteModel.Id.Equals(1))
+                cboTipoCliente.SelectedIndex = c.TCliente.Id;
+                cboTipoDocumento.SelectedIndex = c.TDoc.Id;
+                if (c.TCliente != null && c.TCliente.Id.Equals(1))
                 {
 
 
@@ -85,7 +95,7 @@ namespace HotelForm.View.Clientes
 
             }
 
-
+            
         }
 
         private async void btnCargarCliente_Click(object sender, EventArgs e)
@@ -97,7 +107,7 @@ namespace HotelForm.View.Clientes
                 if (cboCliente.SelectedItem != null )
                 {
   
-                    c.Id_Cliente = c.Id_Cliente; // aca deberia estar el error
+                    c.Id_Cliente = Convert.ToInt32(c.Id_Cliente); // aca deberia estar el error
                     c.RazonSocial = txtRazonSocial.Text;
                     c.CUIL = txtNroDocumento.Text;
                     c.Nombre = txtNombre.Text;
@@ -105,6 +115,8 @@ namespace HotelForm.View.Clientes
                     c.DNI = txtNroDocumento.Text;
                     c.Email = txtEmail.Text;
                     c.Celular = txtTelefono.Text;
+                    c.TDoc= (TipoDocumentoModel) cboTipoDocumento.SelectedItem;
+                    c.TCliente= (TipoClienteModel) cboTipoCliente.SelectedItem;
                     
                     var result = await clienteService.ActualizarCliente(c);
                     
@@ -149,6 +161,12 @@ namespace HotelForm.View.Clientes
 
 
             }
+        }
+
+        private async void btnBorrar_Click(object sender, EventArgs e)
+        {
+            ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
+            var result = await clienteService.BajaCliente(c.Id_Cliente);
         }
     }
 }

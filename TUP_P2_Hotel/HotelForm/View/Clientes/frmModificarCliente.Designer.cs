@@ -46,6 +46,11 @@
             this.btnCargarCliente = new System.Windows.Forms.Button();
             this.cboCliente = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.cboTipoCliente = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label7
@@ -219,6 +224,7 @@
             this.btnCargarCliente.TabIndex = 62;
             this.btnCargarCliente.Text = "Cargar";
             this.btnCargarCliente.UseVisualStyleBackColor = true;
+            this.btnCargarCliente.Click += new System.EventHandler(this.btnCargarCliente_Click);
             // 
             // cboCliente
             // 
@@ -247,11 +253,75 @@
             this.label8.TabIndex = 82;
             this.label8.Text = "Cliente:";
             // 
+            // cboTipoDocumento
+            // 
+            this.cboTipoDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocumento.FormattingEnabled = true;
+            this.cboTipoDocumento.Location = new System.Drawing.Point(502, 80);
+            this.cboTipoDocumento.Name = "cboTipoDocumento";
+            this.cboTipoDocumento.Size = new System.Drawing.Size(121, 23);
+            this.cboTipoDocumento.TabIndex = 85;
+            // 
+            // cboTipoCliente
+            // 
+            this.cboTipoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoCliente.FormattingEnabled = true;
+            this.cboTipoCliente.Location = new System.Drawing.Point(165, 80);
+            this.cboTipoCliente.Name = "cboTipoCliente";
+            this.cboTipoCliente.Size = new System.Drawing.Size(121, 23);
+            this.cboTipoCliente.TabIndex = 84;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(70, 83);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 15);
+            this.label4.TabIndex = 87;
+            this.label4.Text = "Tipo de Cliente:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(381, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 15);
+            this.label3.TabIndex = 86;
+            this.label3.Text = "Tipo de Documento:";
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnBorrar.Location = new System.Drawing.Point(548, 436);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
+            this.btnBorrar.TabIndex = 88;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
             // frmModificarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 478);
+            this.Controls.Add(this.btnBorrar);
+            this.Controls.Add(this.cboTipoDocumento);
+            this.Controls.Add(this.cboTipoCliente);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cboCliente);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -298,5 +368,10 @@
         private Button btnCargarCliente;
         private ComboBox cboCliente;
         private Label label8;
+        private ComboBox cboTipoDocumento;
+        private ComboBox cboTipoCliente;
+        private Label label4;
+        private Label label3;
+        private Button btnBorrar;
     }
 }
