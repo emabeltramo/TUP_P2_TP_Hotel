@@ -50,7 +50,7 @@ namespace HotelForm.View.Clientes
             cboTipoCliente.DataSource = tipoCliente;
             cboTipoCliente.DisplayMember = "Descri";
             cboTipoCliente.ValueMember = "Id";
-
+            Refresh();
         }
 
         private void txtNroDocumento_TextChanged(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace HotelForm.View.Clientes
                 {
                     MessageBox.Show("Error al cargar cliente : " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
+                Refresh();
             }
         }
 

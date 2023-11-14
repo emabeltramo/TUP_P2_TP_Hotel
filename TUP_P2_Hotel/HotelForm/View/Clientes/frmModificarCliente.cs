@@ -56,7 +56,7 @@ namespace HotelForm.View.Clientes
                 {
 
 
-                    txtNroDocumento.Text = c.DNI;
+                    txtNroDocumento.Text = c.DNI.ToString();
 
                 }
                 else
@@ -70,6 +70,7 @@ namespace HotelForm.View.Clientes
                 txtTelefono.Text = c.Celular;
                 txtEmail.Text = c.Celular;
 
+
                 foreach (Control control in this.Controls)
                 {
                     if (control is TextBox)
@@ -81,29 +82,33 @@ namespace HotelForm.View.Clientes
                         }
                     }
                 }
+                
             }
 
-
+            
         }
 
         private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
             try
             {
-                if (cboCliente.SelectedItem != null)
+                ClienteModel cl = (ClienteModel)cboCliente.SelectedItem;
+                var id = await clienteService.GetClienteIDAsync(cl.Id_Cliente);
+                
+                if (cboCliente.SelectedItem != null )
                 {
-                    ClienteModel cliente = new ClienteModel();
-                    ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
-                    cliente.RazonSocial = txtRazonSocial.Text;
-                    cliente.CUIL = txtNroDocumento.Text;
-                    cliente.Nombre = txtNombre.Text;
-                    cliente.Apellido = txtApellido.Text;
-                    cliente.DNI = txtNroDocumento.Text;
-                    cliente.Email = txtEmail.Text;
-                    cliente.Celular = txtTelefono.Text;
-
-                    var result = await clienteService.ActualizarCliente(cliente);
-
+                    ClienteModel c = new ClienteModel();
+                    c.Id_Cliente = id.Id_Cliente;
+                    c.RazonSocial = txtRazonSocial.Text;
+                    c.CUIL = txtNroDocumento.Text;
+                    c.Nombre = txtNombre.Text;
+                    c.Apellido = txtApellido.Text;
+                    c.DNI = txtNroDocumento.Text;
+                    c.Email = txtEmail.Text;
+                    c.Celular = txtTelefono.Text;
+                    
+                    var result = await clienteService.ActualizarCliente(c);
+                    
                     if (result.SuccessStatus)
                     {
                         MessageBox.Show("Cliente actualizado con éxito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -122,6 +127,8 @@ namespace HotelForm.View.Clientes
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            CargarComboCliente();
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
