@@ -35,7 +35,10 @@ namespace HotelBackEnd.Model
 
         public override string ToString()
         {
-            return base.ToString(); 
+            if (RazonSocial == "-")
+                return Apellido + " - " + Nombre + " - " + DNI;
+            else
+                return RazonSocial + " - " + CUIL;
         }
     }
 }

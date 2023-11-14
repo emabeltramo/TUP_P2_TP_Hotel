@@ -6,11 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>True</Optimize>
+    <BaseOutputPath>D:\INFORMACION NO BORRAR\Desktop\TP\TUP_P2_TP_Hotel</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
