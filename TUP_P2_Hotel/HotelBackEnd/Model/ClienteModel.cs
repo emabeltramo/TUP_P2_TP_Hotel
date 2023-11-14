@@ -8,7 +8,19 @@ namespace HotelBackEnd.Model
 {
     public class ClienteModel
     {
-     
+        public ClienteModel()
+        {
+            Id_Cliente = 0;
+            Nombre = string.Empty;
+            Apellido = string.Empty;
+            TDoc = new TipoDocumentoModel();
+            DNI = string.Empty;
+            CUIL = string.Empty;
+            Email = string.Empty;
+            Celular = string.Empty;
+            TCliente = new TipoClienteModel();
+            RazonSocial = string.Empty;
+        }
 
         public int Id_Cliente { get; set; }
         public string Nombre { get; set; }

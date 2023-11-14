@@ -31,15 +31,11 @@
             label7 = new Label();
             txtTelefono = new TextBox();
             label6 = new Label();
-            textBox6 = new TextBox();
-            txtEmail = new Label();
+            txtEmail = new TextBox();
+            lblEmail = new Label();
             txtRazonSocial = new TextBox();
             label5 = new Label();
             txtNroDocumento = new TextBox();
-            cboTipoCliente = new ComboBox();
-            label4 = new Label();
-            cboTipoDocumento = new ComboBox();
-            label3 = new Label();
             label2 = new Label();
             txtApellido = new TextBox();
             label1 = new Label();
@@ -80,23 +76,23 @@
             label6.TabIndex = 79;
             label6.Text = "Telefono Contacto:";
             // 
-            // textBox6
-            // 
-            textBox6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox6.Location = new Point(127, 337);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(163, 23);
-            textBox6.TabIndex = 78;
-            // 
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.AutoSize = true;
-            txtEmail.Location = new Point(67, 340);
+            txtEmail.Location = new Point(127, 337);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(44, 15);
-            txtEmail.TabIndex = 77;
-            txtEmail.Text = "E-mail:";
+            txtEmail.Size = new Size(163, 23);
+            txtEmail.TabIndex = 78;
+            // 
+            // lblEmail
+            // 
+            lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(67, 340);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(44, 15);
+            lblEmail.TabIndex = 77;
+            lblEmail.Text = "E-mail:";
             // 
             // txtRazonSocial
             // 
@@ -123,46 +119,6 @@
             txtNroDocumento.Name = "txtNroDocumento";
             txtNroDocumento.Size = new Size(163, 23);
             txtNroDocumento.TabIndex = 74;
-            // 
-            // cboTipoCliente
-            // 
-            cboTipoCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            cboTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTipoCliente.FormattingEnabled = true;
-            cboTipoCliente.Location = new Point(568, 56);
-            cboTipoCliente.Name = "cboTipoCliente";
-            cboTipoCliente.Size = new Size(121, 23);
-            cboTipoCliente.TabIndex = 73;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Location = new Point(473, 59);
-            label4.Name = "label4";
-            label4.Size = new Size(89, 15);
-            label4.TabIndex = 72;
-            label4.Text = "Tipo de Cliente:";
-            // 
-            // cboTipoDocumento
-            // 
-            cboTipoDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            cboTipoDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTipoDocumento.FormattingEnabled = true;
-            cboTipoDocumento.Location = new Point(568, 193);
-            cboTipoDocumento.Name = "cboTipoDocumento";
-            cboTipoDocumento.Size = new Size(121, 23);
-            cboTipoDocumento.TabIndex = 71;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Location = new Point(447, 196);
-            label3.Name = "label3";
-            label3.Size = new Size(115, 15);
-            label3.TabIndex = 70;
-            label3.Text = "Tipo de Documento:";
             // 
             // label2
             // 
@@ -239,6 +195,7 @@
             btnCargarCliente.TabIndex = 62;
             btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
+            btnCargarCliente.Click += btnCargarCliente_Click;
             // 
             // cboCliente
             // 
@@ -273,15 +230,11 @@
             Controls.Add(label7);
             Controls.Add(txtTelefono);
             Controls.Add(label6);
-            Controls.Add(textBox6);
             Controls.Add(txtEmail);
+            Controls.Add(lblEmail);
             Controls.Add(txtRazonSocial);
             Controls.Add(label5);
             Controls.Add(txtNroDocumento);
-            Controls.Add(cboTipoCliente);
-            Controls.Add(label4);
-            Controls.Add(cboTipoDocumento);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(txtApellido);
             Controls.Add(label1);
@@ -302,15 +255,11 @@
         private Label label7;
         private TextBox txtTelefono;
         private Label label6;
-        private TextBox textBox6;
-        private Label txtEmail;
+        private TextBox txtEmail;
+        private Label lblEmail;
         private TextBox txtRazonSocial;
         private Label label5;
         private TextBox txtNroDocumento;
-        private ComboBox cboTipoCliente;
-        private Label label4;
-        private ComboBox cboTipoDocumento;
-        private Label label3;
         private Label label2;
         private TextBox txtApellido;
         private Label label1;

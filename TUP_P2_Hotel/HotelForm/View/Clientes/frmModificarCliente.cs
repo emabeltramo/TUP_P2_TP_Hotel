@@ -17,8 +17,7 @@ namespace HotelForm.View.Clientes
     {
         IFactoryService factory;
         IClienteService clienteService;
-        private List<TipoDocumentoModel> tipoDocumento;
-        private List<TipoClienteModel> tipoCliente;
+
 
         public frmModificarCliente(IFactoryService factory)
         {
@@ -31,14 +30,6 @@ namespace HotelForm.View.Clientes
         {
 
             CargarComboCliente();
-            tipoDocumento = await clienteService.GetTipoDocumentosAsync();
-            cboTipoDocumento.DataSource = tipoDocumento;
-            cboTipoDocumento.DisplayMember = "Descri";
-            cboTipoDocumento.ValueMember = "Id";
-            tipoCliente = await clienteService.GetTipoClientesAsync();
-            cboTipoCliente.DataSource = tipoCliente;
-            cboTipoCliente.DisplayMember = "Descri";
-            cboTipoCliente.ValueMember = "Id";
 
         }
 
@@ -54,15 +45,50 @@ namespace HotelForm.View.Clientes
 
         private async void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var c = (ClienteModel)cboCliente.SelectedItem;
-            txtApellido.Text = c.Apellido;
-            txtNombre.Text = c.Nombre;
-            if (c.CUIL == 0.ToString())
-                txtNroDocumento.Text = c.DNI;
-            else
-                txtNroDocumento.Text = c.CUIL;
+            if (cboCliente.SelectedItem != null)
+            {
+                ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
+                txtApellido.Text = c.Apellido;
+                txtNombre.Text = c.Nombre;
+                TipoClienteModel tipoClienteModel = c.TCliente;
+                if (tipoClienteModel != null && tipoClienteModel.Id.Equals(1))
+                {
+
+
+                    txtNroDocumento.Text = c.DNI;
+
+                }
+                else
+                {
+                    txtNroDocumento.Text = c.CUIL.ToString();
+                }
+
+
+
+                txtRazonSocial.Text = c.RazonSocial;
+                txtTelefono.Text = c.Celular;
+                txtEmail.Text = c.Celular;
+            }
+
+
+        }
+
+        private async void btnCargarCliente_Click(object sender, EventArgs e)
+        {
+            ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
 
             
+            var result = await clienteService.ActualizarCliente(c);
+            if (result.SuccessStatus)
+            {
+                MessageBox.Show("Cliente generado con exito", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al cargar cliente : " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
+
 }
+
