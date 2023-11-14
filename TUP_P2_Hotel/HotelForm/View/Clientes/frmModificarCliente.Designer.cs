@@ -28,228 +28,254 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label7 = new Label();
-            txtTelefono = new TextBox();
-            label6 = new Label();
-            txtEmail = new TextBox();
-            lblEmail = new Label();
-            txtRazonSocial = new TextBox();
-            label5 = new Label();
-            txtNroDocumento = new TextBox();
-            label2 = new Label();
-            txtApellido = new TextBox();
-            label1 = new Label();
-            txtNombre = new TextBox();
-            lblCliente = new Label();
-            btnCancelar = new Button();
-            btnSalirCliente = new Button();
-            btnCargarCliente = new Button();
-            cboCliente = new ComboBox();
-            label8 = new Label();
-            SuspendLayout();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtRazonSocial = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNroDocumento = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalirCliente = new System.Windows.Forms.Button();
+            this.btnCargarCliente = new System.Windows.Forms.Button();
+            this.cboCliente = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label7.Location = new Point(148, 38);
-            label7.Name = "label7";
-            label7.Size = new Size(450, 25);
-            label7.TabIndex = 81;
-            label7.Text = "MODIFICACION DE CLIENTES DEL HOTEL SHIBUYA";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(148, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(450, 25);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "MODIFICACION DE CLIENTES DEL HOTEL SHIBUYA";
             // 
             // txtTelefono
             // 
-            txtTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTelefono.Location = new Point(472, 329);
-            txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(163, 23);
-            txtTelefono.TabIndex = 80;
+            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTelefono.Location = new System.Drawing.Point(472, 329);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(163, 23);
+            this.txtTelefono.TabIndex = 80;
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Location = new Point(350, 332);
-            label6.Name = "label6";
-            label6.Size = new Size(107, 15);
-            label6.TabIndex = 79;
-            label6.Text = "Telefono Contacto:";
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(350, 332);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 15);
+            this.label6.TabIndex = 79;
+            this.label6.Text = "Telefono Contacto:";
             // 
             // txtEmail
             // 
-            txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(148, 326);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(163, 23);
-            txtEmail.TabIndex = 78;
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.Location = new System.Drawing.Point(148, 326);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(163, 23);
+            this.txtEmail.TabIndex = 78;
             // 
             // lblEmail
             // 
-            lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(88, 329);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(44, 15);
-            lblEmail.TabIndex = 77;
-            lblEmail.Text = "E-mail:";
+            this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(88, 329);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(44, 15);
+            this.lblEmail.TabIndex = 77;
+            this.lblEmail.Text = "E-mail:";
             // 
             // txtRazonSocial
             // 
-            txtRazonSocial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtRazonSocial.Location = new Point(472, 246);
-            txtRazonSocial.Name = "txtRazonSocial";
-            txtRazonSocial.Size = new Size(163, 23);
-            txtRazonSocial.TabIndex = 76;
+            this.txtRazonSocial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRazonSocial.Location = new System.Drawing.Point(472, 246);
+            this.txtRazonSocial.Name = "txtRazonSocial";
+            this.txtRazonSocial.Size = new System.Drawing.Size(163, 23);
+            this.txtRazonSocial.TabIndex = 76;
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.Location = new Point(381, 249);
-            label5.Name = "label5";
-            label5.Size = new Size(76, 15);
-            label5.TabIndex = 75;
-            label5.Text = "Razon Social:";
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(381, 249);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 15);
+            this.label5.TabIndex = 75;
+            this.label5.Text = "Razon Social:";
             // 
             // txtNroDocumento
             // 
-            txtNroDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNroDocumento.Location = new Point(175, 246);
-            txtNroDocumento.Name = "txtNroDocumento";
-            txtNroDocumento.Size = new Size(163, 23);
-            txtNroDocumento.TabIndex = 74;
+            this.txtNroDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNroDocumento.Location = new System.Drawing.Point(175, 246);
+            this.txtNroDocumento.Name = "txtNroDocumento";
+            this.txtNroDocumento.Size = new System.Drawing.Size(163, 23);
+            this.txtNroDocumento.TabIndex = 74;
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(49, 249);
-            label2.Name = "label2";
-            label2.Size = new Size(120, 15);
-            label2.TabIndex = 69;
-            label2.Text = "Numero Documento:";
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(49, 249);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 15);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Numero Documento:";
             // 
             // txtApellido
             // 
-            txtApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtApellido.Location = new Point(472, 173);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(163, 23);
-            txtApellido.TabIndex = 68;
+            this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtApellido.Location = new System.Drawing.Point(472, 173);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(163, 23);
+            this.txtApellido.TabIndex = 68;
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(403, 181);
-            label1.Name = "label1";
-            label1.Size = new Size(54, 15);
-            label1.TabIndex = 67;
-            label1.Text = "Apellido:";
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(403, 181);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 15);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Apellido:";
             // 
             // txtNombre
             // 
-            txtNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNombre.Location = new Point(175, 173);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(163, 23);
-            txtNombre.TabIndex = 66;
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNombre.Location = new System.Drawing.Point(175, 173);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(163, 23);
+            this.txtNombre.TabIndex = 66;
             // 
             // lblCliente
             // 
-            lblCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(115, 173);
-            lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(54, 15);
-            lblCliente.TabIndex = 65;
-            lblCliente.Text = "Nombre:";
+            this.lblCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Location = new System.Drawing.Point(115, 173);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(54, 15);
+            this.lblCliente.TabIndex = 65;
+            this.lblCliente.Text = "Nombre:";
             // 
             // btnCancelar
             // 
-            btnCancelar.Anchor = AnchorStyles.Bottom;
-            btnCancelar.Location = new Point(441, 436);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 64;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancelar.Location = new System.Drawing.Point(441, 436);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 64;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalirCliente
             // 
-            btnSalirCliente.Anchor = AnchorStyles.Bottom;
-            btnSalirCliente.Location = new Point(331, 436);
-            btnSalirCliente.Name = "btnSalirCliente";
-            btnSalirCliente.Size = new Size(75, 23);
-            btnSalirCliente.TabIndex = 63;
-            btnSalirCliente.Text = "Salir";
-            btnSalirCliente.UseVisualStyleBackColor = true;
-            btnSalirCliente.Click += btnSalirCliente_Click;
+            this.btnSalirCliente.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSalirCliente.Location = new System.Drawing.Point(331, 436);
+            this.btnSalirCliente.Name = "btnSalirCliente";
+            this.btnSalirCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnSalirCliente.TabIndex = 63;
+            this.btnSalirCliente.Text = "Salir";
+            this.btnSalirCliente.UseVisualStyleBackColor = true;
             // 
             // btnCargarCliente
             // 
-            btnCargarCliente.Anchor = AnchorStyles.Bottom;
-            btnCargarCliente.Location = new Point(205, 436);
-            btnCargarCliente.Name = "btnCargarCliente";
-            btnCargarCliente.Size = new Size(75, 23);
-            btnCargarCliente.TabIndex = 62;
-            btnCargarCliente.Text = "Cargar";
-            btnCargarCliente.UseVisualStyleBackColor = true;
-            btnCargarCliente.Click += btnCargarCliente_Click;
+            this.btnCargarCliente.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCargarCliente.Location = new System.Drawing.Point(205, 436);
+            this.btnCargarCliente.Name = "btnCargarCliente";
+            this.btnCargarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnCargarCliente.TabIndex = 62;
+            this.btnCargarCliente.Text = "Cargar";
+            this.btnCargarCliente.UseVisualStyleBackColor = true;
             // 
             // cboCliente
             // 
-            cboCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCliente.FormattingEnabled = true;
-            cboCliente.ItemHeight = 15;
-            cboCliente.Location = new Point(148, 111);
-            cboCliente.MaxDropDownItems = 35;
-            cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(289, 23);
-            cboCliente.TabIndex = 83;
-            cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
+            this.cboCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCliente.FormattingEnabled = true;
+            this.cboCliente.ItemHeight = 15;
+            this.cboCliente.Location = new System.Drawing.Point(148, 111);
+            this.cboCliente.MaxDropDownItems = 35;
+            this.cboCliente.Name = "cboCliente";
+            this.cboCliente.Size = new System.Drawing.Size(289, 23);
+            this.cboCliente.TabIndex = 83;
+            this.cboCliente.SelectedIndexChanged += new System.EventHandler(this.cboCliente_SelectedIndexChanged);
             // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label8.AutoSize = true;
-            label8.Location = new Point(53, 114);
-            label8.Name = "label8";
-            label8.Size = new Size(47, 15);
-            label8.TabIndex = 82;
-            label8.Text = "Cliente:";
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(53, 114);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 15);
+            this.label8.TabIndex = 82;
+            this.label8.Text = "Cliente:";
             // 
             // frmModificarCliente
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(739, 478);
-            Controls.Add(cboCliente);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(txtTelefono);
-            Controls.Add(label6);
-            Controls.Add(txtEmail);
-            Controls.Add(lblEmail);
-            Controls.Add(txtRazonSocial);
-            Controls.Add(label5);
-            Controls.Add(txtNroDocumento);
-            Controls.Add(label2);
-            Controls.Add(txtApellido);
-            Controls.Add(label1);
-            Controls.Add(txtNombre);
-            Controls.Add(lblCliente);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnSalirCliente);
-            Controls.Add(btnCargarCliente);
-            Name = "frmModificarCliente";
-            Text = "Modificar Cliente";
-            Load += frmModificarCliente_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(739, 478);
+            this.Controls.Add(this.cboCliente);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtTelefono);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.txtRazonSocial);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtNroDocumento);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtApellido);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.lblCliente);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnSalirCliente);
+            this.Controls.Add(this.btnCargarCliente);
+            this.Name = "frmModificarCliente";
+            this.Text = "Modificar Cliente";
+            this.Load += new System.EventHandler(this.frmModificarCliente_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

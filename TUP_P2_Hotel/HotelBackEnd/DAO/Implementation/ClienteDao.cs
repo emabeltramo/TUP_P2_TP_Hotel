@@ -45,7 +45,6 @@ namespace HotelBackEnd.DAO.Implementation
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al ejecutar SP_MODIFICAR_CLIENTE: {ex.Message}");
                 if (t != null)
                     t.Rollback();
                 resultado = false;
@@ -192,7 +191,8 @@ namespace HotelBackEnd.DAO.Implementation
                 try
                 {
                     cmd.Connection = HelperDao.GetInstance().GetConnection();
-                    cmd.CommandText = "select * from clientes order by apellido,nombre";
+                    cmd.CommandText = "SP_LISTA_CLIENTES";
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection.Open();
                     var reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -200,36 +200,49 @@ namespace HotelBackEnd.DAO.Implementation
                         while (reader.Read())
                         {
                             var reg = procces.MakeReg(reader);
+
                             var cliente = new ClienteModel()
                             {
+                                Id_Cliente= reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ??  0,
                                 Apellido = reg.FirstOrDefault(m => m.Campo.ToUpper() == "APELLIDO").Valor ?? string.Empty,
                                 Nombre = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NOMBRE").Valor ?? string.Empty,
-                                DNI = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DNI").Valor ?? string.Empty,
-                                Id_Cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
-                                CUIL = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CUIL").Valor ?? string.Empty,
+                                DNI = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NUMERO DOCUMENTO").Valor ?? string.Empty,
+                                CUIL = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NUMERO CUIL").Valor ?? string.Empty,
                                 Email = reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMAIL").Valor ?? string.Empty,
                                 Celular = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CELULAR").Valor ?? string.Empty,
-                                RazonSocial = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RAZON_SOCIAL").Valor ?? string.Empty,
+                                RazonSocial = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RAZON SOCIAL").Valor ?? string.Empty,
+                              };
+                            
+                             var TCliente=new TipoClienteModel() 
+                             {
+                                 Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO CLIENTE").Valor ?? string.Empty,
+                                    
 
+                             };
+                        var TDoc = new TipoDocumentoModel()
+                        {  
+                            Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO DOCUMENTO").Valor ?? string.Empty,
 
 
                             };
-                            result.Add(cliente);
+                            cliente.TCliente = TCliente;
+                            cliente.TDoc = TDoc;
+
+                                 result.Add(cliente);
                         }
                     }
+                }
 
-
-                }
-                catch (Exception)
-                {
-                    result = null;
-                }
-                if (cmd.Connection.State == System.Data.ConnectionState.Open)
-                {
-                    cmd.Connection.Close();
-                }
-                return result;
-            }
+                    catch (Exception)
+                        {
+                            result = null;
+                        }
+                        if (cmd.Connection.State == System.Data.ConnectionState.Open)
+                        {
+                            cmd.Connection.Close();
+                        }
+                        return result;
+             }
 
         public ClienteModel GetClienteID(int id)
         {
