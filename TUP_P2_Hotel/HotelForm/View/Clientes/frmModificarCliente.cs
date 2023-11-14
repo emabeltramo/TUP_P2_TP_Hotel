@@ -92,13 +92,12 @@ namespace HotelForm.View.Clientes
         {
             try
             {
-                ClienteModel cl = (ClienteModel)cboCliente.SelectedItem;
-                var id = await clienteService.GetClienteIDAsync(cl.Id_Cliente);
+                ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
                 
                 if (cboCliente.SelectedItem != null )
                 {
-                    ClienteModel c = new ClienteModel();
-                    c.Id_Cliente = id.Id_Cliente;
+  
+                    c.Id_Cliente = c.Id_Cliente; // aca deberia estar el error
                     c.RazonSocial = txtRazonSocial.Text;
                     c.CUIL = txtNroDocumento.Text;
                     c.Nombre = txtNombre.Text;
