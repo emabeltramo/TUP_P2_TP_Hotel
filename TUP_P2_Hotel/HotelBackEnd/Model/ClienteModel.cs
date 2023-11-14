@@ -25,11 +25,17 @@ namespace HotelBackEnd.Model
         {
             get
             {
-                if (string.IsNullOrEmpty(RazonSocial))
-                    return Apellido + " " + Nombre + " " + DNI;
+                if (RazonSocial=="-")
+                    return Apellido + " - " + Nombre + " - " + DNI;
                 else
-                    return RazonSocial + " " + CUIL;
+                    return RazonSocial + " - " + CUIL;
             }
+        }
+
+
+        public override string ToString()
+        {
+            return base.ToString(); 
         }
     }
 }

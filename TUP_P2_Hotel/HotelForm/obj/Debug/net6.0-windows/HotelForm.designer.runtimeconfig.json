@@ -16,8 +16,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\dborl\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\dborl\\.nuget\\packages"
+      "C:\\Users\\MATEO\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\MATEO\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

@@ -196,10 +196,10 @@
             btnModificarCliente.FlatAppearance.BorderSize = 0;
             btnModificarCliente.FlatStyle = FlatStyle.Flat;
             btnModificarCliente.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModificarCliente.Location = new Point(0, 23);
+            btnModificarCliente.Location = new Point(0, 28);
             btnModificarCliente.Name = "btnModificarCliente";
             btnModificarCliente.Padding = new Padding(6, 0, 0, 0);
-            btnModificarCliente.Size = new Size(200, 23);
+            btnModificarCliente.Size = new Size(200, 25);
             btnModificarCliente.TabIndex = 2;
             btnModificarCliente.Text = "Modificar";
             btnModificarCliente.TextAlign = ContentAlignment.MiddleLeft;
@@ -215,7 +215,7 @@
             btnNvoCliente.Location = new Point(0, 0);
             btnNvoCliente.Name = "btnNvoCliente";
             btnNvoCliente.Padding = new Padding(6, 0, 0, 0);
-            btnNvoCliente.Size = new Size(200, 23);
+            btnNvoCliente.Size = new Size(200, 28);
             btnNvoCliente.TabIndex = 1;
             btnNvoCliente.Text = "Nuevo";
             btnNvoCliente.TextAlign = ContentAlignment.MiddleLeft;

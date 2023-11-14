@@ -108,6 +108,7 @@ namespace HotelForm.View.Principal
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
             AbrirFormHijo(new frmModificarCliente(factory));
+
             OcultarSubmenu();
         }
         #endregion
@@ -150,7 +151,7 @@ namespace HotelForm.View.Principal
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            
+
             DialogResult result = MessageBox.Show("Desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -162,7 +163,7 @@ namespace HotelForm.View.Principal
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panelTopSideleft_Paint(object sender, PaintEventArgs e)
