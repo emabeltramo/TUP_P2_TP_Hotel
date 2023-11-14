@@ -14,5 +14,11 @@ namespace HotelBackEnd.Front.Interface
         List<ProvinciaModel> GetProvincia();
         List<LocalidadModel> GetLocalidad();
         List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
+        List<TipoFacturaModel> GetTipoFactura();
+        List<FormaPagoModel> GetFormaPago();
+        List<TipoServicioModel> GetTipoServicio();
+        List<ReservaModel> GetReserva();
+        int GetFacturaNro();
+        public bool SaveFactura(FacturaModel factura);
     }
 }

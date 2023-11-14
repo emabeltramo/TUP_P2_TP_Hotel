@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,5 +18,14 @@ namespace HotelBackEnd.Model
         public EmpleadoModel Empleado { get; set; }
         public List<ReservaCuentaModel> Cuenta { get; set; }
         public List<ReservaHabitacionModel> Habitaciones { get; set; }
+
+        public string FechasAlquiladas
+        {
+            get
+            {
+                    return Ingreso + " - " + Salida;
+                
+            }
+        }
     }
 }

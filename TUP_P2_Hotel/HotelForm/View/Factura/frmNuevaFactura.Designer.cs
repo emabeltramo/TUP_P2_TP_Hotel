@@ -40,6 +40,8 @@
             btnSalir = new Button();
             btnCancelar = new Button();
             gbDetalle = new GroupBox();
+            label1 = new Label();
+            txtFinal = new TextBox();
             txtCantidad = new TextBox();
             txtMonto = new TextBox();
             label10 = new Label();
@@ -170,6 +172,8 @@
             // 
             // gbDetalle
             // 
+            gbDetalle.Controls.Add(label1);
+            gbDetalle.Controls.Add(txtFinal);
             gbDetalle.Controls.Add(txtCantidad);
             gbDetalle.Controls.Add(txtMonto);
             gbDetalle.Controls.Add(label10);
@@ -186,6 +190,23 @@
             gbDetalle.TabIndex = 7;
             gbDetalle.TabStop = false;
             gbDetalle.Text = "Detalle";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(600, 224);
+            label1.Name = "label1";
+            label1.Size = new Size(64, 20);
+            label1.TabIndex = 13;
+            label1.Text = "Total $";
+            // 
+            // txtFinal
+            // 
+            txtFinal.Location = new Point(670, 225);
+            txtFinal.Name = "txtFinal";
+            txtFinal.Size = new Size(100, 23);
+            txtFinal.TabIndex = 12;
             // 
             // txtCantidad
             // 
@@ -232,11 +253,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(600, 223);
+            label6.Location = new Point(15, 224);
             label6.Name = "label6";
-            label6.Size = new Size(64, 20);
+            label6.Size = new Size(96, 20);
             label6.TabIndex = 5;
-            label6.Text = "Total $";
+            label6.Text = "SubTotal $";
             // 
             // btnAgregar
             // 
@@ -250,7 +271,7 @@
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(670, 224);
+            txtTotal.Location = new Point(117, 225);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(100, 23);
             txtTotal.TabIndex = 1;
@@ -471,5 +492,7 @@
         private Label label9;
         private Label label8;
         private Button btnBuscar;
+        private Label label1;
+        private TextBox txtFinal;
     }
 }

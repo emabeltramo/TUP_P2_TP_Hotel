@@ -22,6 +22,16 @@ namespace HotelBackEnd.Front.Implementation
             return reservaDao.GetClientes();
         }
 
+        public int GetFacturaNro()
+        {
+            return reservaDao.GetFacturaNro();
+        }
+
+        public List<FormaPagoModel> GetFormaPago()
+        {
+            return reservaDao.GetFormaPago();
+        }
+
         public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
         {
             return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
@@ -42,6 +52,26 @@ namespace HotelBackEnd.Front.Implementation
         public List<ProvinciaModel> GetProvincia()
         {
             return reservaDao.GetProvincias();
+        }
+
+        public List<ReservaModel> GetReserva()
+        {
+            return reservaDao.GetReserva();
+        }
+
+        public List<TipoFacturaModel> GetTipoFactura()
+        {
+            return reservaDao.GetTipoFactura();
+        }
+
+        public List<TipoServicioModel> GetTipoServicio()
+        {
+            return reservaDao.GetTipoServicio();
+        }
+
+        public bool SaveFactura(FacturaModel factura)
+        {
+            return reservaDao.CrearFactura(factura);
         }
     }
 }

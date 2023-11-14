@@ -9,6 +9,8 @@ namespace HotelBackEnd.Model
     public class FacturaPagoModel
     {
         public int IdFactPago { get; set; }
-        public FormaPagoModel Forma { get; set; }
+        public List<FormaPagoModel> Forma { get; set; }
+        
     }
+    
 }

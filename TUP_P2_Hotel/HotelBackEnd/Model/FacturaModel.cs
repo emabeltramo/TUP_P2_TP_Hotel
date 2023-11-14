@@ -18,6 +18,8 @@ namespace HotelBackEnd.Model
 
         public List<FacturaDetalleModel> Detalles { get; set; }
 
+        public List<FormaPagoModel> Forma { get; set; }
+
         public void AgregarDetalle(FacturaDetalleModel detalle)
         {
             Detalles.Add(detalle);
@@ -28,12 +30,21 @@ namespace HotelBackEnd.Model
             Detalles.RemoveAt(indice);
         }
 
-        public double CalcularTotal()
+        public decimal CalcularTotal()
         {
-            double total = 0;
+            decimal total = 0;
             foreach (FacturaDetalleModel item in Detalles)
                 total += item.CalcularSubTotal();
             return total;
+        }
+        public void AgregarFactura(FormaPagoModel formaPago)
+        {
+            Forma.Add(formaPago);
+        }
+
+        public void QuitarFactura(int indice)
+        {
+            Forma.RemoveAt(indice);
         }
     }
 }

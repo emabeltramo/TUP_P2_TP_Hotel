@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace HotelForm.HTTPClient
             }
             return instance;
         }
-        public async Task<string> GetAsync(string url)
+        public async Task<HttpResponse> GetAsync(string url)
         {
             var result = await client.GetAsync(url);
             var content = "";
@@ -36,28 +37,54 @@ namespace HotelForm.HTTPClient
 
                 content = await result.Content.ReadAsStringAsync();
             }
-            Console.WriteLine(content);
-            return content;
+            return new HttpResponse(result.StatusCode, content, result.IsSuccessStatusCode);
         }
 
-        public async Task<string> PostAsync(string url, string data)
+        public async Task<HttpResponse> PostAsync(string url, string data)
         {
 
 
-            var content = new StringContent(data, Encoding.UTF8, "application/json");
-            var result = await client.PostAsync(url, content);
-            var reply = "";
+            try
+            {
+                var content = new StringContent(data, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync(url, content);
+                var reply = "";
 
-            if (result.IsSuccessStatusCode)
+                if (result.IsSuccessStatusCode)
+                {
+
+                    reply = await result.Content.ReadAsStringAsync();
+                }
+                return new HttpResponse(result.StatusCode, reply, result.IsSuccessStatusCode);
+            }
+            catch (Exception ex)
             {
 
-                reply = await result.Content.ReadAsStringAsync();
+                return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
-            Console.WriteLine(content);
-            return reply;
 
 
             //
         }
+
+
+        public async Task<string> DeleteAsync(string url, string data)
+        {
+            var result = await client.DeleteAsync(url);
+
+            var reply = "";
+
+            if (result.IsSuccessStatusCode)
+            {
+                reply = await result.Content.ReadAsStringAsync();
+            }
+
+            Console.WriteLine(reply);
+            return reply;
+        }
+
+
+        //
     }
+    
 }
