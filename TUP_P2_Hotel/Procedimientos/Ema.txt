@@ -141,3 +141,12 @@ create procedure ps_Empleados
 as
 select legajo,DNI,NOMBRE,APELLIDO,TIPO_DNI,TIPO_DOCUMENTO 
 from EMPLEADO inner join TIPO_DOCUMENTOS on EMPLEADO.TIPO_DNI=TIPO_DOCUMENTOS.ID
+
+
+
+create trigger dis_FacturaAdd
+on facturas
+for insert
+as
+update RESERVAS set ESTADO=2 from 
+RESERVAS inner join inserted on RESERVAS.ID=inserted.RESERVA
