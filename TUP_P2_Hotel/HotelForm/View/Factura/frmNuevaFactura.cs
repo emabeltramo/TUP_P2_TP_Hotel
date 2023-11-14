@@ -47,6 +47,7 @@ namespace HotelForm.View.Factura
         {
             dtpFecha.Value = DateTime.Now;
             cboCliente.Text = "CONSUMIDOR FINAL";
+            cboCliente.SelectedIndex = -1;
             cboTipoFactura.SelectedIndex = -1;
             cboFormaPago.SelectedIndex = -1;
             cboReserva.Items.Clear();
