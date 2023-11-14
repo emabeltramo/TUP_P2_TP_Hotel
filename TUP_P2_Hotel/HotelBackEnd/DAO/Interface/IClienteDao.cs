@@ -1,4 +1,5 @@
-﻿using HotelBackEnd.Model;
+﻿using HotelBackEnd.DAO.Implementation;
+using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace HotelBackEnd.DAO.Interface
     {
         List<TipoClienteModel> GetTipoCliente();
         List<TipoDocumentoModel> GetTipoDocumento();
-        List<ClienteModel> BuscarClientes(string busqueda);
+        List<ClienteModel> GetClientes();
+        ClienteModel GetClienteID(int id);
         bool AltaCliente(ClienteModel cliente);
         bool ActualizarCliente(ClienteModel cliente);
         bool BajaCliente(int numero);

@@ -61,12 +61,24 @@ namespace HotelForm.Service.Implementation
 
         public async Task<List<ClienteModel>> GetClientesAsync()
         {
-            string url = host + "/GetClientes";
+            string url = host + "/GetClientesLista";
             List<ClienteModel> result = new List<ClienteModel>();
             var response = await ClientSingleton.GetInstance().GetAsync(url); ;
             if (response != null && response.SuccessStatus)
             {
                 result = JsonConvert.DeserializeObject<List<ClienteModel>>(response.Data);
+            }
+            return result;
+        }
+
+        public async Task<ClienteModel> GetClienteIDAsync(int id)
+        {
+            string url = host + "/GetClienteID";
+            ClienteModel result = new ClienteModel();
+            var response = await ClientSingleton.GetInstance().GetAsync(url); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<ClienteModel>(id.ToString());
             }
             return result;
         }

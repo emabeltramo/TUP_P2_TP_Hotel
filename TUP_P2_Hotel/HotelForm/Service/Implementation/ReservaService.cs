@@ -48,7 +48,15 @@ namespace HotelForm.Service.Implementation
             throw new NotImplementedException();
         }
 
+        public Task<List<HotelServicioModel>> GetServiciosHotelAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task PostReservaAsync(ReservaModel modelo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

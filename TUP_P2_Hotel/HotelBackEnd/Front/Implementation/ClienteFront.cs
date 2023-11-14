@@ -35,11 +35,14 @@ namespace HotelBackEnd.Front.Implementation
             return dao.BajaCliente(numero);
         }
 
-        public List<ClienteModel> GetTablaClientes(string busqueda)
+        public List<ClienteModel> GetClientes()
         {
-            return dao.BuscarClientes(busqueda);
+            return dao.GetClientes();
         }
-
+        public ClienteModel GetClienteID(int id)
+        {
+            return dao.GetClienteID(id);
+        }
         public List<TipoClienteModel> GetTipoCliente()
         {
             return dao.GetTipoCliente();

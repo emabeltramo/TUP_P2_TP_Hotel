@@ -27,24 +27,42 @@ namespace HotelForm.View.Clientes
             InitializeComponent();
 
         }
-        private void frmModificarCliente_Load(object sender, EventArgs e)
+        private async void frmModificarCliente_Load(object sender, EventArgs e)
         {
 
             CargarComboCliente();
+            tipoDocumento = await clienteService.GetTipoDocumentosAsync();
+            cboTipoDocumento.DataSource = tipoDocumento;
+            cboTipoDocumento.DisplayMember = "Descri";
+            cboTipoDocumento.ValueMember = "Id";
+            tipoCliente = await clienteService.GetTipoClientesAsync();
+            cboTipoCliente.DataSource = tipoCliente;
+            cboTipoCliente.DisplayMember = "Descri";
+            cboTipoCliente.ValueMember = "Id";
 
         }
 
         private async void CargarComboCliente()
         {
+
             List<ClienteModel> clients = await clienteService.GetClientesAsync();
             cboCliente.DataSource = clients;
+
             cboCliente.DisplayMember = "NombreCompleto";
             cboCliente.ValueMember = "Id_Cliente";
         }
 
-        private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var c = (ClienteModel)cboCliente.SelectedItem;
+            txtApellido.Text = c.Apellido;
+            txtNombre.Text = c.Nombre;
+            if (c.CUIL == 0.ToString())
+                txtNroDocumento.Text = c.DNI;
+            else
+                txtNroDocumento.Text = c.CUIL;
 
+            
         }
     }
 }

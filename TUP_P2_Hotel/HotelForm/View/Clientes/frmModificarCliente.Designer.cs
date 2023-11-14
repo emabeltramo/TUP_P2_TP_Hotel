@@ -245,7 +245,9 @@
             cboCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCliente.FormattingEnabled = true;
+            cboCliente.ItemHeight = 15;
             cboCliente.Location = new Point(117, 56);
+            cboCliente.MaxDropDownItems = 35;
             cboCliente.Name = "cboCliente";
             cboCliente.Size = new Size(289, 23);
             cboCliente.TabIndex = 83;

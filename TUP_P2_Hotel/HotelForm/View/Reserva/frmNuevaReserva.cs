@@ -103,19 +103,19 @@ namespace HotelForm.View.Reserva
             modelo.Cuenta = ReadDgvServicios();
             modelo.Empleado = new EmpleadoModel(); //Agregrar empleado
             modelo.Cliente = (ClienteModel)cboClienteReserva.SelectedItem;
-            modelo.Ingreso = dtpDesde.Value.Date;
-            modelo.Salida = dtpHasta.Value.Date;
-            var result = await service.PostReservaAsync(modelo);
-            if (result.StatusCode == System.Net.HttpStatusCode.Created)
-            {
-                MessageBox.Show($"Reserva generada con exito\nNumero:{result.Data}",
-                    "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnReiniciar.PerformClick();
-            }
-            else
-            {
-                MessageBox.Show(result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //modelo.Ingreso = dtpDesde.Value.Date;
+            //modelo.Salida = dtpHasta.Value.Date;
+            //var result = await service.PostReservaAsync(modelo);
+            //if (result.StatusCode == System.Net.HttpStatusCode.Created)
+            //{
+            //    MessageBox.Show($"Reserva generada con exito\nNumero:{result.Data}",
+            //        "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    btnReiniciar.PerformClick();
+            //}
+            //else
+            //{
+            //    MessageBox.Show(result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         private List<ReservaHabitacionModel> ReadDgvHabitaciones()
         {
@@ -190,8 +190,7 @@ namespace HotelForm.View.Reserva
 
         private async void ServDisponibles(int id)
         {
-            List<HotelServicioModel> servicios = await service.
-                GetServiciosHotelAsync(id);
+            List<HotelServicioModel> servicios = await service.GetServiciosHotelAsync(id);
             dgvServicios.Rows.Clear();
             foreach (var item in servicios)
             {

@@ -55,22 +55,40 @@ namespace HotelAPI.Controllers
             }
         }
 
-        [HttpGet("/GetTablaClientes")]
-        public IActionResult GetTablaClientes(string busqueda)
+        [HttpGet("/GetClientesLista")]
+        public IActionResult GetClientes()
         {
-
             try
             {
-                var result = front.GetTablaClientes(busqueda);
+                var result = front.GetClientes();
                 if (result == null)
                 {
-                    return StatusCode(500, " Se produjo un error al buscar clientes");
+                    return StatusCode(500, "Se produjo un error al procesar los clientes");
                 }
                 return Ok(result);
-
             }
             catch (Exception)
             {
+
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("/GetClienteId")]
+        public IActionResult GetClienteID(int id)
+        {
+            try
+            {
+                var result = front.GetClienteID(id);
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar los clientes");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
                 return StatusCode(500);
             }
         }
