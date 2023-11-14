@@ -55,8 +55,8 @@ namespace HotelForm.Service.Implementation
             string url = host + "/DeleteCliente";
             var cuerpo = JsonConvert.SerializeObject(numero);
             var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
-           
-            throw new NotImplementedException();
+
+            return response;
         }
 
         public async Task<List<ClienteModel>> GetClientesAsync()

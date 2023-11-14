@@ -108,6 +108,7 @@ namespace HotelBackEnd.DAO.Implementation
             bool resultado = true;
             SqlConnection conexion = HelperDao.GetInstance().GetConnection();
             SqlTransaction t = null;
+
             try
             {
                 conexion.Open();
@@ -121,11 +122,15 @@ namespace HotelBackEnd.DAO.Implementation
 
                 t.Commit();
             }
-            catch
+            catch (Exception ex)
             {
                 if (t != null)
                     t.Rollback();
+
                 resultado = false;
+
+                // Agrega información sobre la excepción al registro o usa un sistema de logging
+                Console.WriteLine($"Error en BajaCliente: {ex.Message}");
             }
             finally
             {
@@ -136,8 +141,9 @@ namespace HotelBackEnd.DAO.Implementation
             return resultado;
         }
 
-      
-            public List<TipoClienteModel> GetTipoCliente()
+
+
+        public List<TipoClienteModel> GetTipoCliente()
             {
                 List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
 
