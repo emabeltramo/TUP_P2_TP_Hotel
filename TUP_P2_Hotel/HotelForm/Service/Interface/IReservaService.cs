@@ -21,5 +21,7 @@ namespace HotelForm.Service.Interface
         Task<List<ReservaHabitacionModel>> GetReservaHabAsync(int idReserva);
         Task<List<ReservaCuentaModel>> GetReservaCuentaAsync(int idReserva);
         Task<HttpResponse> PostReservaAsync(ReservaModel Reservar);
+        Task<HttpResponse> DeleteReservaAsync(int idReserva);
+
     }
 }

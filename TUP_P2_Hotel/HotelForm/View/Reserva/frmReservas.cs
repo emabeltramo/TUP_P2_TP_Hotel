@@ -40,6 +40,7 @@ namespace HotelForm.View.Reserva
                 var reserva = reservas.FirstOrDefault(m => m.IdReserva == idReserva);
                 var form = new frmViewReserva(factory, reserva);
                 form.ShowDialog();
+                btnFiltrar.PerformClick();
             }
         }
 
@@ -88,6 +89,8 @@ namespace HotelForm.View.Reserva
         {
             cboCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboHotel.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+
             dtpHasta.MinDate = DateTime.Now.Date;
             dtpHasta.Value = DateTime.Now.AddMonths(1).Date;
 

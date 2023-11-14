@@ -576,5 +576,46 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
+
+        public bool DeleteReserva(int idReserva)
+        {
+            bool result = false;
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction t = null;
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.Connection.Open();
+                t = cmd.Connection.BeginTransaction();
+                cmd.Transaction = t;
+                
+                cmd.CommandText = "ps_ReservaAnular";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@reserva", (object)idReserva);
+                //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
+                if (cmd.ExecuteNonQuery() !=1)
+                {
+                    mensaje = "Se cancelo la operacion por problemas internos";
+                    t.Rollback();
+                }
+                
+                
+                
+                t.Commit();
+                result = true;
+                mensaje = "Reserva Anulada correctmente";
+            }
+            catch (Exception ex)
+            {
+
+                t.Rollback();
+                mensaje = ex.Message;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
     }
 }

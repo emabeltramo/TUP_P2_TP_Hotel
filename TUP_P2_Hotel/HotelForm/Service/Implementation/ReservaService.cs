@@ -17,7 +17,18 @@ namespace HotelForm.Service.Implementation
     internal class ReservaService : IReservaService
     {
         private  const string host = "https://localhost:7107";
-        
+
+        public async Task<HttpResponse> DeleteReservaAsync(int idReserva)
+        {
+            string url = host + "/DeleteReserva?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["idReserva"] = idReserva.ToString(); ;
+            var response = await ClientSingleton.GetInstance().DeleteAsync(url+query.ToString());
+
+
+            return response;
+        }
+
         public async Task<List<ClienteModel>> GetClientesAsync()
         {
             string url = host + "/GetClientes";

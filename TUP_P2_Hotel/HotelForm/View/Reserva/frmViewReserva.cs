@@ -29,6 +29,28 @@ namespace HotelForm.View.Reserva
             hotel = new HotelModel();
             this.Load += FrmViewReserva_Load;
             InitComp();
+            btnAnular.Click += BtnAnular_Click;
+        }
+
+        private async void BtnAnular_Click(object? sender, EventArgs e)
+        {
+            if (reserva.Estado.IdEstadoReserva != 3)
+            {
+                if (MessageBox.Show("Esta seguro que desea anular la reserva?","Atencion",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                {
+                    var result = await service.DeleteReservaAsync(reserva.IdReserva);
+                    if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        MessageBox.Show(result.Data,"Atencion",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        this.Close();
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private async void FrmViewReserva_Load(object? sender, EventArgs e)
@@ -57,6 +79,10 @@ namespace HotelForm.View.Reserva
             txbTelefono.ReadOnly = true;
             dtpDesde.Enabled = false;
             dtpHasta.Enabled = false;
+            if (reserva.Estado.IdEstadoReserva == 3)
+            {
+                btnAnular.Enabled = false;
+            }
         }
         private async Task ObtenerHabitaciones()
         {

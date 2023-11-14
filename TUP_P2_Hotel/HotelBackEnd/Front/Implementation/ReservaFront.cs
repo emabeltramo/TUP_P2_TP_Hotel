@@ -19,6 +19,14 @@ namespace HotelBackEnd.Front.Implementation
             reservaDao = new ReservaDao();
             mensaje = string.Empty;
         }
+
+        public bool DeleteReserva(int idReserva)
+        {
+            var result= reservaDao.DeleteReserva(idReserva);
+            mensaje = reservaDao.GetMensaje();
+            return result;
+        }
+
         public List<ClienteModel> GetClientes()
         {
             return reservaDao.GetClientes();

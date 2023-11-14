@@ -22,6 +22,7 @@ namespace HotelBackEnd.DAO.Interface
         List<ReservaCuentaModel> GetReservaCuenta(int idReserva);
 
         bool PostReserva(ReservaModel reserva);
+        bool DeleteReserva(int idReserva);
         string GetMensaje();
     }
 }

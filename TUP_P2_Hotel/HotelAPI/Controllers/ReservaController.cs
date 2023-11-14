@@ -248,5 +248,25 @@ namespace HotelAPI.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpDelete("/DeleteReserva")]
+        public IActionResult DeleteReserva(int idReserva)
+        {
+            try
+            {
+                
+                var result = front.DeleteReserva(idReserva);
+                var mensaje = front.GetMensaje();
+                if (!result)
+                {
+                    return StatusCode(500, mensaje);
+                }
+                return StatusCode(200, mensaje);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
     }
 }

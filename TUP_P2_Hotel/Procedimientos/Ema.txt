@@ -122,3 +122,8 @@ ts.DESCRIPCION
 from RESERVA_CUENTA rc
 inner join TIPOS_SERVICIOS ts on rc.SERVICIO=ts.ID
 where RESERVA =@reserva
+
+
+create procedure ps_ReservaAnular @reserva int
+as
+update RESERVAS set ESTADO=3 where ID = @reserva

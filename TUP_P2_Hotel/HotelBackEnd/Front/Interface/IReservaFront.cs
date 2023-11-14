@@ -22,6 +22,7 @@ namespace HotelBackEnd.Front.Interface
         List<ReservaCuentaModel> GetReservaCuenta(int idReserva);
         List<EstadoReservaModel> GetEstadosReserva();
         bool PostReserva(ReservaModel reserva);
+        bool DeleteReserva(int idReserva);
         string GetMensaje();
     }
 }
