@@ -32,5 +32,10 @@ namespace HotelForm.Factory.Implementation
         {
             return sesion;
         }
+
+        public IFacturaService CreateFacturaService()
+        {
+            return new FacturaService();
+        }
     }
 }

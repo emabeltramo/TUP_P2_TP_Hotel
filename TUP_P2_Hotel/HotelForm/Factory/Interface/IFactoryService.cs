@@ -12,6 +12,7 @@ namespace HotelForm.Factory.Interface
     {
         IReservaService CreateReservaService();
         ILoginService CreateLoginService();
+        IFacturaService CreateFacturaService();
         void SetSesion(EmpleadoModel emp);
         EmpleadoModel GetSesion();
     }

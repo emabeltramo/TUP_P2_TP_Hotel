@@ -1,4 +1,5 @@
 ﻿using HotelForm.Factory.Interface;
+using HotelForm.View.Factura;
 using HotelForm.View.Login;
 using HotelForm.View.Reserva;
 using System;
@@ -20,6 +21,13 @@ namespace HotelForm.View.Principal
         {
             this.factory = factory;
             InitializeComponent();
+            this.Load += FrmMain_Load;
+        }
+
+        private void FrmMain_Load(object? sender, EventArgs e)
+        {
+            var empleado = factory.GetSesion();
+            this.Text = $"Bienvenido {empleado.Apellido} {empleado.Nombre}";
         }
 
         private void OcultarSubmenu()
@@ -156,6 +164,12 @@ namespace HotelForm.View.Principal
             AbrirFormHijo(new frmLogin(factory));
                 
             }
+        }
+
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new frmNuevaFactura(factory));
+            OcultarSubmenu();
         }
     }
 }

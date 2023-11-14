@@ -167,6 +167,7 @@
             // 
             this.dgvReserva.AllowUserToAddRows = false;
             this.dgvReserva.AllowUserToDeleteRows = false;
+            this.dgvReserva.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReserva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReserva.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cliente,

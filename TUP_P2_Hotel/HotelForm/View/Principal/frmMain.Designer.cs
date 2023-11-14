@@ -31,6 +31,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelSide = new System.Windows.Forms.Panel();
+            this.btnFacturar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnConsultasSubenu = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@
             // 
             this.panelSide.AutoScroll = true;
             this.panelSide.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panelSide.Controls.Add(this.btnFacturar);
             this.panelSide.Controls.Add(this.panel2);
             this.panelSide.Controls.Add(this.btnConsultasSubenu);
             this.panelSide.Controls.Add(this.btnCerrarSesion);
@@ -79,6 +81,22 @@
             this.panelSide.Name = "panelSide";
             this.panelSide.Size = new System.Drawing.Size(200, 546);
             this.panelSide.TabIndex = 1;
+            // 
+            // btnFacturar
+            // 
+            this.btnFacturar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacturar.FlatAppearance.BorderSize = 0;
+            this.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturar.Location = new System.Drawing.Point(0, 348);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.btnFacturar.Size = new System.Drawing.Size(200, 23);
+            this.btnFacturar.TabIndex = 13;
+            this.btnFacturar.Text = "FACTURAR";
+            this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // panel2
             // 
@@ -379,5 +397,6 @@
         private Button btnConsultasSubenu;
         private Panel panel2;
         private Button btnHelp;
+        private Button btnFacturar;
     }
 }

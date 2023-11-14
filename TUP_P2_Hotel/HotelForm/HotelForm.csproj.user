@@ -4,6 +4,9 @@
     <Compile Update="View\Consultas\frmConsultarReserva.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Factura\frmNuevaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

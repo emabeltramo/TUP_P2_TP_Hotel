@@ -9,6 +9,6 @@ namespace HotelBackEnd.Model
     public class TipoFacturaModel
     {
         public int Id { get; set; }
-        public char Tipo { get; set; }
+        public string Tipo { get; set; }
     }
 }

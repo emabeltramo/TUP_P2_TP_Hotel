@@ -49,17 +49,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.gbHabitaciones = new System.Windows.Forms.GroupBox();
             this.dgvHabitaciones = new System.Windows.Forms.DataGridView();
-            this.gbServico = new System.Windows.Forms.GroupBox();
-            this.dgvServicios = new System.Windows.Forms.DataGridView();
-            this.btnAnular = new System.Windows.Forms.Button();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CamaMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbServico = new System.Windows.Forms.GroupBox();
+            this.dgvServicios = new System.Windows.Forms.DataGridView();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonificado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAnular = new System.Windows.Forms.Button();
             this.gbCliente.SuspendLayout();
             this.gbHotel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -245,7 +245,7 @@
             this.gbHabitaciones.Controls.Add(this.dgvHabitaciones);
             this.gbHabitaciones.Location = new System.Drawing.Point(12, 240);
             this.gbHabitaciones.Name = "gbHabitaciones";
-            this.gbHabitaciones.Size = new System.Drawing.Size(355, 183);
+            this.gbHabitaciones.Size = new System.Drawing.Size(715, 95);
             this.gbHabitaciones.TabIndex = 17;
             this.gbHabitaciones.TabStop = false;
             this.gbHabitaciones.Text = "Habitaciones";
@@ -254,6 +254,7 @@
             // 
             this.dgvHabitaciones.AllowUserToAddRows = false;
             this.dgvHabitaciones.AllowUserToDeleteRows = false;
+            this.dgvHabitaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHabitaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHabitaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -265,45 +266,8 @@
             this.dgvHabitaciones.Name = "dgvHabitaciones";
             this.dgvHabitaciones.ReadOnly = true;
             this.dgvHabitaciones.RowTemplate.Height = 25;
-            this.dgvHabitaciones.Size = new System.Drawing.Size(349, 161);
+            this.dgvHabitaciones.Size = new System.Drawing.Size(709, 73);
             this.dgvHabitaciones.TabIndex = 0;
-            // 
-            // gbServico
-            // 
-            this.gbServico.Controls.Add(this.dgvServicios);
-            this.gbServico.Location = new System.Drawing.Point(372, 240);
-            this.gbServico.Name = "gbServico";
-            this.gbServico.Size = new System.Drawing.Size(355, 183);
-            this.gbServico.TabIndex = 18;
-            this.gbServico.TabStop = false;
-            this.gbServico.Text = "Servicios";
-            // 
-            // dgvServicios
-            // 
-            this.dgvServicios.AllowUserToAddRows = false;
-            this.dgvServicios.AllowUserToDeleteRows = false;
-            this.dgvServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Descripcion,
-            this.Cantidad,
-            this.Bonificado,
-            this.dataGridViewTextBoxColumn1});
-            this.dgvServicios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvServicios.Location = new System.Drawing.Point(3, 19);
-            this.dgvServicios.Name = "dgvServicios";
-            this.dgvServicios.ReadOnly = true;
-            this.dgvServicios.RowTemplate.Height = 25;
-            this.dgvServicios.Size = new System.Drawing.Size(349, 161);
-            this.dgvServicios.TabIndex = 0;
-            // 
-            // btnAnular
-            // 
-            this.btnAnular.Location = new System.Drawing.Point(310, 447);
-            this.btnAnular.Name = "btnAnular";
-            this.btnAnular.Size = new System.Drawing.Size(111, 23);
-            this.btnAnular.TabIndex = 19;
-            this.btnAnular.Text = "Anular Reserva";
-            this.btnAnular.UseVisualStyleBackColor = true;
             // 
             // Codigo
             // 
@@ -329,6 +293,35 @@
             this.Monto.Name = "Monto";
             this.Monto.ReadOnly = true;
             // 
+            // gbServico
+            // 
+            this.gbServico.Controls.Add(this.dgvServicios);
+            this.gbServico.Location = new System.Drawing.Point(12, 341);
+            this.gbServico.Name = "gbServico";
+            this.gbServico.Size = new System.Drawing.Size(715, 95);
+            this.gbServico.TabIndex = 18;
+            this.gbServico.TabStop = false;
+            this.gbServico.Text = "Servicios";
+            // 
+            // dgvServicios
+            // 
+            this.dgvServicios.AllowUserToAddRows = false;
+            this.dgvServicios.AllowUserToDeleteRows = false;
+            this.dgvServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvServicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Descripcion,
+            this.Cantidad,
+            this.Bonificado,
+            this.dataGridViewTextBoxColumn1});
+            this.dgvServicios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvServicios.Location = new System.Drawing.Point(3, 19);
+            this.dgvServicios.Name = "dgvServicios";
+            this.dgvServicios.ReadOnly = true;
+            this.dgvServicios.RowTemplate.Height = 25;
+            this.dgvServicios.Size = new System.Drawing.Size(709, 73);
+            this.dgvServicios.TabIndex = 0;
+            // 
             // Descripcion
             // 
             this.Descripcion.HeaderText = "Descripcion";
@@ -352,6 +345,15 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Monto";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // btnAnular
+            // 
+            this.btnAnular.Location = new System.Drawing.Point(310, 447);
+            this.btnAnular.Name = "btnAnular";
+            this.btnAnular.Size = new System.Drawing.Size(111, 23);
+            this.btnAnular.TabIndex = 19;
+            this.btnAnular.Text = "Anular Reserva";
+            this.btnAnular.UseVisualStyleBackColor = true;
             // 
             // frmViewReserva
             // 
