@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             dgvDetalles = new DataGridView();
-            idDetalle = new DataGridViewTextBoxColumn();
-            colServicio = new DataGridViewTextBoxColumn();
-            colCantidad = new DataGridViewTextBoxColumn();
-            colPrecio = new DataGridViewTextBoxColumn();
-            colAcciones = new DataGridViewButtonColumn();
             cboServicio = new ComboBox();
             cboCliente = new ComboBox();
             btnCargar = new Button();
@@ -59,13 +54,18 @@
             label4 = new Label();
             label5 = new Label();
             dgvFormasPago = new DataGridView();
-            IdFormaPago = new DataGridViewTextBoxColumn();
-            colFormaPago = new DataGridViewTextBoxColumn();
-            actionCol = new DataGridViewButtonColumn();
             btnAgregarFormaPago = new Button();
             cboFormaPago = new ComboBox();
             label7 = new Label();
             btnBuscar = new Button();
+            IdFormaPago = new DataGridViewTextBoxColumn();
+            colFormaPago = new DataGridViewTextBoxColumn();
+            actionCol = new DataGridViewButtonColumn();
+            idDetalle = new DataGridViewTextBoxColumn();
+            colServicio = new DataGridViewTextBoxColumn();
+            colCantidad = new DataGridViewTextBoxColumn();
+            colPrecio = new DataGridViewTextBoxColumn();
+            colAcciones = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvDetalles).BeginInit();
             gbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFormasPago).BeginInit();
@@ -82,53 +82,16 @@
             dgvDetalles.Name = "dgvDetalles";
             dgvDetalles.ReadOnly = true;
             dgvDetalles.RowTemplate.Height = 25;
-            dgvDetalles.Size = new Size(764, 150);
+            dgvDetalles.Size = new Size(703, 117);
             dgvDetalles.TabIndex = 0;
             dgvDetalles.CellContentClick += dgvDetalles_CellContentClick;
-            // 
-            // idDetalle
-            // 
-            idDetalle.HeaderText = "colId";
-            idDetalle.Name = "idDetalle";
-            idDetalle.ReadOnly = true;
-            idDetalle.Visible = false;
-            // 
-            // colServicio
-            // 
-            colServicio.HeaderText = "Servicio";
-            colServicio.Name = "colServicio";
-            colServicio.ReadOnly = true;
-            colServicio.Width = 295;
-            // 
-            // colCantidad
-            // 
-            colCantidad.HeaderText = "Cantidad";
-            colCantidad.Name = "colCantidad";
-            colCantidad.ReadOnly = true;
-            colCantidad.Width = 150;
-            // 
-            // colPrecio
-            // 
-            colPrecio.HeaderText = "Precio";
-            colPrecio.Name = "colPrecio";
-            colPrecio.ReadOnly = true;
-            colPrecio.Width = 150;
-            // 
-            // colAcciones
-            // 
-            colAcciones.HeaderText = "Acciones";
-            colAcciones.Name = "colAcciones";
-            colAcciones.ReadOnly = true;
-            colAcciones.Text = "Quitar";
-            colAcciones.UseColumnTextForButtonValue = true;
-            colAcciones.Width = 125;
             // 
             // cboServicio
             // 
             cboServicio.FormattingEnabled = true;
             cboServicio.Location = new Point(6, 39);
             cboServicio.Name = "cboServicio";
-            cboServicio.Size = new Size(360, 23);
+            cboServicio.Size = new Size(343, 23);
             cboServicio.TabIndex = 1;
             // 
             // cboCliente
@@ -136,13 +99,13 @@
             cboCliente.FormattingEnabled = true;
             cboCliente.Location = new Point(129, 90);
             cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(260, 23);
+            cboCliente.Size = new Size(212, 23);
             cboCliente.TabIndex = 2;
             cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
             // 
             // btnCargar
             // 
-            btnCargar.Location = new Point(248, 506);
+            btnCargar.Location = new Point(218, 450);
             btnCargar.Name = "btnCargar";
             btnCargar.Size = new Size(75, 23);
             btnCargar.TabIndex = 4;
@@ -152,7 +115,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(363, 506);
+            btnSalir.Location = new Point(333, 450);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 5;
@@ -162,7 +125,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(482, 506);
+            btnCancelar.Location = new Point(452, 450);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 6;
@@ -184,9 +147,9 @@
             gbDetalle.Controls.Add(txtTotal);
             gbDetalle.Controls.Add(dgvDetalles);
             gbDetalle.Controls.Add(cboServicio);
-            gbDetalle.Location = new Point(12, 246);
+            gbDetalle.Location = new Point(12, 217);
             gbDetalle.Name = "gbDetalle";
-            gbDetalle.Size = new Size(776, 254);
+            gbDetalle.Size = new Size(715, 227);
             gbDetalle.TabIndex = 7;
             gbDetalle.TabStop = false;
             gbDetalle.Text = "Detalle";
@@ -195,7 +158,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(600, 224);
+            label1.Location = new Point(539, 190);
             label1.Name = "label1";
             label1.Size = new Size(64, 20);
             label1.TabIndex = 13;
@@ -203,29 +166,29 @@
             // 
             // txtFinal
             // 
-            txtFinal.Location = new Point(670, 225);
+            txtFinal.Location = new Point(609, 191);
             txtFinal.Name = "txtFinal";
             txtFinal.Size = new Size(100, 23);
             txtFinal.TabIndex = 12;
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(372, 39);
+            txtCantidad.Location = new Point(355, 39);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(131, 23);
+            txtCantidad.Size = new Size(113, 23);
             txtCantidad.TabIndex = 11;
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(509, 39);
+            txtMonto.Location = new Point(474, 39);
             txtMonto.Name = "txtMonto";
-            txtMonto.Size = new Size(138, 23);
+            txtMonto.Size = new Size(125, 23);
             txtMonto.TabIndex = 10;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(509, 21);
+            label10.Location = new Point(474, 21);
             label10.Name = "label10";
             label10.Size = new Size(55, 15);
             label10.TabIndex = 9;
@@ -234,7 +197,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(372, 21);
+            label9.Location = new Point(355, 21);
             label9.Name = "label9";
             label9.Size = new Size(58, 15);
             label9.TabIndex = 8;
@@ -253,7 +216,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(15, 224);
+            label6.Location = new Point(15, 188);
             label6.Name = "label6";
             label6.Size = new Size(96, 20);
             label6.TabIndex = 5;
@@ -261,9 +224,9 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(653, 39);
+            btnAgregar.Location = new Point(605, 38);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(117, 23);
+            btnAgregar.Size = new Size(104, 23);
             btnAgregar.TabIndex = 4;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -271,7 +234,7 @@
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(117, 225);
+            txtTotal.Location = new Point(117, 189);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(100, 23);
             txtTotal.TabIndex = 1;
@@ -286,15 +249,15 @@
             // cboReserva
             // 
             cboReserva.FormattingEnabled = true;
-            cboReserva.Location = new Point(129, 131);
+            cboReserva.Location = new Point(129, 119);
             cboReserva.Name = "cboReserva";
-            cboReserva.Size = new Size(353, 23);
+            cboReserva.Size = new Size(260, 23);
             cboReserva.TabIndex = 9;
             // 
             // cboTipoFactura
             // 
             cboTipoFactura.FormattingEnabled = true;
-            cboTipoFactura.Location = new Point(129, 188);
+            cboTipoFactura.Location = new Point(129, 159);
             cboTipoFactura.Name = "cboTipoFactura";
             cboTipoFactura.Size = new Size(146, 23);
             cboTipoFactura.TabIndex = 10;
@@ -330,7 +293,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(29, 191);
+            label4.Location = new Point(29, 162);
             label4.Name = "label4";
             label4.Size = new Size(94, 15);
             label4.TabIndex = 14;
@@ -339,7 +302,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(70, 134);
+            label5.Location = new Point(70, 122);
             label5.Name = "label5";
             label5.Size = new Size(53, 15);
             label5.TabIndex = 15;
@@ -352,13 +315,50 @@
             dgvFormasPago.AllowUserToResizeColumns = false;
             dgvFormasPago.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFormasPago.Columns.AddRange(new DataGridViewColumn[] { IdFormaPago, colFormaPago, actionCol });
-            dgvFormasPago.Location = new Point(488, 55);
+            dgvFormasPago.Location = new Point(440, 55);
             dgvFormasPago.Name = "dgvFormasPago";
             dgvFormasPago.ReadOnly = true;
             dgvFormasPago.RowTemplate.Height = 25;
-            dgvFormasPago.Size = new Size(300, 185);
+            dgvFormasPago.Size = new Size(287, 156);
             dgvFormasPago.TabIndex = 16;
             dgvFormasPago.CellContentClick += dgvFormasPago_CellContentClick;
+            // 
+            // btnAgregarFormaPago
+            // 
+            btnAgregarFormaPago.Location = new Point(347, 188);
+            btnAgregarFormaPago.Name = "btnAgregarFormaPago";
+            btnAgregarFormaPago.Size = new Size(87, 23);
+            btnAgregarFormaPago.TabIndex = 17;
+            btnAgregarFormaPago.Text = "Agregar";
+            btnAgregarFormaPago.UseVisualStyleBackColor = true;
+            btnAgregarFormaPago.Click += btnAgregarFormaPago_Click;
+            // 
+            // cboFormaPago
+            // 
+            cboFormaPago.FormattingEnabled = true;
+            cboFormaPago.Location = new Point(129, 188);
+            cboFormaPago.Name = "cboFormaPago";
+            cboFormaPago.Size = new Size(212, 23);
+            cboFormaPago.TabIndex = 18;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(30, 191);
+            label7.Name = "label7";
+            label7.Size = new Size(93, 15);
+            label7.TabIndex = 19;
+            label7.Text = "Forma de Pago: ";
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(347, 90);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(87, 23);
+            btnBuscar.TabIndex = 20;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // IdFormaPago
             // 
@@ -372,7 +372,7 @@
             colFormaPago.HeaderText = "Forma de Pago";
             colFormaPago.Name = "colFormaPago";
             colFormaPago.ReadOnly = true;
-            colFormaPago.Width = 157;
+            colFormaPago.Width = 143;
             // 
             // actionCol
             // 
@@ -383,48 +383,48 @@
             actionCol.Text = "Quitar";
             actionCol.UseColumnTextForButtonValue = true;
             // 
-            // btnAgregarFormaPago
+            // idDetalle
             // 
-            btnAgregarFormaPago.Location = new Point(395, 217);
-            btnAgregarFormaPago.Name = "btnAgregarFormaPago";
-            btnAgregarFormaPago.Size = new Size(87, 23);
-            btnAgregarFormaPago.TabIndex = 17;
-            btnAgregarFormaPago.Text = "Agregar";
-            btnAgregarFormaPago.UseVisualStyleBackColor = true;
-            btnAgregarFormaPago.Click += btnAgregarFormaPago_Click;
+            idDetalle.HeaderText = "colId";
+            idDetalle.Name = "idDetalle";
+            idDetalle.ReadOnly = true;
+            idDetalle.Visible = false;
             // 
-            // cboFormaPago
+            // colServicio
             // 
-            cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Location = new Point(129, 217);
-            cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(260, 23);
-            cboFormaPago.TabIndex = 18;
+            colServicio.HeaderText = "Servicio";
+            colServicio.Name = "colServicio";
+            colServicio.ReadOnly = true;
+            colServicio.Width = 245;
             // 
-            // label7
+            // colCantidad
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(30, 220);
-            label7.Name = "label7";
-            label7.Size = new Size(93, 15);
-            label7.TabIndex = 19;
-            label7.Text = "Forma de Pago: ";
+            colCantidad.HeaderText = "Cantidad";
+            colCantidad.Name = "colCantidad";
+            colCantidad.ReadOnly = true;
+            colCantidad.Width = 145;
             // 
-            // btnBuscar
+            // colPrecio
             // 
-            btnBuscar.Location = new Point(395, 89);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(87, 23);
-            btnBuscar.TabIndex = 20;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
+            colPrecio.HeaderText = "Precio";
+            colPrecio.Name = "colPrecio";
+            colPrecio.ReadOnly = true;
+            colPrecio.Width = 145;
+            // 
+            // colAcciones
+            // 
+            colAcciones.HeaderText = "Acciones";
+            colAcciones.Name = "colAcciones";
+            colAcciones.ReadOnly = true;
+            colAcciones.Text = "Quitar";
+            colAcciones.UseColumnTextForButtonValue = true;
+            colAcciones.Width = 125;
             // 
             // frmNuevaFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 541);
+            ClientSize = new Size(739, 478);
             Controls.Add(btnBuscar);
             Controls.Add(label7);
             Controls.Add(cboFormaPago);
@@ -475,14 +475,6 @@
         private Label label4;
         private Label label5;
         private DataGridView dgvFormasPago;
-        private DataGridViewTextBoxColumn idDetalle;
-        private DataGridViewTextBoxColumn colServicio;
-        private DataGridViewTextBoxColumn colCantidad;
-        private DataGridViewTextBoxColumn colPrecio;
-        private DataGridViewButtonColumn colAcciones;
-        private DataGridViewTextBoxColumn IdFormaPago;
-        private DataGridViewTextBoxColumn colFormaPago;
-        private DataGridViewButtonColumn actionCol;
         private Button btnAgregarFormaPago;
         private ComboBox cboFormaPago;
         private Label label7;
@@ -494,5 +486,13 @@
         private Button btnBuscar;
         private Label label1;
         private TextBox txtFinal;
+        private DataGridViewTextBoxColumn idDetalle;
+        private DataGridViewTextBoxColumn colServicio;
+        private DataGridViewTextBoxColumn colCantidad;
+        private DataGridViewTextBoxColumn colPrecio;
+        private DataGridViewButtonColumn colAcciones;
+        private DataGridViewTextBoxColumn IdFormaPago;
+        private DataGridViewTextBoxColumn colFormaPago;
+        private DataGridViewButtonColumn actionCol;
     }
 }

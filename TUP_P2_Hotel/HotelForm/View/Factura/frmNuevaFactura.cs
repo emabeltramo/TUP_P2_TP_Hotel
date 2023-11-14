@@ -269,7 +269,7 @@ namespace HotelForm.View.Factura
                 {
                     MessageBox.Show("Error al cargar Factura : " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
         }
         private bool Validar()
