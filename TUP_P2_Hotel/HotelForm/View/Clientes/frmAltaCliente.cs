@@ -207,5 +207,30 @@ namespace HotelForm.View.Clientes
                 txtApellido.Text = string.Empty;
             }
         }
+
+        private void txtRazonSocial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+        }
     }
 }
