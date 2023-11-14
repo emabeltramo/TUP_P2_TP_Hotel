@@ -207,12 +207,9 @@ namespace HotelBackEnd.DAO.Implementation
             try
             {
                 cmd.Connection = HelperDao.GetInstance().GetConnection();
-                cmd.CommandText = "select HOTEL_SERVICIOS.ID as hs_id,TIPOS_SERVICIOS.ID as ts_id," +
-                    "TIPOS_SERVICIOS.DESCRIPCION as ts_desc,PRECIO as hs_precio " +
-                    "from HOTEL_SERVICIOS " +
-                    "inner join TIPOS_SERVICIOS on HOTEL_SERVICIOS.SERVICIO=TIPOS_SERVICIOS.ID " +
-                    "where HOTEL_SERVICIOS.HOTEL=@idHotel";
+                cmd.CommandText = "ps_HotelSrv";
                 cmd.Parameters.Add(new SqlParameter("@idHotel", (object)idHotel));
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection.Open();
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -428,8 +425,8 @@ namespace HotelBackEnd.DAO.Implementation
             try
             {
                 cmd.Connection = HelperDao.GetInstance().GetConnection();
-                cmd.CommandText = "select legajo,DNI,NOMBRE,APELLIDO,TIPO_DNI,TIPO_DOCUMENTO " +
-                    "from EMPLEADO inner join TIPO_DOCUMENTOS on EMPLEADO.TIPO_DNI=TIPO_DOCUMENTOS.ID";
+                cmd.CommandText = "ps_Empleados";
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection.Open();
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)

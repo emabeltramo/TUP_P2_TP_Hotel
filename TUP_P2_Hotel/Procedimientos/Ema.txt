@@ -127,3 +127,17 @@ where RESERVA =@reserva
 create procedure ps_ReservaAnular @reserva int
 as
 update RESERVAS set ESTADO=3 where ID = @reserva
+
+
+create procedure ps_HotelSrv @idHotel int
+as
+select HOTEL_SERVICIOS.ID as hs_id,TIPOS_SERVICIOS.ID as ts_id,
+TIPOS_SERVICIOS.DESCRIPCION as ts_desc,PRECIO as hs_precio 
+from HOTEL_SERVICIOS
+inner join TIPOS_SERVICIOS on HOTEL_SERVICIOS.SERVICIO=TIPOS_SERVICIOS.ID 
+where HOTEL_SERVICIOS.HOTEL=@idHotel
+
+create procedure ps_Empleados
+as
+select legajo,DNI,NOMBRE,APELLIDO,TIPO_DNI,TIPO_DOCUMENTO 
+from EMPLEADO inner join TIPO_DOCUMENTOS on EMPLEADO.TIPO_DNI=TIPO_DOCUMENTOS.ID

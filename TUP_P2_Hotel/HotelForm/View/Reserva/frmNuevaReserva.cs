@@ -42,8 +42,15 @@ namespace HotelForm.View.Reserva
             dgvNuevaReserva.CellContentClick += DgvNuevaReserva_CellContentClick;
             dgvServicios.CellEndEdit += DgvServicios_CellEndEdit;
             dgvServicios.CellContentClick += DgvServicios_CellContentClick;
+            btnCancelar.Click += BtnCancelar_Click;
         }
-       private void Total()
+
+        private void BtnCancelar_Click(object? sender, EventArgs e)
+        {
+            btnReiniciar.PerformClick();
+        }
+
+        private void Total()
         {
             var srv = ReadDgvServicios();
             var hab = ReadDgvHabitaciones();
@@ -66,6 +73,10 @@ namespace HotelForm.View.Reserva
         {
             if (e.RowIndex > -1 && dgvServicios.Rows[e.RowIndex].Cells["Cantidad"].ColumnIndex == e.ColumnIndex)
             {
+                int cantidad = 0;
+                int.TryParse(dgvServicios.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString(), out cantidad);
+                if (cantidad < 1)
+                    dgvServicios.Rows[e.RowIndex].Cells["Cantidad"].Value = 0;
                 Total();
             }
         }
@@ -256,6 +267,12 @@ namespace HotelForm.View.Reserva
             #endregion
             #region Tab
             tab.Enabled = false;
+            #endregion
+            #region Button
+            btnCargarReserva.Enabled = false;
+            #endregion
+            #region TextBox
+            txbNoches.ReadOnly = true;
             #endregion
         }
         private void DtpHasta_ValueChanged(object? sender, EventArgs e)

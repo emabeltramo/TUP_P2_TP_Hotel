@@ -30,8 +30,6 @@
         {
             this.cboClienteReserva = new System.Windows.Forms.ComboBox();
             this.btnCargarReserva = new System.Windows.Forms.Button();
-            this.btnSalirReserva = new System.Windows.Forms.Button();
-            this.btnCancelarReserva = new System.Windows.Forms.Button();
             this.lblCliente = new System.Windows.Forms.Label();
             this.gbFechas = new System.Windows.Forms.GroupBox();
             this.txbNoches = new System.Windows.Forms.TextBox();
@@ -67,6 +65,7 @@
             this.btnReiniciar = new System.Windows.Forms.Button();
             this.txbTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.gbFechas.SuspendLayout();
             this.tab.SuspendLayout();
             this.tbpHabitacion.SuspendLayout();
@@ -88,32 +87,12 @@
             // btnCargarReserva
             // 
             this.btnCargarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCargarReserva.Location = new System.Drawing.Point(208, 443);
+            this.btnCargarReserva.Location = new System.Drawing.Point(382, 443);
             this.btnCargarReserva.Name = "btnCargarReserva";
             this.btnCargarReserva.Size = new System.Drawing.Size(75, 23);
             this.btnCargarReserva.TabIndex = 9;
             this.btnCargarReserva.Text = "Cargar";
             this.btnCargarReserva.UseVisualStyleBackColor = true;
-            // 
-            // btnSalirReserva
-            // 
-            this.btnSalirReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalirReserva.Location = new System.Drawing.Point(325, 443);
-            this.btnSalirReserva.Name = "btnSalirReserva";
-            this.btnSalirReserva.Size = new System.Drawing.Size(75, 23);
-            this.btnSalirReserva.TabIndex = 10;
-            this.btnSalirReserva.Text = "Salir";
-            this.btnSalirReserva.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelarReserva
-            // 
-            this.btnCancelarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelarReserva.Location = new System.Drawing.Point(435, 443);
-            this.btnCancelarReserva.Name = "btnCancelarReserva";
-            this.btnCancelarReserva.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarReserva.TabIndex = 11;
-            this.btnCancelarReserva.Text = "Cancelar";
-            this.btnCancelarReserva.UseVisualStyleBackColor = true;
             // 
             // lblCliente
             // 
@@ -136,7 +115,7 @@
             this.gbFechas.Location = new System.Drawing.Point(330, 35);
             this.gbFechas.Name = "gbFechas";
             this.gbFechas.Size = new System.Drawing.Size(310, 143);
-            this.gbFechas.TabIndex = 29;
+            this.gbFechas.TabIndex = 2;
             this.gbFechas.TabStop = false;
             this.gbFechas.Text = "Fechas de la Reserva";
             // 
@@ -173,7 +152,7 @@
             this.dtpHasta.Location = new System.Drawing.Point(52, 63);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(240, 23);
-            this.dtpHasta.TabIndex = 20;
+            this.dtpHasta.TabIndex = 1;
             // 
             // lblDesde
             // 
@@ -191,7 +170,7 @@
             this.dtpDesde.Location = new System.Drawing.Point(52, 34);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(240, 23);
-            this.dtpDesde.TabIndex = 18;
+            this.dtpDesde.TabIndex = 0;
             // 
             // tab
             // 
@@ -201,7 +180,7 @@
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
             this.tab.Size = new System.Drawing.Size(713, 230);
-            this.tab.TabIndex = 38;
+            this.tab.TabIndex = 6;
             // 
             // tbpHabitacion
             // 
@@ -231,7 +210,7 @@
             this.dgvNuevaReserva.Name = "dgvNuevaReserva";
             this.dgvNuevaReserva.RowTemplate.Height = 25;
             this.dgvNuevaReserva.Size = new System.Drawing.Size(699, 196);
-            this.dgvNuevaReserva.TabIndex = 39;
+            this.dgvNuevaReserva.TabIndex = 0;
             // 
             // Id
             // 
@@ -339,7 +318,7 @@
             this.gbHotel.Location = new System.Drawing.Point(14, 35);
             this.gbHotel.Name = "gbHotel";
             this.gbHotel.Size = new System.Drawing.Size(310, 143);
-            this.gbHotel.TabIndex = 39;
+            this.gbHotel.TabIndex = 1;
             this.gbHotel.TabStop = false;
             this.gbHotel.Text = "Hotel";
             // 
@@ -360,7 +339,7 @@
             this.cboHotel.Location = new System.Drawing.Point(107, 89);
             this.cboHotel.Name = "cboHotel";
             this.cboHotel.Size = new System.Drawing.Size(162, 23);
-            this.cboHotel.TabIndex = 70;
+            this.cboHotel.TabIndex = 2;
             // 
             // lblLocalidad
             // 
@@ -379,7 +358,7 @@
             this.cboLocalidad.Location = new System.Drawing.Point(107, 60);
             this.cboLocalidad.Name = "cboLocalidad";
             this.cboLocalidad.Size = new System.Drawing.Size(162, 23);
-            this.cboLocalidad.TabIndex = 68;
+            this.cboLocalidad.TabIndex = 1;
             // 
             // lblProvincias
             // 
@@ -398,7 +377,7 @@
             this.cboProvincia.Location = new System.Drawing.Point(107, 31);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(162, 23);
-            this.cboProvincia.TabIndex = 66;
+            this.cboProvincia.TabIndex = 0;
             // 
             // btnBuscar
             // 
@@ -406,7 +385,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(658, 75);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(61, 23);
-            this.btnBuscar.TabIndex = 74;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
@@ -416,33 +395,44 @@
             this.btnReiniciar.Location = new System.Drawing.Point(658, 104);
             this.btnReiniciar.Name = "btnReiniciar";
             this.btnReiniciar.Size = new System.Drawing.Size(61, 23);
-            this.btnReiniciar.TabIndex = 75;
+            this.btnReiniciar.TabIndex = 4;
             this.btnReiniciar.Text = "Reiniciar";
             this.btnReiniciar.UseVisualStyleBackColor = true;
             // 
             // txbTotal
             // 
-            this.txbTotal.Location = new System.Drawing.Point(616, 407);
+            this.txbTotal.Location = new System.Drawing.Point(571, 418);
             this.txbTotal.Name = "txbTotal";
             this.txbTotal.ReadOnly = true;
             this.txbTotal.Size = new System.Drawing.Size(100, 23);
-            this.txbTotal.TabIndex = 77;
+            this.txbTotal.TabIndex = 7;
             // 
             // lblTotal
             // 
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(560, 412);
+            this.lblTotal.Location = new System.Drawing.Point(515, 423);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(35, 15);
             this.lblTotal.TabIndex = 76;
             this.lblTotal.Text = "Total:";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancelar.Location = new System.Drawing.Point(249, 443);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // frmNuevaReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 478);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txbTotal);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.btnReiniciar);
@@ -451,8 +441,6 @@
             this.Controls.Add(this.tab);
             this.Controls.Add(this.gbFechas);
             this.Controls.Add(this.lblCliente);
-            this.Controls.Add(this.btnCancelarReserva);
-            this.Controls.Add(this.btnSalirReserva);
             this.Controls.Add(this.btnCargarReserva);
             this.Controls.Add(this.cboClienteReserva);
             this.Name = "frmNuevaReserva";
@@ -475,8 +463,6 @@
 
         private ComboBox cboClienteReserva;
         private Button btnCargarReserva;
-        private Button btnSalirReserva;
-        private Button btnCancelarReserva;
         private Label lblCliente;
         private GroupBox gbFechas;
         private TabControl tab;
@@ -512,5 +498,6 @@
         private DataGridViewCheckBoxColumn Bonificado;
         private TextBox txbTotal;
         private Label lblTotal;
+        private Button btnCancelar;
     }
 }
