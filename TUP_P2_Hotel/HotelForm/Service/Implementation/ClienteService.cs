@@ -43,7 +43,7 @@ namespace HotelForm.Service.Implementation
 
         public async Task<HttpResponse> ActualizarCliente(ClienteModel cliente)
         {
-            string url = host + "/PutCliente";
+            string url = host + "/PostActualizarCliente";
             var cuerpo = JsonConvert.SerializeObject(cliente);
             var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
 

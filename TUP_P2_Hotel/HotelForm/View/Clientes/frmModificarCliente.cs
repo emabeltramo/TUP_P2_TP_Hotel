@@ -1,6 +1,7 @@
 ﻿using HotelBackEnd.Model;
 using HotelForm.Factory.Interface;
 using HotelForm.Service.Interface;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,18 @@ namespace HotelForm.View.Clientes
                 txtRazonSocial.Text = c.RazonSocial;
                 txtTelefono.Text = c.Celular;
                 txtEmail.Text = c.Celular;
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        if (string.IsNullOrEmpty(control.Text))
+                        {
+                            control.Text = "-";
+
+                        }
+                    }
+                }
             }
 
 
@@ -75,20 +88,44 @@ namespace HotelForm.View.Clientes
 
         private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
-            ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
+            try
+            {
+                if (cboCliente.SelectedItem != null )
+                {
+                    ClienteModel cliente = new ClienteModel();
+                    ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
+                    cliente.RazonSocial = txtRazonSocial.Text;
+                    cliente.CUIL = txtNroDocumento.Text; 
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellido = txtApellido.Text;
+                    cliente.DNI = txtNroDocumento.Text; 
+                    cliente.Email = txtEmail.Text;
+                    cliente.Celular = txtTelefono.Text;
 
-            
-            var result = await clienteService.ActualizarCliente(c);
-            if (result.SuccessStatus)
-            {
-                MessageBox.Show("Cliente generado con exito", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var result = await clienteService.ActualizarCliente(cliente);
+
+                    if (result.SuccessStatus)
+                    {
+                        MessageBox.Show("Cliente actualizado con éxito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al cargar cliente: {result.Data}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un cliente válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar cliente : " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
-
 }
+
+
+    
 

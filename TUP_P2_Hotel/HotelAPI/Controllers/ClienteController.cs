@@ -113,9 +113,9 @@ namespace HotelAPI.Controllers
             }
         }
 
-        [HttpPatch("/PutCliente")]
+        [HttpPost("/PostActualizarCliente")]
         
-        public IActionResult PutCliente(ClienteModel cliente)
+        public IActionResult ActualizarCliente(ClienteModel cliente)
         {
             try
             {

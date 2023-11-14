@@ -15,51 +15,50 @@ namespace HotelBackEnd.DAO.Implementation
     {
         public bool ActualizarCliente(ClienteModel cliente)
         {
-            bool ok = true;
-            SqlConnection cnn = HelperDao.GetInstance().GetConnection();
+            SqlConnection conexion = null;
             SqlTransaction t = null;
-            SqlCommand cmd = new SqlCommand();
+            bool resultado = true;
 
             try
             {
-                cnn.Open();
-                t = cnn.BeginTransaction();
-                cmd.Connection = cnn;
-                cmd.Transaction = t;
-                cmd.CommandText = "SP_MODIFICAR_CLIENTE";
-                cmd.CommandType = CommandType.StoredProcedure;
-                
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@id", cliente.Id_Cliente);
-                cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
-                cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
-                cmd.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
-                cmd.Parameters.AddWithValue("@dni", cliente.DNI);
-                cmd.Parameters.AddWithValue("@email", cliente.Email);
-                cmd.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
-                cmd.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
-                cmd.ExecuteNonQuery();
+                conexion = HelperDao.GetInstance().GetConnection();
+                conexion.Open();
+                t = conexion.BeginTransaction();
 
-               
-                
+                SqlCommand comando = new SqlCommand("SP_MODIFICAR_CLIENTE", conexion, t);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@id", cliente.Id_Cliente);
+                comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                comando.Parameters.AddWithValue("@tDoc", cliente.TDoc.Id);
+                comando.Parameters.AddWithValue("@cuil", cliente.CUIL);
+                comando.Parameters.AddWithValue("@dni", cliente.DNI);
+                comando.Parameters.AddWithValue("@celular", cliente.Celular);
+                comando.Parameters.AddWithValue("@email", cliente.Email);
+                comando.Parameters.AddWithValue("@tCliente", cliente.TCliente.Id);
+                comando.Parameters.AddWithValue("@razonSoc", cliente.RazonSocial);
+
+                comando.ExecuteNonQuery();
+
                 t.Commit();
             }
-
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error al ejecutar SP_MODIFICAR_CLIENTE: {ex.Message}");
                 if (t != null)
                     t.Rollback();
-                ok = false;
+                resultado = false;
             }
-
             finally
             {
-                if (cnn != null && cnn.State == ConnectionState.Open)
-                    cnn.Close();
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
             }
 
-            return ok;
+            return resultado;
         }
+
 
         public bool AltaCliente(ClienteModel cliente)
         {
