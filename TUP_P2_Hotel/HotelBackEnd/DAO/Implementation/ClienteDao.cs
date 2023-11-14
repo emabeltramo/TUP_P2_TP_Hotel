@@ -182,8 +182,66 @@ namespace HotelBackEnd.DAO.Implementation
 
             return result;
         }
-
         public List<ClienteModel> GetClientes()
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<ClienteModel> result = new List<ClienteModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "select * from clientes order by apellido, nombre";
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var cliente = new ClienteModel()
+                        {
+                            Apellido = reg.FirstOrDefault(m => m.Campo.ToUpper() == "APELLIDO").Valor ?? string.Empty,
+                            Nombre = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NOMBRE").Valor ?? string.Empty,
+                            DNI = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DNI").Valor ?? string.Empty,
+                            Id_Cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            CUIL = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CUIL").Valor ?? string.Empty,
+                            Email = reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMAIL").Valor ?? string.Empty,
+                            Celular = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CELULAR").Valor ?? string.Empty,
+                            RazonSocial = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RAZON_SOCIAL").Valor ?? string.Empty,
+
+
+
+                        }; var TCliente = new TipoClienteModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO _CLIENTE").Valor ?? 0,
+
+                        };
+                        var TDoc = new TipoDocumentoModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_DOCUMENTO").Valor ?? 0,
+
+
+                        };
+                        cliente.TCliente = TCliente;
+                        cliente.TDoc = TDoc;
+
+                        result.Add(cliente);
+                    }
+                }
+
+
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+        public List<ClienteModel> GetClientesLista()
         {
                 ProccesData procces = new ProccesData();
                 SqlCommand cmd = new SqlCommand();

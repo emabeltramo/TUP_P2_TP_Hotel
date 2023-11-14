@@ -59,7 +59,7 @@ namespace HotelForm.Service.Implementation
             return response;
         }
 
-        public async Task<List<ClienteModel>> GetClientesAsync()
+        public async Task<List<ClienteModel>> GetClientesListaAsync()
         {
             string url = host + "/GetClientesLista";
             List<ClienteModel> result = new List<ClienteModel>();
@@ -82,17 +82,15 @@ namespace HotelForm.Service.Implementation
             }
             return result;
         }
-        public async Task<DataTable> GetClientesTAsync(string busqueda)
+        public async Task<List<ClienteModel>> GetClientesAsync()
         {
-            string url = host + "/GetTablaClientes";
-            DataTable result = new DataTable();
-            var response = await ClientSingleton.GetInstance().PostAsync(url, JsonConvert.SerializeObject(new { Busqueda = busqueda }));
-
+            string url = host + "/GetClientes";
+            List<ClienteModel> result = new List<ClienteModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url); ;
             if (response != null && response.SuccessStatus)
             {
-                result = JsonConvert.DeserializeObject<DataTable>(response.Data);
+                result = JsonConvert.DeserializeObject<List<ClienteModel>>(response.Data);
             }
-
             return result;
         }
 

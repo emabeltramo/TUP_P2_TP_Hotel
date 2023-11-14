@@ -28,84 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvClientes = new DataGridView();
-            btnBuscar = new Button();
-            txtBuscar = new TextBox();
-            btnAtras = new Button();
-            ColModificar = new DataGridViewButtonColumn();
-            ColEliminar = new DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
-            SuspendLayout();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.ColModificar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnAtras = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.SuspendLayout();
             // 
             // dgvClientes
             // 
-            dgvClientes.AllowUserToAddRows = false;
-            dgvClientes.AllowUserToDeleteRows = false;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { ColModificar, ColEliminar });
-            dgvClientes.Location = new Point(37, 97);
-            dgvClientes.Name = "dgvClientes";
-            dgvClientes.ReadOnly = true;
-            dgvClientes.RowTemplate.Height = 25;
-            dgvClientes.Size = new Size(626, 246);
-            dgvClientes.TabIndex = 0;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(443, 38);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
-            btnBuscar.TabIndex = 5;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Location = new Point(88, 38);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(255, 23);
-            txtBuscar.TabIndex = 6;
-            // 
-            // btnAtras
-            // 
-            btnAtras.Location = new Point(296, 365);
-            btnAtras.Name = "btnAtras";
-            btnAtras.Size = new Size(75, 23);
-            btnAtras.TabIndex = 7;
-            btnAtras.Text = "Atras";
-            btnAtras.UseVisualStyleBackColor = true;
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColModificar,
+            this.ColEliminar});
+            this.dgvClientes.Location = new System.Drawing.Point(37, 97);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowTemplate.Height = 25;
+            this.dgvClientes.Size = new System.Drawing.Size(626, 246);
+            this.dgvClientes.TabIndex = 0;
             // 
             // ColModificar
             // 
-            ColModificar.HeaderText = "Modificar";
-            ColModificar.Name = "ColModificar";
-            ColModificar.ReadOnly = true;
-            ColModificar.Text = "Modificar";
-            ColModificar.UseColumnTextForButtonValue = true;
+            this.ColModificar.HeaderText = "Modificar";
+            this.ColModificar.Name = "ColModificar";
+            this.ColModificar.ReadOnly = true;
+            this.ColModificar.Text = "Modificar";
+            this.ColModificar.UseColumnTextForButtonValue = true;
             // 
             // ColEliminar
             // 
-            ColEliminar.HeaderText = "Eliminar";
-            ColEliminar.Name = "ColEliminar";
-            ColEliminar.ReadOnly = true;
-            ColEliminar.Text = "Eliminar";
-            ColEliminar.UseColumnTextForButtonValue = true;
+            this.ColEliminar.HeaderText = "Eliminar";
+            this.ColEliminar.Name = "ColEliminar";
+            this.ColEliminar.ReadOnly = true;
+            this.ColEliminar.Text = "Eliminar";
+            this.ColEliminar.UseColumnTextForButtonValue = true;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(443, 38);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(88, 38);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(255, 23);
+            this.txtBuscar.TabIndex = 6;
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Location = new System.Drawing.Point(296, 365);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(75, 23);
+            this.btnAtras.TabIndex = 7;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.UseVisualStyleBackColor = true;
             // 
             // frmCliente
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(703, 450);
-            Controls.Add(btnAtras);
-            Controls.Add(txtBuscar);
-            Controls.Add(btnBuscar);
-            Controls.Add(dgvClientes);
-            Name = "frmCliente";
-            Text = "Clientes";
-            Load += frmCliente_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(703, 450);
+            this.Controls.Add(this.btnAtras);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.dgvClientes);
+            this.Name = "frmCliente";
+            this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.frmCliente_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

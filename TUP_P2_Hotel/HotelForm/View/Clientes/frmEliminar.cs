@@ -30,7 +30,7 @@ namespace HotelForm.View.Clientes
         private async void CargarComboCliente()
         {
 
-            List<ClienteModel> clients = await clienteService.GetClientesAsync();
+            List<ClienteModel> clients = await clienteService.GetClientesListaAsync();
             cboCliente.DataSource = clients;
 
             cboCliente.DisplayMember = "NombreCompleto";

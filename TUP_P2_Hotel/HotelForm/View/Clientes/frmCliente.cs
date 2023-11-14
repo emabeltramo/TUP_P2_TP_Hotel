@@ -34,11 +34,16 @@ namespace HotelForm.View.Clientes
         {
             dtClientes = new DataTable();
             dtClientes.Clear();
-            dtClientes = await clienteService.GetClientesTAsync(txtBuscar.Text);
+            //dtClientes = await clienteService.GetClientesTAsync(txtBuscar.Text);
             int columnas = dtClientes.Columns.Count;
             dgvClientes.DataSource = dtClientes;
             dgvClientes.Columns["ColModificar"].DisplayIndex = columnas+1;
             dgvClientes.Columns["ColEliminar"].DisplayIndex = columnas +1 ;
+        }
+
+        private void frmCliente_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

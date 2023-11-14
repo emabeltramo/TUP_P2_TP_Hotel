@@ -48,9 +48,8 @@ namespace HotelForm.View.Clientes
         {
             if (cboCliente.SelectedItem != null)
             {
-                ClienteModel clienteSel = (ClienteModel)cboCliente.SelectedItem;
-                ClienteModel c = await clienteService.GetClienteIDAsync(clienteSel.Id_Cliente);
-                txtApellido.Text = c.Apellido.ToString();
+                ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
+                txtApellido.Text = c.Apellido;
                 txtNombre.Text = c.Nombre;
                 TipoClienteModel tipoClienteModel = c.TCliente;
                 if (tipoClienteModel != null && tipoClienteModel.Id.Equals(1))
@@ -72,21 +71,21 @@ namespace HotelForm.View.Clientes
                 txtEmail.Text = c.Celular;
 
 
-                //foreach (Control control in this.Controls)
-                //{
-                //    if (control is TextBox)
-                //    {
-                //        if (string.IsNullOrEmpty(control.Text))
-                //        {
-                //            control.Text = "-";
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        if (string.IsNullOrEmpty(control.Text))
+                        {
+                            control.Text = "-";
 
-                //        }
-                //    }
-                //}
-                
+                        }
+                    }
+                }
+
             }
 
-            
+
         }
 
         private async void btnCargarCliente_Click(object sender, EventArgs e)
