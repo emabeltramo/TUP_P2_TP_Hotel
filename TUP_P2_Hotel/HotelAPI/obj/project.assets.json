@@ -701,19 +701,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dborl\\.nuget\\packages\\": {}
+    "C:\\Users\\MATEO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\INFORMACION NO BORRAR\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
+      "projectUniqueName": "D:\\INFORMACION NO BORRAR\\Desktop\\zip\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
       "projectName": "HotelAPI",
-      "projectPath": "D:\\INFORMACION NO BORRAR\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
-      "packagesPath": "C:\\Users\\dborl\\.nuget\\packages\\",
-      "outputPath": "D:\\INFORMACION NO BORRAR\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\obj\\",
+      "projectPath": "D:\\INFORMACION NO BORRAR\\Desktop\\zip\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
+      "packagesPath": "C:\\Users\\MATEO\\.nuget\\packages\\",
+      "outputPath": "D:\\INFORMACION NO BORRAR\\Desktop\\zip\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dborl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MATEO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -727,8 +727,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\INFORMACION NO BORRAR\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj": {
-              "projectPath": "D:\\INFORMACION NO BORRAR\\Documents\\GitHub\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj"
+            "D:\\INFORMACION NO BORRAR\\Desktop\\zip\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj": {
+              "projectPath": "D:\\INFORMACION NO BORRAR\\Desktop\\zip\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj"
             }
           }
         }
