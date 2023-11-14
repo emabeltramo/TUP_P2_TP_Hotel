@@ -90,6 +90,25 @@ namespace HotelAPI.Controllers
             }
         }
         
+            [HttpGet("/GetLegajoEmpleado")] //por el momento
+        public IActionResult GetLegajoEmpleado()
+        {
+            try
+            {
+                var result = front.GetLegajoEmpleado();
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar los servicios");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+
         [HttpGet("/GetFacturaNro")]
         public IActionResult GetFacturaNro()
         {

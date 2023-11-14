@@ -10,6 +10,7 @@ namespace HotelBackEnd.DAO.Interface
     internal interface IReservaDao
     {
         int GetFacturaNro();
+        int GetLegajoEmpleado(); //por el momento
         List<ClienteModel> GetClientes();
         List<FormaPagoModel> GetFormaPago();
         List<TipoFacturaModel> GetTipoFactura();

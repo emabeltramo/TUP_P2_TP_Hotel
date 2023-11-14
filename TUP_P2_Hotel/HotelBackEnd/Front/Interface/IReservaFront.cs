@@ -19,6 +19,7 @@ namespace HotelBackEnd.Front.Interface
         List<TipoServicioModel> GetTipoServicio();
         List<ReservaModel> GetReserva();
         int GetFacturaNro();
+        int GetLegajoEmpleado(); //por el momento
         public bool SaveFactura(FacturaModel factura);
     }
 }

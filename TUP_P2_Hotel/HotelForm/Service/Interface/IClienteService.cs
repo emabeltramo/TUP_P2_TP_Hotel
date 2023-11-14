@@ -22,5 +22,6 @@ namespace HotelForm.Service.Interface
         Task<List<TipoServicioModel>> GetTipoServicioAsync();
         Task<List<ReservaModel>> GetReservaAsync();
         Task<int> GetFacturaNroAsync(int facturanro);
+        Task<int> GetLegajoEmpleadoAsync(int legajoempleado); //por el momento
     }
 }

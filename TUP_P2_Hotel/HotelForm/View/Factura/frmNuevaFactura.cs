@@ -22,11 +22,13 @@ namespace HotelForm.View.Factura
         IClienteService clienteService;
         private FacturaModel nuevaFactura;
         private List<ReservaModel> listaReserva;
-        private EmpleadoModel empleado; //este
         int facturanro;
-        public frmNuevaFactura(IFactoryService factory, EmpleadoModel empleado) //esto
+
+        //private EmpleadoModel empleado; 
+        int legajoempleado;
+        public frmNuevaFactura(IFactoryService factory) //tiene que pedir los valores del empleado
         {
-            this.empleado = empleado; //este
+            //this.empleado = empleado; 
             this.factory = factory;
             InitializeComponent();
             clienteService = factory.CreateClienteService();
@@ -34,6 +36,7 @@ namespace HotelForm.View.Factura
             listaReserva = new List<ReservaModel>();
             facturanro = 999;
 
+            legajoempleado = 1;
         }
 
         private void frmNuevaFactura_Load(object sender, EventArgs e)
@@ -83,6 +86,10 @@ namespace HotelForm.View.Factura
             facturanro = await clienteService.GetFacturaNroAsync(facturanro);
 
             listaReserva = await clienteService.GetReservaAsync();
+
+            //por la falta de empleados se hace esto de momento
+
+            legajoempleado = await clienteService.GetLegajoEmpleadoAsync(legajoempleado);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -249,7 +256,7 @@ namespace HotelForm.View.Factura
                 nuevaFactura.Fecha = dtpFecha.Value;
                 nuevaFactura.Reserva = (ReservaModel)cboReserva.SelectedItem;
                 nuevaFactura.TipoFactura = (TipoFacturaModel)cboTipoFactura.SelectedItem;
-                nuevaFactura.Empleado = empleado;
+                nuevaFactura.Empleado.Legajo = legajoempleado;
 
                 var result = await clienteService.AltaFactura(nuevaFactura);
                 if (result.SuccessStatus)
@@ -267,11 +274,6 @@ namespace HotelForm.View.Factura
         }
         private bool Validar()
         {
-            //if (dtpFecha.Value < DateTime.Today)
-            //{
-            //    MessageBox.Show("Debe ingresar una fecha valida");
-            //    return false;
-            //}
 
             if (cboCliente.Text == "CONSUMIDOR FINAL")
             {

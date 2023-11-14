@@ -145,5 +145,16 @@ namespace HotelForm.Service.Implementation
             }
             return result;
         }
+
+        public async Task<int> GetLegajoEmpleadoAsync(int result)//por el momento
+        {
+            string url = host + "/GetLegajoEmpleado";
+            var response = await ClientSingleton.GetInstance().GetAsync(url); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<int>(response.Data);
+            }
+            return result;
+        }
     }
 }

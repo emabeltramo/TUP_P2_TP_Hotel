@@ -455,6 +455,40 @@ namespace HotelBackEnd.DAO.Implementation
 
             return ok;
         }
+
+        public int GetLegajoEmpleado()//por el momento
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            int result = 0;
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "select TOP 1 LEGAJO from EMPLEADO";
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        var reg = procces.MakeReg(reader);
+
+                        result = reg.FirstOrDefault(m => m.Campo.ToUpper() == "LEGAJO").Valor ?? string.Empty;
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = 0;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
     }
     }
     

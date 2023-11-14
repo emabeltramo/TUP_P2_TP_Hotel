@@ -43,6 +43,11 @@ namespace HotelBackEnd.Front.Implementation
 
         }
 
+        public int GetLegajoEmpleado() //por el momento
+        {
+            return reservaDao.GetLegajoEmpleado();
+        }
+
         public List<LocalidadModel> GetLocalidad()
         {
             return reservaDao.GetLocalidades();
