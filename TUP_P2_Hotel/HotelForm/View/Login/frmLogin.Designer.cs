@@ -135,7 +135,7 @@
             this.MinimumSize = new System.Drawing.Size(1000, 651);
             this.Name = "Form1";
             this.Text = "Iniciar Sesion";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

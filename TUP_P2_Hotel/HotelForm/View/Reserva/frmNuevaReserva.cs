@@ -116,6 +116,7 @@ namespace HotelForm.View.Reserva
             modelo.Cliente = (ClienteModel)cboClienteReserva.SelectedItem;
             modelo.Ingreso = dtpDesde.Value.Date;
             modelo.Salida = dtpHasta.Value.Date;
+            modelo.Empleado = factory.GetSesion();
             var result = await service.PostReservaAsync(modelo);
             if (result.StatusCode == System.Net.HttpStatusCode.Created)
             {

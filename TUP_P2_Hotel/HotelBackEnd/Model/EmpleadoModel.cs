@@ -13,6 +13,9 @@ namespace HotelBackEnd.Model
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public string NombreCompleto { get {
+                return Legajo.ToString() + " " + Apellido;
+            } }
         public EmpleadoModel()
         {
             Legajo = 0;
@@ -22,5 +25,6 @@ namespace HotelBackEnd.Model
             Apellido = string.Empty;
 
         }
+
     }
 }

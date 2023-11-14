@@ -264,8 +264,8 @@ namespace HotelBackEnd.DAO.Implementation
                 cmd.Parameters.AddWithValue("@cliente", (object)reserva.Cliente.Id_Cliente);
                 cmd.Parameters.AddWithValue("@ingreso", (object)reserva.Ingreso);
                 cmd.Parameters.AddWithValue("@salida", (object)reserva.Salida);
-                //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
-                cmd.Parameters.AddWithValue("@empleado", (object)1);
+                cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo);
+                //cmd.Parameters.AddWithValue("@empleado", (object)1);
 
                 cmd.ExecuteNonQuery();
                 reserva.IdReserva = (int)p.Value;
