@@ -1,7 +1,7 @@
 --MODIFICAR CLIENTE
-CREATE PROCEDURE SP_MODIFICAR_CLIENTE
+CREATE PROCEDURE SP_MODIFICAR_CLIENTE--OkApi
 @id int,@nombre varchar(50),@apellido varchar(50),@tdoc int,
-@dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int
+@dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int, @cuil varchar(50)
 AS 
 BEGIN 
 	UPDATE CLIENTES
@@ -13,12 +13,13 @@ BEGIN
 		EMAIL = @email ,
 		CELULAR = @celular,
 		tipo_cliente = @tCliente, 
-		Razon_Social = @razonSoc
+		Razon_Social = @razonSoc,
+		CUIL= @cuil
 	WHERE ID = @id
 END;
 
 --INSERTAR CLIENTE
-CREATE PROCEDURE SP_INSERTAR_CLIENTE
+CREATE PROCEDURE SP_INSERTAR_CLIENTE--OkTotal
 @nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil int,
 @dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int
 AS 
@@ -30,15 +31,48 @@ END;
 
 --BORRAR CLIENTE
 CREATE PROCEDURE SP_BORRAR_CLIENTE
-@id int
-AS 
-BEGIN 
-	DELETE FROM CLIENTES 
-	WHERE ID=@id
+    @id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @Error INT;
+
+    -- Iniciar la transacción
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Eliminar registros relacionados en otras tablas
+      DELETE FROM RESERVA_CUENTA WHERE RESERVA IN (SELECT ID FROM RESERVAS WHERE CLIENTE = @id);
+		DELETE FROM FACTURAS_FORMAS_PAGO WHERE FACTURA IN (SELECT ID FROM FACTURAS WHERE CLIENTE = @id);
+		DELETE FROM FACTURA_DETALLES WHERE FACTURA IN (SELECT ID FROM FACTURAS WHERE CLIENTE = @id);
+		DELETE FROM RESERVA_HABITACIONES WHERE RESERVA IN (SELECT ID FROM RESERVAS WHERE CLIENTE = @id);
+		DELETE FROM RESERVAS WHERE CLIENTE IN (SELECT ID FROM CLIENTES WHERE CLIENTE = @id);
+        DELETE FROM FACTURAS WHERE CLIENTE = @id ;
+        DELETE FROM RESERVAS WHERE CLIENTE = @id;
+        -- Eliminar el cliente
+        DELETE FROM CLIENTES WHERE ID = @id;
+
+        -- Confirmar la transacción
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        -- Obtener el código de error
+        SET @Error = ERROR_NUMBER();
+
+        -- Deshacer la transacción en caso de error
+        IF @@TRANCOUNT > 0
+            ROLLBACK;
+
+        -- Puedes registrar el error o lanzar una excepción aquí
+        -- SELECT ERROR_MESSAGE() AS ErrorMessage;
+
+        -- Propagar el error al nivel superior
+        RAISERROR('Error en SP_BORRAR_CLIENTE: ', 16, 1);
+    END CATCH;
 END;
 
 --SELECT TIPOCLIENTE
-CREATE PROCEDURE SP_CONSULTAR_TIPOCLIENTE
+CREATE PROCEDURE SP_CONSULTAR_TIPOCLIENTE--OkTotal
 
 AS 
 BEGIN 
@@ -46,7 +80,7 @@ BEGIN
 END;
 
 --SELECT TIPODOCUMENTO
-CREATE PROCEDURE SP_CONSULTAR_TIPODOCUMENTO
+CREATE PROCEDURE SP_CONSULTAR_TIPODOCUMENTO--OkTotal
 
 AS 
 BEGIN 
@@ -54,7 +88,7 @@ BEGIN
 END;
 
 --LISTAR CLIENTES
-CREATE PROCEDURE SP_LISTA_CLIENTES
+CREATE PROCEDURE SP_LISTA_CLIENTES--OkApi
 AS
 BEGIN
 	SELECT C.NOMBRE 'Nombre',C.APELLIDO'Apellido',T.TIPO_DOCUMENTO 'Tipo Documento',C.DNI 'Numero Documento',
