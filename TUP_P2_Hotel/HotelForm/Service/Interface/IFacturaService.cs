@@ -15,7 +15,9 @@ namespace HotelForm.Service.Interface
         Task<List<FormaPagoModel>> GetFormaPagoAsync();
         Task<List<TipoServicioModel>> GetTipoServicioAsync();
         Task<int> GetFacturaNroAsync(int result);
-        Task<List<ReservaModel>> GetReservaAsync();
+        Task<List<ReservaModel>> GetReservasAsync(int idCliente);
         Task<HttpResponse> AltaFactura(FacturaModel factura);
+        Task<List<ReservaHabitacionModel>> GetReservaHabAsync(int idReserva);
+        Task<List<ReservaCuentaModel>> GetReservaCuentaAsync(int idReserva);
     }
 }

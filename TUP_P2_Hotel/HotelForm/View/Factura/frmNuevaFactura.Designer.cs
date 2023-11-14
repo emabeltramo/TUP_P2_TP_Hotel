@@ -28,445 +28,276 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvDetalles = new DataGridView();
-            cboServicio = new ComboBox();
-            cboCliente = new ComboBox();
-            btnCargar = new Button();
-            btnSalir = new Button();
-            btnCancelar = new Button();
-            gbDetalle = new GroupBox();
-            label1 = new Label();
-            txtFinal = new TextBox();
-            txtCantidad = new TextBox();
-            txtMonto = new TextBox();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label6 = new Label();
-            btnAgregar = new Button();
-            txtTotal = new TextBox();
-            dtpFecha = new DateTimePicker();
-            cboReserva = new ComboBox();
-            cboTipoFactura = new ComboBox();
-            lblNroFactura = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            dgvFormasPago = new DataGridView();
-            btnAgregarFormaPago = new Button();
-            cboFormaPago = new ComboBox();
-            label7 = new Label();
-            btnBuscar = new Button();
-            IdFormaPago = new DataGridViewTextBoxColumn();
-            colFormaPago = new DataGridViewTextBoxColumn();
-            actionCol = new DataGridViewButtonColumn();
-            idDetalle = new DataGridViewTextBoxColumn();
-            colServicio = new DataGridViewTextBoxColumn();
-            colCantidad = new DataGridViewTextBoxColumn();
-            colPrecio = new DataGridViewTextBoxColumn();
-            colAcciones = new DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvDetalles).BeginInit();
-            gbDetalle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvFormasPago).BeginInit();
-            SuspendLayout();
+            this.dgvDetalles = new System.Windows.Forms.DataGridView();
+            this.cboCliente = new System.Windows.Forms.ComboBox();
+            this.btnCargar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.gbDetalle = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFinal = new System.Windows.Forms.TextBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.cboReserva = new System.Windows.Forms.ComboBox();
+            this.cboTipoFactura = new System.Windows.Forms.ComboBox();
+            this.lblNroFactura = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboFormaPago = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.idDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
+            this.gbDetalle.SuspendLayout();
+            this.SuspendLayout();
             // 
             // dgvDetalles
             // 
-            dgvDetalles.AllowUserToAddRows = false;
-            dgvDetalles.AllowUserToDeleteRows = false;
-            dgvDetalles.AllowUserToResizeColumns = false;
-            dgvDetalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetalles.Columns.AddRange(new DataGridViewColumn[] { idDetalle, colServicio, colCantidad, colPrecio, colAcciones });
-            dgvDetalles.Location = new Point(6, 68);
-            dgvDetalles.Name = "dgvDetalles";
-            dgvDetalles.ReadOnly = true;
-            dgvDetalles.RowTemplate.Height = 25;
-            dgvDetalles.Size = new Size(703, 117);
-            dgvDetalles.TabIndex = 0;
-            dgvDetalles.CellContentClick += dgvDetalles_CellContentClick;
-            // 
-            // cboServicio
-            // 
-            cboServicio.FormattingEnabled = true;
-            cboServicio.Location = new Point(6, 39);
-            cboServicio.Name = "cboServicio";
-            cboServicio.Size = new Size(343, 23);
-            cboServicio.TabIndex = 1;
+            this.dgvDetalles.AllowUserToAddRows = false;
+            this.dgvDetalles.AllowUserToDeleteRows = false;
+            this.dgvDetalles.AllowUserToResizeColumns = false;
+            this.dgvDetalles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDetalle,
+            this.colServicio,
+            this.colCantidad,
+            this.colPrecio});
+            this.dgvDetalles.Location = new System.Drawing.Point(6, 22);
+            this.dgvDetalles.Name = "dgvDetalles";
+            this.dgvDetalles.ReadOnly = true;
+            this.dgvDetalles.RowTemplate.Height = 25;
+            this.dgvDetalles.Size = new System.Drawing.Size(703, 264);
+            this.dgvDetalles.TabIndex = 0;
             // 
             // cboCliente
             // 
-            cboCliente.FormattingEnabled = true;
-            cboCliente.Location = new Point(129, 90);
-            cboCliente.Name = "cboCliente";
-            cboCliente.Size = new Size(212, 23);
-            cboCliente.TabIndex = 2;
-            cboCliente.SelectedIndexChanged += cboCliente_SelectedIndexChanged;
+            this.cboCliente.FormattingEnabled = true;
+            this.cboCliente.Location = new System.Drawing.Point(87, 90);
+            this.cboCliente.Name = "cboCliente";
+            this.cboCliente.Size = new System.Drawing.Size(212, 23);
+            this.cboCliente.TabIndex = 2;
             // 
             // btnCargar
             // 
-            btnCargar.Location = new Point(218, 450);
-            btnCargar.Name = "btnCargar";
-            btnCargar.Size = new Size(75, 23);
-            btnCargar.TabIndex = 4;
-            btnCargar.Text = "Cargar";
-            btnCargar.UseVisualStyleBackColor = true;
-            btnCargar.Click += btnCargar_Click;
+            this.btnCargar.Location = new System.Drawing.Point(218, 450);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(75, 23);
+            this.btnCargar.TabIndex = 4;
+            this.btnCargar.Text = "Cargar";
+            this.btnCargar.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(333, 450);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
-            btnSalir.TabIndex = 5;
-            btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
+            this.btnSalir.Location = new System.Drawing.Point(333, 450);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(452, 450);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 6;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            this.btnCancelar.Location = new System.Drawing.Point(452, 450);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // gbDetalle
             // 
-            gbDetalle.Controls.Add(label1);
-            gbDetalle.Controls.Add(txtFinal);
-            gbDetalle.Controls.Add(txtCantidad);
-            gbDetalle.Controls.Add(txtMonto);
-            gbDetalle.Controls.Add(label10);
-            gbDetalle.Controls.Add(label9);
-            gbDetalle.Controls.Add(label8);
-            gbDetalle.Controls.Add(label6);
-            gbDetalle.Controls.Add(btnAgregar);
-            gbDetalle.Controls.Add(txtTotal);
-            gbDetalle.Controls.Add(dgvDetalles);
-            gbDetalle.Controls.Add(cboServicio);
-            gbDetalle.Location = new Point(12, 217);
-            gbDetalle.Name = "gbDetalle";
-            gbDetalle.Size = new Size(715, 227);
-            gbDetalle.TabIndex = 7;
-            gbDetalle.TabStop = false;
-            gbDetalle.Text = "Detalle";
+            this.gbDetalle.Controls.Add(this.label1);
+            this.gbDetalle.Controls.Add(this.txtFinal);
+            this.gbDetalle.Controls.Add(this.dgvDetalles);
+            this.gbDetalle.Location = new System.Drawing.Point(12, 123);
+            this.gbDetalle.Name = "gbDetalle";
+            this.gbDetalle.Size = new System.Drawing.Size(715, 321);
+            this.gbDetalle.TabIndex = 7;
+            this.gbDetalle.TabStop = false;
+            this.gbDetalle.Text = "Detalle";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(539, 190);
-            label1.Name = "label1";
-            label1.Size = new Size(64, 20);
-            label1.TabIndex = 13;
-            label1.Text = "Total $";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(539, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Total $";
             // 
             // txtFinal
             // 
-            txtFinal.Location = new Point(609, 191);
-            txtFinal.Name = "txtFinal";
-            txtFinal.Size = new Size(100, 23);
-            txtFinal.TabIndex = 12;
-            // 
-            // txtCantidad
-            // 
-            txtCantidad.Location = new Point(355, 39);
-            txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(113, 23);
-            txtCantidad.TabIndex = 11;
-            // 
-            // txtMonto
-            // 
-            txtMonto.Location = new Point(474, 39);
-            txtMonto.Name = "txtMonto";
-            txtMonto.Size = new Size(125, 23);
-            txtMonto.TabIndex = 10;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(474, 21);
-            label10.Name = "label10";
-            label10.Size = new Size(55, 15);
-            label10.TabIndex = 9;
-            label10.Text = "Monto $:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(355, 21);
-            label9.Name = "label9";
-            label9.Size = new Size(58, 15);
-            label9.TabIndex = 8;
-            label9.Text = "Cantidad:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 21);
-            label8.Name = "label8";
-            label8.Size = new Size(54, 15);
-            label8.TabIndex = 7;
-            label8.Text = "Servicio: ";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(15, 188);
-            label6.Name = "label6";
-            label6.Size = new Size(96, 20);
-            label6.TabIndex = 5;
-            label6.Text = "SubTotal $";
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Location = new Point(605, 38);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(104, 23);
-            btnAgregar.TabIndex = 4;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
-            // 
-            // txtTotal
-            // 
-            txtTotal.Location = new Point(117, 189);
-            txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(100, 23);
-            txtTotal.TabIndex = 1;
+            this.txtFinal.Location = new System.Drawing.Point(609, 292);
+            this.txtFinal.Name = "txtFinal";
+            this.txtFinal.Size = new System.Drawing.Size(100, 23);
+            this.txtFinal.TabIndex = 12;
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(129, 61);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(212, 23);
-            dtpFecha.TabIndex = 8;
+            this.dtpFecha.Location = new System.Drawing.Point(80, 61);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(212, 23);
+            this.dtpFecha.TabIndex = 8;
             // 
             // cboReserva
             // 
-            cboReserva.FormattingEnabled = true;
-            cboReserva.Location = new Point(129, 119);
-            cboReserva.Name = "cboReserva";
-            cboReserva.Size = new Size(260, 23);
-            cboReserva.TabIndex = 9;
+            this.cboReserva.FormattingEnabled = true;
+            this.cboReserva.Location = new System.Drawing.Point(461, 94);
+            this.cboReserva.Name = "cboReserva";
+            this.cboReserva.Size = new System.Drawing.Size(260, 23);
+            this.cboReserva.TabIndex = 9;
             // 
             // cboTipoFactura
             // 
-            cboTipoFactura.FormattingEnabled = true;
-            cboTipoFactura.Location = new Point(129, 159);
-            cboTipoFactura.Name = "cboTipoFactura";
-            cboTipoFactura.Size = new Size(146, 23);
-            cboTipoFactura.TabIndex = 10;
+            this.cboTipoFactura.FormattingEnabled = true;
+            this.cboTipoFactura.Location = new System.Drawing.Point(398, 58);
+            this.cboTipoFactura.Name = "cboTipoFactura";
+            this.cboTipoFactura.Size = new System.Drawing.Size(48, 23);
+            this.cboTipoFactura.TabIndex = 10;
             // 
             // lblNroFactura
             // 
-            lblNroFactura.AutoSize = true;
-            lblNroFactura.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNroFactura.Location = new Point(12, 21);
-            lblNroFactura.Name = "lblNroFactura";
-            lblNroFactura.Size = new Size(112, 26);
-            lblNroFactura.TabIndex = 11;
-            lblNroFactura.Text = "Factura N°: ";
+            this.lblNroFactura.AutoSize = true;
+            this.lblNroFactura.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNroFactura.Location = new System.Drawing.Point(12, 21);
+            this.lblNroFactura.Name = "lblNroFactura";
+            this.lblNroFactura.Size = new System.Drawing.Size(112, 26);
+            this.lblNroFactura.TabIndex = 11;
+            this.lblNroFactura.Text = "Factura N°: ";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(73, 93);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 15);
-            label2.TabIndex = 12;
-            label2.Text = "Cliente: ";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 15);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Cliente: ";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(79, 67);
-            label3.Name = "label3";
-            label3.Size = new Size(44, 15);
-            label3.TabIndex = 13;
-            label3.Text = "Fecha: ";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(30, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 15);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Fecha: ";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(29, 162);
-            label4.Name = "label4";
-            label4.Size = new Size(94, 15);
-            label4.TabIndex = 14;
-            label4.Text = "Tipo de Factura: ";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(298, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 15);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Tipo de Factura: ";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(70, 122);
-            label5.Name = "label5";
-            label5.Size = new Size(53, 15);
-            label5.TabIndex = 15;
-            label5.Text = "Reserva: ";
-            // 
-            // dgvFormasPago
-            // 
-            dgvFormasPago.AllowUserToAddRows = false;
-            dgvFormasPago.AllowUserToDeleteRows = false;
-            dgvFormasPago.AllowUserToResizeColumns = false;
-            dgvFormasPago.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFormasPago.Columns.AddRange(new DataGridViewColumn[] { IdFormaPago, colFormaPago, actionCol });
-            dgvFormasPago.Location = new Point(440, 55);
-            dgvFormasPago.Name = "dgvFormasPago";
-            dgvFormasPago.ReadOnly = true;
-            dgvFormasPago.RowTemplate.Height = 25;
-            dgvFormasPago.Size = new Size(287, 156);
-            dgvFormasPago.TabIndex = 16;
-            dgvFormasPago.CellContentClick += dgvFormasPago_CellContentClick;
-            // 
-            // btnAgregarFormaPago
-            // 
-            btnAgregarFormaPago.Location = new Point(347, 188);
-            btnAgregarFormaPago.Name = "btnAgregarFormaPago";
-            btnAgregarFormaPago.Size = new Size(87, 23);
-            btnAgregarFormaPago.TabIndex = 17;
-            btnAgregarFormaPago.Text = "Agregar";
-            btnAgregarFormaPago.UseVisualStyleBackColor = true;
-            btnAgregarFormaPago.Click += btnAgregarFormaPago_Click;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(402, 97);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 15);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Reserva: ";
             // 
             // cboFormaPago
             // 
-            cboFormaPago.FormattingEnabled = true;
-            cboFormaPago.Location = new Point(129, 188);
-            cboFormaPago.Name = "cboFormaPago";
-            cboFormaPago.Size = new Size(212, 23);
-            cboFormaPago.TabIndex = 18;
+            this.cboFormaPago.FormattingEnabled = true;
+            this.cboFormaPago.Location = new System.Drawing.Point(551, 58);
+            this.cboFormaPago.Name = "cboFormaPago";
+            this.cboFormaPago.Size = new System.Drawing.Size(163, 23);
+            this.cboFormaPago.TabIndex = 18;
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(30, 191);
-            label7.Name = "label7";
-            label7.Size = new Size(93, 15);
-            label7.TabIndex = 19;
-            label7.Text = "Forma de Pago: ";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(452, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 15);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Forma de Pago: ";
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(347, 90);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(87, 23);
-            btnBuscar.TabIndex = 20;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
-            // 
-            // IdFormaPago
-            // 
-            IdFormaPago.HeaderText = "ID";
-            IdFormaPago.Name = "IdFormaPago";
-            IdFormaPago.ReadOnly = true;
-            IdFormaPago.Visible = false;
-            // 
-            // colFormaPago
-            // 
-            colFormaPago.HeaderText = "Forma de Pago";
-            colFormaPago.Name = "colFormaPago";
-            colFormaPago.ReadOnly = true;
-            colFormaPago.Width = 143;
-            // 
-            // actionCol
-            // 
-            actionCol.HeaderText = "Acciones";
-            actionCol.Name = "actionCol";
-            actionCol.ReadOnly = true;
-            actionCol.Resizable = DataGridViewTriState.True;
-            actionCol.Text = "Quitar";
-            actionCol.UseColumnTextForButtonValue = true;
+            this.btnBuscar.Location = new System.Drawing.Point(305, 93);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(87, 23);
+            this.btnBuscar.TabIndex = 20;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // idDetalle
             // 
-            idDetalle.HeaderText = "colId";
-            idDetalle.Name = "idDetalle";
-            idDetalle.ReadOnly = true;
-            idDetalle.Visible = false;
+            this.idDetalle.HeaderText = "colId";
+            this.idDetalle.Name = "idDetalle";
+            this.idDetalle.ReadOnly = true;
+            this.idDetalle.Visible = false;
             // 
             // colServicio
             // 
-            colServicio.HeaderText = "Servicio";
-            colServicio.Name = "colServicio";
-            colServicio.ReadOnly = true;
-            colServicio.Width = 245;
+            this.colServicio.HeaderText = "Servicio";
+            this.colServicio.Name = "colServicio";
+            this.colServicio.ReadOnly = true;
             // 
             // colCantidad
             // 
-            colCantidad.HeaderText = "Cantidad";
-            colCantidad.Name = "colCantidad";
-            colCantidad.ReadOnly = true;
-            colCantidad.Width = 145;
+            this.colCantidad.HeaderText = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.ReadOnly = true;
             // 
             // colPrecio
             // 
-            colPrecio.HeaderText = "Precio";
-            colPrecio.Name = "colPrecio";
-            colPrecio.ReadOnly = true;
-            colPrecio.Width = 145;
-            // 
-            // colAcciones
-            // 
-            colAcciones.HeaderText = "Acciones";
-            colAcciones.Name = "colAcciones";
-            colAcciones.ReadOnly = true;
-            colAcciones.Text = "Quitar";
-            colAcciones.UseColumnTextForButtonValue = true;
-            colAcciones.Width = 125;
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.ReadOnly = true;
             // 
             // frmNuevaFactura
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(739, 478);
-            Controls.Add(btnBuscar);
-            Controls.Add(label7);
-            Controls.Add(cboFormaPago);
-            Controls.Add(btnAgregarFormaPago);
-            Controls.Add(dgvFormasPago);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(lblNroFactura);
-            Controls.Add(cboTipoFactura);
-            Controls.Add(cboReserva);
-            Controls.Add(dtpFecha);
-            Controls.Add(gbDetalle);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnSalir);
-            Controls.Add(btnCargar);
-            Controls.Add(cboCliente);
-            Name = "frmNuevaFactura";
-            Text = "NuevaFactura";
-            Load += frmNuevaFactura_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvDetalles).EndInit();
-            gbDetalle.ResumeLayout(false);
-            gbDetalle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvFormasPago).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(739, 478);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cboFormaPago);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblNroFactura);
+            this.Controls.Add(this.cboTipoFactura);
+            this.Controls.Add(this.cboReserva);
+            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.gbDetalle);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnCargar);
+            this.Controls.Add(this.cboCliente);
+            this.Name = "frmNuevaFactura";
+            this.Text = "NuevaFactura";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
+            this.gbDetalle.ResumeLayout(false);
+            this.gbDetalle.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
 
         private DataGridView dgvDetalles;
-        private ComboBox cboServicio;
         private ComboBox cboCliente;
         private Button btnCargar;
         private Button btnSalir;
         private Button btnCancelar;
         private GroupBox gbDetalle;
-        private Button btnAgregar;
-        private TextBox txtTotal;
         private DateTimePicker dtpFecha;
-        private Label label6;
         private ComboBox cboReserva;
         private ComboBox cboTipoFactura;
         private Label lblNroFactura;
@@ -474,15 +305,8 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private DataGridView dgvFormasPago;
-        private Button btnAgregarFormaPago;
         private ComboBox cboFormaPago;
         private Label label7;
-        private TextBox txtCantidad;
-        private TextBox txtMonto;
-        private Label label10;
-        private Label label9;
-        private Label label8;
         private Button btnBuscar;
         private Label label1;
         private TextBox txtFinal;
@@ -490,9 +314,5 @@
         private DataGridViewTextBoxColumn colServicio;
         private DataGridViewTextBoxColumn colCantidad;
         private DataGridViewTextBoxColumn colPrecio;
-        private DataGridViewButtonColumn colAcciones;
-        private DataGridViewTextBoxColumn IdFormaPago;
-        private DataGridViewTextBoxColumn colFormaPago;
-        private DataGridViewButtonColumn actionCol;
     }
 }

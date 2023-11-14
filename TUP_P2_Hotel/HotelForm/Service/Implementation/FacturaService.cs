@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HotelForm.Service.Implementation
 {
@@ -74,16 +75,51 @@ namespace HotelForm.Service.Implementation
             {
                 result = JsonConvert.DeserializeObject<int>(response.Data);
             }
-            return result;
+            return result+1;
         }
-        public async Task<List<ReservaModel>> GetReservaAsync()
+        public async Task<List<ReservaModel>> GetReservasAsync(int idCliente)
         {
-            string url = host + "/factura/GetReserva";
+            string url = host + "/GetReservas?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["desde"] = "01/01/1950";
+            query["hasta"] = "01/01/2500";
+            query["idHotel"] = 0.ToString();
+            query["idCliente"] = idCliente.ToString();
+            query["idEstado"] = 1.ToString();
+
+
+
             List<ReservaModel> result = new List<ReservaModel>();
-            var response = await ClientSingleton.GetInstance().GetAsync(url); ;
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
             if (response != null && response.SuccessStatus)
             {
                 result = JsonConvert.DeserializeObject<List<ReservaModel>>(response.Data);
+            }
+            return result;
+        }
+        public async Task<List<ReservaCuentaModel>> GetReservaCuentaAsync(int idReserva)
+        {
+            string url = host + "/GetResCuenta?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["idReserva"] = idReserva.ToString();
+            List<ReservaCuentaModel> result = new List<ReservaCuentaModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ReservaCuentaModel>>(response.Data);
+            }
+            return result;
+        }
+        public async Task<List<ReservaHabitacionModel>> GetReservaHabAsync(int idReserva)
+        {
+            string url = host + "/GetResHab?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["idReserva"] = idReserva.ToString();
+            List<ReservaHabitacionModel> result = new List<ReservaHabitacionModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ReservaHabitacionModel>>(response.Data);
             }
             return result;
         }

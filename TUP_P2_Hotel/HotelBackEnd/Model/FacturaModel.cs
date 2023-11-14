@@ -23,6 +23,7 @@ namespace HotelBackEnd.Model
         {
             Forma = new List<FormaPagoModel>();
             Detalles = new List<FacturaDetalleModel>();
+            Empleado = new EmpleadoModel();
         }
         public void AgregarDetalle(FacturaDetalleModel detalle)
         {
@@ -37,8 +38,7 @@ namespace HotelBackEnd.Model
         public decimal CalcularTotal()
         {
             decimal total = 0;
-            foreach (FacturaDetalleModel item in Detalles)
-                total += item.CalcularSubTotal();
+            total = Detalles.Sum(m => m.Monto * m.Cantidad);
             return total;
         }
         public void AgregarFactura(FormaPagoModel formaPago)
