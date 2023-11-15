@@ -6,8 +6,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using HotelBackEnd.Model;
 
 namespace HotelBackEnd.DAO.Helper
 {
@@ -89,21 +88,21 @@ namespace HotelBackEnd.DAO.Helper
             connection.Close();
             return tabla;
         }
-        //internal DataTable Consultar(string nombreSP, List<Parametro> lParams)
-        //{
-        //    conexion.Open();
-        //    SqlCommand comando = new SqlCommand();
-        //    comando.Connection = conexion;
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    comando.CommandText = nombreSP;
-        //    foreach (Parametro p in lParams)
-        //    {
-        //        comando.Parameters.AddWithValue(p.Nombre, p.Valor);
-        //    }
-        //    DataTable tabla = new DataTable();
-        //    tabla.Load(comando.ExecuteReader());
-        //    conexion.Close();
-        //    return tabla;
-        //}
+        public DataTable Consultar(string nombreSP, List<Parametro> parametros)
+        {
+            connection.Open();
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = connection;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+            foreach (Parametro p in parametros)
+            {
+                comando.Parameters.AddWithValue(p.Name, p.Value);
+            }
+            DataTable tabla = new DataTable();
+            tabla.Load(comando.ExecuteReader());
+            connection.Close();
+            return tabla;
+        }
     }
 }

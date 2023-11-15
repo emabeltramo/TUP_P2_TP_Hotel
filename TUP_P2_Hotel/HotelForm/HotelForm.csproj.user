@@ -19,7 +19,7 @@
     <Compile Update="View\Principal\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\Reportes\frmReportes.cs">
+    <Compile Update="View\Consulta Labo\frmConsultas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\Reserva\frmModificarReserva.cs">
