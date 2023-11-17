@@ -232,17 +232,25 @@ namespace HotelBackEnd.DAO.Implementation
                             Fecha = reg.FirstOrDefault(m => m.Campo.ToUpper() == "FECHA").Valor ?? DateTime.Now.Date,
 
                         };
-                        model.Reserva.IdReserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RESERVA").Valor ?? 0;
-                        model.Cliente.Id_Cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? 0;
-                        model.Empleado.Legajo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "Empleado").Valor ?? 0;
-                        model.TipoFactura.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACTURA").Valor ?? 0;
-                        model.TipoFactura.Tipo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACT").Valor ?? string.Empty;
 
-                        //List<FacturaDetalleModel> detalle = GetFacturaDetalle(model.IdFactura, cmd.Connection, cmd.Transaction);
-                        //List<FormaPagoModel> forma = GetFormaPago(model.IdFactura, cmd.Connection, cmd.Transaction);
+                        var tipofac = new TipoFacturaModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACTURA").Valor ?? 0,
+                            Tipo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACT").Valor ?? string.Empty,
+                    };
+                        int idcliente= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? 0;
+                        int idreserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RESERVA").Valor ?? 0;
+                        model.TipoFactura = tipofac;
 
-                        //model.Detalles = detalle;
-                        //model.Forma = forma;
+                        List<FacturaDetalleModel> detalle = GetFacturaDetalle(model.IdFactura, cmd.Connection, cmd.Transaction);
+                        List<FormaPagoModel> forma = GetFormaPago(model.IdFactura, cmd.Connection, cmd.Transaction);
+
+                        model.Cliente.Id_Cliente = idcliente;
+                        model.Reserva.IdReserva = idreserva;
+                        model.Detalles = detalle;
+                        model.Forma = forma;
+                        int legajo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "Empleado").Valor ?? 0;
+                        model.Empleado.Legajo = legajo;
 
                         result.Add(model);
                     }
