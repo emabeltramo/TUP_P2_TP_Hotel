@@ -34,7 +34,7 @@ namespace HotelAPI.Controllers
             }
         }
         [HttpGet("/FacturaView/GetReserva")]
-        public IActionResult GetReserva()
+        public IActionResult GetReserva([FromQuery] int idCliente)
         {
             try
             {
@@ -43,7 +43,55 @@ namespace HotelAPI.Controllers
                 {
                     return StatusCode(500, "Se produjo un error al procesar las reservas");
                 }
+                if (idCliente != 0 )
+                    result.RemoveAll(m => m.Cliente.Id_Cliente != idCliente);
+
                 return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+        [HttpGet("/FacturaView/GetFacturaDetalle")]
+        public IActionResult GetFacturaDetalle()
+        {
+            try
+            {
+                var result = front.GetFacturaDetalle();
+
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar las facturas");
+                }
+
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+        
+
+            [HttpGet("/FacturaView/GetFormasPagoAsync")]
+        public IActionResult GetFormasPagoAsync([FromQuery] int IdFactura)
+        {
+            try
+            {
+                var result = front.GetFormasPagoAsync(IdFactura);
+
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar las formas de pagos");
+                }
+
+
+                return Ok(result);
+
             }
             catch (Exception)
             {
@@ -56,15 +104,13 @@ namespace HotelAPI.Controllers
         {
             try
             {
-
-
                 if (desde > hasta)
                 {
                     var temp = desde;
                     desde = hasta;
                     hasta = temp;
                 }
-                var result = front.GetFacturas(desde, hasta, idReserva);
+                var result = front.GetFacturas(desde, hasta);
                 var clientes = front.GetClientes();
                 var reserva = front.GetReserva();
                 var empleados = front.GetEmpleados();

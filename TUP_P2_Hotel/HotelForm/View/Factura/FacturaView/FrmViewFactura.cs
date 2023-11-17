@@ -47,19 +47,18 @@ namespace HotelForm.View.Factura.FacturaView
 
         private async Task ObtenerFormasPagos()
         {
+            factura.Forma = await service.GetFormasPagoAsync(factura.IdFactura);
             dgvFormaPago.Rows.Clear();
             foreach (var item in factura.Forma)
             {
-                dgvFormaPago.Rows.Add(new object[] { item.Id,
-                    item.Descripcion
-                });
+                dgvFormaPago.Rows.Add(new object[] {item.Descripcion});
             }
         }
 
         private void cargarDetalle()
         {
-            dgvDetalle.Rows.Clear();   
-            foreach(var item in factura.Detalles)
+            dgvDetalle.Rows.Clear();
+            foreach (var item in factura.Detalles)
             {
                 dgvDetalle.Rows.Add(new object[]
                 {

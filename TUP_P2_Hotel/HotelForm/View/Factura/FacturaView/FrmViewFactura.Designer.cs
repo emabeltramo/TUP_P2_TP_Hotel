@@ -42,8 +42,6 @@
             label11 = new Label();
             dtpFecha = new DateTimePicker();
             dgvFormaPago = new DataGridView();
-            CoId = new DataGridViewTextBoxColumn();
-            ColFormPago = new DataGridViewTextBoxColumn();
             label7 = new Label();
             label6 = new Label();
             btnCerrar = new Button();
@@ -63,6 +61,7 @@
             ColMonto = new DataGridViewTextBoxColumn();
             txtTotal = new TextBox();
             label12 = new Label();
+            ColFormPago = new DataGridViewTextBoxColumn();
             gbCliente.SuspendLayout();
             gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFormaPago).BeginInit();
@@ -196,27 +195,13 @@
             dgvFormaPago.AllowUserToAddRows = false;
             dgvFormaPago.AllowUserToDeleteRows = false;
             dgvFormaPago.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFormaPago.Columns.AddRange(new DataGridViewColumn[] { CoId, ColFormPago });
+            dgvFormaPago.Columns.AddRange(new DataGridViewColumn[] { ColFormPago });
             dgvFormaPago.Location = new Point(209, 19);
             dgvFormaPago.Name = "dgvFormaPago";
             dgvFormaPago.ReadOnly = true;
             dgvFormaPago.RowTemplate.Height = 25;
             dgvFormaPago.Size = new Size(210, 110);
             dgvFormaPago.TabIndex = 3;
-            // 
-            // CoId
-            // 
-            CoId.HeaderText = "Id";
-            CoId.Name = "CoId";
-            CoId.ReadOnly = true;
-            CoId.Visible = false;
-            // 
-            // ColFormPago
-            // 
-            ColFormPago.HeaderText = "Forma de Pago";
-            ColFormPago.Name = "ColFormPago";
-            ColFormPago.ReadOnly = true;
-            ColFormPago.Width = 167;
             // 
             // label7
             // 
@@ -383,6 +368,13 @@
             label12.TabIndex = 7;
             label12.Text = "Total$";
             // 
+            // ColFormPago
+            // 
+            ColFormPago.HeaderText = "Forma de Pago";
+            ColFormPago.Name = "ColFormPago";
+            ColFormPago.ReadOnly = true;
+            ColFormPago.Width = 167;
+            // 
             // FrmViewFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -439,13 +431,12 @@
         private TextBox txtTipoFactura;
         private Label label11;
         private DateTimePicker dtpFecha;
-        private DataGridViewTextBoxColumn CoId;
-        private DataGridViewTextBoxColumn ColFormPago;
         private DataGridViewTextBoxColumn ColIdDetalle;
         private DataGridViewTextBoxColumn ColServicio;
         private DataGridViewTextBoxColumn ColCantidad;
         private DataGridViewTextBoxColumn ColMonto;
         private TextBox txtTotal;
         private Label label12;
+        private DataGridViewTextBoxColumn ColFormPago;
     }
 }
