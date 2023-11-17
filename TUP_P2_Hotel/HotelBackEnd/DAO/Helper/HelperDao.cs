@@ -14,7 +14,8 @@ namespace HotelBackEnd.DAO.Helper
     public class HelperDao
     {
         private SqlConnection connection;
-        private string stringConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog = HOTEL_DB;Integrated Security = True";
+        //private string stringConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog = HOTEL_DB;Integrated Security = True";
+        private string stringConexion = "Data Source=DESKTOP-LOR5OV6;Initial Catalog=HOTEL_DB;Integrated Security=True"; //PRUEBA
         private static HelperDao instance;
 
         private HelperDao()

@@ -10,6 +10,7 @@ namespace HotelForm.Factory.Interface
 {
     public interface IFactoryService
     {
+        IFacturaViewService CreateFacturaViewService();
         IReservaService CreateReservaService();
         ILoginService CreateLoginService();
         IFacturaService CreateFacturaService();

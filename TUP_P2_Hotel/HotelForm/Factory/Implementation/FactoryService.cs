@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HotelBackEnd.Model;
+using HotelForm.View.Factura.FacturaView;
 
 namespace HotelForm.Factory.Implementation
 {
@@ -36,6 +37,11 @@ namespace HotelForm.Factory.Implementation
         public IFacturaService CreateFacturaService()
         {
             return new FacturaService();
+        }
+
+        public IFacturaViewService CreateFacturaViewService()
+        {
+            return new FacturaViewService();
         }
     }
 }

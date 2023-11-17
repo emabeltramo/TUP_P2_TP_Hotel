@@ -1,5 +1,6 @@
 ﻿using HotelForm.Factory.Interface;
 using HotelForm.View.Factura;
+using HotelForm.View.Factura.FacturaView;
 using HotelForm.View.Login;
 using HotelForm.View.Reserva;
 using System;
@@ -38,6 +39,8 @@ namespace HotelForm.View.Principal
             { panelMedio2.Visible = false; }
             if (panelMedio3.Visible == true)
             { panelMedio3.Visible = false; }
+            if (panelMedio4.Visible == true)
+            { panelMedio4.Visible = false; }
         }
 
 
@@ -54,12 +57,33 @@ namespace HotelForm.View.Principal
             }
         }
 
+        #region submenu Facturas
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+            
+            MostrarSubmenu(panelMedio4);
+        }
+
+        private void btnNuevaFactura_Click(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new frmNuevaFactura(factory));
+            //...
+            OcultarSubmenu();
+        }
+
+        private void btnVerFactura_Click(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new FrmFacturas(factory));
+            //...
+            OcultarSubmenu();
+        }
+        #endregion
+
         #region submenu Reservas
         private void btnReservas_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelMedio1);
         }
-
 
         private Form activarForm = null;
         private void AbrirFormHijo(Form FormHijo)
@@ -158,18 +182,13 @@ namespace HotelForm.View.Principal
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             //hay q cinfigurar esto
-           DialogResult result = MessageBox.Show("Desea cerrar sesión?","Cerrar Sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) {
+            DialogResult result = MessageBox.Show("Desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
                 this.Dispose();
-            AbrirFormHijo(new frmLogin(factory));
-                
-            }
-        }
+                AbrirFormHijo(new frmLogin(factory));
 
-        private void btnFacturar_Click(object sender, EventArgs e)
-        {
-            AbrirFormHijo(new frmNuevaFactura(factory));
-            OcultarSubmenu();
+            }
         }
     }
 }
