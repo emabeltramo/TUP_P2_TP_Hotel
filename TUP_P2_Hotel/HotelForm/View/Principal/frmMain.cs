@@ -107,7 +107,7 @@ namespace HotelForm.View.Principal
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
-            AbrirFormHijo(new frmModificarCliente(factory));
+            AbrirFormHijo(new frmCliente(factory));
 
             OcultarSubmenu();
         }

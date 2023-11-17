@@ -128,7 +128,7 @@ namespace HotelBackEnd.DAO.Implementation
 
                 resultado = false;
 
-                // Agrega información sobre la excepción al registro o usa un sistema de logging
+ 
                 Console.WriteLine($"Error en BajaCliente: {ex.Message}");
             }
             finally

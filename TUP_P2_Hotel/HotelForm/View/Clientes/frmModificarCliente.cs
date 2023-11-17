@@ -1,145 +1,118 @@
 ﻿using HotelBackEnd.Model;
 using HotelForm.Factory.Interface;
 using HotelForm.Service.Interface;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HotelForm.View.Clientes
 {
     public partial class frmModificarCliente : Form
     {
-        IFactoryService factory;
-        IClienteService clienteService;
+        private IFactoryService factory;
+        private IClienteService clienteService;
+        private ClienteModel cliente;
 
-
-        public frmModificarCliente(IFactoryService factory)
+        public frmModificarCliente(IFactoryService factory, ClienteModel c)
         {
             this.factory = factory;
-            clienteService = factory.CreateClienteService();
+            this.clienteService = factory.CreateClienteService();
             InitializeComponent();
-
+            this.cliente = c;
         }
-        private async void frmModificarCliente_Load(object sender, EventArgs e)
+        private async Task<(string tipoDocumento, string tipoCliente)> ObtenerTipoDocumentoYClienteAsync(int idTipoDocumento, int idTipoCliente)
         {
+            string tipoDocumento = "";
+            string tipoCliente = "";
 
-            CargarComboCliente();
-
-        }
-
-        private async void CargarComboCliente()
-        {
-
-            List<ClienteModel> clients = await clienteService.GetClientesAsync();
-            cboCliente.DataSource = clients;
-            cboCliente.DisplayMember = "NombreCompleto";
-            cboCliente.ValueMember = "Id_Cliente";
             List<TipoDocumentoModel> tdoc = await clienteService.GetTipoDocumentosAsync();
             cboTipoDocumento.DataSource = tdoc;
-            cboTipoDocumento.DisplayMember = "Id";
-            cboTipoDocumento.ValueMember = "Descri";
+            cboTipoDocumento.DisplayMember = "Descri";
+            cboTipoDocumento.ValueMember = "Id";
+
             List<TipoClienteModel> tcli = await clienteService.GetTipoClientesAsync();
             cboTipoCliente.DataSource = tcli;
-            cboTipoCliente.DisplayMember = "Id";
-            cboTipoCliente.ValueMember = "Descri";
+            cboTipoCliente.DisplayMember = "Descri";
+            cboTipoCliente.ValueMember = "Id";
+
+            TipoDocumentoModel tipoDoc = tdoc.FirstOrDefault(t => t.Id == idTipoDocumento);
+            if (tipoDoc != null)
+            {
+                tipoDocumento = tipoDoc.Descri;
+            }
+
+            TipoClienteModel tipoCli = tcli.FirstOrDefault(t => t.Id == idTipoCliente);
+            if (tipoCli != null)
+            {
+                tipoCliente = tipoCli.Descri;
+            }
+
+            return (tipoDocumento, tipoCliente);
+        }
+
+
+        private async void frmModificarCliente_Load(object sender, EventArgs e)
+        {
+            int idTipoDocumento = cliente.TDoc.Id;
+            int idTipoCliente = cliente.TCliente.Id;
+
+            var (tipoDocumento, tipoCliente) = await ObtenerTipoDocumentoYClienteAsync(idTipoDocumento, idTipoCliente);
+
+            MessageBox.Show($"Tipo Documento: {tipoDocumento}, Tipo Cliente: {tipoCliente}");
+
+            cboTipoDocumento.SelectedValue = idTipoDocumento;
+
+            switch (tipoCliente)
+            {
+                case "Personas":
+                    cboTipoCliente.SelectedValue = 1;
+                    txtApellido.Text = cliente.Apellido.ToString();
+                    txtNombre.Text = cliente.Nombre.ToString();
+
+                    break;
+
+                case "Empresas":
+                    cboTipoCliente.SelectedValue = 2;
+                    txtRazonSocial.Text= cliente.RazonSocial;
+                    break;
+
+                default:
+                    cboTipoCliente.SelectedValue = cboTipoCliente.Items.Count;
+                    break;
+            }
+
+            switch (tipoDocumento)
+            {
+                case "DNI":
+                    cboTipoDocumento.SelectedValue = 1;
+                    txtNroDocumento.Text = cliente.DNI.ToString();
+                    break;
+
+                case "Pasaporte":
+                    cboTipoDocumento.SelectedValue =2;
+                    txtNroDocumento.Text = cliente.CUIL.ToString();
+                    break;
+
+                default:
+                    cboTipoDocumento.SelectedValue = cboTipoDocumento.Items.Count;
+                    break;
+            }
+           
+            txtEmail.Text = cliente.Email.ToString();
+            txtTelefono.Text=cliente.Celular.ToString();
 
 
         }
+
+        
 
         private async void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCliente.SelectedItem != null)
-            {
-                ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
-                txtApellido.Text = c.Apellido;
-                txtNombre.Text = c.Nombre;
-                cboTipoCliente.SelectedIndex = c.TCliente.Id;
-                cboTipoDocumento.SelectedIndex = c.TDoc.Id;
-                if (c.TCliente != null && c.TCliente.Id.Equals(1))
-                {
-
-
-                    txtNroDocumento.Text = c.DNI.ToString();
-
-                }
-                else
-                {
-                    txtNroDocumento.Text = c.CUIL.ToString();
-                }
-
-
-
-                txtRazonSocial.Text = c.RazonSocial;
-                txtTelefono.Text = c.Celular;
-                txtEmail.Text = c.Celular;
-
-
-                foreach (Control control in this.Controls)
-                {
-                    if (control is TextBox)
-                    {
-                        if (string.IsNullOrEmpty(control.Text))
-                        {
-                            control.Text = "-";
-
-                        }
-                    }
-                }
-
-            }
-
+            
             
         }
 
         private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
-                
-                if (cboCliente.SelectedItem != null )
-                {
-  
-                    c.Id_Cliente = Convert.ToInt32(c.Id_Cliente); // aca deberia estar el error
-                    c.RazonSocial = txtRazonSocial.Text;
-                    c.CUIL = txtNroDocumento.Text;
-                    c.Nombre = txtNombre.Text;
-                    c.Apellido = txtApellido.Text;
-                    c.DNI = txtNroDocumento.Text;
-                    c.Email = txtEmail.Text;
-                    c.Celular = txtTelefono.Text;
-                    c.TDoc= (TipoDocumentoModel) cboTipoDocumento.SelectedItem;
-                    c.TCliente= (TipoClienteModel) cboTipoCliente.SelectedItem;
-                    
-                    var result = await clienteService.ActualizarCliente(c);
-                    
-                    if (result.SuccessStatus)
-                    {
-                        MessageBox.Show("Cliente actualizado con éxito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error al cargar cliente: {result.Data}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Seleccione un cliente válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            CargarComboCliente();
+        
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -165,8 +138,7 @@ namespace HotelForm.View.Clientes
 
         private async void btnBorrar_Click(object sender, EventArgs e)
         {
-            ClienteModel c = (ClienteModel)cboCliente.SelectedItem;
-            var result = await clienteService.BajaCliente(c.Id_Cliente);
+
         }
     }
 }
