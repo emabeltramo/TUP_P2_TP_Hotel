@@ -60,6 +60,7 @@ namespace HotelForm.View.Reserva
 
             List<ReservaModel> reservas = await service.
                 GetReservasAsync(desde.Date, hasta.Date, idHotel,idCliente,idEstado);
+            
             dgvReserva.Rows.Clear();
             foreach (var item in reservas)
             {

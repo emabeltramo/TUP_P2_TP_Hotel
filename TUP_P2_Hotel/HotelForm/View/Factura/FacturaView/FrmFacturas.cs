@@ -44,6 +44,7 @@ namespace HotelForm.View.Factura.FacturaView
             List<ClienteModel> clients = await service.GetClientesAsync();
             clients.Add(new ClienteModel()
             {
+                Id_Cliente = 0,
                 Nombre = "Todos"
             });
             cboCliente.DataSource = clients.OrderBy(m => m.Id_Cliente).ToList();
@@ -89,8 +90,19 @@ namespace HotelForm.View.Factura.FacturaView
         {
             dgvFacturas.Rows.Clear();
             List<FacturaModel> facturas = await service.GetFacturasAsync(desde.Date, hasta.Date, idCliente, idReserva);
-            foreach (var item in facturas)
+            List<FacturaDetalleModel> detalle = await service.GetFacturaDetalle();
+            //foreach (var item in facturas)
+            for (int i = 0; i < facturas.Count; i++)
             {
+                for(int j = 0; j < detalle.Count; j++)
+                {
+                    if (facturas[i].IdFactura == detalle[j].idFactura)
+                    {
+                        facturas[i].AgregarDetalle(detalle[j]);
+                    }
+                }
+            }
+            foreach (var item in facturas) { 
                 dgvFacturas.Rows.Add(new object[]
                 {
                     item.IdFactura,

@@ -59,48 +59,6 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
-        private List<FormaPagoModel> GetFormaPago(int idFactura, SqlConnection cnn, SqlTransaction t)
-        {
-            ProccesData procces = new ProccesData();
-            SqlCommand cmd = new SqlCommand();
-            List<FormaPagoModel> result = new List<FormaPagoModel>();
-            try
-            {
-                cmd.CommandText = "ps_FormasPago";
-                cmd.Connection = cnn;
-                cmd.Transaction = t;
-
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Clear();
-                var p = new List<SqlParameter>();
-                p.Add(new SqlParameter("@idfactura", (object)idFactura ?? DBNull.Value));
-                cmd.Parameters.AddRange(p.ToArray());
-
-                var reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        var reg = procces.MakeReg(reader);
-
-                        var formapago = new FormaPagoModel()
-                        {
-                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
-                            Descripcion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRICION").Valor ?? string.Empty,
-                            Recargo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RECARGO").Valor ?? false,
-                            Porcentaje = reg.FirstOrDefault(m => m.Campo.ToUpper() == "PORCENTAJE_RECARGO").Valor ?? 0,
-
-                        };
-                        result.Add(formapago);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                result = null;
-            }
-            return result;
-        }
         public List<ReservaModel> GetReserva()
         {
             ProccesData procces = new ProccesData();
@@ -152,23 +110,62 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
+        public List<FormaPagoModel> GetFormasPagoAsync(int IdFactura)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<FormaPagoModel> result = new List<FormaPagoModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_FormasPago";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
 
-        private List<FacturaDetalleModel> GetFacturaDetalle(int idFactura, SqlConnection cnn, SqlTransaction t)
+                cmd.Parameters.Add(new SqlParameter("@idfactura", (object)IdFactura ?? DBNull.Value));
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+
+                        var formapago = new FormaPagoModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            Descripcion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRICION").Valor ?? string.Empty,
+                            Recargo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RECARGO").Valor ?? false,
+                            Porcentaje = reg.FirstOrDefault(m => m.Campo.ToUpper() == "PORCENTAJE_RECARGO").Valor ?? 0,
+
+                        };
+                        result.Add(formapago);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public List<FacturaDetalleModel> GetFacturaDetalle()
         {
             ProccesData procces = new ProccesData();
             SqlCommand cmd = new SqlCommand();
             List<FacturaDetalleModel> result = new List<FacturaDetalleModel>();
             try
             {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
                 cmd.CommandText = "ps_detalleFacturas";
-                cmd.Connection = cnn;
-                cmd.Transaction = t;
 
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Clear();
-                var p = new List<SqlParameter>();
-                p.Add(new SqlParameter("@idfactura", (object)idFactura ?? DBNull.Value));
-                cmd.Parameters.AddRange(p.ToArray());
+                cmd.Connection.Open();
 
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -179,11 +176,17 @@ namespace HotelBackEnd.DAO.Implementation
                         var model = new FacturaDetalleModel()
                         {
                             IdDetalle = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            idFactura = reg.FirstOrDefault(m => m.Campo.ToUpper() == "FACTURA").Valor ?? 0,
                             Cantidad = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CANTIDAD").Valor ?? 0,
                             Monto = reg.FirstOrDefault(m => m.Campo.ToUpper() == "MONTO").Valor ?? 0,
+                            Servicio = new TipoServicioModel(),
+                            
                         };
-                        model.Servicio.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "idServicio").Valor ?? 0;
-                        model.Servicio.Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty;
+                        var servicio = new TipoServicioModel();
+                        servicio.Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRIPCION").Valor ?? string.Empty;
+                        servicio.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDSERVICIO").Valor ?? 0;
+                        model.Servicio = servicio;
+                            
 
                         result.Add(model);
                     }
@@ -198,12 +201,12 @@ namespace HotelBackEnd.DAO.Implementation
             return result;
         }
 
-        public List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta, int idReserva)
+        public List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta)
         {
             ProccesData procces = new ProccesData();
             SqlCommand cmd = new SqlCommand();
             List<FacturaModel> result = new List<FacturaModel>();
-            SqlTransaction t = null;
+            //SqlTransaction t = null;
             try
             {
                 cmd.Connection = HelperDao.GetInstance().GetConnection();
@@ -213,12 +216,11 @@ namespace HotelBackEnd.DAO.Implementation
                 var p = new List<SqlParameter>();
                 p.Add(new SqlParameter("@desde", (object)desde ?? DBNull.Value));
                 p.Add(new SqlParameter("@hasta", (object)hasta ?? DBNull.Value));
-                p.Add(new SqlParameter("@reserva", (object)idReserva ?? DBNull.Value));
 
                 cmd.Parameters.AddRange(p.ToArray());
                 cmd.Connection.Open();
-                t = cmd.Connection.BeginTransaction();
-                cmd.Transaction = t;
+                //t = cmd.Connection.BeginTransaction();
+                //cmd.Transaction = t;
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -230,9 +232,13 @@ namespace HotelBackEnd.DAO.Implementation
                             IdFactura = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
                             NumFactura = reg.FirstOrDefault(m => m.Campo.ToUpper() == "N_FACTURA").Valor ?? 0,
                             Fecha = reg.FirstOrDefault(m => m.Campo.ToUpper() == "FECHA").Valor ?? DateTime.Now.Date,
-
+                            Cliente = new ClienteModel(),
+                            Reserva = new ReservaModel(),
+                            Empleado = new EmpleadoModel(),
+                            TipoFactura = new TipoFacturaModel(),
+                            Detalles = new List<FacturaDetalleModel>(),
+                            Forma = new List<FormaPagoModel>(),
                         };
-
                         var tipofac = new TipoFacturaModel()
                         {
                             Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACTURA").Valor ?? 0,
@@ -241,27 +247,27 @@ namespace HotelBackEnd.DAO.Implementation
                         int idcliente= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? 0;
                         int idreserva = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RESERVA").Valor ?? 0;
                         model.TipoFactura = tipofac;
-
-                        List<FacturaDetalleModel> detalle = GetFacturaDetalle(model.IdFactura, cmd.Connection, cmd.Transaction);
-                        List<FormaPagoModel> forma = GetFormaPago(model.IdFactura, cmd.Connection, cmd.Transaction);
-
                         model.Cliente.Id_Cliente = idcliente;
                         model.Reserva.IdReserva = idreserva;
-                        model.Detalles = detalle;
-                        model.Forma = forma;
-                        int legajo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "Empleado").Valor ?? 0;
+                        int legajo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMPLEADO").Valor ?? 0;
                         model.Empleado.Legajo = legajo;
+
+
+                        //List<FacturaDetalleModel> detalle = GetFacturaDetalle(model.IdFactura, cmd.Connection);
+                        //List<FormaPagoModel> forma = GetFormaPago(model.IdFactura, cmd.Connection);
+                        //model.Detalles = detalle;
+                        //model.Forma = forma;
 
                         result.Add(model);
                     }
                 }
 
-                t.Commit();
+                //t.Commit();
             }
             catch (Exception ex)
             {
-                if (t != null)
-                    t.Rollback();
+                //if (t != null)
+                //    t.Rollback();
                 result = null;
             }
             if (cmd.Connection.State == System.Data.ConnectionState.Open)

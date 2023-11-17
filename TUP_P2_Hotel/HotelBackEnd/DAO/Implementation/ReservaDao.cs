@@ -399,7 +399,6 @@ namespace HotelBackEnd.DAO.Implementation
                         model.Cliente.Id_Cliente= reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? 0;
                         model.Empleado.Legajo= reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMPLEADO").Valor ?? 0;
 
-
                         result.Add(model);
                     }
                 }
@@ -489,7 +488,6 @@ namespace HotelBackEnd.DAO.Implementation
                             IdResHabitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDRESHAB").Valor ?? 0,
                             Monto = reg.FirstOrDefault(m => m.Campo.ToUpper() == "MONTOHAB").Valor ?? 0,
                             
-
                         };
                         model.Habitacion.Id_Habitacion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDHABITACION").Valor ?? 0;
                         model.Habitacion.Codigo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CODIGO").Valor ?? string.Empty;
@@ -497,10 +495,6 @@ namespace HotelBackEnd.DAO.Implementation
                         model.Habitacion.Telefono = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TELEFONO").Valor ?? 0;
                         model.Habitacion.Categoria.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "IDCATEGORIA").Valor ?? 0;
                         model.Habitacion.Categoria.Descri = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CATEGORIADESC").Valor ?? string.Empty;
-
-
-
-
 
                         result.Add(model);
                     }

@@ -12,5 +12,7 @@ namespace HotelForm.Service.Interface
         Task<List<ClienteModel>> GetClientesAsync();
         Task<List<ReservaModel>> GetReservasAsync(int idCliente);
         Task<List<FacturaModel>> GetFacturasAsync(DateTime desde, DateTime hasta, int idCliente, int idReserva);
+        Task<List<FacturaDetalleModel>> GetFacturaDetalle();
+        Task<List<FormaPagoModel>> GetFormasPagoAsync(int IdFactura);
     }
 }

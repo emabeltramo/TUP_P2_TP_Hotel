@@ -11,7 +11,9 @@ namespace HotelBackEnd.DAO.Interface
     {
         List<ClienteModel> GetClientes();
         public List<ReservaModel> GetReserva();
-        List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta, int idReserva);
+        List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta);
         List<EmpleadoModel> GetEmpleados();
+        List<FacturaDetalleModel> GetFacturaDetalle();
+        List<FormaPagoModel> GetFormasPagoAsync(int IdFactura);
     }
 }

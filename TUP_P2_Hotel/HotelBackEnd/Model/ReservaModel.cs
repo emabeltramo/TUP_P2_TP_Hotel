@@ -41,7 +41,8 @@ namespace HotelBackEnd.Model
                 if (Estado.Descri == "TODOS")
                     return "Todos";
                 else
-                    return Ingreso.ToString("dd/MM/yyyy") + " - " + Salida.ToString("dd/MM/yyyy");
+                    return IdReserva.ToString();
+                    //return Ingreso.ToString("dd/MM/yyyy") + " - " + Salida.ToString("dd/MM/yyyy");
             }
         }
     }

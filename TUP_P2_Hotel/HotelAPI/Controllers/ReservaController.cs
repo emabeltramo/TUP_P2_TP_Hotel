@@ -164,8 +164,7 @@ namespace HotelAPI.Controllers
             }
         }
         [HttpGet("/GetReservas")]
-        public IActionResult GetReservas([FromQuery] DateTime desde, [FromQuery] DateTime hasta, 
-            [FromQuery] int idHotel,[FromQuery] int idCliente, [FromQuery] int idEstado)
+        public IActionResult GetReservas([FromQuery] DateTime desde, [FromQuery] DateTime hasta, [FromQuery] int idHotel,[FromQuery] int idCliente, [FromQuery] int idEstado)
         {
             try
             {

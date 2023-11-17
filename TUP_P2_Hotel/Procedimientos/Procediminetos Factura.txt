@@ -1,0 +1,42 @@
+create procedure ps_Facturas @desde date, @hasta date
+as
+BEGIN
+select f.ID ID, N_FACTURA, CLIENTE, FECHA, RESERVA, EMPLEADO, f.TIPO_FACTURA TIPO_FACTURA, TIPO_FACT
+from FACTURAS f join TIPOS_FACTURAS t on f.TIPO_FACTURA = t.ID
+where FECHA between  @desde and @hasta
+RETURN
+END
+GO
+
+
+create procedure ps_detalleFacturas 
+as
+begin
+select d.ID ID, FACTURA, CANTIDAD, MONTO, s.ID IDSERVICIO, DESCRIPCION
+from FACTURA_DETALLES d join TIPOS_SERVICIOS s on
+	 d.SERVICIO = s.ID
+order by DESCRIPCION
+end
+GO
+
+
+create procedure ps_ReservasView
+as
+begin
+select r.ID ID, CLIENTE, INGRESO, SALIDA, FECHA_RESERVA,
+	   ESTADO, Empleado, DESCRIPCION
+from RESERVAS r join ESTADOS_RESERVA e on
+	 r.ESTADO = e.ID
+end
+GO
+
+
+create procedure ps_FormasPago @idfactura int
+as
+begin
+select fp.ID ID, DESCRICION, RECARGO, PORCENTAJE_RECARGO
+from FORMAS_PAGOS fp join FACTURAS_FORMAS_PAGO ffp on
+	 fp.ID = ffp.FORMA_PAGO
+where ffp.FACTURA = @idfactura
+end
+GO

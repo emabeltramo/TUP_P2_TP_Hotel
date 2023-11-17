@@ -35,9 +35,8 @@ namespace HotelForm.Service.Implementation
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["desde"] = "01/01/1950";
             query["hasta"] = "01/01/2500";
-            query["idHotel"] = 0.ToString();
             query["idCliente"] = idCliente.ToString();
-            query["idEstado"] = 1.ToString();
+            //query["idEstado"] = 1.ToString();
 
 
 
@@ -51,7 +50,7 @@ namespace HotelForm.Service.Implementation
         }
         public async Task<List<FacturaModel>> GetFacturasAsync(DateTime desde, DateTime hasta, int idCliente, int idReserva)
         {
-            string url = host + "/GetFactura?";
+            string url = host + "/FacturaView/GetFactura?";
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["desde"] = desde.ToString("MM/dd/yyyy");
             query["hasta"] = hasta.ToString("MM/dd/yyyy");
@@ -65,6 +64,35 @@ namespace HotelForm.Service.Implementation
             if (response != null && response.SuccessStatus)
             {
                 result = JsonConvert.DeserializeObject<List<FacturaModel>>(response.Data);
+            }
+            return result;
+        }
+
+        public async Task<List<FormaPagoModel>> GetFormasPagoAsync(int IdFactura)
+        {
+            string url = host + "/FacturaView/GetFormasPagoAsync?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["IdFactura"] = IdFactura.ToString();
+
+            List<FormaPagoModel> result = new List<FormaPagoModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<FormaPagoModel>>(response.Data);
+            }
+            return result;
+        }
+        public async Task<List<FacturaDetalleModel>> GetFacturaDetalle()
+        {
+            string url = host + "/FacturaView/GetFacturaDetalle";
+
+
+
+            List<FacturaDetalleModel> result = new List<FacturaDetalleModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url ); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<FacturaDetalleModel>>(response.Data);
             }
             return result;
         }

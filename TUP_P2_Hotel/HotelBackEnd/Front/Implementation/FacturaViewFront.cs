@@ -29,9 +29,17 @@ namespace HotelBackEnd.Front.Implementation
         {
             return facturaviewDao.GetEmpleados();
         }
-        public List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta, int idReserva)
+        public List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta)
         {
-            return facturaviewDao.GetFacturas(desde, hasta, idReserva);
+            return facturaviewDao.GetFacturas(desde, hasta);
+        }
+        public List<FacturaDetalleModel> GetFacturaDetalle()
+        {
+            return facturaviewDao.GetFacturaDetalle();
+        }
+        public List<FormaPagoModel> GetFormasPagoAsync(int IdFactura)
+        {
+            return facturaviewDao.GetFormasPagoAsync(IdFactura);
         }
     }
 }

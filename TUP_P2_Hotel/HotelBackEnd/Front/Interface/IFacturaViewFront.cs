@@ -12,6 +12,8 @@ namespace HotelBackEnd.Front.Interface
         List<ClienteModel> GetClientes();
         List<ReservaModel> GetReserva();
         List<EmpleadoModel> GetEmpleados();
-        List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta, int idReserva);
+        List<FacturaModel> GetFacturas(DateTime desde, DateTime hasta);
+        List<FacturaDetalleModel> GetFacturaDetalle();
+        List<FormaPagoModel> GetFormasPagoAsync(int IdFactura);
     }
 }
