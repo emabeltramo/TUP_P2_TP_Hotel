@@ -78,7 +78,7 @@ CREATE TABLE CONSULTAS(
 id int identity(1,1),
 nombre varchar(25),
 enunciado varchar(1000),
-sentencia varchar(3000),
+sentencia varchar(4500),
 primary key (id)
 );
 go
@@ -121,63 +121,64 @@ values
 '3. Se crear procedimiento de almacenado para visualizar número de factura, Cliente con nombre y apellido y documento, fecha de ingreso, salida, el
 código de la habitación , número de piso , el hotel con la dirección, el empleado que facturó, reserva y el total de la reserva. Tener en cuenta
 que solo hicimos con los parámetros de numero de factura, pero también se puede extender a otros casos siguiendo dicha lógica.',
-    'create procedure sp_consulta_reserva
-	@tipo_cliente int,
-	@nro_factura int
-as
-begin 
-	if exists (select 1 from TIPOS_CLIENTES t1 where t1.ID = @tipo_cliente) and (@tipo_cliente = 1) 
-	begin
-		if exists (select 1 from FACTURAS f1 where f1.N_FACTURA= @nro_factura)
-		begin
-			select f.N_FACTURA ''Factura'',CONCAT(''Nombre y Apellido: '',c.NOMBRE,'' '',c.APELLIDO,
-			'' |DNI '',C.DNI)''Cliente'',
-			r.INGRESO ''Ingreso'',r.SALIDA ''Salida'',e.DESCRIPCION ''Estado'',
-			h.CODIGO ''Habitación'',p.NIVEL ''Piso'',
-			CONCAT(''Hotel: '',ho.NOMBRE,''Direccion: '',ho.DIRECCION,'' |Localidad: '',l.NOMBRE) ''Hotel'',
-			CONCAT(''Nombre y Apellido: '',em.NOMBRE,'' '',Em.APELLIDO,'' |Legajo: '',em.legajo)''Empleado'',
-			sum(fa.CANTIDAD * fa.MONTO)''Total''
-			from FACTURAS f join CLIENTES c on f.CLIENTE=c.ID
-			join RESERVAS r on f.RESERVA = r.ID
-			join ESTADOS_RESERVA e on r.ESTADO = e.ID
-			join EMPLEADO em on r.Empleado = em.legajo
-			join RESERVA_HABITACIONES re on r.ID = re.RESERVA
-			join HABITACION_HOTEL h on  h.ID = re.HABITACION
-			join PISOS_HOTEL p on h.PISO = p.ID
-			join HOTELES ho on p.HOTEL = ho.ID
-			join LOCALIDADES l on l.ID_LOCALIDAD = ho.LOCALIDAD
-			join FACTURA_DETALLES fa on fa.FACTURA= f.ID
-			where f.N_FACTURA = @nro_factura and e.ID = 2 
-			group by f.N_FACTURA,c.NOMBRE,c.APELLIDO,C.DNI,r.INGRESO,r.SALIDA,e.DESCRIPCION,
-			h.CODIGO,p.NIVEL,ho.NOMBRE,ho.DIRECCION,l.NOMBRE,em.NOMBRE,Em.APELLIDO,em.legajo;		
-		end
-		else
-		begin
-			select''No existe este nro_factura'' Mensaje;
-		end
-	end
-	else
-	begin
-		if exists (select 1 from FACTURAS f1 where f1.N_FACTURA= @nro_factura)
-		begin
-			select f.N_FACTURA ''Factura'',CONCAT(''Nombre y Apellido: '',c.NOMBRE,'' '',c.APELLIDO,
-			'' |DNI '',C.DNI)''Cliente'',
-			r.INGRESO ''Ingreso'',r.SALIDA ''Salida'',e.DESCRIPCION ''Estado'',
-			h.CODIGO ''Habitación'',p.NIVEL ''Piso'',
-			CONCAT(''Hotel: '',ho.NOMBRE,''Direccion: '',ho.DIRECCION,'' |Localidad: '',l.NOMBRE) ''Hotel'',
-			CONCAT(''Nombre y Apellido: '',em.NOMBRE,'' '',Em.APELLIDO,'' |Legajo: '',em.legajo)''Empleado'',
-			sum(fa.CANTIDAD * fa.MONTO)''Total''
-			from FACTURAS f join CLIENTES c on f.CLIENTE=c.ID
-			join RESERVAS r on f.RESERVA = r.ID
-			join ESTADOS_RESERVA e on r.ESTADO = e.ID
-			join EMPLEADO em on r.Empleado = em.legajo
-			join RESERVA_HABITACIONES re on r.ID = re.RESERVA
-			join HABITACION_HOTEL h on  h.ID = re.HABITACION
-			join PISOS_HOTEL p on h.PISO = p.ID
-			join HOTELES ho on p.HOTEL = ho.ID
-			join LOCALIDADES l on l.ID_LOCALIDAD = ho.LOCALIDAD
-			join FACTURA_DETALLES fa on fa.FACTURA= f.ID
-			where f.N_FACTURA = @nro_factura and e.ID = 2 
+    'CREATE PROCEDURE sp_consulta_reserva
+    @tipo_cliente INT,
+    @nro_factura INT
+    AS
+    BEGIN
+        IF EXISTS (SELECT 1 FROM TIPOS_CLIENTES t1 WHERE t1.ID = @tipo_cliente) AND (@tipo_cliente = 1) 
+        BEGIN
+            IF EXISTS (SELECT 1 FROM FACTURAS f1 WHERE f1.N_FACTURA = @nro_factura)
+            BEGIN
+                SELECT f.N_FACTURA ''Factura'', CONCAT(''Nombre y Apellido: '', c.NOMBRE, '' '', c.APELLIDO,
+                '' |DNI '', C.DNI) ''Cliente'',
+                r.INGRESO ''Ingreso'', r.SALIDA ''Salida'', e.DESCRIPCION ''Estado'',
+                h.CODIGO ''Habitación'', p.NIVEL ''Piso'',
+                CONCAT(''Hotel: '', ho.NOMBRE, ''Direccion: '', ho.DIRECCION, '' |Localidad: '', l.NOMBRE) ''Hotel'',
+                CONCAT(''Nombre y Apellido: '', em.NOMBRE, '' '', Em.APELLIDO, '' |Legajo: '', em.legajo) ''Empleado'',
+                SUM(fa.CANTIDAD * fa.MONTO) ''Total''
+                FROM FACTURAS f JOIN CLIENTES c ON f.CLIENTE = c.ID
+                JOIN RESERVAS r ON f.RESERVA = r.ID
+                JOIN ESTADOS_RESERVA e ON r.ESTADO = e.ID
+                JOIN EMPLEADO em ON r.Empleado = em.legajo
+                JOIN RESERVA_HABITACIONES re ON r.ID = re.RESERVA
+                JOIN HABITACION_HOTEL h ON h.ID = re.HABITACION
+                JOIN PISOS_HOTEL p ON h.PISO = p.ID
+                JOIN HOTELES ho ON p.HOTEL = ho.ID
+                JOIN LOCALIDADES l ON l.ID_LOCALIDAD = ho.LOCALIDAD
+                JOIN FACTURA_DETALLES fa ON fa.FACTURA = f.ID
+                WHERE f.N_FACTURA = @nro_factura AND e.ID = 2 
+                GROUP BY f.N_FACTURA, c.NOMBRE, c.APELLIDO, C.DNI, r.INGRESO, r.SALIDA, e.DESCRIPCION,
+                h.CODIGO, p.NIVEL, ho.NOMBRE, ho.DIRECCION, l.NOMBRE, em.NOMBRE, Em.APELLIDO, em.legajo;		
+            END
+            ELSE
+            BEGIN
+                SELECT ''No existe este nro_factura'' Mensaje;
+            END
+        END
+        ELSE
+        BEGIN
+            IF EXISTS (SELECT 1 FROM FACTURAS f1 WHERE f1.N_FACTURA = @nro_factura)
+            BEGIN
+                SELECT f.N_FACTURA ''Factura'', CONCAT(''Razon Social: '', c.Razon_Social, '' '',
+                '' |CUIL: '', C.CUIL) ''Cliente'',
+                r.INGRESO ''Ingreso'', r.SALIDA ''Salida'', e.DESCRIPCION ''Estado'',
+                h.CODIGO ''Habitación'', p.NIVEL ''Piso'',
+                CONCAT(''Hotel: '', ho.NOMBRE, ''Direccion: '', ho.DIRECCION, '' |Localidad: '', l.NOMBRE) ''Hotel'',
+                CONCAT(''Nombre y Apellido: '', em.NOMBRE, '' '', Em.APELLIDO, '' |Legajo: '', em.legajo) ''Empleado'',
+                SUM(fa.CANTIDAD * fa.MONTO) ''Total''
+                FROM FACTURAS f JOIN CLIENTES c ON f.CLIENTE = c.ID
+                JOIN RESERVAS r ON f.RESERVA = r.ID
+                JOIN ESTADOS_RESERVA e ON r.ESTADO = e.ID
+                JOIN EMPLEADO em ON r.Empleado = em.legajo
+                JOIN RESERVA_HABITACIONES re ON r.ID = re.RESERVA
+                JOIN HABITACION_HOTEL h ON h.ID = re.HABITACION
+                JOIN PISOS_HOTEL p ON h.PISO = p.ID
+                JOIN HOTELES ho ON p.HOTEL = ho.ID
+                JOIN LOCALIDADES l ON l.ID_LOCALIDAD = ho.LOCALIDAD
+                JOIN FACTURA_DETALLES fa ON fa.FACTURA = f.ID 
+                JOIN TIPOS_CLIENTES t ON c.ID = t.ID
+                where f.N_FACTURA = @nro_factura and e.ID = 2 
 			group by f.N_FACTURA,c.NOMBRE,c.APELLIDO,C.DNI,r.INGRESO,r.SALIDA,e.DESCRIPCION,
 			h.CODIGO,p.NIVEL,ho.NOMBRE,ho.DIRECCION,l.NOMBRE,em.NOMBRE,Em.APELLIDO,em.legajo;		
 		end
@@ -187,8 +188,8 @@ begin
 		end		
 	end
 end
-exec sp_consulta_reserva 1,10001 
-		'
+exec sp_consulta_reserva 1,10001
+exec sp_consulta_reserva 2,1000'
 )
 
 INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
@@ -301,5 +302,79 @@ AS
 BEGIN 
 	SELECT * FROM TIPOS_CLIENTES
 END
+
+
+
+
+
+create procedure sp_consulta_reserva
+	@tipo_cliente int,
+	@nro_factura int
+as
+begin 
+	if exists (select 1 from TIPOS_CLIENTES t1 where t1.ID = @tipo_cliente) and (@tipo_cliente = 1) 
+	begin
+		if exists (select 1 from FACTURAS f1 where f1.N_FACTURA= @nro_factura)
+		begin
+			select f.N_FACTURA 'Factura',CONCAT('Nombre y Apellido: ',c.NOMBRE,' ',c.APELLIDO,
+			' |DNI ',C.DNI)'Cliente',
+			r.INGRESO 'Ingreso',r.SALIDA 'Salida',e.DESCRIPCION 'Estado',
+			h.CODIGO 'Habitación',p.NIVEL 'Piso',
+			CONCAT('Hotel: ',ho.NOMBRE,'Direccion: ',ho.DIRECCION,' |Localidad: ',l.NOMBRE) 'Hotel',
+			CONCAT('Nombre y Apellido: ',em.NOMBRE,' ',Em.APELLIDO,' |Legajo: ',em.legajo)'Empleado',
+			sum(fa.CANTIDAD * fa.MONTO)'Total'
+			from FACTURAS f join CLIENTES c on f.CLIENTE=c.ID
+			join RESERVAS r on f.RESERVA = r.ID
+			join ESTADOS_RESERVA e on r.ESTADO = e.ID
+			join EMPLEADO em on r.Empleado = em.legajo
+			join RESERVA_HABITACIONES re on r.ID = re.RESERVA
+			join HABITACION_HOTEL h on  h.ID = re.HABITACION
+			join PISOS_HOTEL p on h.PISO = p.ID
+			join HOTELES ho on p.HOTEL = ho.ID
+			join LOCALIDADES l on l.ID_LOCALIDAD = ho.LOCALIDAD
+			join FACTURA_DETALLES fa on fa.FACTURA= f.ID
+			where f.N_FACTURA = @nro_factura and e.ID = 2
+			group by f.N_FACTURA,c.NOMBRE,c.APELLIDO,C.DNI,r.INGRESO,r.SALIDA,e.DESCRIPCION,
+			h.CODIGO,p.NIVEL,ho.NOMBRE,ho.DIRECCION,l.NOMBRE,em.NOMBRE,Em.APELLIDO,em.legajo;		
+		end
+		else
+		begin
+			select'No existe este nro_factura' Mensaje;
+		end
+	end
+	else
+	begin
+		if exists (select 1 from FACTURAS f1 where f1.N_FACTURA= @nro_factura)
+		begin
+			select f.N_FACTURA 'Factura',CONCAT('Razon Social: ',c.Razon_Social,' ',
+			' |CUIL: ',C.CUIL)'Cliente',
+			r.INGRESO 'Ingreso',r.SALIDA 'Salida',e.DESCRIPCION 'Estado',
+			h.CODIGO 'Habitación',p.NIVEL 'Piso',
+			CONCAT('Hotel: ',ho.NOMBRE,'Direccion: ',ho.DIRECCION,' |Localidad: ',l.NOMBRE) 'Hotel',
+			CONCAT('Nombre y Apellido: ',em.NOMBRE,' ',Em.APELLIDO,' |Legajo: ',em.legajo)'Empleado',
+			sum(fa.CANTIDAD * fa.MONTO)'Total'
+			from FACTURAS f join CLIENTES c on f.CLIENTE=c.ID
+			join RESERVAS r on f.RESERVA = r.ID
+			join ESTADOS_RESERVA e on r.ESTADO = e.ID
+			join EMPLEADO em on r.Empleado = em.legajo
+			join RESERVA_HABITACIONES re on r.ID = re.RESERVA
+			join HABITACION_HOTEL h on  h.ID = re.HABITACION
+			join PISOS_HOTEL p on h.PISO = p.ID
+			join HOTELES ho on p.HOTEL = ho.ID
+			join LOCALIDADES l on l.ID_LOCALIDAD = ho.LOCALIDAD
+			join FACTURA_DETALLES fa on fa.FACTURA= f.ID 
+			join TIPOS_CLIENTES t on c.ID = t.ID
+			where f.N_FACTURA = @nro_factura and e.ID = 2  and t.ID = @tipo_cliente
+			group by f.N_FACTURA,c.Razon_Social,c.CUIL,r.INGRESO,r.SALIDA,e.DESCRIPCION,
+			h.CODIGO,p.NIVEL,ho.NOMBRE,ho.DIRECCION,l.NOMBRE,em.NOMBRE,Em.APELLIDO,em.legajo;		
+		end
+		else
+		begin
+			select'No existe este nro_factura' Mensaje;
+		end		
+	end
+end
+
+select * from TIPOS_CLIENTES
 
 

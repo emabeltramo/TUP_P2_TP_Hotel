@@ -2,15 +2,6 @@
 using HotelForm.View.Clientes;
 using HotelForm.View.Login;
 using HotelForm.View.Reserva;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HotelForm.View.Principal
 {
@@ -144,7 +135,8 @@ namespace HotelForm.View.Principal
 
         private void btnConsultasSubenu_Click(object sender, EventArgs e)
         {
-            AbrirFormHijo(new frmConsultarReserva());
+            //AbrirFormHijo(new frmConsultarReserva());
+            AbrirFormHijo(new Reportes.frmConsultas());
             OcultarSubmenu();
         }
 
