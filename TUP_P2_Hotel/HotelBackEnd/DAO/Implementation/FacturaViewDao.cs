@@ -121,7 +121,7 @@ namespace HotelBackEnd.DAO.Implementation
 
                         int estado = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ESTADO").Valor ?? string.Empty;
                         int cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? string.Empty;
-                        int empleado = reg.FirstOrDefault(m => m.Campo.ToUpper() == "Empleado").Valor ?? string.Empty;
+                        int empleado = reg.FirstOrDefault(m => m.Campo.ToUpper() == "EMPLEADO").Valor ?? string.Empty;
 
                         var Reserva = new ReservaModel()
                         {
@@ -238,11 +238,11 @@ namespace HotelBackEnd.DAO.Implementation
                         model.TipoFactura.Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACTURA").Valor ?? 0;
                         model.TipoFactura.Tipo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO_FACT").Valor ?? string.Empty;
 
-                        List<FacturaDetalleModel> detalle = GetFacturaDetalle(model.IdFactura, cmd.Connection, cmd.Transaction);
-                        List<FormaPagoModel> forma = GetFormaPago(model.IdFactura, cmd.Connection, cmd.Transaction);
+                        //List<FacturaDetalleModel> detalle = GetFacturaDetalle(model.IdFactura, cmd.Connection, cmd.Transaction);
+                        //List<FormaPagoModel> forma = GetFormaPago(model.IdFactura, cmd.Connection, cmd.Transaction);
 
-                        model.Detalles = detalle;
-                        model.Forma = forma;
+                        //model.Detalles = detalle;
+                        //model.Forma = forma;
 
                         result.Add(model);
                     }

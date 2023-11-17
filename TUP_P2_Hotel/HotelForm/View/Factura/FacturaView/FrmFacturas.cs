@@ -103,50 +103,6 @@ namespace HotelForm.View.Factura.FacturaView
                 });
             }
             this.facturas = facturas;
-
-
-            FormaPagoModel forma = new FormaPagoModel();
-            ClienteModel cliente = new ClienteModel();
-            ReservaModel reserva = new ReservaModel();
-            TipoFacturaModel tipofac = new TipoFacturaModel();
-            FacturaDetalleModel detalle = new FacturaDetalleModel();
-            FacturaModel prueba = new FacturaModel();
-            prueba.IdFactura = 1;
-            prueba.NumFactura = 1;
-            cliente.Id_Cliente = 1;
-            cliente.Nombre = "Matias";
-            cliente.Apellido = "Gutte";
-            cliente.DNI = "42571781";
-            cliente.Email = "MatyGutte26@hotmail.com";
-            cliente.Celular = "1168927168";
-            prueba.Cliente = cliente;
-
-            prueba.Fecha = DateTime.Today;
-            reserva.IdReserva = 1;
-            reserva.IdHotel = 1;
-            reserva.Estado.IdEstadoReserva = 2;
-            reserva.Estado.Descri = "Pago";
-            reserva.Ingreso = DateTime.Today;
-            reserva.Salida = DateTime.Today.AddDays(7);
-            reserva.Fecha = DateTime.Today;
-            prueba.Reserva = reserva;
-
-            prueba.Empleado.Legajo = 1;
-            tipofac.Id = 1;
-            tipofac.Tipo = "A";
-            prueba.TipoFactura = tipofac;
-
-            forma.Id = 1;
-            forma.Descripcion = "Efectivo";
-            prueba.AgregarFactura(forma);
-            detalle.IdDetalle = 1;
-            detalle.Servicio = new TipoServicioModel(1, "Tenedor Libre");
-            detalle.Cantidad = 3;
-            detalle.Monto = 2000;
-            prueba.AgregarDetalle(detalle);
-
-            var form = new FrmViewFactura(factory, prueba);
-            form.ShowDialog();
         }
 
         private void dgvFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)

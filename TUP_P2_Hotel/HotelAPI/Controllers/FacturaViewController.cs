@@ -41,7 +41,7 @@ namespace HotelAPI.Controllers
                 var result = front.GetReserva();
                 if (result == null)
                 {
-                    return StatusCode(500, "Se produjo un error al procesar los servicios");
+                    return StatusCode(500, "Se produjo un error al procesar las reservas");
                 }
                 return Ok(result);
             }
@@ -71,7 +71,7 @@ namespace HotelAPI.Controllers
 
                 if (result == null)
                 {
-                    return StatusCode(500, "Se produjo un error al procesar las reservas");
+                    return StatusCode(500, "Se produjo un error al procesar las facturas");
                 }
                 if (idCliente != 0)
                     result.RemoveAll(m => m.Cliente.Id_Cliente != idCliente);
