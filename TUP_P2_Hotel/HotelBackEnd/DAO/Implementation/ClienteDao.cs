@@ -105,39 +105,41 @@ namespace HotelBackEnd.DAO.Implementation
         public bool BajaCliente(int numero)
         {
             bool resultado = true;
-            SqlConnection conexion = HelperDao.GetInstance().GetConnection();
-            SqlTransaction t = null;
 
-            try
+            using (SqlConnection conexion = HelperDao.GetInstance().GetConnection())
             {
-                conexion.Open();
-                t = conexion.BeginTransaction();
-                SqlCommand comando = new SqlCommand("SP_BORRAR_CLIENTE", conexion, t);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Clear();
-                comando.Parameters.AddWithValue("@id", numero);
+                SqlTransaction t = null;
 
-                comando.ExecuteNonQuery();
+                try
+                {
+                    conexion.Open();
+                    t = conexion.BeginTransaction();
+                    SqlCommand comando = new SqlCommand("SP_BORRAR_CLIENTE", conexion, t);
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.Clear();
+                    comando.Parameters.AddWithValue("@id", numero);
 
-                t.Commit();
+                    comando.ExecuteNonQuery();
+
+                    t.Commit();
+                }
+                catch (Exception ex)
+                {
+                    if (t != null)
+                        t.Rollback();
+
+                    resultado = false;
+
+                    Console.WriteLine($"Error en BajaCliente para el cliente con ID {numero}: {ex.Message}");
+                }
+                finally
+                {
+                    if (conexion != null && conexion.State == ConnectionState.Open)
+                        conexion.Close();
+                }
+
+                return resultado;
             }
-            catch (Exception ex)
-            {
-                if (t != null)
-                    t.Rollback();
-
-                resultado = false;
-
- 
-                Console.WriteLine($"Error en BajaCliente: {ex.Message}");
-            }
-            finally
-            {
-                if (conexion != null && conexion.State == ConnectionState.Open)
-                    conexion.Close();
-            }
-
-            return resultado;
         }
 
 

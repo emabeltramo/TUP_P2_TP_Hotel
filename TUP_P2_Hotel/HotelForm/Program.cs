@@ -17,7 +17,7 @@ namespace HotelForm
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new frmLogin(new FactoryService()));
-            Application.Run(new frmCliente(new FactoryService()));
+            Application.Run(new frmLogin(new FactoryService()));
         }
     }
 }

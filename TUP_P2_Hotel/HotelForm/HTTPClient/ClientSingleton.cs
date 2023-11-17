@@ -71,10 +71,16 @@ namespace HotelForm.HTTPClient
         {
             try
             {
-                var content = new StringContent(data, Encoding.UTF8, "application/json");
-                var result = await client.DeleteAsync(url);
-                var reply = "";
+                // Configura la solicitud HTTP personalizada con el método DELETE y los datos en el cuerpo
+                var request = new HttpRequestMessage(HttpMethod.Delete, url)
+                {
+                    Content = new StringContent(data, Encoding.UTF8, "application/json")
+                };
 
+                // Envia la solicitud personalizada
+                var result = await client.SendAsync(request);
+
+                var reply = "";
                 if (result.IsSuccessStatusCode)
                 {
                     reply = await result.Content.ReadAsStringAsync();
@@ -87,6 +93,5 @@ namespace HotelForm.HTTPClient
                 return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
         }
-
     }
 }
