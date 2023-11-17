@@ -21,6 +21,8 @@ namespace HotelBackEnd.Model
 
         public FacturaModel()
         {
+            Reserva = new ReservaModel();
+            Cliente = new ClienteModel();
             Forma = new List<FormaPagoModel>();
             Detalles = new List<FacturaDetalleModel>();
             Empleado = new EmpleadoModel();
