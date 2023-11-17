@@ -58,11 +58,12 @@ namespace HotelForm.View.Clientes
                     {
                         c.TDoc.Id = 1;
                         c.DNI = dgvClientes.CurrentRow.Cells["Numero Documento"].Value.ToString();
+                        c.CUIL = dgvClientes.CurrentRow.Cells["Numero Cuil"].Value.ToString();
                     }
                     else if (tipoDocumento == "Pasaporte")
                     {
                         c.TDoc.Id = 2;
-                        c.CUIL = dgvClientes.CurrentRow.Cells["Numero Documento"].Value.ToString();
+                        c.CUIL = dgvClientes.CurrentRow.Cells["Numero Cuil"].Value.ToString();
                     }
 
                     if (tipoCliente == "Personas")
