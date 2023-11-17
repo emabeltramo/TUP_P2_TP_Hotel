@@ -33,6 +33,9 @@ namespace HotelForm.View.Reportes
             cboConsulta.DisplayMember = "nombre";
             cboConsulta.ValueMember = "id";
 
+            cboTipoCliente.DataSource = helper.GetSp("SP_CLIENTES");
+            cboTipoCliente.DisplayMember = "Descripcion";
+            cboTipoCliente.ValueMember = "ID";
         }
 
         private void cboConsulta_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,37 +47,52 @@ namespace HotelForm.View.Reportes
             DataTable tabla = new DataTable();
             switch (nomConsulta)
             {
-                case "CONSULTA 4":
+                case "CONSULTA 1":
+                    txtNroPiso.Enabled = true;
+                    lblNroPiso.Enabled = true;
+                    dgvResultado.DataSource = null;
+                    cboConsulta.Enabled = false;
+                    txtNroPiso.Clear();
+                    txtNroFactura.Clear();
                     txtAño.Clear();
                     txtPorcentaje.Clear();
+                    break;
+                case "CONSULTA 3":
+                    lblNroFactura.Enabled = true;
+                    txtNroFactura.Enabled = true;
+                    cboTipoCliente.Enabled = true;
+                    cboConsulta.Enabled = false;
                     dgvResultado.DataSource = null;
-                    dgvResultado.DataSource = helper.GetSp("SP_CONSULTA_4");
+                    dgvResultado.DataSource = null;
+                    txtNroPiso.Clear();
+                    txtNroFactura.Clear();
+                    txtAño.Clear();
+                    txtPorcentaje.Clear();
                     break;
                 case "CONSULTA 5":
-                    Activar();
-                    txtAño.Clear();
-                    txtPorcentaje.Clear();
+                    lblAño.Enabled = true;
+                    lblPorcentaje.Enabled = true;
+                    txtPorcentaje.Enabled = true;
+                    txtAño.Enabled = true;
                     dgvResultado.DataSource = null;
                     cboConsulta.Enabled = false;
-                    break;
-                case "CONSULTA 7":
+                    txtNroPiso.Clear();
+                    txtNroFactura.Clear();
                     txtAño.Clear();
                     txtPorcentaje.Clear();
-                    dgvResultado.DataSource = null;
-                    dgvResultado.DataSource = helper.GetSp("SP_CONSULTA_7");
                     break;
                 case "CONSULTA 9":
-                    Activar();
-                    txtAño.Clear();
-                    txtPorcentaje.Clear();
-                    lblPorcentaje.Enabled = false;
-                    txtPorcentaje.Enabled = false;
+
+                    lblAño.Enabled = true;
+                    txtAño.Enabled = true;
                     dgvResultado.DataSource = null;
                     cboConsulta.Enabled = false;
+                    txtNroPiso.Clear();
+                    txtNroFactura.Clear();
+                    txtAño.Clear();
+                    txtPorcentaje.Clear();
                     break;
-                default:
-                    dgvResultado.DataSource = null;
-                    break;
+
             }
             parametros.Clear();
             parametros.Add(new Parametro("@nombre", nomConsulta));
@@ -87,23 +105,30 @@ namespace HotelForm.View.Reportes
 
         }
 
-        private void Activar()
+        private void AjustarColumnas()
         {
-
-            lblAño.Enabled = true;
-            lblPorcentaje.Enabled = true;
-            txtPorcentaje.Enabled = true;
-            txtAño.Enabled = true;
-            btnEjecutar.Enabled = true;
+            foreach (DataGridViewColumn c in dgvResultado.Columns)
+            {
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
+
 
         private void Desactivar()
         {
+            lblNroPiso.Enabled = false;
+            lblTipoCliente.Enabled = false;
+            lblNroFactura.Enabled = false;
             lblAño.Enabled = false;
             lblPorcentaje.Enabled = false;
-            txtPorcentaje.Enabled = false;
+
+            cboTipoCliente.Enabled = false;
+
+            txtNroPiso.Enabled = false;
+            txtNroFactura.Enabled = false;
             txtAño.Enabled = false;
-            btnEjecutar.Enabled = false;
+            txtPorcentaje.Enabled = false;
+
         }
 
         private void lblConsulta_Click(object sender, EventArgs e)
@@ -113,27 +138,57 @@ namespace HotelForm.View.Reportes
 
         private void btnEjecutar_Click(object sender, EventArgs e)
         {
+            int tipoClie;
             List<Parametro> parametros = new List<Parametro>();
             string nomConsulta = cboConsulta.Text;
             Desactivar();
             DataTable tabla = new DataTable();
             switch (nomConsulta)
             {
+                case "CONSULTA 1":
+                    parametros.Add(new Parametro("@piso", Convert.ToInt32(txtNroPiso.Text)));
+                    dgvResultado.DataSource = helper.Consultar("SP_CONSULTA_1", parametros);
+                    AjustarColumnas();
+                    break;
+                case "CONSULTA 3":
+                    if (cboConsulta.Text == "Personas")
+                        tipoClie = 1;
+                    else
+                        tipoClie = 2;
+                    parametros.Add(new Parametro("@tipo_cliente", tipoClie));
+                    parametros.Add(new Parametro("@nro_factura", Convert.ToInt32(txtNroFactura.Text)));
+                    dgvResultado.DataSource = helper.Consultar("SP_CONSULTA_3", parametros);
+                    break;
                 case "CONSULTA 5":
                     parametros.Add(new Parametro("@año", Convert.ToInt32(txtAño.Text)));
                     parametros.Add(new Parametro("@porcen", Convert.ToDouble(txtPorcentaje.Text)));
                     dgvResultado.DataSource = helper.Consultar("SP_CONSULTA_5", parametros);
-
-
+                    AjustarColumnas();
                     break;
                 case "CONSULTA 9":
                     parametros.Add(new Parametro("@año", Convert.ToInt32(txtAño.Text)));
                     dgvResultado.DataSource = helper.Consultar("SP_CONSULTA_9", parametros);
-
+                    AjustarColumnas();
                     break;
             }
             cboConsulta.Enabled = true;
             parametros.Clear();
+
+        }
+
+
+        private void lblNroPiso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

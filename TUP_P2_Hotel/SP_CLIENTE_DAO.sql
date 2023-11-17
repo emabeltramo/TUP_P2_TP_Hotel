@@ -78,33 +78,117 @@ CREATE TABLE CONSULTAS(
 id int identity(1,1),
 nombre varchar(25),
 enunciado varchar(1000),
-sentencia varchar(1500),
+sentencia varchar(3000),
 primary key (id)
 );
+go
+INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
+values 
+('CONSULTA 1','1. Crear un procedimiento de almacenado donde, dado un piso especifico, liste por nombre del hotel, habitación y su categoría, el importe total recaudado en este
+año que supere los 300$ sin contar a los clientes que hallan alquilado alguna vez las habitaciones de la planta baja, su estado no debe ser "anulado".','CREATE PROCEDURE sp_RecaudacionPorHabitacion
+    @piso int 
+    AS
+    BEGIN
+        SELECT h.NOMBRE ''Hotel'', hh.CODIGO ''Habitacion'', ch.DESCRIPCION
+        ''Categoria de Habitacion'', SUM(rh.MONTO_HABITACION * DATEDIFF(day,
+        r.INGRESO, r.SALIDA)) ''Importe Total''
+        FROM RESERVAS r 
+        JOIN RESERVA_HABITACIONES rh ON r.ID = rh.RESERVA
+        JOIN HABITACION_HOTEL hh ON hh.ID = rh.HABITACION
+        JOIN PISOS_HOTEL ph ON ph.ID = hh.PISO
+        JOIN CATEGORIA_HABITACIONES ch ON ch.ID = hh.CATEGORIA
+        JOIN HOTELES h ON h.ID = ph.HOTEL
+        WHERE YEAR(r.FECHA_RESERVA) = YEAR(GETDATE()) AND NIVEL = @piso AND
+        r.ESTADO != 3 AND
+        r.CLIENTE NOT IN (SELECT DISTINCT CLIENTE
+        FROM RESERVAS r2 
+        JOIN RESERVA_HABITACIONES rh2 ON r2.ID = rh2.RESERVA
+        JOIN HABITACION_HOTEL hh2 ON hh2.ID = rh2.HABITACION
+        JOIN PISOS_HOTEL ph2 ON ph2.ID = hh2.PISO
+        WHERE NIVEL = 1)
+        GROUP BY h.NOMBRE, hh.CODIGO, ch.DESCRIPCION
+        HAVING SUM(rh.MONTO_HABITACION * DATEDIFF(day, r.INGRESO, r.SALIDA)) > 300;
+    END;
+	exec sp_RecaudacionPorHabitacion @piso = 2
+	exec sp_RecaudacionPorHabitacion @piso = 4
+    '
+);
+
 
 INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
 values 
-('CONSULTA 4',
-'4. Se quiere realizar un reporte por cliente y año, indicando la cantidad de
-reservas, el promedio de días que se alojan y el total facturado',
-    'create view view_Reporte_Clientes as
-    select YEAR(FACTURAS.FECHA) ''Año'', CLIENTES.ID ''Cliente_ID'',
-        iif(Razon_Social is not null, Razon_Social, APELLIDO + '' '' + nombre) ''Cliente_Nombre'',
-        count(distinct RESERVA) ''Reservas'', SUM(CANTIDAD * MONTO) ''Total'',
-        (
-            select AVG(CANTIDAD)
-            from FACTURAS f
-            inner join FACTURA_DETALLES fd on f.ID = fd.FACTURA
-            where fd.SERVICIO = 14 and YEAR(FACTURAS.FECHA) = YEAR(f.FECHA)
-                and CLIENTES.ID = f.CLIENTE
-        ) ''Promedio_Dias''
-    from CLIENTES
-    inner join FACTURAS on CLIENTES.ID = FACTURAS.CLIENTE
-    inner join FACTURA_DETALLES on FACTURAS.ID = FACTURA_DETALLES.FACTURA
-    inner join RESERVAS on FACTURAS.RESERVA = RESERVAS.ID
-    group by CLIENTES.ID, NOMBRE, APELLIDO, Razon_Social, YEAR(FACTURAS.FECHA);
-    go
-    Select * from view_Reporte_Clientes order by Año, Cliente_Nombre;'
+('CONSULTA 3',
+'3. Se crear procedimiento de almacenado para visualizar número de factura, Cliente con nombre y apellido y documento, fecha de ingreso, salida, el
+código de la habitación , número de piso , el hotel con la dirección, el empleado que facturó, reserva y el total de la reserva. Tener en cuenta
+que solo hicimos con los parámetros de numero de factura, pero también se puede extender a otros casos siguiendo dicha lógica.',
+    'create procedure sp_consulta_reserva
+	@tipo_cliente int,
+	@nro_factura int
+as
+begin 
+	if exists (select 1 from TIPOS_CLIENTES t1 where t1.ID = @tipo_cliente) and (@tipo_cliente = 1) 
+	begin
+		if exists (select 1 from FACTURAS f1 where f1.N_FACTURA= @nro_factura)
+		begin
+			select f.N_FACTURA ''Factura'',CONCAT(''Nombre y Apellido: '',c.NOMBRE,'' '',c.APELLIDO,
+			'' |DNI '',C.DNI)''Cliente'',
+			r.INGRESO ''Ingreso'',r.SALIDA ''Salida'',e.DESCRIPCION ''Estado'',
+			h.CODIGO ''Habitación'',p.NIVEL ''Piso'',
+			CONCAT(''Hotel: '',ho.NOMBRE,''Direccion: '',ho.DIRECCION,'' |Localidad: '',l.NOMBRE) ''Hotel'',
+			CONCAT(''Nombre y Apellido: '',em.NOMBRE,'' '',Em.APELLIDO,'' |Legajo: '',em.legajo)''Empleado'',
+			sum(fa.CANTIDAD * fa.MONTO)''Total''
+			from FACTURAS f join CLIENTES c on f.CLIENTE=c.ID
+			join RESERVAS r on f.RESERVA = r.ID
+			join ESTADOS_RESERVA e on r.ESTADO = e.ID
+			join EMPLEADO em on r.Empleado = em.legajo
+			join RESERVA_HABITACIONES re on r.ID = re.RESERVA
+			join HABITACION_HOTEL h on  h.ID = re.HABITACION
+			join PISOS_HOTEL p on h.PISO = p.ID
+			join HOTELES ho on p.HOTEL = ho.ID
+			join LOCALIDADES l on l.ID_LOCALIDAD = ho.LOCALIDAD
+			join FACTURA_DETALLES fa on fa.FACTURA= f.ID
+			where f.N_FACTURA = @nro_factura and e.ID = 2 
+			group by f.N_FACTURA,c.NOMBRE,c.APELLIDO,C.DNI,r.INGRESO,r.SALIDA,e.DESCRIPCION,
+			h.CODIGO,p.NIVEL,ho.NOMBRE,ho.DIRECCION,l.NOMBRE,em.NOMBRE,Em.APELLIDO,em.legajo;		
+		end
+		else
+		begin
+			select''No existe este nro_factura'' Mensaje;
+		end
+	end
+	else
+	begin
+		if exists (select 1 from FACTURAS f1 where f1.N_FACTURA= @nro_factura)
+		begin
+			select f.N_FACTURA ''Factura'',CONCAT(''Nombre y Apellido: '',c.NOMBRE,'' '',c.APELLIDO,
+			'' |DNI '',C.DNI)''Cliente'',
+			r.INGRESO ''Ingreso'',r.SALIDA ''Salida'',e.DESCRIPCION ''Estado'',
+			h.CODIGO ''Habitación'',p.NIVEL ''Piso'',
+			CONCAT(''Hotel: '',ho.NOMBRE,''Direccion: '',ho.DIRECCION,'' |Localidad: '',l.NOMBRE) ''Hotel'',
+			CONCAT(''Nombre y Apellido: '',em.NOMBRE,'' '',Em.APELLIDO,'' |Legajo: '',em.legajo)''Empleado'',
+			sum(fa.CANTIDAD * fa.MONTO)''Total''
+			from FACTURAS f join CLIENTES c on f.CLIENTE=c.ID
+			join RESERVAS r on f.RESERVA = r.ID
+			join ESTADOS_RESERVA e on r.ESTADO = e.ID
+			join EMPLEADO em on r.Empleado = em.legajo
+			join RESERVA_HABITACIONES re on r.ID = re.RESERVA
+			join HABITACION_HOTEL h on  h.ID = re.HABITACION
+			join PISOS_HOTEL p on h.PISO = p.ID
+			join HOTELES ho on p.HOTEL = ho.ID
+			join LOCALIDADES l on l.ID_LOCALIDAD = ho.LOCALIDAD
+			join FACTURA_DETALLES fa on fa.FACTURA= f.ID
+			where f.N_FACTURA = @nro_factura and e.ID = 2 
+			group by f.N_FACTURA,c.NOMBRE,c.APELLIDO,C.DNI,r.INGRESO,r.SALIDA,e.DESCRIPCION,
+			h.CODIGO,p.NIVEL,ho.NOMBRE,ho.DIRECCION,l.NOMBRE,em.NOMBRE,Em.APELLIDO,em.legajo;		
+		end
+		else
+		begin
+			select''No existe este nro_factura'' Mensaje;
+		end		
+	end
+end
+exec sp_consulta_reserva 1,10001 
+		'
 )
 
 INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
@@ -142,37 +226,8 @@ realice más ventas, pero no debe tener más de x% de reservas anuladas','CREATE P
 
 INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
 values 
-('CONSULTA 7','7. Se desea conocer la cantidad de reservas cuyo estado sea pagado, la
-cantidad de habitaciones reservadas y su categoría, el monto total de las
-habitaciones donde la fecha de la reserva oscile entre 2020 y 2023, que
-hayan sido reservada para clientes cuyo apellido termine con la letra a
-por año , estado, habitación, categoría y nombre completo del cliente
-para aquellos casos donde el promedio del monto de las habitaciones
-sea menor que el monto total de habitaciones a nivel global','select COUNT(r.ID) ''Cantidad de reservas '',
-    year(r.FECHA_RESERVA) ''Anio de reserva'',
-    er.DESCRIPCION ''Estado'',
-    Count(hh.ID) ''Cantidad de Habitaciones'',
-    ch.DESCRIPCION ''Categoria Habitacion'',
-    c.APELLIDO + SPACE(1) + c.NOMBRE ''Nombre Cliente'',
-    sum(rh.MONTO_HABITACION) ''Monto Total Habitaciones''
-    from RESERVAS r
-    join ESTADOS_RESERVA er on r.ESTADO = er.ID
-    join RESERVA_HABITACIONES rh on r.ID = rh.RESERVA
-    join HABITACION_HOTEL hh on hh.id = rh.HABITACION
-    join CATEGORIA_HABITACIONES ch on ch.id = hh.CATEGORIA
-    join CLIENTES c on c.ID = r.CLIENTE
-    where YEAR(r.FECHA_RESERVA) between 2020 and 2023 and c.APELLIDO like ''%a''
-    and er.DESCRIPCION = ''Pagado''
-    group by year(r.FECHA_RESERVA), er.DESCRIPCION, ch.DESCRIPCION, c.APELLIDO, c.NOMBRE
-    having avg(rh.MONTO_HABITACION) < (select sum(rh1.MONTO_HABITACION) from RESERVA_HABITACIONES rh1)'
-);
-
-INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
-values 
-('CONSULTA 9','9. Crear un procedimiento almacenado que obtenga estadísticas mensuales
-de clientes y montos recaudados, y el servicio más solicitado. Las estadísticas
-incluyen la cantidad de clientes que ingresan, el mes y año de las
-transacciones, el monto total recaudado y la mayor cantidad de detalles de
+('CONSULTA 9','9. Crear un procedimiento almacenado que obtenga estadísticas mensuales de clientes y montos recaudados, y el servicio más solicitado. Las estadísticas
+incluyen la cantidad de clientes que ingresan, el mes y año de las transacciones, el monto total recaudado y la mayor cantidad de detalles de
 factura registrada en un mes. Se debe usar como parametro el año a ingresar', 'CREATE PROCEDURE SP_CLIENTES_MES_AÑO
     @año int
     AS
@@ -189,50 +244,31 @@ factura registrada en un mes. Se debe usar como parametro el año a ingresar', 'C
     exec SP_CLIENTES_MES_AÑO 2021;'
 );
 
-INSERT INTO CONSULTAS(nombre,enunciado,sentencia)
-values 
-('-','',''
-);
 
 
-CREATE PROCEDURE SP_CONSULTA_4
+CREATE PROCEDURE SP_CONSULTA_1
+@piso int
 AS
 BEGIN
-Select * from view_Reporte_Clientes order by Año, Cliente_Nombre;
+exec sp_RecaudacionPorHabitacion @piso
 END
 
+CREATE PROCEDURE SP_CONSULTA_3
+@tipo_cliente int,
+@nro_factura int
+AS
+BEGIN
+exec sp_consulta_reserva @tipo_cliente,@nro_factura 
+END
+go
 CREATE PROCEDURE SP_CONSULTA_5
 @año int,
 @porcen decimal(5,2)
 AS
 BEGIN
-exec Sp_PremioAnual @año, @porcen
+	EXEC Sp_PremioAnual @año, @porcen;
 END
-
-CREATE PROCEDURE SP_CONSULTA_7
-AS
-BEGIN
-	select COUNT(r.ID) 'Cantidad de reservas ',
-	year(r.FECHA_RESERVA) 'Anio de reserva',
-	er.DESCRIPCION 'Estado',
-	Count (hh.ID) 'Cantidad de Habitaciones',
-	ch.DESCRIPCION 'Categoria Habitacion',
-	c.APELLIDO+SPACE(1)+c.NOMBRE 'Nombre Cliente',
-	sum(rh.MONTO_HABITACION) 'Monto Total Habitaciones'
-	from RESERVAS r join ESTADOS_RESERVA er on r.ESTADO=er.ID
-	join RESERVA_HABITACIONES rh on r.ID=rh.RESERVA
-	join HABITACION_HOTEL hh on hh.id=rh.HABITACION
-	join CATEGORIA_HABITACIONES ch on ch.id=hh.CATEGORIA
-	join CLIENTES c on c.ID=r.CLIENTE
-	where YEAR(r.FECHA_RESERVA) between 2020 and 2023 and c.APELLIDO like
-	'%a'
-	and er.DESCRIPCION='Pagado'
-	group by
-	year(r.FECHA_RESERVA),er.DESCRIPCION,ch.DESCRIPCION,c.APELLIDO,c.NOMBRE
-	having avg(rh.MONTO_HABITACION)<(select sum(rh1.MONTO_HABITACION) from
-	RESERVA_HABITACIONES rh1 )
-END
-
+go
 CREATE PROCEDURE SP_CONSULTA_9
 @año int
 AS
@@ -242,25 +278,6 @@ END
 
 
 --MODIFIQUE PS Sp_PremioAnual
-create procedure  Sp_PremioAnual @año int, @porcen decimal(5,2) as
-begin
-select top(1)EMPLEADO'LEGAJO',CONCAT(APELLIDO,SPACE(1),nombre)'Nombre',SUM(MONTO*CANTIDAD)
-'Monto Acumulado x venta'
-from FACTURAS
-inner join FACTURA_DETALLES on FACTURAS.ID= FACTURA_DETALLES.FACTURA
-inner join EMPLEADO on FACTURAS.EMPLEADO=EMPLEADO.legajo
-where YEAR(FECHA)=@año and
-(select count(*) from RESERVAS
-where Empleado=FACTURAS.EMPLEADO and
-YEAR(RESERVAS.FECHA_RESERVA)=@año and ESTADO=3
-)/(
-select count(*) from RESERVAS
-where Empleado=FACTURAS.EMPLEADO and
-YEAR(RESERVAS.FECHA_RESERVA)=@año and ESTADO=2
-)*100<=@porcen
-group by EMPLEADO,APELLIDO,NOMBRE
-order by 3 desc
-end
 go
 
 CREATE PROCEDURE SP_CONSULTAS
@@ -278,7 +295,11 @@ BEGIN
 	SELECT c.enunciado,c.sentencia FROM CONSULTAS c WHERE c.nombre LIKE '%'+@nombre+'%';
 END
 
-select * from CONSULTAS
 
-EXEC SP_CONSULTA_TXT 'CONSULTA 4';
+CREATE PROCEDURE SP_CLIENTES
+AS
+BEGIN 
+	SELECT * FROM TIPOS_CLIENTES
+END
+
 
