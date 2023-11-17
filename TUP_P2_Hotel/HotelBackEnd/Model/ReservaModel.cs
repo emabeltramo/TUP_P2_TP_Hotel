@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,17 @@ namespace HotelBackEnd.Model
             Empleado = new EmpleadoModel();
             Cuenta = new List<ReservaCuentaModel>();
             Habitaciones = new List<ReservaHabitacionModel>();
+        }
+
+        public string MostrarReserva
+        {
+            get
+            {
+                if (Estado.Descri == "TODOS")
+                    return "Todos";
+                else
+                    return Ingreso.ToString("dd/MM/yyyy") + " - " + Salida.ToString("dd/MM/yyyy");
+            }
         }
     }
 

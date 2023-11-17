@@ -30,349 +30,398 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.panelSide = new System.Windows.Forms.Panel();
-            this.btnFacturar = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnHelp = new System.Windows.Forms.Button();
-            this.btnConsultasSubenu = new System.Windows.Forms.Button();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.panelMedio3 = new System.Windows.Forms.Panel();
-            this.btnCargarServicio = new System.Windows.Forms.Button();
-            this.btnServicio = new System.Windows.Forms.Button();
-            this.panelMedio2 = new System.Windows.Forms.Panel();
-            this.btnModificarCliente = new System.Windows.Forms.Button();
-            this.btnNvoCliente = new System.Windows.Forms.Button();
-            this.btnCLIENTES = new System.Windows.Forms.Button();
-            this.panelMedio1 = new System.Windows.Forms.Panel();
-            this.btnModificarReserv = new System.Windows.Forms.Button();
-            this.btnNvaReserv = new System.Windows.Forms.Button();
-            this.btnReservas = new System.Windows.Forms.Button();
-            this.panelTopSideleft = new System.Windows.Forms.Panel();
-            this.panelbottomform = new System.Windows.Forms.Panel();
-            this.panelFormHijo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelSide.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panelMedio3.SuspendLayout();
-            this.panelMedio2.SuspendLayout();
-            this.panelMedio1.SuspendLayout();
-            this.panelFormHijo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            panelSide = new Panel();
+            panelMedio4 = new Panel();
+            btnVerFactura = new Button();
+            btnNuevaFactura = new Button();
+            btnFacturar = new Button();
+            panel2 = new Panel();
+            btnHelp = new Button();
+            btnConsultasSubenu = new Button();
+            btnCerrarSesion = new Button();
+            panelMedio3 = new Panel();
+            btnCargarServicio = new Button();
+            btnServicio = new Button();
+            panelMedio2 = new Panel();
+            btnModificarCliente = new Button();
+            btnNvoCliente = new Button();
+            btnCLIENTES = new Button();
+            panelMedio1 = new Panel();
+            btnModificarReserv = new Button();
+            btnNvaReserv = new Button();
+            btnReservas = new Button();
+            panelTopSideleft = new Panel();
+            panelbottomform = new Panel();
+            panelFormHijo = new Panel();
+            pictureBox1 = new PictureBox();
+            panelSide.SuspendLayout();
+            panelMedio4.SuspendLayout();
+            panel2.SuspendLayout();
+            panelMedio3.SuspendLayout();
+            panelMedio2.SuspendLayout();
+            panelMedio1.SuspendLayout();
+            panelFormHijo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // panelSide
             // 
-            this.panelSide.AutoScroll = true;
-            this.panelSide.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panelSide.Controls.Add(this.btnFacturar);
-            this.panelSide.Controls.Add(this.panel2);
-            this.panelSide.Controls.Add(this.btnConsultasSubenu);
-            this.panelSide.Controls.Add(this.btnCerrarSesion);
-            this.panelSide.Controls.Add(this.panelMedio3);
-            this.panelSide.Controls.Add(this.btnServicio);
-            this.panelSide.Controls.Add(this.panelMedio2);
-            this.panelSide.Controls.Add(this.btnCLIENTES);
-            this.panelSide.Controls.Add(this.panelMedio1);
-            this.panelSide.Controls.Add(this.btnReservas);
-            this.panelSide.Controls.Add(this.panelTopSideleft);
-            this.panelSide.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSide.Location = new System.Drawing.Point(6, 0);
-            this.panelSide.Margin = new System.Windows.Forms.Padding(0);
-            this.panelSide.Name = "panelSide";
-            this.panelSide.Size = new System.Drawing.Size(200, 546);
-            this.panelSide.TabIndex = 1;
+            panelSide.AutoScroll = true;
+            panelSide.BackColor = SystemColors.ActiveBorder;
+            panelSide.Controls.Add(panelMedio4);
+            panelSide.Controls.Add(btnFacturar);
+            panelSide.Controls.Add(panel2);
+            panelSide.Controls.Add(btnConsultasSubenu);
+            panelSide.Controls.Add(btnCerrarSesion);
+            panelSide.Controls.Add(panelMedio3);
+            panelSide.Controls.Add(btnServicio);
+            panelSide.Controls.Add(panelMedio2);
+            panelSide.Controls.Add(btnCLIENTES);
+            panelSide.Controls.Add(panelMedio1);
+            panelSide.Controls.Add(btnReservas);
+            panelSide.Controls.Add(panelTopSideleft);
+            panelSide.Dock = DockStyle.Left;
+            panelSide.Location = new Point(6, 0);
+            panelSide.Margin = new Padding(0);
+            panelSide.Name = "panelSide";
+            panelSide.Size = new Size(200, 546);
+            panelSide.TabIndex = 1;
+            // 
+            // panelMedio4
+            // 
+            panelMedio4.BackColor = SystemColors.ControlDarkDark;
+            panelMedio4.Controls.Add(btnVerFactura);
+            panelMedio4.Controls.Add(btnNuevaFactura);
+            panelMedio4.Dock = DockStyle.Top;
+            panelMedio4.Location = new Point(0, 365);
+            panelMedio4.Name = "panelMedio4";
+            panelMedio4.Size = new Size(200, 57);
+            panelMedio4.TabIndex = 14;
+            panelMedio4.Visible = false;
+            // 
+            // btnVerFactura
+            // 
+            btnVerFactura.Dock = DockStyle.Top;
+            btnVerFactura.FlatAppearance.BorderSize = 0;
+            btnVerFactura.FlatStyle = FlatStyle.Flat;
+            btnVerFactura.ImageAlign = ContentAlignment.MiddleLeft;
+            btnVerFactura.Location = new Point(0, 23);
+            btnVerFactura.Name = "btnVerFactura";
+            btnVerFactura.Padding = new Padding(6, 0, 0, 0);
+            btnVerFactura.Size = new Size(200, 23);
+            btnVerFactura.TabIndex = 2;
+            btnVerFactura.Text = "Ver";
+            btnVerFactura.TextAlign = ContentAlignment.MiddleLeft;
+            btnVerFactura.UseVisualStyleBackColor = true;
+            btnVerFactura.Click += btnVerFactura_Click;
+            // 
+            // btnNuevaFactura
+            // 
+            btnNuevaFactura.Dock = DockStyle.Top;
+            btnNuevaFactura.FlatAppearance.BorderSize = 0;
+            btnNuevaFactura.FlatStyle = FlatStyle.Flat;
+            btnNuevaFactura.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNuevaFactura.Location = new Point(0, 0);
+            btnNuevaFactura.Name = "btnNuevaFactura";
+            btnNuevaFactura.Padding = new Padding(6, 0, 0, 0);
+            btnNuevaFactura.Size = new Size(200, 23);
+            btnNuevaFactura.TabIndex = 0;
+            btnNuevaFactura.Text = "Nueva";
+            btnNuevaFactura.TextAlign = ContentAlignment.MiddleLeft;
+            btnNuevaFactura.UseVisualStyleBackColor = true;
+            btnNuevaFactura.Click += btnNuevaFactura_Click;
             // 
             // btnFacturar
             // 
-            this.btnFacturar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFacturar.FlatAppearance.BorderSize = 0;
-            this.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturar.Location = new System.Drawing.Point(0, 348);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnFacturar.Size = new System.Drawing.Size(200, 23);
-            this.btnFacturar.TabIndex = 13;
-            this.btnFacturar.Text = "FACTURAR";
-            this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturar.UseVisualStyleBackColor = true;
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
+            btnFacturar.Dock = DockStyle.Top;
+            btnFacturar.FlatAppearance.BorderSize = 0;
+            btnFacturar.FlatStyle = FlatStyle.Flat;
+            btnFacturar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFacturar.Location = new Point(0, 342);
+            btnFacturar.Name = "btnFacturar";
+            btnFacturar.Padding = new Padding(2, 0, 0, 0);
+            btnFacturar.Size = new Size(200, 23);
+            btnFacturar.TabIndex = 13;
+            btnFacturar.Text = "FACTURAR";
+            btnFacturar.TextAlign = ContentAlignment.MiddleLeft;
+            btnFacturar.UseVisualStyleBackColor = true;
+            btnFacturar.Click += btnFacturar_Click;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.btnHelp);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 470);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 53);
-            this.panel2.TabIndex = 12;
+            panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(btnHelp);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 470);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 53);
+            panel2.TabIndex = 12;
             // 
             // btnHelp
             // 
-            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnHelp.FlatAppearance.BorderSize = 0;
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(0, 30);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(0);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnHelp.Size = new System.Drawing.Size(200, 23);
-            this.btnHelp.TabIndex = 6;
-            this.btnHelp.Text = "HELP";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Dock = DockStyle.Bottom;
+            btnHelp.FlatAppearance.BorderSize = 0;
+            btnHelp.FlatStyle = FlatStyle.Flat;
+            btnHelp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHelp.Location = new Point(0, 30);
+            btnHelp.Margin = new Padding(0);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Padding = new Padding(2, 0, 0, 0);
+            btnHelp.Size = new Size(200, 23);
+            btnHelp.TabIndex = 6;
+            btnHelp.Text = "HELP";
+            btnHelp.TextAlign = ContentAlignment.MiddleLeft;
+            btnHelp.UseVisualStyleBackColor = true;
             // 
             // btnConsultasSubenu
             // 
-            this.btnConsultasSubenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConsultasSubenu.FlatAppearance.BorderSize = 0;
-            this.btnConsultasSubenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsultasSubenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultasSubenu.Location = new System.Drawing.Point(0, 325);
-            this.btnConsultasSubenu.Name = "btnConsultasSubenu";
-            this.btnConsultasSubenu.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnConsultasSubenu.Size = new System.Drawing.Size(200, 23);
-            this.btnConsultasSubenu.TabIndex = 10;
-            this.btnConsultasSubenu.Text = "CONSULTAS";
-            this.btnConsultasSubenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultasSubenu.UseVisualStyleBackColor = true;
-            this.btnConsultasSubenu.Click += new System.EventHandler(this.btnConsultasSubenu_Click);
+            btnConsultasSubenu.Dock = DockStyle.Top;
+            btnConsultasSubenu.FlatAppearance.BorderSize = 0;
+            btnConsultasSubenu.FlatStyle = FlatStyle.Flat;
+            btnConsultasSubenu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnConsultasSubenu.Location = new Point(0, 319);
+            btnConsultasSubenu.Name = "btnConsultasSubenu";
+            btnConsultasSubenu.Padding = new Padding(2, 0, 0, 0);
+            btnConsultasSubenu.Size = new Size(200, 23);
+            btnConsultasSubenu.TabIndex = 10;
+            btnConsultasSubenu.Text = "CONSULTAS";
+            btnConsultasSubenu.TextAlign = ContentAlignment.MiddleLeft;
+            btnConsultasSubenu.UseVisualStyleBackColor = true;
+            btnConsultasSubenu.Click += btnConsultasSubenu_Click;
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 523);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(200, 23);
-            this.btnCerrarSesion.TabIndex = 7;
-            this.btnCerrarSesion.Text = "CERRAR SESIÓN";
-            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            btnCerrarSesion.Dock = DockStyle.Bottom;
+            btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            btnCerrarSesion.FlatStyle = FlatStyle.Flat;
+            btnCerrarSesion.Location = new Point(0, 523);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(200, 23);
+            btnCerrarSesion.TabIndex = 7;
+            btnCerrarSesion.Text = "CERRAR SESIÓN";
+            btnCerrarSesion.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // panelMedio3
             // 
-            this.panelMedio3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelMedio3.Controls.Add(this.btnCargarServicio);
-            this.panelMedio3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMedio3.Location = new System.Drawing.Point(0, 290);
-            this.panelMedio3.Name = "panelMedio3";
-            this.panelMedio3.Size = new System.Drawing.Size(200, 35);
-            this.panelMedio3.TabIndex = 5;
-            this.panelMedio3.Visible = false;
+            panelMedio3.BackColor = SystemColors.ControlDarkDark;
+            panelMedio3.Controls.Add(btnCargarServicio);
+            panelMedio3.Dock = DockStyle.Top;
+            panelMedio3.Location = new Point(0, 284);
+            panelMedio3.Name = "panelMedio3";
+            panelMedio3.Size = new Size(200, 35);
+            panelMedio3.TabIndex = 5;
+            panelMedio3.Visible = false;
             // 
             // btnCargarServicio
             // 
-            this.btnCargarServicio.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCargarServicio.FlatAppearance.BorderSize = 0;
-            this.btnCargarServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargarServicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargarServicio.Location = new System.Drawing.Point(0, 0);
-            this.btnCargarServicio.Name = "btnCargarServicio";
-            this.btnCargarServicio.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btnCargarServicio.Size = new System.Drawing.Size(200, 23);
-            this.btnCargarServicio.TabIndex = 1;
-            this.btnCargarServicio.Text = "Cargar Servicio";
-            this.btnCargarServicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargarServicio.UseVisualStyleBackColor = true;
+            btnCargarServicio.Dock = DockStyle.Top;
+            btnCargarServicio.FlatAppearance.BorderSize = 0;
+            btnCargarServicio.FlatStyle = FlatStyle.Flat;
+            btnCargarServicio.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCargarServicio.Location = new Point(0, 0);
+            btnCargarServicio.Name = "btnCargarServicio";
+            btnCargarServicio.Padding = new Padding(6, 0, 0, 0);
+            btnCargarServicio.Size = new Size(200, 23);
+            btnCargarServicio.TabIndex = 1;
+            btnCargarServicio.Text = "Cargar Servicio";
+            btnCargarServicio.TextAlign = ContentAlignment.MiddleLeft;
+            btnCargarServicio.UseVisualStyleBackColor = true;
             // 
             // btnServicio
             // 
-            this.btnServicio.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnServicio.FlatAppearance.BorderSize = 0;
-            this.btnServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicio.Location = new System.Drawing.Point(0, 267);
-            this.btnServicio.Name = "btnServicio";
-            this.btnServicio.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnServicio.Size = new System.Drawing.Size(200, 23);
-            this.btnServicio.TabIndex = 4;
-            this.btnServicio.Text = "SERVICIOS";
-            this.btnServicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicio.UseVisualStyleBackColor = true;
-            this.btnServicio.Click += new System.EventHandler(this.btnServicio_Click);
+            btnServicio.Dock = DockStyle.Top;
+            btnServicio.FlatAppearance.BorderSize = 0;
+            btnServicio.FlatStyle = FlatStyle.Flat;
+            btnServicio.ImageAlign = ContentAlignment.MiddleLeft;
+            btnServicio.Location = new Point(0, 261);
+            btnServicio.Name = "btnServicio";
+            btnServicio.Padding = new Padding(2, 0, 0, 0);
+            btnServicio.Size = new Size(200, 23);
+            btnServicio.TabIndex = 4;
+            btnServicio.Text = "SERVICIOS";
+            btnServicio.TextAlign = ContentAlignment.MiddleLeft;
+            btnServicio.UseVisualStyleBackColor = true;
+            btnServicio.Click += btnServicio_Click;
             // 
             // panelMedio2
             // 
-            this.panelMedio2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelMedio2.Controls.Add(this.btnModificarCliente);
-            this.panelMedio2.Controls.Add(this.btnNvoCliente);
-            this.panelMedio2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMedio2.Location = new System.Drawing.Point(0, 214);
-            this.panelMedio2.Name = "panelMedio2";
-            this.panelMedio2.Size = new System.Drawing.Size(200, 53);
-            this.panelMedio2.TabIndex = 3;
-            this.panelMedio2.Visible = false;
+            panelMedio2.BackColor = SystemColors.ControlDarkDark;
+            panelMedio2.Controls.Add(btnModificarCliente);
+            panelMedio2.Controls.Add(btnNvoCliente);
+            panelMedio2.Dock = DockStyle.Top;
+            panelMedio2.Location = new Point(0, 208);
+            panelMedio2.Name = "panelMedio2";
+            panelMedio2.Size = new Size(200, 53);
+            panelMedio2.TabIndex = 3;
+            panelMedio2.Visible = false;
             // 
             // btnModificarCliente
             // 
-            this.btnModificarCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModificarCliente.FlatAppearance.BorderSize = 0;
-            this.btnModificarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarCliente.Location = new System.Drawing.Point(0, 23);
-            this.btnModificarCliente.Name = "btnModificarCliente";
-            this.btnModificarCliente.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btnModificarCliente.Size = new System.Drawing.Size(200, 23);
-            this.btnModificarCliente.TabIndex = 2;
-            this.btnModificarCliente.Text = "Modificar";
-            this.btnModificarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarCliente.UseVisualStyleBackColor = true;
+            btnModificarCliente.Dock = DockStyle.Top;
+            btnModificarCliente.FlatAppearance.BorderSize = 0;
+            btnModificarCliente.FlatStyle = FlatStyle.Flat;
+            btnModificarCliente.ImageAlign = ContentAlignment.MiddleLeft;
+            btnModificarCliente.Location = new Point(0, 23);
+            btnModificarCliente.Name = "btnModificarCliente";
+            btnModificarCliente.Padding = new Padding(6, 0, 0, 0);
+            btnModificarCliente.Size = new Size(200, 23);
+            btnModificarCliente.TabIndex = 2;
+            btnModificarCliente.Text = "Modificar";
+            btnModificarCliente.TextAlign = ContentAlignment.MiddleLeft;
+            btnModificarCliente.UseVisualStyleBackColor = true;
             // 
             // btnNvoCliente
             // 
-            this.btnNvoCliente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNvoCliente.FlatAppearance.BorderSize = 0;
-            this.btnNvoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNvoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNvoCliente.Location = new System.Drawing.Point(0, 0);
-            this.btnNvoCliente.Name = "btnNvoCliente";
-            this.btnNvoCliente.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btnNvoCliente.Size = new System.Drawing.Size(200, 23);
-            this.btnNvoCliente.TabIndex = 1;
-            this.btnNvoCliente.Text = "Nuevo";
-            this.btnNvoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNvoCliente.UseVisualStyleBackColor = true;
+            btnNvoCliente.Dock = DockStyle.Top;
+            btnNvoCliente.FlatAppearance.BorderSize = 0;
+            btnNvoCliente.FlatStyle = FlatStyle.Flat;
+            btnNvoCliente.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNvoCliente.Location = new Point(0, 0);
+            btnNvoCliente.Name = "btnNvoCliente";
+            btnNvoCliente.Padding = new Padding(6, 0, 0, 0);
+            btnNvoCliente.Size = new Size(200, 23);
+            btnNvoCliente.TabIndex = 1;
+            btnNvoCliente.Text = "Nuevo";
+            btnNvoCliente.TextAlign = ContentAlignment.MiddleLeft;
+            btnNvoCliente.UseVisualStyleBackColor = true;
             // 
             // btnCLIENTES
             // 
-            this.btnCLIENTES.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCLIENTES.FlatAppearance.BorderSize = 0;
-            this.btnCLIENTES.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCLIENTES.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCLIENTES.Location = new System.Drawing.Point(0, 191);
-            this.btnCLIENTES.Name = "btnCLIENTES";
-            this.btnCLIENTES.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnCLIENTES.Size = new System.Drawing.Size(200, 23);
-            this.btnCLIENTES.TabIndex = 2;
-            this.btnCLIENTES.Text = "CLIENTES";
-            this.btnCLIENTES.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCLIENTES.UseVisualStyleBackColor = true;
-            this.btnCLIENTES.Click += new System.EventHandler(this.btnCLIENTES_Click);
+            btnCLIENTES.Dock = DockStyle.Top;
+            btnCLIENTES.FlatAppearance.BorderSize = 0;
+            btnCLIENTES.FlatStyle = FlatStyle.Flat;
+            btnCLIENTES.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCLIENTES.Location = new Point(0, 185);
+            btnCLIENTES.Name = "btnCLIENTES";
+            btnCLIENTES.Padding = new Padding(2, 0, 0, 0);
+            btnCLIENTES.Size = new Size(200, 23);
+            btnCLIENTES.TabIndex = 2;
+            btnCLIENTES.Text = "CLIENTES";
+            btnCLIENTES.TextAlign = ContentAlignment.MiddleLeft;
+            btnCLIENTES.UseVisualStyleBackColor = true;
+            btnCLIENTES.Click += btnCLIENTES_Click;
             // 
             // panelMedio1
             // 
-            this.panelMedio1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelMedio1.Controls.Add(this.btnModificarReserv);
-            this.panelMedio1.Controls.Add(this.btnNvaReserv);
-            this.panelMedio1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMedio1.Location = new System.Drawing.Point(0, 130);
-            this.panelMedio1.Name = "panelMedio1";
-            this.panelMedio1.Size = new System.Drawing.Size(200, 61);
-            this.panelMedio1.TabIndex = 1;
-            this.panelMedio1.Visible = false;
+            panelMedio1.BackColor = SystemColors.ControlDarkDark;
+            panelMedio1.Controls.Add(btnModificarReserv);
+            panelMedio1.Controls.Add(btnNvaReserv);
+            panelMedio1.Dock = DockStyle.Top;
+            panelMedio1.Location = new Point(0, 130);
+            panelMedio1.Name = "panelMedio1";
+            panelMedio1.Size = new Size(200, 55);
+            panelMedio1.TabIndex = 1;
+            panelMedio1.Visible = false;
             // 
             // btnModificarReserv
             // 
-            this.btnModificarReserv.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModificarReserv.FlatAppearance.BorderSize = 0;
-            this.btnModificarReserv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificarReserv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarReserv.Location = new System.Drawing.Point(0, 23);
-            this.btnModificarReserv.Name = "btnModificarReserv";
-            this.btnModificarReserv.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btnModificarReserv.Size = new System.Drawing.Size(200, 23);
-            this.btnModificarReserv.TabIndex = 2;
-            this.btnModificarReserv.Text = "Ver";
-            this.btnModificarReserv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificarReserv.UseVisualStyleBackColor = true;
-            this.btnModificarReserv.Click += new System.EventHandler(this.btnModificarReserv_Click);
+            btnModificarReserv.Dock = DockStyle.Top;
+            btnModificarReserv.FlatAppearance.BorderSize = 0;
+            btnModificarReserv.FlatStyle = FlatStyle.Flat;
+            btnModificarReserv.ImageAlign = ContentAlignment.MiddleLeft;
+            btnModificarReserv.Location = new Point(0, 23);
+            btnModificarReserv.Name = "btnModificarReserv";
+            btnModificarReserv.Padding = new Padding(6, 0, 0, 0);
+            btnModificarReserv.Size = new Size(200, 23);
+            btnModificarReserv.TabIndex = 2;
+            btnModificarReserv.Text = "Ver";
+            btnModificarReserv.TextAlign = ContentAlignment.MiddleLeft;
+            btnModificarReserv.UseVisualStyleBackColor = true;
+            btnModificarReserv.Click += btnModificarReserv_Click;
             // 
             // btnNvaReserv
             // 
-            this.btnNvaReserv.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNvaReserv.FlatAppearance.BorderSize = 0;
-            this.btnNvaReserv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNvaReserv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNvaReserv.Location = new System.Drawing.Point(0, 0);
-            this.btnNvaReserv.Name = "btnNvaReserv";
-            this.btnNvaReserv.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btnNvaReserv.Size = new System.Drawing.Size(200, 23);
-            this.btnNvaReserv.TabIndex = 0;
-            this.btnNvaReserv.Text = "Nueva";
-            this.btnNvaReserv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNvaReserv.UseVisualStyleBackColor = true;
-            this.btnNvaReserv.Click += new System.EventHandler(this.btnNvaReserv_Click);
+            btnNvaReserv.Dock = DockStyle.Top;
+            btnNvaReserv.FlatAppearance.BorderSize = 0;
+            btnNvaReserv.FlatStyle = FlatStyle.Flat;
+            btnNvaReserv.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNvaReserv.Location = new Point(0, 0);
+            btnNvaReserv.Name = "btnNvaReserv";
+            btnNvaReserv.Padding = new Padding(6, 0, 0, 0);
+            btnNvaReserv.Size = new Size(200, 23);
+            btnNvaReserv.TabIndex = 0;
+            btnNvaReserv.Text = "Nueva";
+            btnNvaReserv.TextAlign = ContentAlignment.MiddleLeft;
+            btnNvaReserv.UseVisualStyleBackColor = true;
+            btnNvaReserv.Click += btnNvaReserv_Click;
             // 
             // btnReservas
             // 
-            this.btnReservas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReservas.FlatAppearance.BorderSize = 0;
-            this.btnReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReservas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReservas.Location = new System.Drawing.Point(0, 107);
-            this.btnReservas.Name = "btnReservas";
-            this.btnReservas.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnReservas.Size = new System.Drawing.Size(200, 23);
-            this.btnReservas.TabIndex = 0;
-            this.btnReservas.Text = "RESERVAS";
-            this.btnReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReservas.UseVisualStyleBackColor = true;
-            this.btnReservas.Click += new System.EventHandler(this.btnReservas_Click);
+            btnReservas.Dock = DockStyle.Top;
+            btnReservas.FlatAppearance.BorderSize = 0;
+            btnReservas.FlatStyle = FlatStyle.Flat;
+            btnReservas.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReservas.Location = new Point(0, 107);
+            btnReservas.Name = "btnReservas";
+            btnReservas.Padding = new Padding(2, 0, 0, 0);
+            btnReservas.Size = new Size(200, 23);
+            btnReservas.TabIndex = 0;
+            btnReservas.Text = "RESERVAS";
+            btnReservas.TextAlign = ContentAlignment.MiddleLeft;
+            btnReservas.UseVisualStyleBackColor = true;
+            btnReservas.Click += btnReservas_Click;
             // 
             // panelTopSideleft
             // 
-            this.panelTopSideleft.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopSideleft.Location = new System.Drawing.Point(0, 0);
-            this.panelTopSideleft.Name = "panelTopSideleft";
-            this.panelTopSideleft.Size = new System.Drawing.Size(200, 107);
-            this.panelTopSideleft.TabIndex = 0;
+            panelTopSideleft.Dock = DockStyle.Top;
+            panelTopSideleft.Location = new Point(0, 0);
+            panelTopSideleft.Name = "panelTopSideleft";
+            panelTopSideleft.Size = new Size(200, 107);
+            panelTopSideleft.TabIndex = 0;
             // 
             // panelbottomform
             // 
-            this.panelbottomform.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panelbottomform.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelbottomform.Location = new System.Drawing.Point(206, 512);
-            this.panelbottomform.Name = "panelbottomform";
-            this.panelbottomform.Size = new System.Drawing.Size(755, 34);
-            this.panelbottomform.TabIndex = 8;
+            panelbottomform.BackColor = SystemColors.AppWorkspace;
+            panelbottomform.Dock = DockStyle.Bottom;
+            panelbottomform.Location = new Point(206, 512);
+            panelbottomform.Name = "panelbottomform";
+            panelbottomform.Size = new Size(755, 34);
+            panelbottomform.TabIndex = 8;
             // 
             // panelFormHijo
             // 
-            this.panelFormHijo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelFormHijo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelFormHijo.Controls.Add(this.pictureBox1);
-            this.panelFormHijo.Location = new System.Drawing.Point(206, 0);
-            this.panelFormHijo.Name = "panelFormHijo";
-            this.panelFormHijo.Size = new System.Drawing.Size(755, 517);
-            this.panelFormHijo.TabIndex = 0;
+            panelFormHijo.Anchor = AnchorStyles.None;
+            panelFormHijo.BackColor = SystemColors.ControlDarkDark;
+            panelFormHijo.Controls.Add(pictureBox1);
+            panelFormHijo.Location = new Point(206, 0);
+            panelFormHijo.Name = "panelFormHijo";
+            panelFormHijo.Size = new Size(755, 517);
+            panelFormHijo.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(180, 120);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(371, 289);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Anchor = AnchorStyles.None;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(180, 120);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(371, 289);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 546);
-            this.Controls.Add(this.panelFormHijo);
-            this.Controls.Add(this.panelbottomform);
-            this.Controls.Add(this.panelSide);
-            this.Name = "frmMain";
-            this.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.Text = "Form2";
-            this.panelSide.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panelMedio3.ResumeLayout(false);
-            this.panelMedio2.ResumeLayout(false);
-            this.panelMedio1.ResumeLayout(false);
-            this.panelFormHijo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(961, 546);
+            Controls.Add(panelFormHijo);
+            Controls.Add(panelbottomform);
+            Controls.Add(panelSide);
+            Name = "frmMain";
+            Padding = new Padding(6, 0, 0, 0);
+            Text = "Form2";
+            panelSide.ResumeLayout(false);
+            panelMedio4.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panelMedio3.ResumeLayout(false);
+            panelMedio2.ResumeLayout(false);
+            panelMedio1.ResumeLayout(false);
+            panelFormHijo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -398,5 +447,8 @@
         private Panel panel2;
         private Button btnHelp;
         private Button btnFacturar;
+        private Panel panelMedio4;
+        private Button btnVerFactura;
+        private Button btnNuevaFactura;
     }
 }

@@ -15,5 +15,10 @@ namespace HotelBackEnd.Model
             Id = 0;
             Descri = string.Empty;
         }
+        public TipoServicioModel(int id, string descri)
+        {
+            Id = id;
+            Descri = descri;
+        }
     }
 }
