@@ -35,7 +35,11 @@ namespace HotelForm.View.Clientes
 
         private async void CargarDgvClientesAsync()
         {
-
+            dgvClientes.Refresh();
+            DataTable dtClientes = HelperDao.GetInstance().GetSp("SP_LISTA_CLIENTES");
+            int columnas = dtClientes.Columns.Count;
+            dgvClientes.DataSource = dtClientes;
+            dgvClientes.Columns["ColModificar"].DisplayIndex = columnas;
         }
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -76,9 +80,6 @@ namespace HotelForm.View.Clientes
                         c.TCliente.Id = 2;
                         c.TCliente.Descri = "Empresas";
                     }
-
-                    MessageBox.Show($"Cliente numero {c.Id_Cliente}, Tipo Cliente: {c.TCliente.Id} - {c.TCliente.Descri}");
-
                     new frmModificarCliente(factory, c).ShowDialog();
                 
             }
@@ -89,7 +90,7 @@ namespace HotelForm.View.Clientes
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
-            dgvClientes.Rows.Clear();
+            dgvClientes.Refresh();
             DataTable dtClientes = HelperDao.GetInstance().GetSp("SP_LISTA_CLIENTES");
             int columnas = dtClientes.Columns.Count;
             dgvClientes.DataSource = dtClientes;

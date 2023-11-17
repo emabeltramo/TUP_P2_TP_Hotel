@@ -66,6 +66,7 @@ namespace HotelForm.View.Clientes
                     cboTipoCliente.SelectedValue = 1;
                     txtApellido.Text = cliente.Apellido.ToString();
                     txtNombre.Text = cliente.Nombre.ToString();
+                    txtNroDocumento.Text= cliente.CUIL.ToString();
 
                     break;
 
@@ -83,12 +84,12 @@ namespace HotelForm.View.Clientes
             {
                 case "DNI":
                     cboTipoDocumento.SelectedValue = 1;
-                    txtNroDocumento.Text = cliente.DNI;
+                    txtNroDocumento.Text = cliente.DNI.ToString(); 
                     break;
 
                 case "Pasaporte":
                     cboTipoDocumento.SelectedValue =2;
-                    txtNroDocumento.Text = cliente.CUIL;
+                    txtNroDocumento.Text = cliente.CUIL.ToString(); 
                     break;
 
                 default:
@@ -129,13 +130,14 @@ namespace HotelForm.View.Clientes
                     actualizado.TCliente.Id = 1;
                     actualizado.TCliente.Descri = "Personas";
                     actualizado.DNI = txtNroDocumento.Text;
+                        actualizado.CUIL = ("20" + txtNroDocumento.Text + "1");
                     break;
 
                 case 2:
                     actualizado.TDoc.Id = 2;
                     actualizado.TDoc.Descri = "Pasaporte";
 
-                    if (actualizado.TCliente.Descri != "Personas")
+                        if (actualizado.TCliente.Descri != "Personas")
                     {
                         actualizado.TCliente.Id = 2;
                         actualizado.TCliente.Descri = "Empresas";

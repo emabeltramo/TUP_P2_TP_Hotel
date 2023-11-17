@@ -17,7 +17,7 @@ BEGIN
 		CUIL= @cuil
 	WHERE ID = @id
 END;
-
+GO
 --INSERTAR CLIENTE
 CREATE PROCEDURE SP_INSERTAR_CLIENTE--OkTotal
 @nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil int,
@@ -28,7 +28,7 @@ BEGIN
 	tipo_cliente,Razon_Social)
 	VALUES(@nombre,@apellido,@tdoc ,@dni,@cuil, @email ,@celular, @tCliente, @razonSoc)
 END;
-
+GO
 --BORRAR CLIENTE
 CREATE PROCEDURE SP_BORRAR_CLIENTE
     @id INT
@@ -70,7 +70,7 @@ BEGIN
         RAISERROR('Error en SP_BORRAR_CLIENTE: ', 16, 1);
     END CATCH;
 END;
-
+GO
 --SELECT TIPOCLIENTE
 CREATE PROCEDURE SP_CONSULTAR_TIPOCLIENTE--OkTotal
 
@@ -78,7 +78,7 @@ AS
 BEGIN 
 	SELECT * FROM TIPOS_CLIENTES
 END;
-
+GO
 --SELECT TIPODOCUMENTO
 CREATE PROCEDURE SP_CONSULTAR_TIPODOCUMENTO--OkTotal
 
@@ -86,20 +86,19 @@ AS
 BEGIN 
 	SELECT * FROM TIPO_DOCUMENTOS
 END;
-
+GO
 --LISTAR CLIENTES
-CREATE PROCEDURE SP_LISTA_CLIENTES--OkApi
+CREATE PROCEDURE [dbo].[SP_LISTA_CLIENTES]--OkApi
 AS
 BEGIN
-	SELECT C.NOMBRE 'Nombre',C.APELLIDO'Apellido',T.TIPO_DOCUMENTO 'Tipo Documento',C.DNI 'Numero Documento',
+	SELECT C.ID 'ID', C.NOMBRE 'Nombre',C.APELLIDO'Apellido',T.TIPO_DOCUMENTO 'Tipo Documento',C.DNI 'Numero Documento',
 	C.CUIL 'Numero CUIL',C.EMAIL 'Email',C.CELULAR 'Celular',TC.Descripcion 'Tipo Cliente',C.Razon_Social 'Razon Social'
 	FROM CLIENTES C 
 	JOIN TIPO_DOCUMENTOS T ON C.TIPO_DOCUMENTO = T.ID 
 	JOIN TIPOS_CLIENTES TC ON C.tipo_cliente = TC.ID
 	ORDER BY 1
 END
-
-
+GO
 create procedure ps_HabDisponibles @desde date, @hasta date, @hotel int
 as
 begin
@@ -119,7 +118,7 @@ where RESERVAS.ESTADO!=3 and
 ) and HOTELES.ID=@hotel and HOTELES.HABILITADO=1
 end;
 
-
+GO
 
 create procedure ps_InsertReserva
 @cliente int,
@@ -134,7 +133,7 @@ values (1,@cliente,@ingreso,@salida,GETDATE(),@empleado);
 select @id= SCOPE_IDENTITY();
 end;
 
-
+GO
 
 create procedure ps_InsertReservaHabitacion
 @reserva int,
@@ -145,6 +144,8 @@ begin
 insert into RESERVA_HABITACIONES(RESERVA,HABITACION,MONTO_HABITACION)
 values (@reserva,@habitacion,@monto);
 end;
+
+GO
 
 create procedure ps_InsertReservaCuenta
 @reserva int,
@@ -157,3 +158,5 @@ begin
 insert into RESERVA_CUENTA(RESERVA,SERVICIO,MONTO,BONIFICADO,CANTIDAD)
 values (@reserva,@servicio,@monto,@bonificado,@cantidad);
 end;
+GO
+
