@@ -470,19 +470,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Federico gonzalez\\.nuget\\packages\\": {}
+    "C:\\Users\\mateo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
       "projectName": "HotelBackEnd",
-      "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
-      "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\obj\\",
+      "projectPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+      "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mateo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -529,7 +529,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
