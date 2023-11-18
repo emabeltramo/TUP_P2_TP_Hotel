@@ -78,6 +78,7 @@ namespace HotelForm.View.Clientes
                         int columnas = dtClientes.Columns.Count;
                         dgvClientes.DataSource = dtClientes;
                         dgvClientes.Columns["ColModificar"].DisplayIndex = columnas;
+                        dgvClientes.Columns["ColEliminar"].DisplayIndex = columnas;
                     }
                     else
                     {

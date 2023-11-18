@@ -1,7 +1,6 @@
---MODIFICAR CLIENTE
-CREATE PROCEDURE SP_MODIFICAR_CLIENTE--OkApi
+CREATE PROCEDURE [dbo].[SP_MODIFICAR_CLIENTE]
 @id int,@nombre varchar(50),@apellido varchar(50),@tdoc int,
-@dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int, @cuil varchar(50)
+@dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular varchar(50), @cuil varchar(50)
 AS 
 BEGIN 
 	UPDATE CLIENTES
@@ -18,8 +17,9 @@ BEGIN
 	WHERE ID = @id
 END;
 GO
+
 --INSERTAR CLIENTE
-CREATE PROCEDURE SP_INSERTAR_CLIENTE--OkTotal
+CREATE PROCEDURE [dbo].[SP_INSERTAR_CLIENTE]--OkTotal
 @nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil int,
 @dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int
 AS 
@@ -88,15 +88,16 @@ BEGIN
 END;
 GO
 --LISTAR CLIENTES
+
 CREATE PROCEDURE [dbo].[SP_LISTA_CLIENTES]--OkApi
 AS
 BEGIN
-	SELECT C.ID 'ID', C.NOMBRE 'Nombre',C.APELLIDO'Apellido',T.TIPO_DOCUMENTO 'Tipo Documento',C.DNI 'Numero Documento',
-	C.CUIL 'Numero CUIL',C.EMAIL 'Email',C.CELULAR 'Celular',TC.Descripcion 'Tipo Cliente',C.Razon_Social 'Razon Social'
-	FROM CLIENTES C 
-	JOIN TIPO_DOCUMENTOS T ON C.TIPO_DOCUMENTO = T.ID 
-	JOIN TIPOS_CLIENTES TC ON C.tipo_cliente = TC.ID
-	ORDER BY 1
+    SELECT C.ID 'ID', C.NOMBRE 'Nombre',C.APELLIDO'Apellido',T.TIPO_DOCUMENTO 'Tipo Documento',  t.ID 'IDD', C.DNI 'Numero Documento',
+    C.CUIL 'Numero CUIL',C.EMAIL 'Email',C.CELULAR 'Celular',tc.ID 'IDC',TC.Descripcion 'Tipo Cliente',C.Razon_Social 'Razon Social'
+    FROM CLIENTES C 
+    JOIN TIPO_DOCUMENTOS T ON C.TIPO_DOCUMENTO = T.ID 
+    JOIN TIPOS_CLIENTES TC ON C.tipo_cliente = TC.ID
+    ORDER BY 1
 END
 GO
 create procedure ps_HabDisponibles @desde date, @hasta date, @hotel int
@@ -159,4 +160,5 @@ insert into RESERVA_CUENTA(RESERVA,SERVICIO,MONTO,BONIFICADO,CANTIDAD)
 values (@reserva,@servicio,@monto,@bonificado,@cantidad);
 end;
 GO
+
 

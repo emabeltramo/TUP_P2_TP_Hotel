@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             dgvClientes = new DataGridView();
-            ColModificar = new DataGridViewButtonColumn();
             btnBuscar = new Button();
             txtBuscar = new TextBox();
             btnAtras = new Button();
+            ColModificar = new DataGridViewButtonColumn();
+            ColEliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { ColModificar });
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { ColModificar, ColEliminar });
             dgvClientes.Location = new Point(37, 97);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
@@ -49,14 +50,6 @@
             dgvClientes.Size = new Size(626, 246);
             dgvClientes.TabIndex = 0;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
-            // 
-            // ColModificar
-            // 
-            ColModificar.HeaderText = "Modificar";
-            ColModificar.Name = "ColModificar";
-            ColModificar.ReadOnly = true;
-            ColModificar.Text = "Modificar";
-            ColModificar.UseColumnTextForButtonValue = true;
             // 
             // btnBuscar
             // 
@@ -84,6 +77,23 @@
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = true;
             // 
+            // ColModificar
+            // 
+            ColModificar.HeaderText = "Modificar";
+            ColModificar.Name = "ColModificar";
+            ColModificar.ReadOnly = true;
+            ColModificar.Text = "Modificar";
+            ColModificar.UseColumnTextForButtonValue = true;
+            // 
+            // ColEliminar
+            // 
+            ColEliminar.HeaderText = "Eliminar";
+            ColEliminar.Name = "ColEliminar";
+            ColEliminar.ReadOnly = true;
+            ColEliminar.Resizable = DataGridViewTriState.True;
+            ColEliminar.SortMode = DataGridViewColumnSortMode.Automatic;
+            ColEliminar.Text = "Eliminar";
+            // 
             // frmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -108,5 +118,6 @@
         private TextBox txtBuscar;
         private Button btnAtras;
         private DataGridViewButtonColumn ColModificar;
+        private DataGridViewButtonColumn ColEliminar;
     }
 }
