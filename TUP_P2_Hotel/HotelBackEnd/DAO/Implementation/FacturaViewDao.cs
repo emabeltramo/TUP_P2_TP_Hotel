@@ -59,6 +59,49 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
+        public List<FormaPagoModel> GetFormasPago(int IdFactura)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            List<FormaPagoModel> result = new List<FormaPagoModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_FormasPago";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+
+                cmd.Parameters.Add(new SqlParameter("@idfactura", (object)IdFactura ?? DBNull.Value));
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+
+                        var formapago = new FormaPagoModel()
+                        {
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
+                            Descripcion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRICION").Valor ?? string.Empty,
+                            Recargo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RECARGO").Valor ?? false,
+                            Porcentaje = reg.FirstOrDefault(m => m.Campo.ToUpper() == "PORCENTAJE_RECARGO").Valor ?? 0,
+
+                        };
+                        result.Add(formapago);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = null;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
         public List<ReservaModel> GetReserva()
         {
             ProccesData procces = new ProccesData();
@@ -110,49 +153,7 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
-        public List<FormaPagoModel> GetFormasPagoAsync(int IdFactura)
-        {
-            ProccesData procces = new ProccesData();
-            SqlCommand cmd = new SqlCommand();
-            List<FormaPagoModel> result = new List<FormaPagoModel>();
-            try
-            {
-                cmd.Connection = HelperDao.GetInstance().GetConnection();
-                cmd.CommandText = "ps_FormasPago";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Clear();
-
-                cmd.Parameters.Add(new SqlParameter("@idfactura", (object)IdFactura ?? DBNull.Value));
-                cmd.Connection.Open();
-                var reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        var reg = procces.MakeReg(reader);
-
-                        var formapago = new FormaPagoModel()
-                        {
-                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "ID").Valor ?? 0,
-                            Descripcion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "DESCRICION").Valor ?? string.Empty,
-                            Recargo = reg.FirstOrDefault(m => m.Campo.ToUpper() == "RECARGO").Valor ?? false,
-                            Porcentaje = reg.FirstOrDefault(m => m.Campo.ToUpper() == "PORCENTAJE_RECARGO").Valor ?? 0,
-
-                        };
-                        result.Add(formapago);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                result = null;
-            }
-            if (cmd.Connection.State == System.Data.ConnectionState.Open)
-            {
-                cmd.Connection.Close();
-            }
-            return result;
-        }
+       
 
         public List<FacturaDetalleModel> GetFacturaDetalle()
         {
@@ -197,6 +198,11 @@ namespace HotelBackEnd.DAO.Implementation
             catch (Exception ex)
             {
                 result = null;
+            }
+
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
             }
             return result;
         }

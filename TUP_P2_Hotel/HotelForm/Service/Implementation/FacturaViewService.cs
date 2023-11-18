@@ -70,7 +70,7 @@ namespace HotelForm.Service.Implementation
 
         public async Task<List<FormaPagoModel>> GetFormasPagoAsync(int IdFactura)
         {
-            string url = host + "/FacturaView/GetFormasPagoAsync?";
+            string url = host + "/FacturaView/GetFormasPago?";
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["IdFactura"] = IdFactura.ToString();
 

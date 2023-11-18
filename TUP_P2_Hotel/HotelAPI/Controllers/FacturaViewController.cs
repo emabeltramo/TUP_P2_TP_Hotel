@@ -77,19 +77,16 @@ namespace HotelAPI.Controllers
         }
         
 
-            [HttpGet("/FacturaView/GetFormasPagoAsync")]
-        public IActionResult GetFormasPagoAsync([FromQuery] int IdFactura)
+            [HttpGet("/FacturaView/GetFormasPago")]
+        public IActionResult GetFormasPago(int IdFactura)
         {
             try
             {
-                var result = front.GetFormasPagoAsync(IdFactura);
-
+                var result = front.GetFormasPago(IdFactura);
                 if (result == null)
                 {
                     return StatusCode(500, "Se produjo un error al procesar las formas de pagos");
                 }
-
-
                 return Ok(result);
 
             }
@@ -99,6 +96,7 @@ namespace HotelAPI.Controllers
                 return StatusCode(500);
             }
         }
+
         [HttpGet("/FacturaView/GetFactura")]
         public IActionResult GetFactura([FromQuery] DateTime desde, [FromQuery] DateTime hasta, [FromQuery] int idCliente, [FromQuery] int idReserva)
         {
