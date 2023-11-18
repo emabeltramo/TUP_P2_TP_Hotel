@@ -38,6 +38,9 @@ namespace HotelBackEnd.Front.Implementation
         public List<ClienteModel> GetClientes()
         {
             return dao.GetClientes();
+        }public List<ClienteModel> GetClientesLista()
+        {
+            return dao.GetClientesLista();
         }
         public ClienteModel GetClienteID(int id)
         {

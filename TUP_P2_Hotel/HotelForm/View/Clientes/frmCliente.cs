@@ -35,12 +35,61 @@ namespace HotelForm.View.Clientes
 
         private async void CargarDgvClientesAsync()
         {
-            dgvClientes.Refresh();
-            DataTable dtClientes = HelperDao.GetInstance().GetSp("SP_LISTA_CLIENTES");
-            int columnas = dtClientes.Columns.Count;
-            dgvClientes.DataSource = dtClientes;
-            dgvClientes.Columns["ColModificar"].DisplayIndex = columnas;
-        }
+          
+                DataTable dtClientes = new DataTable();
+
+                try
+                {
+                    var result = await clienteService.GetClientesListaAsync();
+
+                    if (result != null && result.Count > 0)
+                    {
+                        // Agrega las columnas que deseas en el DataTable
+                        dtClientes.Columns.Add("ID", typeof(int));
+                        dtClientes.Columns.Add("Nombre", typeof(string));
+                        dtClientes.Columns.Add("Apellido", typeof(string));
+                        dtClientes.Columns.Add("Tipo Documento", typeof(string));
+                        dtClientes.Columns.Add("DNI", typeof(string));
+                        dtClientes.Columns.Add("CUIL", typeof(string));
+                        dtClientes.Columns.Add("Email", typeof(string));
+                        dtClientes.Columns.Add("Celular", typeof(string));
+                        dtClientes.Columns.Add("Tipo Cliente", typeof(string));
+                        dtClientes.Columns.Add("Razon Social", typeof(string));
+
+                        foreach (var item in result)
+                        {
+                            DataRow row = dtClientes.NewRow();
+
+                            // Mapea manualmente las propiedades que quieres incluir
+                            row["ID"] = item.Id_Cliente;
+                            row["Nombre"] = item.Nombre;
+                            row["Apellido"] = item.Apellido;
+                            row["Tipo Documento"] = item.TDoc.Descri;
+                            row["DNI"] = item.DNI;
+                            row["CUIL"] = item.CUIL;
+                            row["Email"] = item.Email;
+                            row["Celular"] = item.Celular;
+                            row["Tipo Cliente"] = item.TCliente.Descri;
+                            row["Razon Social"] = item.RazonSocial;
+
+                            dtClientes.Rows.Add(row);
+                        }
+
+                        int columnas = dtClientes.Columns.Count;
+                        dgvClientes.DataSource = dtClientes;
+                        dgvClientes.Columns["ColModificar"].DisplayIndex = columnas;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron datos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -61,13 +110,13 @@ namespace HotelForm.View.Clientes
                     if (tipoDocumento == "DNI")
                     {
                         c.TDoc.Id = 1;
-                        c.DNI = dgvClientes.CurrentRow.Cells["Numero Documento"].Value.ToString();
-                        c.CUIL = dgvClientes.CurrentRow.Cells["Numero Cuil"].Value.ToString();
+                        c.DNI = dgvClientes.CurrentRow.Cells["DNI"].Value.ToString();
+                        c.CUIL = dgvClientes.CurrentRow.Cells["Cuil"].Value.ToString();
                     }
                     else if (tipoDocumento == "Pasaporte")
                     {
                         c.TDoc.Id = 2;
-                        c.CUIL = dgvClientes.CurrentRow.Cells["Numero Cuil"].Value.ToString();
+                        c.CUIL = dgvClientes.CurrentRow.Cells["Cuil"].Value.ToString();
                     }
 
                     if (tipoCliente == "Personas")
@@ -90,11 +139,7 @@ namespace HotelForm.View.Clientes
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
-            dgvClientes.Refresh();
-            DataTable dtClientes = HelperDao.GetInstance().GetSp("SP_LISTA_CLIENTES");
-            int columnas = dtClientes.Columns.Count;
-            dgvClientes.DataSource = dtClientes;
-            dgvClientes.Columns["ColModificar"].DisplayIndex = columnas;
+            CargarDgvClientesAsync();
 
 
         }

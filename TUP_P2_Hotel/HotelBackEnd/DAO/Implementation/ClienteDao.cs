@@ -102,44 +102,44 @@ namespace HotelBackEnd.DAO.Implementation
         }
 
 
-        public bool BajaCliente(int numero)
+        public bool BajaCliente(int id)
         {
-            bool resultado = true;
-
-            using (SqlConnection conexion = HelperDao.GetInstance().GetConnection())
+            bool result = false;
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction t = null;
+            try
             {
-                SqlTransaction t = null;
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.Connection.Open();
+                t = cmd.Connection.BeginTransaction();
+                cmd.Transaction = t;
 
-                try
+                cmd.CommandText = "SP_BORRAR_CLIENTE";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", (object)id);
+                //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
+                if (cmd.ExecuteNonQuery() != 1)
                 {
-                    conexion.Open();
-                    t = conexion.BeginTransaction();
-                    SqlCommand comando = new SqlCommand("SP_BORRAR_CLIENTE", conexion, t);
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.Clear();
-                    comando.Parameters.AddWithValue("@id", numero);
-
-                    comando.ExecuteNonQuery();
-
-                    t.Commit();
-                }
-                catch (Exception ex)
-                {
-                    if (t != null)
-                        t.Rollback();
-
-                    resultado = false;
-
-                    Console.WriteLine($"Error en BajaCliente para el cliente con ID {numero}: {ex.Message}");
-                }
-                finally
-                {
-                    if (conexion != null && conexion.State == ConnectionState.Open)
-                        conexion.Close();
+                   
+                    t.Rollback();
                 }
 
-                return resultado;
+
+
+                t.Commit();
+                result = true;
+          
             }
+            catch (Exception ex)
+            {
+
+                t.Rollback();
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
         }
 
 
@@ -215,7 +215,7 @@ namespace HotelBackEnd.DAO.Implementation
 
                         }; var TCliente = new TipoClienteModel()
                         {
-                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO _CLIENTE").Valor ?? 0,
+                            Id = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TIPO CLIENTE").Valor ?? 0,
 
                         };
                         var TDoc = new TipoDocumentoModel()

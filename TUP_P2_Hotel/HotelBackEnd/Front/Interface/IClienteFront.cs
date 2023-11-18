@@ -15,6 +15,7 @@ namespace HotelBackEnd.Front.Interface
         List<TipoClienteModel> GetTipoCliente();
         List<TipoDocumentoModel> GetTipoDocumento();
         List<ClienteModel> GetClientes();
+        List<ClienteModel> GetClientesLista();
         ClienteModel GetClienteID(int id);
 
         bool AltaCliente(ClienteModel cliente);

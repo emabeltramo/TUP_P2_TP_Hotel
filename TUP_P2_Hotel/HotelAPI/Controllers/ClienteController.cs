@@ -60,7 +60,7 @@ namespace HotelAPI.Controllers
         {
             try
             {
-                var result = front.GetClientes();
+                var result = front.GetClientesLista();
                 if (result == null)
                 {
                     return StatusCode(500, "Se produjo un error al procesar los clientes");
