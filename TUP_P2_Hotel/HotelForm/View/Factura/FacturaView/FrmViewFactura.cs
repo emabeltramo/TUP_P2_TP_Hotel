@@ -25,6 +25,21 @@ namespace HotelForm.View.Factura.FacturaView
             service = factory.CreateFacturaViewService();
             this.Text = $"Factura N° {factura.IdFactura}";
             this.factory = factory;
+            InitComp();
+        }
+        private void InitComp()
+        {
+            txbNombre.ReadOnly = true;
+            txbDni.ReadOnly = true;
+            txbMail.ReadOnly = true;
+            txbTelefono.ReadOnly = true;
+            dtpDesde.Enabled = false;
+            dtpHasta.Enabled = false;
+            txtEstado.ReadOnly = true;
+            txtIdReserva.ReadOnly = true;
+            dtpFecha.Enabled = false;
+            txtTipoFactura.ReadOnly = true;
+            txtTotal.ReadOnly = true;
         }
 
         private async void FrmViewFactura_Load(object sender, EventArgs e)

@@ -125,6 +125,7 @@ namespace HotelForm.Service.Implementation
             string url = host + "/GetResHab?";
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["idReserva"] = idReserva.ToString();
+
             List<ReservaHabitacionModel> result = new List<ReservaHabitacionModel>();
             var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
             if (response != null && response.SuccessStatus)

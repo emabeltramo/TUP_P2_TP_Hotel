@@ -37,9 +37,9 @@ namespace HotelBackEnd.Front.Implementation
         {
             return facturaviewDao.GetFacturaDetalle();
         }
-        public List<FormaPagoModel> GetFormasPagoAsync(int IdFactura)
+        public List<FormaPagoModel> GetFormasPago(int IdFactura)
         {
-            return facturaviewDao.GetFormasPagoAsync(IdFactura);
+            return facturaviewDao.GetFormasPago(IdFactura);
         }
     }
 }
