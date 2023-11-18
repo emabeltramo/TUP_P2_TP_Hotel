@@ -104,42 +104,38 @@ namespace HotelBackEnd.DAO.Implementation
 
         public bool BajaCliente(int id)
         {
-            bool result = false;
-            SqlCommand cmd = new SqlCommand();
+            SqlConnection conexion = null;
             SqlTransaction t = null;
+            bool resultado = true;
+
             try
             {
-                cmd.Connection = HelperDao.GetInstance().GetConnection();
-                cmd.Connection.Open();
-                t = cmd.Connection.BeginTransaction();
-                cmd.Transaction = t;
+                conexion = HelperDao.GetInstance().GetConnection();
+                conexion.Open();
+                t = conexion.BeginTransaction();
 
-                cmd.CommandText = "SP_BORRAR_CLIENTE";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", id);
-                //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
-                if (cmd.ExecuteNonQuery() != 1)
-                {
-                   
-                    t.Rollback();
-                }
+                SqlCommand comando = new SqlCommand("SP_BORRAR_CLIENTE", conexion, t);
+                comando.CommandType = CommandType.StoredProcedure;
 
+                comando.Parameters.AddWithValue("@id", id);
 
+                comando.ExecuteNonQuery();
 
                 t.Commit();
-                result = true;
-          
             }
             catch (Exception ex)
             {
-
-                t.Rollback();
+                if (t != null)
+                    t.Rollback();
+                resultado = false;
             }
-            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            finally
             {
-                cmd.Connection.Close();
+                if (conexion != null && conexion.State == ConnectionState.Open)
+                    conexion.Close();
             }
-            return result;
+
+            return resultado;
         }
 
 

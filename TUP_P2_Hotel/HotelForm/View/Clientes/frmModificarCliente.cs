@@ -206,7 +206,7 @@ namespace HotelForm.View.Clientes
                 DialogResult result = MessageBox.Show("Desea BORRAR el CLIENTE?, ESTO BORRRARA TODOS LOS REGISTROS DE ESTE", "BORRAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    await clienteService.BajaCliente(id);
+                    await clienteService.BajaCliente(id.ToString());
                     MessageBox.Show("borrado");
                 }
             }

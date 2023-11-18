@@ -99,7 +99,7 @@ namespace HotelForm.View.Clientes
 
 
 
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
                 if (e.ColumnIndex == dgvClientes.Columns["ColModificar"].Index && e.RowIndex != -1)
@@ -148,7 +148,8 @@ namespace HotelForm.View.Clientes
                 DialogResult result = MessageBox.Show("Desea elimanr?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    factory.CreateClienteService().BajaCliente(Id_Cliente);
+                    //HelperDao.GetInstance().GetSPP("SP_BORRAR_CLIENTE", Id_Cliente);
+                    await clienteService.BajaCliente(Id_Cliente.ToString());
 
                 }
                 dgvClientes.Refresh();

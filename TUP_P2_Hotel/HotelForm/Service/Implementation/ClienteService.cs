@@ -50,11 +50,12 @@ namespace HotelForm.Service.Implementation
             return response;
         }
 
-        public async Task<HttpResponse> BajaCliente(int numero)
+        public async Task<HttpResponse> BajaCliente(string numero)
         {
             string url = host + "/DeleteCliente";
             var cuerpo = JsonConvert.SerializeObject(numero);
-            var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
+            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
+
 
             return response;
         }

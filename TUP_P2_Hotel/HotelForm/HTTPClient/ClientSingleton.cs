@@ -72,7 +72,7 @@ namespace HotelForm.HTTPClient
             try
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
-                var result = await client.PostAsync(url, content);
+                var result = await client.PostAsync(url,content);
                 var reply = "";
 
                 if (result.IsSuccessStatusCode)
@@ -88,4 +88,5 @@ namespace HotelForm.HTTPClient
                 return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
         }
+}
 }

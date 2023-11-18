@@ -14,7 +14,7 @@ namespace HotelForm.Service.Interface
 
         Task<HttpResponse> AltaCliente(ClienteModel cliente);
         Task<HttpResponse> ActualizarCliente(ClienteModel cliente);
-        Task<HttpResponse> BajaCliente(int numero);
+        Task<HttpResponse> BajaCliente(string numero);
         Task<List<ClienteModel>> GetClientesListaAsync();
         Task <ClienteModel> GetClienteIDAsync(int id);
         Task<List<ClienteModel>> GetClientesAsync();

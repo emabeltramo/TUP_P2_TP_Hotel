@@ -88,6 +88,19 @@ namespace HotelBackEnd.DAO.Helper
             tabla.Load(cmd.ExecuteReader());
             connection.Close();
             return tabla;
+        } 
+        public DataTable GetSPP(string nombreSp, int numero)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = nombreSp;
+            cmd.Parameters.AddWithValue("@id", numero);
+            DataTable tabla = new DataTable();
+            tabla.Load(cmd.ExecuteReader());
+            connection.Close();
+            return tabla;
         }
         public DataTable GetSp(string nombreSp)
         {
