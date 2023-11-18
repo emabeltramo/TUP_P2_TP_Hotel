@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             dgvClientes = new DataGridView();
+            ColModificar = new DataGridViewButtonColumn();
             btnBuscar = new Button();
             txtBuscar = new TextBox();
             btnAtras = new Button();
-            ColModificar = new DataGridViewButtonColumn();
             ColEliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
@@ -50,6 +50,14 @@
             dgvClientes.Size = new Size(626, 246);
             dgvClientes.TabIndex = 0;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
+            // 
+            // ColModificar
+            // 
+            ColModificar.HeaderText = "Modificar";
+            ColModificar.Name = "ColModificar";
+            ColModificar.ReadOnly = true;
+            ColModificar.Text = "Modificar";
+            ColModificar.UseColumnTextForButtonValue = true;
             // 
             // btnBuscar
             // 
@@ -77,22 +85,11 @@
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = true;
             // 
-            // ColModificar
-            // 
-            ColModificar.HeaderText = "Modificar";
-            ColModificar.Name = "ColModificar";
-            ColModificar.ReadOnly = true;
-            ColModificar.Text = "Modificar";
-            ColModificar.UseColumnTextForButtonValue = true;
-            // 
             // ColEliminar
             // 
             ColEliminar.HeaderText = "Eliminar";
             ColEliminar.Name = "ColEliminar";
             ColEliminar.ReadOnly = true;
-            ColEliminar.Resizable = DataGridViewTriState.True;
-            ColEliminar.SortMode = DataGridViewColumnSortMode.Automatic;
-            ColEliminar.Text = "Eliminar";
             // 
             // frmCliente
             // 

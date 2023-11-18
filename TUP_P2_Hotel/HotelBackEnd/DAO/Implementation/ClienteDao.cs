@@ -116,7 +116,7 @@ namespace HotelBackEnd.DAO.Implementation
 
                 cmd.CommandText = "SP_BORRAR_CLIENTE";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", (object)id);
+                cmd.Parameters.AddWithValue("@id", id);
                 //cmd.Parameters.AddWithValue("@empleado", (object)reserva.Empleado.Legajo); usar este ; Fuerzo el empleado
                 if (cmd.ExecuteNonQuery() != 1)
                 {
