@@ -72,8 +72,8 @@ namespace HotelForm.View.Clientes
                 if (cboTipoCliente.SelectedIndex == 0)
                 {
 
-                    cliente.Nombre = "-";
-                    cliente.Apellido = "-";
+                    cliente.Nombre = string.Empty;
+                    cliente.Apellido = string.Empty;
                     cliente.DNI = string.Empty;
                     cliente.RazonSocial = txtRazonSocial.Text;
                     cliente.CUIL = txtNroDocumento.Text;
@@ -128,17 +128,7 @@ namespace HotelForm.View.Clientes
 
         private bool Validar()
         {
-            foreach (Control control in this.Controls)
-            {
-                if (control is TextBox)
-                {
-                    if (string.IsNullOrEmpty(control.Text))
-                    {
-                        MessageBox.Show("Debe completar todos los campos!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                }
-            }
+            
 
             foreach (Control control in this.Controls)
             {
@@ -187,8 +177,8 @@ namespace HotelForm.View.Clientes
             if (cboTipoCliente.SelectedIndex == 0)
             {
                 txtRazonSocial.Enabled = true;
-                txtNombre.Text = "-";
-                txtApellido.Text = "-";
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
                 txtNombre.Enabled = false;
                 txtApellido.Enabled = false;
                 cboTipoDocumento.SelectedIndex = 1;
@@ -197,7 +187,7 @@ namespace HotelForm.View.Clientes
             }
             else
             {
-                txtRazonSocial.Text = "-";
+                txtRazonSocial.Text = string.Empty;
                 cboTipoDocumento.SelectedIndex = 0;
                 cboTipoDocumento.Enabled = true;
                 txtNombre.Enabled = true;
