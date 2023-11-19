@@ -1,3 +1,5 @@
+USE HOTEL_DB
+GO
 CREATE PROCEDURE [dbo].[SP_MODIFICAR_CLIENTE]
 @id int,@nombre varchar(50),@apellido varchar(50),@tdoc int,
 @dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular varchar(50), @cuil varchar(50)
@@ -30,7 +32,7 @@ BEGIN
 END;
 GO
 --BORRAR CLIENTE
-CREATE PROCEDURE SP_BORRAR_CLIENTE
+ALTER PROCEDURE SP_BORRAR_CLIENTE
     @id INT
 AS
 BEGIN
@@ -41,14 +43,14 @@ BEGIN
     BEGIN TRANSACTION;
 
     BEGIN TRY
-        -- Eliminar registros relacionados en otras tablas
-      DELETE FROM RESERVA_CUENTA WHERE RESERVA IN (SELECT ID FROM RESERVAS WHERE CLIENTE = @id);
-		DELETE FROM FACTURAS_FORMAS_PAGO WHERE FACTURA IN (SELECT ID FROM FACTURAS WHERE CLIENTE = @id);
-		DELETE FROM FACTURA_DETALLES WHERE FACTURA IN (SELECT ID FROM FACTURAS WHERE CLIENTE = @id);
-		DELETE FROM RESERVA_HABITACIONES WHERE RESERVA IN (SELECT ID FROM RESERVAS WHERE CLIENTE = @id);
-		DELETE FROM RESERVAS WHERE CLIENTE IN (SELECT ID FROM CLIENTES WHERE CLIENTE = @id);
-        DELETE FROM FACTURAS WHERE CLIENTE = @id ;
-        DELETE FROM RESERVAS WHERE CLIENTE = @id;
+	if exists (select cliente from facturas where cliente = id) begin
+		raiserror('El cliente tiene facturas: ', 16, 1);
+		rollback transaction;
+		end
+		if exists (select cliente from reservas where cliente = id) begin
+		raiserror('El cliente tiene facturas: ', 16, 1);
+		rollback transaction;
+		end
         -- Eliminar el cliente
         DELETE FROM CLIENTES WHERE ID = @id;
 
@@ -59,8 +61,9 @@ BEGIN
         -- Obtener el código de error
         SET @Error = ERROR_NUMBER();
 
+		
         -- Deshacer la transacción en caso de error
-        IF @@TRANCOUNT > 0
+        IF @@TRANCOUNT > 0 
             ROLLBACK;
 
         -- Puedes registrar el error o lanzar una excepción aquí
@@ -162,3 +165,30 @@ end;
 GO
 
 
+	CREATE TRIGGER tr_BorrarCliente
+	ON dbo.Clientes
+	INSTEAD OF DELETE
+	AS
+	BEGIN
+		SET NOCOUNT ON;
+
+		-- Verificar si hay algún cliente con reservas o facturas
+		IF EXISTS (SELECT 1 FROM deleted d
+				   JOIN Reservas r ON d.ID = r.CLIENTE
+				   WHERE r.estado = 'Activa')
+		BEGIN
+			THROW 51000, 'Error: El cliente tiene reservas activas.', 1;
+			RETURN;
+		END
+
+		IF EXISTS (SELECT 1 FROM deleted d
+				   JOIN Facturas f ON d.ID = F.CLIENTE)
+		BEGIN
+			THROW 51001, 'Error: El cliente tiene facturas.', 1;
+			RETURN;
+		END
+
+		DELETE FROM dbo.Clientes
+		WHERE ID IN (SELECT ID FROM deleted);
+	END
+	go
