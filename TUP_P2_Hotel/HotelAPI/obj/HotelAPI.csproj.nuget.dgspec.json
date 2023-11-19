@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {}
+    "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
+    "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
         "projectName": "HotelAPI",
-        "projectPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
-        "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\obj\\",
+        "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\HotelAPI.csproj",
+        "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mateo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj": {
-                "projectPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj"
+              "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj": {
+                "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj"
               }
             }
           }
@@ -68,21 +68,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj": {
+    "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
         "projectName": "HotelBackEnd",
-        "projectPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
-        "packagesPath": "C:\\Users\\mateo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mateo\\Source\\Repos\\emabeltramo\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\obj\\",
+        "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\HotelBackEnd.csproj",
+        "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\Proyecto Final Programacion\\TUP_P2_TP_Hotel\\TUP_P2_Hotel\\HotelBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mateo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -129,7 +129,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
