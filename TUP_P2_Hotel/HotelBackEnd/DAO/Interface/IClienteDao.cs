@@ -17,6 +17,6 @@ namespace HotelBackEnd.DAO.Interface
         ClienteModel GetClienteID(int id);
         bool AltaCliente(ClienteModel cliente);
         bool ActualizarCliente(ClienteModel cliente);
-        bool BajaCliente(int numero);
+        bool BajaCliente(string numero);
     }
 }

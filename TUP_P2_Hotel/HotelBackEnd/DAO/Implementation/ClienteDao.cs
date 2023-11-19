@@ -102,7 +102,7 @@ namespace HotelBackEnd.DAO.Implementation
         }
 
 
-        public bool BajaCliente(int id)
+        public bool BajaCliente(string id)
         {
             SqlConnection conexion = null;
             SqlTransaction t = null;

@@ -30,7 +30,7 @@ namespace HotelBackEnd.Front.Implementation
             return dao.AltaCliente(cliente);
         }
 
-        public bool BajaCliente(int numero)
+        public bool BajaCliente(string numero)
         {
             return dao.BajaCliente(numero);
         }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -46,16 +47,6 @@ namespace HotelForm.Service.Implementation
             string url = host + "/PostActualizarCliente";
             var cuerpo = JsonConvert.SerializeObject(cliente);
             var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
-
-            return response;
-        }
-
-        public async Task<HttpResponse> BajaCliente(string numero)
-        {
-            string url = host + "/DeleteCliente";
-            var cuerpo = JsonConvert.SerializeObject(numero);
-            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
-
 
             return response;
         }
@@ -104,5 +95,15 @@ namespace HotelForm.Service.Implementation
 
             return response;
         }
+       public async Task<HttpResponse> BajaCliente(int numero)
+{
+    string url = host + $"/DeleteCliente?numero={numero}";
+    var cuerpo = JsonConvert.SerializeObject(numero);
+    var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
+
+
+    return response;
+}
+
     }
 }

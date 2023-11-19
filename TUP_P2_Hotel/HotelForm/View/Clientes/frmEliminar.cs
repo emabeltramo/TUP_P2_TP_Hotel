@@ -52,7 +52,7 @@ namespace HotelForm.View.Clientes
         private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
 
-            var result = await clienteService.BajaCliente(id.ToString());
+            var result = await clienteService.BajaCliente(id);
             CargarComboCliente();
         }
 

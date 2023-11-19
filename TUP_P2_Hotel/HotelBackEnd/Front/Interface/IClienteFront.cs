@@ -20,6 +20,6 @@ namespace HotelBackEnd.Front.Interface
 
         bool AltaCliente(ClienteModel cliente);
         bool ActualizarCliente(ClienteModel cliente);
-        bool BajaCliente(int numero);
+        bool BajaCliente(string numero);
     }
 }

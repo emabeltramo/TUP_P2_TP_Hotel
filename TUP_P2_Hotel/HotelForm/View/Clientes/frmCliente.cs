@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -143,22 +144,51 @@ namespace HotelForm.View.Clientes
 
             if (e.ColumnIndex == dgvClientes.Columns["ColEliminar"].Index && e.RowIndex != -1)
             {
-                int Id_Cliente = int.Parse(dgvClientes.CurrentRow.Cells["ID"].Value.ToString());
-
-                DialogResult result = MessageBox.Show("Desea elimanr?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                try
                 {
-                    //HelperDao.GetInstance().GetSPP("SP_BORRAR_CLIENTE", Id_Cliente);
-                    await clienteService.BajaCliente(Id_Cliente.ToString());
+                    int Id_Cliente = int.Parse(dgvClientes.CurrentRow.Cells["ID"].Value.ToString());
+                    DialogResult result = MessageBox.Show("Desea eliminar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        clienteService.BajaCliente(Id_Cliente);
+
+                    }
+                    dgvClientes.Refresh();
+
+                    
 
                 }
-                dgvClientes.Refresh();
+              
+                 catch (SqlException ex)
+                {
+                    // Manejar excepciones específicas del SQL Server
+                    if (ex.Number == 51000)
+                    {
+                        Console.WriteLine(ex.Message); // El cliente tiene reservas activas
+                    }
+                    else if (ex.Number == 51001)
+                    {
+                        Console.WriteLine(ex.Message); // El cliente tiene facturas
+                    }
+                    else
+                    {
+                        // Manejar otras excepciones de SQL Server
+                        Console.WriteLine($"Error de SQL Server: {ex.Message}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejar otras excepciones
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
 
-                MessageBox.Show("Numero id:" + Id_Cliente);
+
+
 
             }
 
-        }
+        
 
 
         private void btnBuscar_Click(object sender, EventArgs e)

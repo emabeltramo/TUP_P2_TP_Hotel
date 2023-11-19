@@ -136,8 +136,9 @@ namespace HotelAPI.Controllers
 
         [HttpDelete("/DeleteCliente")]
 
-        public IActionResult DeleteCliente(int numero)
+        public IActionResult DeleteCliente(string numero)
         {
+
             try
             {
 

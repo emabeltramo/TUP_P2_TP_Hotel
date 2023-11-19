@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -66,27 +67,27 @@ namespace HotelForm.HTTPClient
             //
         }
 
-
-        public async Task<HttpResponse> DeleteAsync(string url, string data)
-        {
+            public async Task<HttpResponse> DeleteAsync(string url,string data)
+            {
             try
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
-                var result = await client.PostAsync(url,content);
+                var result = await client.DeleteAsync(url);
                 var reply = "";
 
                 if (result.IsSuccessStatusCode)
                 {
-
                     reply = await result.Content.ReadAsStringAsync();
                 }
+
                 return new HttpResponse(result.StatusCode, reply, result.IsSuccessStatusCode);
             }
             catch (Exception ex)
             {
-
                 return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
         }
-}
+
+
+    }
 }
