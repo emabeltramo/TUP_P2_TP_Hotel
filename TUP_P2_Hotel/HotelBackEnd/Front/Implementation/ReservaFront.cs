@@ -42,9 +42,9 @@ namespace HotelBackEnd.Front.Implementation
             return reservaDao.GetEstadosReserva();
         }
 
-        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
+        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel, int idReserva)
         {
-            return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
+            return reservaDao.GetHabitacionHotelDisponibles(desde, hasta, idHotel, idReserva);
         }
 
         public List<HotelModel> GetHoteles()
@@ -95,6 +95,13 @@ namespace HotelBackEnd.Front.Implementation
             mensaje = reservaDao.GetMensaje();
             return result;
             
+        }
+        public bool PutReserva(ReservaModel reserva)
+        {
+            var result = reservaDao.PutReserva(reserva);
+            mensaje = reservaDao.GetMensaje();
+            return result;
+
         }
     }
 }

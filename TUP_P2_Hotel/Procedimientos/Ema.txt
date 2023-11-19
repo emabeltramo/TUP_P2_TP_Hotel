@@ -1,4 +1,4 @@
-create procedure ps_HabDisponibles @desde date, @hasta date, @hotel int
+create procedure ps_HabDisponibles @desde date, @hasta date, @hotel int, @reserva int
 as
 begin
 select HABITACION_HOTEL.ID as 'Id_Habitacion',HABITACION_HOTEL.CODIGO as 'Codigo_Habitacion',
@@ -8,13 +8,16 @@ from HABITACION_HOTEL
 inner join PISOS_HOTEL on PISOS_HOTEL.ID=HABITACION_HOTEL.PISO
 inner join HOTELES on PISOS_HOTEL.HOTEL=HOTELES.ID
 inner join CATEGORIA_HABITACIONES on HABITACION_HOTEL.CATEGORIA=CATEGORIA_HABITACIONES.ID
-where HABITACION_HOTEL.ID not in (
-select HABITACION from RESERVA_HABITACIONES 
-inner join RESERVAS on RESERVAS.ID=RESERVA_HABITACIONES.RESERVA
-where RESERVAS.ESTADO!=3 and
-(@desde between INGRESO and SALIDA or @hasta between INGRESO and SALIDA) or 
-( INGRESO between @desde and @hasta or SALIDA between @desde and @hasta) 
-) and HOTELES.ID=@hotel and HOTELES.HABILITADO=1
+where HABITACION_HOTEL.ID not in 
+	(
+		select HABITACION from RESERVA_HABITACIONES 
+		inner join RESERVAS on RESERVAS.ID=RESERVA_HABITACIONES.RESERVA
+		where RESERVAS.ESTADO!=3 and RESERVAS.ID != @reserva and
+		(@desde between INGRESO and SALIDA or @hasta between INGRESO and SALIDA) 
+		or 
+		( INGRESO between @desde and @hasta or SALIDA between @desde and @hasta) 
+	) 
+and HOTELES.ID=@hotel and HOTELES.HABILITADO=1
 end;
 
 
@@ -150,3 +153,15 @@ for insert
 as
 update RESERVAS set ESTADO=2 from 
 RESERVAS inner join inserted on RESERVAS.ID=inserted.RESERVA
+
+
+create procedure ps_UpdateReserva
+@ingreso date,
+@salida date,
+@id int
+as
+begin
+delete RESERVA_CUENTA where RESERVA = @id
+delete RESERVA_HABITACIONES where RESERVA = @id
+update RESERVAS set INGRESO = @ingreso, SALIDA = @salida,FECHA_RESERVA =GETDATE() where ID = @id;
+end;

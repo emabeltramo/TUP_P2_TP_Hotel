@@ -47,6 +47,7 @@
             this.Desde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.gbFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReserva)).BeginInit();
             this.SuspendLayout();
@@ -175,7 +176,8 @@
             this.Estado,
             this.Desde,
             this.Hasta,
-            this.Ver});
+            this.Ver,
+            this.Modificar});
             this.dgvReserva.Location = new System.Drawing.Point(14, 116);
             this.dgvReserva.Name = "dgvReserva";
             this.dgvReserva.RowTemplate.Height = 25;
@@ -218,6 +220,11 @@
             this.Ver.Name = "Ver";
             this.Ver.ReadOnly = true;
             // 
+            // Modificar
+            // 
+            this.Modificar.HeaderText = "Modificar";
+            this.Modificar.Name = "Modificar";
+            // 
             // frmReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -255,5 +262,6 @@
         private DataGridViewTextBoxColumn Desde;
         private DataGridViewTextBoxColumn Hasta;
         private DataGridViewButtonColumn Ver;
+        private DataGridViewButtonColumn Modificar;
     }
 }

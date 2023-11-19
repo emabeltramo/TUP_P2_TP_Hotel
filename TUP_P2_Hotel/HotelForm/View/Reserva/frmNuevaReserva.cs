@@ -112,7 +112,7 @@ namespace HotelForm.View.Reserva
                 return;
             }
             modelo.Cuenta = ReadDgvServicios();
-            modelo.Empleado = new EmpleadoModel(); //Agregrar empleado
+            
             modelo.Cliente = (ClienteModel)cboClienteReserva.SelectedItem;
             modelo.Ingreso = dtpDesde.Value.Date;
             modelo.Salida = dtpHasta.Value.Date;
@@ -238,6 +238,7 @@ namespace HotelForm.View.Reserva
             #region DataPicker
             dtpDesde.MinDate = DateTime.Now.Date;
             dtpHasta.MinDate = DateTime.Now.AddDays(1).Date;
+            dtpDesde.MaxDate = DateTime.Now.AddMonths(1).Date;
             dtpHasta.Value = DateTime.Now.AddMonths(1).Date;
             #endregion
             #region Combos
@@ -331,7 +332,7 @@ namespace HotelForm.View.Reserva
         {
 
             List<HabitacionHotelModel> habitaciones = await service.
-                GetHabitacionHotelDisponiblesAsync(desde.Date,hasta.Date,id);
+                GetHabitacionHotelDisponiblesAsync(desde.Date,hasta.Date,id,0);
             dgvNuevaReserva.Rows.Clear();
             foreach (var item in habitaciones)
             {

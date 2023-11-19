@@ -16,4 +16,10 @@
     <ProjectReference Include="..\HotelBackEnd\HotelBackEnd.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="View\Reserva\frmUpdateReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

@@ -42,6 +42,19 @@ namespace HotelForm.View.Reserva
                 form.ShowDialog();
                 btnFiltrar.PerformClick();
             }
+            if (e.RowIndex >= 0 && dgvReserva.Rows[e.RowIndex].Cells["Modificar"].ColumnIndex == e.ColumnIndex)
+            {
+                var idReserva = int.Parse(dgvReserva.Rows[e.RowIndex].Cells["Reserva"].Value.ToString());
+                var reserva = reservas.FirstOrDefault(m => m.IdReserva == idReserva);
+                if(reserva.Estado.IdEstadoReserva !=1)
+                {
+                    MessageBox.Show("Solo se pueden modificar reservas en curso","Atencion",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    return;
+                }
+                var form = new frmUpdateReserva(factory, reserva);
+                form.ShowDialog();
+                btnFiltrar.PerformClick();
+            }
         }
 
         private async void BtnFiltrar_Click(object? sender, EventArgs e)
@@ -71,7 +84,8 @@ namespace HotelForm.View.Reserva
                     item.Estado.Descri,
                     item.Ingreso.ToString("dd/MM/yyyy"),
                     item.Salida.ToString("dd/MM/yyyy"),
-                    "Ver"
+                    "Ver",
+                    "Modificar"
                 });
             }
             this.reservas = reservas;

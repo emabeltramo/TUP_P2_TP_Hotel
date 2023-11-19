@@ -53,13 +53,15 @@ namespace HotelForm.Service.Implementation
             return result;
         }
 
-        public async Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel)
+        public async Task<List<HabitacionHotelModel>> GetHabitacionHotelDisponiblesAsync(DateTime desde, DateTime hasta, int idHotel, int idReserva)
         {
             string url = host + "/GetHabDispo?";
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["desde"] = desde.ToString("MM/dd/yyyy");
             query["hasta"] = hasta.ToString("MM/dd/yyyy");
             query["idHotel"] = idHotel.ToString();
+            query["idReserva"] = idReserva.ToString();
+
 
             List<HabitacionHotelModel> result = new List<HabitacionHotelModel>();
             var response = await ClientSingleton.GetInstance().GetAsync(url+ query.ToString()); ;
@@ -177,6 +179,15 @@ namespace HotelForm.Service.Implementation
             var response = await ClientSingleton.GetInstance().PostAsync(url,data);
             
             
+            return response;
+        }
+        public async Task<HttpResponse> PutReservaAsync(ReservaModel Reservar)
+        {
+            string url = host + "/PutReserva";
+            var data = JsonConvert.SerializeObject(Reservar);
+            var response = await ClientSingleton.GetInstance().PutAsync(url, data);
+
+
             return response;
         }
     }

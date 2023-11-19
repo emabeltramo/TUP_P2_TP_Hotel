@@ -52,7 +52,7 @@ namespace HotelBackEnd.DAO.Implementation
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 result = null;
             }
@@ -68,7 +68,7 @@ namespace HotelBackEnd.DAO.Implementation
             return mensaje;
         }
 
-        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel)
+        public List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel, int idReserva)
         {
             ProccesData procces = new ProccesData();
             SqlCommand cmd = new SqlCommand();
@@ -83,6 +83,8 @@ namespace HotelBackEnd.DAO.Implementation
                 p.Add(new SqlParameter("@desde", (object)desde ?? DBNull.Value));
                 p.Add(new SqlParameter("@hasta", (object)hasta ?? DBNull.Value));
                 p.Add(new SqlParameter("@hotel", (object)idHotel ?? DBNull.Value));
+                p.Add(new SqlParameter("@reserva", (object)idReserva ?? DBNull.Value));
+
                 cmd.Parameters.AddRange(p.ToArray());
                 cmd.Connection.Open();
                 var reader = cmd.ExecuteReader();
@@ -320,7 +322,76 @@ namespace HotelBackEnd.DAO.Implementation
             }
             return result;
         }
+        public bool PutReserva(ReservaModel reserva)
+        {
+            bool result = false;
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction t = null;
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.Connection.Open();
+                t = cmd.Connection.BeginTransaction();
+                cmd.Transaction = t;
+                cmd.CommandText = "ps_UpdateReserva";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ingreso", (object)reserva.Ingreso);
+                cmd.Parameters.AddWithValue("@salida", (object)reserva.Salida);
+                cmd.Parameters.AddWithValue("@id", (object)reserva.IdReserva);
+                //cmd.Parameters.AddWithValue("@empleado", (object)1);
 
+                cmd.ExecuteNonQuery();
+                foreach (var item in reserva.Habitaciones)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@reserva", (object)reserva.IdReserva);
+                    cmd.Parameters.AddWithValue("@habitacion", (object)item.Habitacion.Id_Habitacion);
+                    cmd.Parameters.AddWithValue("@monto", (object)item.Monto);
+                    cmd.CommandText = "ps_InsertReservaHabitacion";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (cmd.ExecuteNonQuery() != 1)
+                    {
+                        this.mensaje = "No se inserto habitacion en reserva";
+                        t.Rollback();
+                        cmd.Connection.Close();
+                        return false;
+                    }
+                }
+                foreach (var item in reserva.Cuenta)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@reserva", (object)reserva.IdReserva);
+                    cmd.Parameters.AddWithValue("@servicio", (object)item.Servicio.Id);
+                    cmd.Parameters.AddWithValue("@monto", (object)item.Monto);
+                    cmd.Parameters.AddWithValue("@bonificado", (object)item.Bonificado);
+                    cmd.Parameters.AddWithValue("@cantidad", (object)item.Cantidad);
+
+                    cmd.CommandText = "ps_InsertReservaCuenta";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (cmd.ExecuteNonQuery() != 1)
+                    {
+                        this.mensaje = "No se inserto el servicio en reserva";
+                        t.Rollback();
+                        cmd.Connection.Close();
+                        return false;
+                    }
+                }
+                t.Commit();
+                result = true;
+                mensaje = reserva.IdReserva.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                t.Rollback();
+                mensaje = ex.Message;
+            }
+            if (cmd.Connection.State == System.Data.ConnectionState.Open)
+            {
+                cmd.Connection.Close();
+            }
+            return result;
+        }
         public List<EstadoReservaModel> GetEstadosReserva()
         {
 

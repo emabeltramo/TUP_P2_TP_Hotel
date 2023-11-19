@@ -34,7 +34,7 @@ namespace HotelAPI.Controllers
             }
         }
         [HttpGet("/GetHabDispo")]
-        public IActionResult GetHabDisponibles([FromQuery] DateTime desde, [FromQuery] DateTime hasta, [FromQuery] int idHotel)
+        public IActionResult GetHabDisponibles([FromQuery] DateTime desde, [FromQuery] DateTime hasta, [FromQuery] int idHotel, [FromQuery] int idReserva)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace HotelAPI.Controllers
                     desde = hasta;
                     hasta = temp;
                 }
-                var result = front.GetHabitacionHotelDisponibles(desde, hasta, idHotel);
+                var result = front.GetHabitacionHotelDisponibles(desde, hasta, idHotel, idReserva);
                 if (result == null)
                 {
                     return StatusCode(500, "Se produjo un error al procesar las habitaciones");
@@ -156,6 +156,30 @@ namespace HotelAPI.Controllers
                     return StatusCode(500, mensaje);
                 }
                 return StatusCode(201,mensaje);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+        [HttpPut("/PutReserva")]
+        public IActionResult PutReserva(ReservaModel reserva)
+        {
+            try
+            {
+                if (reserva.Habitaciones.Count() < 1)
+                    return StatusCode(401, "La reserva debe contener habitaciones");
+                
+                if (reserva.Ingreso < DateTime.Now.Date)
+                    return StatusCode(401, "La fecha de ingreso no puede ser menor a la del dia de hoy");
+                var result = front.PutReserva(reserva);
+                var mensaje = front.GetMensaje();
+                if (!result)
+                {
+                    return StatusCode(500, mensaje);
+                }
+                return StatusCode(200, mensaje);
             }
             catch (Exception)
             {

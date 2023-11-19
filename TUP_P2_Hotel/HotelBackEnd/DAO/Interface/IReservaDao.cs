@@ -14,7 +14,7 @@ namespace HotelBackEnd.DAO.Interface
         List<HotelModel> GetHoteles();
         List<ProvinciaModel> GetProvincias();
         List<LocalidadModel> GetLocalidades();
-        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel);
+        List<HabitacionHotelModel> GetHabitacionHotelDisponibles(DateTime desde, DateTime hasta, int idHotel, int idReserva);
         List<HotelServicioModel> GetServiciosHotel(int idHotel);
         List<EstadoReservaModel> GetEstadosReserva();
         List<ReservaModel> GetReservas(DateTime desde, DateTime hasta, int idHotel);
@@ -22,6 +22,7 @@ namespace HotelBackEnd.DAO.Interface
         List<ReservaCuentaModel> GetReservaCuenta(int idReserva);
 
         bool PostReserva(ReservaModel reserva);
+        bool PutReserva(ReservaModel reserva);
         bool DeleteReserva(int idReserva);
         string GetMensaje();
     }
