@@ -38,10 +38,22 @@ namespace HotelForm.View.Login
         {
             if (cboUsuario.SelectedIndex >= 0)
             {
-                factory.SetSesion((EmpleadoModel)cboUsuario.SelectedItem);
-                frmMain formGestion = new frmMain(factory);
-                formGestion.Show();
-                this.Hide();
+                var usr = (EmpleadoModel)cboUsuario.SelectedItem;
+                if(txbPsw.Text == usr.Legajo.ToString())
+                {
+                    factory.SetSesion(usr);
+                    frmMain formGestion = new frmMain(factory);
+                    this.Hide();
+                    formGestion.ShowDialog();
+                    this.Show();
+                    txbPsw.Text = String.Empty;
+                }
+                else
+                {
+                    string caption = "Advertencia";
+                    MessageBox.Show("Clave incorrecta", caption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
+                
             }
             else
             {

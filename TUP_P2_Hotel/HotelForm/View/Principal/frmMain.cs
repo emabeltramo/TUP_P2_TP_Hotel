@@ -197,8 +197,9 @@ namespace HotelForm.View.Principal
             DialogResult result = MessageBox.Show("Desea cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                this.Close();
                 this.Dispose();
-                AbrirFormHijo(new frmLogin(factory));
+                
 
             }
         }
