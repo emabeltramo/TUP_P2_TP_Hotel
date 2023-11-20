@@ -123,7 +123,27 @@ where RESERVAS.ESTADO!=3 and
 end;
 
 GO
+CREATE PROCEDURE SP_VERIFICAR_CLIENTE_EXISTENTE
+    @ClienteID INT,
+    @Resultado BIT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET @Resultado = 1;
+    IF EXISTS (SELECT 1 FROM reservas WHERE cliente = @ClienteID)
+    BEGIN
+        SET @Resultado = 0; 
+        RETURN;
+    END
 
+    IF EXISTS (SELECT 1 FROM facturas WHERE cliente = @ClienteID)
+    BEGIN
+        SET @Resultado = 0; 
+        RETURN;
+    END
+END;
+
+go
 create procedure ps_InsertReserva
 @cliente int,
 @ingreso date,
