@@ -19,6 +19,9 @@
     <Compile Update="View\Principal\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Reporte\frmReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\Reserva\frmReservas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -28,5 +31,10 @@
     <Compile Update="View\Reserva\frmViewReserva.cs">
       <SubType>Form</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="DataSet\DataSet1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 </Project>

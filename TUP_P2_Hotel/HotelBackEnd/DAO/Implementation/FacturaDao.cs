@@ -3,9 +3,12 @@ using HotelBackEnd.DAO.Interface;
 using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -132,6 +135,61 @@ namespace HotelBackEnd.DAO.Implementation
             if (cmd.Connection.State == System.Data.ConnectionState.Open)
             {
                 cmd.Connection.Close();
+            }
+            return result;
+        }
+
+        public List<ReporteModel> GetReporte(int year)
+        {
+            ProccesData procces = new ProccesData();
+            SqlCommand cmd = new SqlCommand();
+            var result = new List<ReporteModel>();
+            try
+            {
+                cmd.Connection = HelperDao.GetInstance().GetConnection();
+                cmd.CommandText = "ps_RepClientesFacturado";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@year", (object)year));
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var reg = procces.MakeReg(reader);
+                        var reporte = new ReporteModel()
+                        {
+                            Posicion = reg.FirstOrDefault(m => m.Campo.ToUpper() == "POSICION").Valor ?? 0,
+                            Cliente = reg.FirstOrDefault(m => m.Campo.ToUpper() == "CLIENTE").Valor ?? string.Empty,
+                            Promedio = reg.FirstOrDefault(m => m.Campo.ToUpper() == "PROMEDIO").Valor ?? 0,
+                            Noches = reg.FirstOrDefault(m => m.Campo.ToUpper() == "NOCHES").Valor ?? 0,
+                            Total = reg.FirstOrDefault(m => m.Campo.ToUpper() == "TOTAL").Valor ??0,
+
+
+
+                        };
+                        result.Add(reporte);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = null;
+                
+            }
+            finally
+            {
+                try
+                {
+                    if(cmd.Connection.State == ConnectionState.Open)
+                        cmd.Connection.Close();
+                }
+                catch (Exception)
+                {
+
+                    
+                }
             }
             return result;
         }

@@ -140,5 +140,23 @@ namespace HotelAPI.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpGet("/factura/GetReporte")]
+        public IActionResult GetReporte([FromQuery] int year)
+        {
+            try
+            {
+                var result = front.GetReporte(year);
+                if (result == null)
+                {
+                    return StatusCode(500, "Se produjo un error al procesar el reporte");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
     }
 }

@@ -131,7 +131,7 @@ namespace HotelBackEnd.DAO.Implementation
             List<HotelModel> lstHoteles = new List<HotelModel>();
             try
             {
-                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 5 ASC ");
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM HOTELES ORDER BY 5 ASC ", CommandType.Text);
                 foreach (DataRow row in table.Rows)
                 {
                     int idHotel = int.Parse(row["ID"].ToString());
@@ -159,7 +159,7 @@ namespace HotelBackEnd.DAO.Implementation
             List<LocalidadModel> lstLocalidades = new List<LocalidadModel>();
             try
             {
-                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM LOCALIDADES ORDER BY 2 ");
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM LOCALIDADES ORDER BY 2 ",CommandType.Text);
                 foreach (DataRow row in table.Rows)
                 {
                     int id = int.Parse(row["ID_LOCALIDAD"].ToString());
@@ -183,7 +183,7 @@ namespace HotelBackEnd.DAO.Implementation
             List<ProvinciaModel> lstProvincias = new List<ProvinciaModel>();
             try
             {
-                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM PROVINCIAS ORDER BY 2 ");
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM PROVINCIAS ORDER BY 2 ", CommandType.Text);
                 foreach (DataRow row in table.Rows)
                 {
                     int id = int.Parse(row["ID_PROVINCIAS"].ToString());

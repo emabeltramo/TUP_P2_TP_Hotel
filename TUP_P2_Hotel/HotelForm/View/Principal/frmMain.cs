@@ -2,6 +2,7 @@
 using HotelForm.View.Factura;
 using HotelForm.View.Factura.FacturaView;
 using HotelForm.View.Login;
+using HotelForm.View.Reporte;
 using HotelForm.View.Reserva;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,23 @@ namespace HotelForm.View.Principal
             this.factory = factory;
             InitializeComponent();
             this.Load += FrmMain_Load;
+            btnCargarServicio.Click += BtnCargarServicio_Click;
+        }
+
+        private void BtnCargarServicio_Click(object? sender, EventArgs e)
+        {
+            AbrirFormHijo(new frmReporte(factory));
+            //...
+            OcultarSubmenu();
         }
 
         private void FrmMain_Load(object? sender, EventArgs e)
         {
             var empleado = factory.GetSesion();
             this.Text = $"Bienvenido {empleado.Apellido} {empleado.Nombre}";
+            btnServicio.Text = "REPORTES";
+            btnCargarServicio.Text = "Clientes Anuales";
+
         }
 
         private void OcultarSubmenu()

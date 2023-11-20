@@ -4,6 +4,7 @@ using HotelBackEnd.Front.Interface;
 using HotelBackEnd.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,12 @@ namespace HotelBackEnd.Front.Implementation
         {
             return facturaDao.GetFormaPago();
         }
+
+        public List<ReporteModel> GetReporte(int year)
+        {
+            return facturaDao.GetReporte(year);
+        }
+
         public List<ReservaModel> GetReserva()
         {
             return facturaDao.GetReserva();

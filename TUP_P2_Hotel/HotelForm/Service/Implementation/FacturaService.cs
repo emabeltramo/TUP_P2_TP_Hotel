@@ -4,6 +4,7 @@ using HotelForm.Service.Interface;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,6 +121,20 @@ namespace HotelForm.Service.Implementation
             if (response != null && response.SuccessStatus)
             {
                 result = JsonConvert.DeserializeObject<List<ReservaHabitacionModel>>(response.Data);
+            }
+            return result;
+        }
+
+        public async Task<List<ReporteModel>> GetReporte(int year)
+        {
+            string url = host + "/factura/GetReporte?";
+            var query = HttpUtility.ParseQueryString(string.Empty);
+            query["year"] = year.ToString();
+            List<ReporteModel> result = new List<ReporteModel>();
+            var response = await ClientSingleton.GetInstance().GetAsync(url + query.ToString()); ;
+            if (response != null && response.SuccessStatus)
+            {
+                result = JsonConvert.DeserializeObject<List<ReporteModel>>(response.Data);
             }
             return result;
         }
