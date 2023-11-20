@@ -30,10 +30,10 @@
         {
             dgvClientes = new DataGridView();
             ColModificar = new DataGridViewButtonColumn();
+            ColEliminar = new DataGridViewButtonColumn();
             btnBuscar = new Button();
             txtBuscar = new TextBox();
             btnAtras = new Button();
-            ColEliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -58,6 +58,12 @@
             ColModificar.ReadOnly = true;
             ColModificar.Text = "Modificar";
             ColModificar.UseColumnTextForButtonValue = true;
+            // 
+            // ColEliminar
+            // 
+            ColEliminar.HeaderText = "Eliminar";
+            ColEliminar.Name = "ColEliminar";
+            ColEliminar.ReadOnly = true;
             // 
             // btnBuscar
             // 
@@ -84,12 +90,7 @@
             btnAtras.TabIndex = 7;
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = true;
-            // 
-            // ColEliminar
-            // 
-            ColEliminar.HeaderText = "Eliminar";
-            ColEliminar.Name = "ColEliminar";
-            ColEliminar.ReadOnly = true;
+            btnAtras.Click += btnAtras_Click;
             // 
             // frmCliente
             // 

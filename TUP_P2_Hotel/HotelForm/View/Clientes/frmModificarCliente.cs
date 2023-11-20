@@ -105,11 +105,6 @@ namespace HotelForm.View.Clientes
 
 
 
-        private async void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
 
         private async void btnCargarCliente_Click(object sender, EventArgs e)
         {
@@ -171,32 +166,6 @@ namespace HotelForm.View.Clientes
         }
 
 
-
-
-
-
-
-        private void btnSalirCliente_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Desea Limpiar?", "Limpiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                txtApellido.Text = string.Empty;
-                txtNombre.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtNroDocumento.Text = string.Empty;
-                txtRazonSocial.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
-
-
-            }
-        }
-
         private async void btnBorrar_Click(object sender, EventArgs e)
         {
             try
@@ -216,9 +185,21 @@ namespace HotelForm.View.Clientes
                 return;
             }
         }
-        private void btnSalirCliente_Click_1(object sender, EventArgs e)
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            DialogResult result = MessageBox.Show("Desea Limpiar?", "Limpiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                txtApellido.Text = string.Empty;
+                txtNombre.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtNroDocumento.Text = string.Empty;
+                txtRazonSocial.Text = string.Empty;
+                txtTelefono.Text = string.Empty;
+
+
+            }
         }
     }
 }

@@ -102,6 +102,25 @@ namespace HotelBackEnd.DAO.Helper
             connection.Close();
             return tabla;
         }
+        public bool VerificarClienteExistente(int clienteId)
+        {
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SP_VERIFICAR_CLIENTE_EXISTENTE";
+            cmd.Parameters.AddWithValue("@ClienteID", clienteId);
+            cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+
+            cmd.ExecuteNonQuery();
+
+            bool resultado = Convert.ToBoolean(cmd.Parameters["@Resultado"].Value);
+
+            connection.Close();
+
+            return resultado;
+        }
         public DataTable GetSp(string nombreSp)
         {
             connection.Open();
@@ -114,21 +133,6 @@ namespace HotelBackEnd.DAO.Helper
             connection.Close();
             return tabla;
         }
-        //internal DataTable Consultar(string nombreSP, List<Parametro> lParams)
-        //{
-        //    conexion.Open();
-        //    SqlCommand comando = new SqlCommand();
-        //    comando.Connection = conexion;
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    comando.CommandText = nombreSP;
-        //    foreach (Parametro p in lParams)
-        //    {
-        //        comando.Parameters.AddWithValue(p.Nombre, p.Valor);
-        //    }
-        //    DataTable tabla = new DataTable();
-        //    tabla.Load(comando.ExecuteReader());
-        //    conexion.Close();
-        //    return tabla;
-        //}
+    
     }
 }

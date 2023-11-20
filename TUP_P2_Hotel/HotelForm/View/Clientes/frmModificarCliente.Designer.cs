@@ -42,7 +42,6 @@
             txtNombre = new TextBox();
             lblCliente = new Label();
             btnLimpiar = new Button();
-            btnSalirCliente = new Button();
             btnCargarCliente = new Button();
             cboTipoDocumento = new ComboBox();
             cboTipoCliente = new ComboBox();
@@ -172,23 +171,13 @@
             // btnLimpiar
             // 
             btnLimpiar.Anchor = AnchorStyles.Bottom;
-            btnLimpiar.Location = new Point(381, 436);
+            btnLimpiar.Location = new Point(260, 391);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(75, 23);
             btnLimpiar.TabIndex = 64;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // btnSalirCliente
-            // 
-            btnSalirCliente.Anchor = AnchorStyles.Bottom;
-            btnSalirCliente.Location = new Point(279, 436);
-            btnSalirCliente.Name = "btnSalirCliente";
-            btnSalirCliente.Size = new Size(75, 23);
-            btnSalirCliente.TabIndex = 63;
-            btnSalirCliente.Text = "Salir";
-            btnSalirCliente.UseVisualStyleBackColor = true;
-            btnSalirCliente.Click += btnSalirCliente_Click_1;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCargarCliente
             // 
@@ -244,7 +233,7 @@
             // btnBorrar
             // 
             btnBorrar.Anchor = AnchorStyles.Bottom;
-            btnBorrar.Location = new Point(548, 391);
+            btnBorrar.Location = new Point(391, 391);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(75, 23);
             btnBorrar.TabIndex = 88;
@@ -276,7 +265,6 @@
             Controls.Add(txtNombre);
             Controls.Add(lblCliente);
             Controls.Add(btnLimpiar);
-            Controls.Add(btnSalirCliente);
             Controls.Add(btnCargarCliente);
             Name = "frmModificarCliente";
             Text = "Modificar Cliente";
@@ -301,7 +289,6 @@
         private TextBox txtNombre;
         private Label lblCliente;
         private Button btnLimpiar;
-        private Button btnSalirCliente;
         private Button btnCargarCliente;
         private ComboBox cboTipoDocumento;
         private ComboBox cboTipoCliente;
