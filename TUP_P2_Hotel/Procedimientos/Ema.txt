@@ -166,11 +166,11 @@ delete RESERVA_HABITACIONES where RESERVA = @id
 update RESERVAS set INGRESO = @ingreso, SALIDA = @salida,FECHA_RESERVA =GETDATE() where ID = @id;
 end;
 
-create procedure ps_RepClientesFacturado @year int
+alter procedure ps_RepClientesFacturado @year int
 as
 begin
-select ROW_NUMBER() over(order by SUM(FACTURA_DETALLES.MONTO*FACTURA_DETALLES.CANTIDAD) desc) as Posicion,
-IIF(CLIENTES.Razon_Social is not null,CLIENTES.Razon_Social,CLIENTES.APELLIDO + SPACE(1)+NOMBRE) as Cliente, 
+select CONVERT(int,ROW_NUMBER() over(order by SUM(FACTURA_DETALLES.MONTO*FACTURA_DETALLES.CANTIDAD) desc)) as Posicion,
+IIF((CLIENTES.Razon_Social is not null and Clientes.razon_social !=''),CLIENTES.Razon_Social,CLIENTES.APELLIDO + SPACE(1)+NOMBRE) as Cliente, 
 SUM(FACTURA_DETALLES.MONTO*FACTURA_DETALLES.CANTIDAD) As Total,
 SUM(DATEDIFF(DAY,INGRESO,SALIDA)) as Noches, 
 CONVERT(decimal(20,2),SUM(FACTURA_DETALLES.MONTO*FACTURA_DETALLES.CANTIDAD)/SUM(DATEDIFF(DAY,INGRESO,SALIDA)))as Promedio
