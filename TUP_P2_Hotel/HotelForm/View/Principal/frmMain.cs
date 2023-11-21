@@ -40,7 +40,8 @@ namespace HotelForm.View.Principal
             this.Text = $"Bienvenido {empleado.Apellido} {empleado.Nombre}";
             btnServicio.Text = "REPORTES";
             btnCargarServicio.Text = "Clientes Anuales";
-
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
         }
 
         private void OcultarSubmenu()
