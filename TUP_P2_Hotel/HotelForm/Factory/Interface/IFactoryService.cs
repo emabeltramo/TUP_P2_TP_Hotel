@@ -16,5 +16,6 @@ namespace HotelForm.Factory.Interface
         IFacturaService CreateFacturaService();
         void SetSesion(EmpleadoModel emp);
         EmpleadoModel GetSesion();
+        IClienteService CreateClienteService();
     }
 }

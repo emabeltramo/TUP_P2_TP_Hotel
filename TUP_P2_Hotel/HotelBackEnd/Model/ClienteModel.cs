@@ -9,6 +9,20 @@ namespace HotelBackEnd.Model
 {
     public class ClienteModel
     {
+        public ClienteModel()
+        {
+            Id_Cliente = 0;
+            Nombre = string.Empty;
+            Apellido = string.Empty;
+            TDoc = new TipoDocumentoModel();
+            DNI = string.Empty;
+            CUIL = string.Empty;
+            Email = string.Empty;
+            Celular = string.Empty;
+            TCliente = new TipoClienteModel();
+            RazonSocial = string.Empty;
+        }
+
         public int Id_Cliente { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -19,16 +33,26 @@ namespace HotelBackEnd.Model
         public string Celular { get; set; }
         public TipoClienteModel TCliente { get; set; }
         public string RazonSocial { get; set; }
+
         public string NombreCompleto
         {
             get
             {
-                if (string.IsNullOrEmpty(RazonSocial))
-                    return Apellido + " " + Nombre + " " + DNI;
+                if (RazonSocial=="-" || RazonSocial==string.Empty )
+                    return Apellido + " - " + Nombre + " - " + DNI;
                 else
-                    return RazonSocial + " " + CUIL;
+                    return RazonSocial + " - " + CUIL;
             }
         }
+
+        public override string ToString()
+        {
+            if (RazonSocial == "-")
+                return Apellido + " - " + Nombre + " - " + DNI;
+            else
+                return RazonSocial + " - " + CUIL;
+        }
+        
         public ClienteModel()
         {
             Id_Cliente = 0;

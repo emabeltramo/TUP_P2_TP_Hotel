@@ -1,6 +1,7 @@
 ﻿using HotelForm.Factory.Interface;
 using HotelForm.View.Factura;
 using HotelForm.View.Factura.FacturaView;
+using HotelForm.View.Clientes;
 using HotelForm.View.Login;
 using HotelForm.View.Reporte;
 using HotelForm.View.Reserva;
@@ -144,13 +145,14 @@ namespace HotelForm.View.Principal
 
         private void btnNvoCliente_Click(object sender, EventArgs e)
         {
-            //...
+            AbrirFormHijo(new frmAltaCliente(factory));
             OcultarSubmenu();
         }
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
-            //...
+            AbrirFormHijo(new frmCliente(factory));
+
             OcultarSubmenu();
         }
         #endregion
