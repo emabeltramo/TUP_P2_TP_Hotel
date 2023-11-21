@@ -27,14 +27,73 @@ namespace HotelForm.View.Clientes
             this.factory = factory;
             clienteService = factory.CreateClienteService();
             InitializeComponent();
+            this.Load += FrmCliente_Load;
+            dgvClientes.CellContentClick += DgvClientes_CellContentClick;
+            btnBuscar.Click += BtnBuscar_Click;
+            btnAtras.Click += BtnAtras_Click;
         }
 
-        private void frmCliente_Load(object sender, EventArgs e)
+        private void BtnAtras_Click(object? sender, EventArgs e)
         {
-            CargarDgvClientesAsync();
+            this.Close();
+            this.Dispose();
         }
 
-        private async void CargarDgvClientesAsync()
+        private async void BtnBuscar_Click(object? sender, EventArgs e)
+        {
+            await CargarDgvClientesAsync();
+        }
+
+        private void DgvClientes_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvClientes.Columns["ColModificar"].Index && e.RowIndex != -1)
+            {
+                ClienteModel c = new ClienteModel();
+                c.Id_Cliente = int.Parse(dgvClientes.CurrentRow.Cells["ID"].Value.ToString());
+                c.Nombre = dgvClientes.CurrentRow.Cells["Nombre"].Value.ToString();
+                c.Apellido = dgvClientes.CurrentRow.Cells["Apellido"].Value.ToString();
+                c.Email = dgvClientes.CurrentRow.Cells["EMAIL"].Value.ToString();
+                c.Celular = dgvClientes.CurrentRow.Cells["CELULAR"].Value.ToString();
+                c.RazonSocial = dgvClientes.CurrentRow.Cells["razon social"].Value.ToString();
+
+                string tipoDocumento = dgvClientes.CurrentRow.Cells["Tipo Documento"].Value?.ToString();
+                string tipoCliente = dgvClientes.CurrentRow.Cells["Tipo Cliente"].Value?.ToString();
+
+                if (tipoDocumento == "DNI")
+                {
+                    c.TDoc.Id = 1;
+                    c.DNI = dgvClientes.CurrentRow.Cells["DNI"].Value.ToString();
+                    c.CUIL = dgvClientes.CurrentRow.Cells["Cuil"].Value.ToString();
+                }
+                else if (tipoDocumento == "Pasaporte")
+                {
+                    c.TDoc.Id = 2;
+                    c.CUIL = dgvClientes.CurrentRow.Cells["Cuil"].Value.ToString();
+                }
+
+                if (tipoCliente == "Personas")
+                {
+                    c.TCliente.Id = 1;
+                    c.TCliente.Descri = "Personas";
+                }
+                else if (tipoCliente == "Empresas")
+                {
+                    c.TCliente.Id = 2;
+                    c.TCliente.Descri = "Empresas";
+                }
+                new frmModificarCliente(factory, c).ShowDialog();
+                btnBuscar.PerformClick();
+            }
+        }
+
+        private async void FrmCliente_Load(object? sender, EventArgs e)
+        {
+           await CargarDgvClientesAsync();
+        }
+
+
+
+        private async Task CargarDgvClientesAsync()
         {
             DataTable dtClientes = new DataTable();
 
@@ -84,8 +143,8 @@ namespace HotelForm.View.Clientes
 
                     int columnas = dtClientes.Columns.Count;
                     dgvClientes.DataSource = dtClientes;
-                    dgvClientes.Columns["ColModificar"].DisplayIndex = 11; // Ajusta la posición de "ColModificar" si es necesario
-                    dgvClientes.Columns["ColEliminar"].DisplayIndex = 11; // Ajusta la posición de "ColModificar" si es necesario
+                    dgvClientes.Columns["ColModificar"].DisplayIndex = 10; // Ajusta la posición de "ColModificar" si es necesario
+                    
                 }
                 else
                 {
@@ -99,104 +158,5 @@ namespace HotelForm.View.Clientes
         }
 
 
-
-        private async void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-                if (e.ColumnIndex == dgvClientes.Columns["ColModificar"].Index && e.RowIndex != -1)
-                {
-                    ClienteModel c = new ClienteModel();
-                    c.Id_Cliente = int.Parse(dgvClientes.CurrentRow.Cells["ID"].Value.ToString());
-                    c.Nombre = dgvClientes.CurrentRow.Cells["Nombre"].Value.ToString();
-                    c.Apellido = dgvClientes.CurrentRow.Cells["Apellido"].Value.ToString();
-                    c.Email = dgvClientes.CurrentRow.Cells["EMAIL"].Value.ToString();
-                    c.Celular = dgvClientes.CurrentRow.Cells["CELULAR"].Value.ToString();
-                    c.RazonSocial = dgvClientes.CurrentRow.Cells["razon social"].Value.ToString();
-
-                    string tipoDocumento = dgvClientes.CurrentRow.Cells["Tipo Documento"].Value?.ToString();
-                    string tipoCliente = dgvClientes.CurrentRow.Cells["Tipo Cliente"].Value?.ToString();
-
-                    if (tipoDocumento == "DNI")
-                    {
-                        c.TDoc.Id = 1;
-                        c.DNI = dgvClientes.CurrentRow.Cells["DNI"].Value.ToString();
-                        c.CUIL = dgvClientes.CurrentRow.Cells["Cuil"].Value.ToString();
-                    }
-                    else if (tipoDocumento == "Pasaporte")
-                    {
-                        c.TDoc.Id = 2;
-                        c.CUIL = dgvClientes.CurrentRow.Cells["Cuil"].Value.ToString();
-                    }
-
-                    if (tipoCliente == "Personas")
-                    {
-                        c.TCliente.Id = 1;
-                        c.TCliente.Descri = "Personas";
-                    }
-                    else if (tipoCliente == "Empresas")
-                    {
-                        c.TCliente.Id = 2;
-                        c.TCliente.Descri = "Empresas";
-                    }
-                    new frmModificarCliente(factory, c).ShowDialog();
-                
-            }
-
-            if (e.ColumnIndex == dgvClientes.Columns["ColEliminar"].Index && e.RowIndex != -1)
-            {
-                try
-                {
-                    int Id_Cliente = int.Parse(dgvClientes.CurrentRow.Cells["ID"].Value.ToString());
-                    DialogResult result = MessageBox.Show("Desea eliminar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        clienteService.BajaCliente(Id_Cliente);
-
-                    }
-                    dgvClientes.Refresh();
-
-                    
-
-                }
-              
-                 catch (SqlException ex)
-                {
-                    // Manejar excepciones específicas del SQL Server
-                    if (ex.Number == 51000)
-                    {
-                        Console.WriteLine(ex.Message); // El cliente tiene reservas activas
-                    }
-                    else if (ex.Number == 51001)
-                    {
-                        Console.WriteLine(ex.Message); // El cliente tiene facturas
-                    }
-                    else
-                    {
-                        // Manejar otras excepciones de SQL Server
-                        Console.WriteLine($"Error de SQL Server: {ex.Message}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Manejar otras excepciones
-                    Console.WriteLine($"Error: {ex.Message}");
-                }
-            }
-
-
-
-
-            }
-
-        
-
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-            CargarDgvClientesAsync();
-
-
-        }
     }
 }

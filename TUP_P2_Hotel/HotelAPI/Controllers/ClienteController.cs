@@ -99,7 +99,7 @@ namespace HotelAPI.Controllers
             try
             {
                 var result = front.AltaCliente(cliente);
-                if (result == null)
+                if (result == false)
                 {
                     return StatusCode(500, " Se produjo un error al dar de alta un cliente");
                 }
@@ -120,7 +120,7 @@ namespace HotelAPI.Controllers
             try
             {
                 var result = front.ActualizarCliente(cliente);
-                if (result == null)
+                if (result == false)
                 {
                     return StatusCode(500, " Se produjo un error al actualizar un cliente");
                 }
@@ -143,7 +143,7 @@ namespace HotelAPI.Controllers
             {
 
                 var result = front.BajaCliente(numero);
-                if (result == null)
+                if (result == false)
                 {
                     return StatusCode(500, " Se produjo un error al dar de baja un cliente");
                 }

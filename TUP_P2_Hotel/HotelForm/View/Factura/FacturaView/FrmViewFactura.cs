@@ -25,24 +25,17 @@ namespace HotelForm.View.Factura.FacturaView
             service = factory.CreateFacturaViewService();
             this.Text = $"Factura N° {factura.IdFactura}";
             this.factory = factory;
+            this.Load += FrmViewFactura_Load1;
+            btnCerrar.Click += BtnCerrar_Click;
             InitComp();
         }
-        private void InitComp()
+
+        private void BtnCerrar_Click(object? sender, EventArgs e)
         {
-            txbNombre.ReadOnly = true;
-            txbDni.ReadOnly = true;
-            txbMail.ReadOnly = true;
-            txbTelefono.ReadOnly = true;
-            dtpDesde.Enabled = false;
-            dtpHasta.Enabled = false;
-            txtEstado.ReadOnly = true;
-            txtIdReserva.ReadOnly = true;
-            dtpFecha.Enabled = false;
-            txtTipoFactura.ReadOnly = true;
-            txtTotal.ReadOnly = true;
+            this.Close();
         }
 
-        private async void FrmViewFactura_Load(object sender, EventArgs e)
+        private async void FrmViewFactura_Load1(object? sender, EventArgs e)
         {
             txbNombre.Text = string.IsNullOrEmpty(factura.Cliente.RazonSocial) ? factura.Cliente.Apellido + " " + factura.Cliente.Nombre : factura.Cliente.RazonSocial;
             txbDni.Text = string.IsNullOrEmpty(factura.Cliente.DNI) ? factura.Cliente.CUIL : factura.Cliente.DNI;
@@ -59,6 +52,23 @@ namespace HotelForm.View.Factura.FacturaView
 
             cargarDetalle();
         }
+
+        private void InitComp()
+        {
+            txbNombre.ReadOnly = true;
+            txbDni.ReadOnly = true;
+            txbMail.ReadOnly = true;
+            txbTelefono.ReadOnly = true;
+            dtpDesde.Enabled = false;
+            dtpHasta.Enabled = false;
+            txtEstado.ReadOnly = true;
+            txtIdReserva.ReadOnly = true;
+            dtpFecha.Enabled = false;
+            txtTipoFactura.ReadOnly = true;
+            txtTotal.ReadOnly = true;
+        }
+
+        
 
         private async Task ObtenerFormasPagos()
         {
@@ -87,9 +97,6 @@ namespace HotelForm.View.Factura.FacturaView
             txtTotal.Text = factura.CalcularTotal().ToString();
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
     }
 }

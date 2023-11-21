@@ -28,6 +28,8 @@ namespace HotelForm.View.Principal
             btnCargarServicio.Click += BtnCargarServicio_Click;
             btnNvoCliente.Click += BtnNvoCliente_Click;
             btnModificarCliente.Click += BtnModificarCliente_Click;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
         }
 
         private void BtnModificarCliente_Click(object? sender, EventArgs e)

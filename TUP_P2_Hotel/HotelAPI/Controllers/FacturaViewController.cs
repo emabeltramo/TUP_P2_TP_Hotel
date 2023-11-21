@@ -108,7 +108,7 @@ namespace HotelAPI.Controllers
                     desde = hasta;
                     hasta = temp;
                 }
-                var result = front.GetFacturas(desde, hasta);
+                var result = front.GetFacturas(desde, hasta.AddDays(1));
                 var clientes = front.GetClientes();
                 var reserva = front.GetReserva();
                 var empleados = front.GetEmpleados();

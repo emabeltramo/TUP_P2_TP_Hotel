@@ -86,7 +86,7 @@ namespace HotelBackEnd.DAO.Implementation
                 t.Commit();
                 resultado = true;
             }
-            catch
+            catch (Exception ex)
             {
                 if (t != null)
                     t.Rollback();

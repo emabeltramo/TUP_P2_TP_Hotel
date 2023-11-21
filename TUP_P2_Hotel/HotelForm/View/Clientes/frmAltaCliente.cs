@@ -30,39 +30,56 @@ namespace HotelForm.View.Clientes
             this.factory = factory;
             clienteService = factory.CreateClienteService();
             InitializeComponent();
-
+            this.Load += FrmAltaCliente_Load;
+            btnCargarCliente.Click += BtnCargarCliente_Click;
+            btnCancelar.Click += BtnCancelar_Click;
+            cboTipoCliente.SelectedIndexChanged += CboTipoCliente_SelectedIndexChanged;
         }
 
-        private async void frmAgregarCliente_Load(object sender, EventArgs e)
+        private void CboTipoCliente_SelectedIndexChanged(object? sender, EventArgs e)
         {
-
-            CargarCombosAsync();
+            if (cboTipoCliente.SelectedIndex == 0)
+            {
+                txtRazonSocial.Enabled = true;
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+                cboTipoDocumento.SelectedIndex = 1;
+                cboTipoDocumento.Enabled = false;
+                txtRazonSocial.Text = string.Empty;
+            }
+            else
+            {
+                txtRazonSocial.Text = string.Empty;
+                cboTipoDocumento.SelectedIndex = 0;
+                cboTipoDocumento.Enabled = true;
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                txtRazonSocial.Enabled = false;
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
+            }
         }
-        private async void CargarCombosAsync()
+
+        private void BtnCancelar_Click(object? sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Desea cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                txtApellido.Text = string.Empty;
+                txtNombre.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtNroDocumento.Text = string.Empty;
+                txtRazonSocial.Text = string.Empty;
+                txtTelefono.Text = string.Empty;
+                cboTipoCliente.SelectedIndex = -1;
+                cboTipoDocumento.SelectedIndex = -1;
 
-
-            tipoDocumento = await clienteService.GetTipoDocumentosAsync();
-            cboTipoDocumento.DataSource = tipoDocumento;
-            cboTipoDocumento.DisplayMember = "Descri";
-            cboTipoDocumento.ValueMember = "Id";
-            tipoCliente = await clienteService.GetTipoClientesAsync();
-            cboTipoCliente.DataSource = tipoCliente;
-            cboTipoCliente.DisplayMember = "Descri";
-            cboTipoCliente.ValueMember = "Id";
-
+            }
         }
 
-        private void txtNroDocumento_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
-
-        private async void btnCargarCliente_Click(object sender, EventArgs e)
+        private async void BtnCargarCliente_Click(object? sender, EventArgs e)
         {
             if (Validar())
             {
@@ -95,6 +112,14 @@ namespace HotelForm.View.Clientes
                 if (result.SuccessStatus)
                 {
                     MessageBox.Show("Cliente generado con exito", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtApellido.Text = string.Empty;
+                    txtNombre.Text = string.Empty;
+                    txtEmail.Text = string.Empty;
+                    txtNroDocumento.Text = string.Empty;
+                    txtRazonSocial.Text = string.Empty;
+                    txtTelefono.Text = string.Empty;
+                    cboTipoCliente.SelectedIndex = -1;
+                    cboTipoDocumento.SelectedIndex = -1;
                 }
                 else
                 {
@@ -104,27 +129,39 @@ namespace HotelForm.View.Clientes
             }
         }
 
+        private void FrmAltaCliente_Load(object? sender, EventArgs e)
+        {
+            CargarCombosAsync();
+        }
+
+        private async void CargarCombosAsync()
+        {
+
+
+            tipoDocumento = await clienteService.GetTipoDocumentosAsync();
+            cboTipoDocumento.DataSource = tipoDocumento;
+            cboTipoDocumento.DisplayMember = "Descri";
+            cboTipoDocumento.ValueMember = "Id";
+            tipoCliente = await clienteService.GetTipoClientesAsync();
+            cboTipoCliente.DataSource = tipoCliente;
+            cboTipoCliente.DisplayMember = "Descri";
+            cboTipoCliente.ValueMember = "Id";
+
+        }
+
+
+
+        private async void btnCargarCliente_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void btnSalirCliente_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Desea cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                txtApellido.Text = string.Empty;
-                txtNombre.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtNroDocumento.Text = string.Empty;
-                txtRazonSocial.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
-                cboTipoCliente.SelectedIndex = -1;
-                cboTipoDocumento.SelectedIndex = -1;
-
-            }
-        }
+        
 
         private bool Validar()
         {
@@ -162,65 +199,17 @@ namespace HotelForm.View.Clientes
                 }
                 break;
             }
+            if(string.IsNullOrEmpty(txtNroDocumento.Text))
+            {
+                MessageBox.Show("Debe ingresar un numero de documento!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
             return true;
 
         }
 
-        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void cboTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboTipoCliente.SelectedIndex == 0)
-            {
-                txtRazonSocial.Enabled = true;
-                txtNombre.Text = string.Empty;
-                txtApellido.Text = string.Empty;
-                txtNombre.Enabled = false;
-                txtApellido.Enabled = false;
-                cboTipoDocumento.SelectedIndex = 1;
-                cboTipoDocumento.Enabled = false;
-                txtRazonSocial.Text = string.Empty;
-            }
-            else
-            {
-                txtRazonSocial.Text = string.Empty;
-                cboTipoDocumento.SelectedIndex = 0;
-                cboTipoDocumento.Enabled = true;
-                txtNombre.Enabled = true;
-                txtApellido.Enabled = true;
-                txtRazonSocial.Enabled = false;
-                txtNombre.Text = string.Empty;
-                txtApellido.Text = string.Empty;
-            }
-        }
-
-        private void txtRazonSocial_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtTelefono_TextChanged(object sender, EventArgs e)
-        {
-        }
+        
     }
 }

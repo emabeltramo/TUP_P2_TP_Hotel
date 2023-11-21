@@ -1,8 +1,8 @@
 USE HOTEL_DB
 GO
-CREATE PROCEDURE [dbo].[SP_MODIFICAR_CLIENTE]
+create PROCEDURE [dbo].[SP_MODIFICAR_CLIENTE]
 @id int,@nombre varchar(50),@apellido varchar(50),@tdoc int,
-@dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular varchar(50), @cuil varchar(50)
+@dni varchar(30), @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular varchar(50), @cuil varchar(50)
 AS 
 BEGIN 
 	UPDATE CLIENTES
@@ -21,9 +21,9 @@ END;
 GO
 
 --INSERTAR CLIENTE
-CREATE PROCEDURE [dbo].[SP_INSERTAR_CLIENTE]--OkTotal
-@nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil int,
-@dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular int
+create PROCEDURE [dbo].[SP_INSERTAR_CLIENTE]--OkTotal
+@nombre varchar(50),@apellido varchar(50),@tdoc int,@cuil varchar(30),
+@dni varchar(30), @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular varchar(30)
 AS 
 BEGIN 
 	INSERT INTO CLIENTES(NOMBRE,APELLIDO,TIPO_DOCUMENTO,DNI,CUIL,EMAIL,CELULAR,
@@ -43,11 +43,11 @@ BEGIN
     BEGIN TRANSACTION;
 
     BEGIN TRY
-	if exists (select cliente from facturas where cliente = id) begin
+	if exists (select cliente from facturas where cliente = @id) begin
 		raiserror('El cliente tiene facturas: ', 16, 1);
 		rollback transaction;
 		end
-		if exists (select cliente from reservas where cliente = id) begin
+		if exists (select cliente from reservas where cliente = @id) begin
 		raiserror('El cliente tiene facturas: ', 16, 1);
 		rollback transaction;
 		end
@@ -92,7 +92,7 @@ END;
 GO
 --LISTAR CLIENTES
 
-CREATE PROCEDURE [dbo].[SP_LISTA_CLIENTES]--OkApi
+create PROCEDURE [dbo].[SP_LISTA_CLIENTES]--OkApi
 AS
 BEGIN
     SELECT C.ID 'ID', C.NOMBRE 'Nombre',C.APELLIDO'Apellido',T.TIPO_DOCUMENTO 'Tipo Documento',  t.ID 'IDD', C.DNI 'Numero Documento',

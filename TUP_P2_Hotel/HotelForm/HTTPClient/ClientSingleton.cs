@@ -47,7 +47,7 @@ namespace HotelForm.HTTPClient
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var result = await client.PostAsync(url, content);
-                var reply = "";
+                var reply = "Se produjo un error en el servidor";
 
                 if (result.IsSuccessStatusCode)
                 {
@@ -73,7 +73,7 @@ namespace HotelForm.HTTPClient
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var result = await client.PutAsync(url, content);
-                var reply = "";
+                var reply = "Se produjo un error en el servidor";
 
                 if (result.IsSuccessStatusCode)
                 {
@@ -99,7 +99,7 @@ namespace HotelForm.HTTPClient
             {
                 
                 var result = await client.DeleteAsync(url);
-                var reply = "";
+                var reply = "Se produjo un error en el servidor";
 
                 if (result.IsSuccessStatusCode)
                 {
