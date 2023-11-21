@@ -21,7 +21,6 @@ namespace HotelForm.View.Clientes
     {
         IFactoryService factory;
         IClienteService clienteService;
-        DataTable dtClientes;
         public frmCliente(IFactoryService factory)
         {
             this.factory = factory;
@@ -31,6 +30,7 @@ namespace HotelForm.View.Clientes
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
+            txtBuscar.Enabled = false;
             CargarDgvClientesAsync();
         }
 
@@ -59,7 +59,7 @@ namespace HotelForm.View.Clientes
                     {
                         DataRow row = dtClientes.NewRow();
 
-                 
+
                         row["ID"] = item.Id_Cliente;
                         row["Nombre"] = item.Nombre;
                         row["Apellido"] = item.Apellido;
@@ -75,8 +75,8 @@ namespace HotelForm.View.Clientes
                     }
                     int columnas = dtClientes.Columns.Count;
                     dgvClientes.DataSource = dtClientes;
-                    dgvClientes.Columns["ColModificar"].DisplayIndex = 11; 
-                    dgvClientes.Columns["ColEliminar"].DisplayIndex = 11; 
+                    dgvClientes.Columns["ColModificar"].DisplayIndex = 11;
+                    dgvClientes.Columns["ColEliminar"].DisplayIndex = 11;
                 }
                 else
                 {
@@ -130,7 +130,7 @@ namespace HotelForm.View.Clientes
                     c.TCliente.Descri = "Empresas";
                 }
                 new frmModificarCliente(factory, c).ShowDialog();
-                this.Close();
+
 
             }
 
@@ -158,13 +158,13 @@ namespace HotelForm.View.Clientes
                             if (clienteTieneRegistros == true)
                             {
 
-                                clienteService.BajaCliente(Id_Cliente);
+                                await clienteService.BajaCliente(Id_Cliente);
                             }
                             else
                             {
 
                             }
-
+                            CargarDgvClientesAsync();
                             dgvClientes.Refresh();
                         }
                     }
@@ -183,13 +183,207 @@ namespace HotelForm.View.Clientes
 
             }
         }
-            // Método para verificar si el cliente tiene registros en reservas o facturas
-          
-
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private async void CargarDgvClientesAsync(List<ClienteModel> listaFiltrada)
         {
+            DataTable dtClientes = new DataTable();
 
-            CargarDgvClientesAsync();
+            try
+            {
+
+                if (listaFiltrada != null && listaFiltrada.Count > 0)
+                {
+
+                    dtClientes.Columns.Add("ID", typeof(int));
+                    dtClientes.Columns.Add("Nombre", typeof(string));
+                    dtClientes.Columns.Add("Apellido", typeof(string));
+                    dtClientes.Columns.Add("Tipo Documento", typeof(string));
+                    dtClientes.Columns.Add("DNI", typeof(string));
+                    dtClientes.Columns.Add("CUIL", typeof(string));
+                    dtClientes.Columns.Add("Email", typeof(string));
+                    dtClientes.Columns.Add("Celular", typeof(string));
+                    dtClientes.Columns.Add("Tipo Cliente", typeof(string));
+                    dtClientes.Columns.Add("Razon Social", typeof(string));
+
+                    foreach (var item in listaFiltrada)
+                    {
+                        DataRow row = dtClientes.NewRow();
+
+
+                        row["ID"] = item.Id_Cliente;
+                        row["Nombre"] = item.Nombre;
+                        row["Apellido"] = item.Apellido;
+                        row["Tipo Documento"] = item.TDoc.Descri;
+                        row["DNI"] = item.DNI;
+                        row["CUIL"] = item.CUIL;
+                        row["Email"] = item.Email;
+                        row["Celular"] = item.Celular;
+                        row["Tipo Cliente"] = item.TCliente.Descri;
+                        row["Razon Social"] = item.RazonSocial;
+
+                        dtClientes.Rows.Add(row);
+                    }
+
+
+                    int columnas = dtClientes.Columns.Count;
+                    dgvClientes.DataSource = dtClientes;
+                    dgvClientes.Columns["ColModificar"].DisplayIndex = 11;
+                    dgvClientes.Columns["ColEliminar"].DisplayIndex = 11;
+                    OcultarColumna();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void OcultarColumna()
+        {
+            dgvClientes.Columns["ID"].Visible = false;
+            dgvClientes.Columns["Tipo Cliente"].Visible = false;
+            dgvClientes.Columns["Tipo Documento"].Visible = false;
+        }
+
+        private void Activar()
+        {
+            cbxDni.Enabled = true;
+            cbxCuil.Enabled = true;
+            cbxNom.Enabled = true;
+            cbxApe.Enabled = true;
+             cbxRazSoc.Enabled = true;
+
+        }
+
+        private void Desactivar()
+        {
+            txtBuscar.Clear();
+            if (cbxDni.Checked)
+            {
+                cbxCuil.Enabled = false;
+                cbxNom.Enabled = false;
+                cbxRazSoc.Enabled = false;
+                txtBuscar.Enabled = true;
+            }
+            else if (cbxCuil.Checked)
+            {
+                cbxDni.Enabled = false;
+                cbxNom.Enabled = false;
+                cbxRazSoc.Enabled = false;
+                txtBuscar.Enabled = true;
+            }
+            else if (cbxNom.Checked)
+            {
+                cbxApe.Enabled = false;
+                cbxCuil.Enabled = false;
+                cbxDni.Enabled = false;
+                cbxRazSoc.Enabled = false;
+                txtBuscar.Enabled = true;
+            }
+            else if (cbxApe.Checked)
+            {
+                cbxNom.Enabled = false;
+                cbxCuil.Enabled = false;
+                cbxDni.Enabled = false;
+                cbxRazSoc.Enabled = false;
+                txtBuscar.Enabled = true;
+            }
+            else
+            {
+
+                cbxCuil.Enabled = false;
+                cbxNom.Enabled = false;
+                cbxDni.Enabled = false;
+                txtBuscar.Enabled = true;
+            }
+        }
+        private void cbxRazSoc_CheckedChanged(object sender, EventArgs e)
+        {
+            Desactivar();
+        }
+
+        private void cbxDni_CheckedChanged(object sender, EventArgs e)
+        {
+            Desactivar();
+        }
+
+        private void cbxNom_CheckedChanged(object sender, EventArgs e)
+        {
+            Desactivar();
+        }
+        private void cbxApe_CheckedChanged(object sender, EventArgs e)
+        {
+            Desactivar();
+        }
+        private void cbxCuil_CheckedChanged(object sender, EventArgs e)
+        {
+            Desactivar();
+        }
+        private async void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<ClienteModel> lClientes = new List<ClienteModel>();
+            lClientes = await clienteService.GetClientesListaAsync();
+
+
+            List<ClienteModel> listaFiltrada;
+            Activar();
+            if (cbxDni.Checked)
+            {
+
+                string numero = txtBuscar.Text.Trim().ToLower();
+                listaFiltrada = lClientes.FindAll(y => y.DNI.Trim().ToLower().Contains(numero));
+                dgvClientes.DataSource = listaFiltrada;
+
+                CargarDgvClientesAsync(listaFiltrada);
+                Desactivar();
+
+            }
+            else if (cbxCuil.Checked)
+            {
+                string numero = txtBuscar.Text.Trim().ToLower();
+                listaFiltrada = lClientes.FindAll(y => y.CUIL.Trim().ToLower().Contains(numero));
+                dgvClientes.DataSource = listaFiltrada;
+                CargarDgvClientesAsync(listaFiltrada);
+                Desactivar();
+
+            }
+            if (cbxNom.Checked)
+            {
+                string nombre = txtBuscar.Text.Trim().ToLower();
+
+                listaFiltrada = lClientes.FindAll(y =>
+                    y.Nombre.Trim().ToLower().Contains(nombre)
+                );
+
+                dgvClientes.DataSource = listaFiltrada;
+                CargarDgvClientesAsync(listaFiltrada);
+                Desactivar();
+            }
+            else if (cbxApe.Checked)
+            {
+                string apellido = txtBuscar.Text.Trim().ToLower();
+
+                listaFiltrada = lClientes.FindAll(y =>
+                    y.Apellido.Trim().ToLower().Contains(apellido)
+                );
+
+                dgvClientes.DataSource = listaFiltrada;
+                CargarDgvClientesAsync(listaFiltrada);
+                Desactivar();
+            }
+            else if (cbxRazSoc.Checked)
+            {
+                string razon = txtBuscar.Text.Trim().ToLower();
+                listaFiltrada = lClientes.FindAll(y => y.RazonSocial.Trim().ToLower().Contains(razon));
+                dgvClientes.DataSource = listaFiltrada;
+                CargarDgvClientesAsync(listaFiltrada);
+                Desactivar();
+            }
+            else
+            {
+                txtBuscar.Clear();
+                CargarDgvClientesAsync();
+            }
+
 
 
         }
@@ -198,5 +392,7 @@ namespace HotelForm.View.Clientes
         {
             this.Close();
         }
+
+  
     }
 }

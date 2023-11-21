@@ -11,6 +11,7 @@ namespace HotelForm.View.Clientes
         private IClienteService clienteService;
         private ClienteModel cliente;
         private ClienteModel actualizado;
+        
         public frmModificarCliente(IFactoryService factory, ClienteModel c)
         {
             this.factory = factory;
@@ -144,16 +145,9 @@ namespace HotelForm.View.Clientes
                         break;
                 }
 
-                // Muestra todos los campos de actualizado en el MessageBox
-                MessageBox.Show($"Apellido: {actualizado.Apellido}, Nombre: {actualizado.Nombre}" +
-                                $"\nEmail: {actualizado.Email}, Celular: {actualizado.Celular}" +
-                                $"\nRazonSocial: {actualizado.RazonSocial}" +
-                                $"\nDNI/CUIL: {actualizado.DNI}, {actualizado.CUIL}" +
-                                $"\nTipo Documento: {actualizado.TDoc.Id}, {actualizado.TDoc.Descri}" +
-                                $"\nTipo Cliente: {actualizado.TCliente.Id}, {actualizado.TCliente.Descri}");
-
                 await clienteService.ActualizarCliente(actualizado);
-                MessageBox.Show("cargado");
+                MessageBox.Show("Cliente Modificado");
+                this.Close();
             }
 
             catch (Exception ex)
@@ -186,21 +180,7 @@ namespace HotelForm.View.Clientes
             }
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Desea Limpiar?", "Limpiar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                txtApellido.Text = string.Empty;
-                txtNombre.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtNroDocumento.Text = string.Empty;
-                txtRazonSocial.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
-
-
-            }
-        }
+  
     }
 }
 

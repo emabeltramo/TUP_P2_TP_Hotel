@@ -95,6 +95,7 @@ namespace HotelForm.View.Clientes
                 if (result.SuccessStatus)
                 {
                     MessageBox.Show("Cliente generado con exito", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
                 }
                 else
                 {
@@ -108,20 +109,27 @@ namespace HotelForm.View.Clientes
         {
             this.Close();
         }
+        private void Limpiar()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (cboTipoCliente.Text == "Empresa")
+                    cboTipoDocumento.SelectedIndex = 1;
+                else
+                    cboTipoDocumento.SelectedIndex = 0;
 
+                if (control is TextBox txt)
+                {
+                    txt.Text = string.Empty;
+                }
+            }
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Desea cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                txtApellido.Text = string.Empty;
-                txtNombre.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtNroDocumento.Text = string.Empty;
-                txtRazonSocial.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
-                cboTipoCliente.SelectedIndex = -1;
-                cboTipoDocumento.SelectedIndex = -1;
+                Limpiar();
 
             }
         }
