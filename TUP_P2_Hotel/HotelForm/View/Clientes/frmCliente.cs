@@ -250,7 +250,7 @@ namespace HotelForm.View.Clientes
             cbxCuil.Enabled = true;
             cbxNom.Enabled = true;
             cbxApe.Enabled = true;
-             cbxRazSoc.Enabled = true;
+            cbxRazSoc.Enabled = true;
 
         }
 
@@ -261,6 +261,7 @@ namespace HotelForm.View.Clientes
             {
                 cbxCuil.Enabled = false;
                 cbxNom.Enabled = false;
+                cbxApe.Enabled = false;
                 cbxRazSoc.Enabled = false;
                 txtBuscar.Enabled = true;
             }
@@ -268,6 +269,7 @@ namespace HotelForm.View.Clientes
             {
                 cbxDni.Enabled = false;
                 cbxNom.Enabled = false;
+                cbxApe.Enabled = false;
                 cbxRazSoc.Enabled = false;
                 txtBuscar.Enabled = true;
             }
@@ -287,13 +289,30 @@ namespace HotelForm.View.Clientes
                 cbxRazSoc.Enabled = false;
                 txtBuscar.Enabled = true;
             }
-            else
+            else if (cbxRazSoc.Checked)
             {
 
                 cbxCuil.Enabled = false;
                 cbxNom.Enabled = false;
+                cbxApe.Enabled = false;
                 cbxDni.Enabled = false;
                 txtBuscar.Enabled = true;
+            }
+            else
+            {
+                cbxCuil.Checked = false;
+                cbxDni.Checked = false;
+                cbxNom.Checked = false;
+                cbxApe.Checked = false;
+                cbxRazSoc.Checked = false;
+                txtBuscar.Enabled = false; 
+                cbxCuil.Enabled = true;
+                cbxDni.Enabled = true;
+                cbxNom.Enabled = true;
+                cbxApe.Enabled = true;
+                cbxRazSoc.Enabled = true;
+                txtBuscar.Enabled = false;
+
             }
         }
         private void cbxRazSoc_CheckedChanged(object sender, EventArgs e)
@@ -329,8 +348,8 @@ namespace HotelForm.View.Clientes
             if (cbxDni.Checked)
             {
 
-                string numero = txtBuscar.Text.Trim().ToLower();
-                listaFiltrada = lClientes.FindAll(y => y.DNI.Trim().ToLower().Contains(numero));
+                string numero = txtBuscar.Text;
+                listaFiltrada = lClientes.FindAll(y => y.DNI.Contains(numero));
                 dgvClientes.DataSource = listaFiltrada;
 
                 CargarDgvClientesAsync(listaFiltrada);
@@ -339,8 +358,8 @@ namespace HotelForm.View.Clientes
             }
             else if (cbxCuil.Checked)
             {
-                string numero = txtBuscar.Text.Trim().ToLower();
-                listaFiltrada = lClientes.FindAll(y => y.CUIL.Trim().ToLower().Contains(numero));
+                string numero = txtBuscar.Text;
+                listaFiltrada = lClientes.FindAll(y => y.CUIL.Contains(numero));
                 dgvClientes.DataSource = listaFiltrada;
                 CargarDgvClientesAsync(listaFiltrada);
                 Desactivar();
@@ -378,11 +397,14 @@ namespace HotelForm.View.Clientes
                 CargarDgvClientesAsync(listaFiltrada);
                 Desactivar();
             }
-            else
+            if (cbxApe.Checked == false && cbxNom.Checked == false && cbxDni.Checked == false && cbxCuil.Checked == false && cbxRazSoc.Checked == false)
             {
                 txtBuscar.Clear();
                 CargarDgvClientesAsync();
+
             }
+               
+            
 
 
 
@@ -393,6 +415,15 @@ namespace HotelForm.View.Clientes
             this.Close();
         }
 
-  
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBuscar.Clear();
+            txtBuscar.Enabled = false;
+            CargarDgvClientesAsync();
+          
+            Activar();
+            Desactivar();
+
+        }
     }
 }

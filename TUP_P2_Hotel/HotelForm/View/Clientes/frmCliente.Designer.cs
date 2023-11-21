@@ -40,6 +40,7 @@
             cbxCuil = new CheckBox();
             cbxDni = new CheckBox();
             cbxNom = new CheckBox();
+            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             gpxFiltros.SuspendLayout();
             SuspendLayout();
@@ -170,11 +171,22 @@
             cbxNom.UseVisualStyleBackColor = true;
             cbxNom.CheckedChanged += cbxNom_CheckedChanged;
             // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(543, 37);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 9;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
             // frmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(703, 450);
+            Controls.Add(btnLimpiar);
             Controls.Add(gpxFiltros);
             Controls.Add(btnAtras);
             Controls.Add(txtBuscar);
@@ -204,5 +216,6 @@
         private CheckBox cbxDni;
         private CheckBox cbxNom;
         private CheckBox cbxApe;
+        private Button btnLimpiar;
     }
 }
