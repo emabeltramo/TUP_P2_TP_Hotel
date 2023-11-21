@@ -1,7 +1,6 @@
 ﻿using HotelBackEnd.Model;
 using HotelForm.HTTPClient;
 using HotelForm.Service.Interface;
-using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,14 +13,14 @@ using System.Web;
 
 namespace HotelForm.Service.Implementation
 {
-    internal class ClienteService: IClienteService
+    internal class ClienteService : IClienteService
     {
         private const string host = "https://localhost:7107";
         public async Task<List<TipoDocumentoModel>> GetTipoDocumentosAsync()
         {
             string url = host + "/GetTipoDocumento";
             List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
-            var response = await ClientSingleton.GetInstance().GetAsync(url); 
+            var response = await ClientSingleton.GetInstance().GetAsync(url);
             if (response != null && response.SuccessStatus)
             {
                 result = JsonConvert.DeserializeObject<List<TipoDocumentoModel>>(response.Data);
@@ -39,7 +38,7 @@ namespace HotelForm.Service.Implementation
             }
             return result;
         }
-  
+
 
 
         public async Task<HttpResponse> ActualizarCliente(ClienteModel cliente)
@@ -95,15 +94,15 @@ namespace HotelForm.Service.Implementation
 
             return response;
         }
-       public async Task<HttpResponse> BajaCliente(int numero)
-{
-    string url = host + $"/DeleteCliente?numero={numero}";
-    var cuerpo = JsonConvert.SerializeObject(numero);
-    var response = await ClientSingleton.GetInstance().DeleteAsync(url, cuerpo);
+        public async Task<HttpResponse> BajaCliente(int numero)
+        {
+            string url = host + $"/DeleteCliente?numero={numero}";
+
+            var response = await ClientSingleton.GetInstance().DeleteAsync(url);
 
 
-    return response;
-}
+            return response;
+        }
 
     }
 }

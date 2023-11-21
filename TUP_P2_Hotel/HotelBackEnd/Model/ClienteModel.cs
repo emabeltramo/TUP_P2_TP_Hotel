@@ -53,19 +53,6 @@ namespace HotelBackEnd.Model
                 return RazonSocial + " - " + CUIL;
         }
         
-        public ClienteModel()
-        {
-            Id_Cliente = 0;
-            Nombre = string.Empty;
-            Apellido = string.Empty;
-            TDoc = new TipoDocumentoModel();
-            DNI = string.Empty;
-            CUIL = string.Empty;
-            Email = string.Empty;
-            Celular = string.Empty;
-            TCliente = new TipoClienteModel();
-            RazonSocial = string.Empty;
-
-        }
+        
     }
 }

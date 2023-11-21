@@ -144,7 +144,7 @@ namespace HotelBackEnd.DAO.Implementation
             {
                 List<TipoClienteModel> lTipoClientes = new List<TipoClienteModel>();
 
-                DataTable tabla = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPOS_CLIENTES ORDER BY 2");
+                DataTable tabla = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPOS_CLIENTES ORDER BY 2", CommandType.Text);
                 foreach (DataRow r in tabla.Rows)
                 {
                     int id = Convert.ToInt32(r["ID"].ToString());
@@ -163,7 +163,7 @@ namespace HotelBackEnd.DAO.Implementation
             List<TipoDocumentoModel> result = new List<TipoDocumentoModel>();
             try
             {
-                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPO_DOCUMENTOS ORDER BY 2");
+                DataTable table = HelperDao.GetInstance().GetConsult("SELECT * FROM TIPO_DOCUMENTOS ORDER BY 2", CommandType.Text);
                 foreach (DataRow row in table.Rows)
                 {
                     int id = int.Parse(row["ID"].ToString());

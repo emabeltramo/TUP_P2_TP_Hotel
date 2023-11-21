@@ -21,9 +21,6 @@ namespace HotelBackEnd.Model
         {
 
         }
-        public ProvinciaModel()
-        {
-                
-        }
+        
     }
 }
