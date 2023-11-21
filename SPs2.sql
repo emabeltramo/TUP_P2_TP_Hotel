@@ -1,5 +1,6 @@
 USE HOTEL_DB
 GO
+--MODIFICAR CLIENTE
 CREATE PROCEDURE [dbo].[SP_MODIFICAR_CLIENTE]
 @id int,@nombre varchar(50),@apellido varchar(50),@tdoc int,
 @dni int, @email varchar(100), @tCliente int , @razonSoc varchar(50),@celular varchar(50), @cuil varchar(50)
@@ -70,6 +71,7 @@ BEGIN
     ORDER BY 1
 END
 GO
+--VERIFICAR EXISTENCIA 
 CREATE PROCEDURE SP_VERIFICAR_CLIENTE_EXISTENTE
     @ClienteID INT,
     @Resultado BIT OUTPUT
