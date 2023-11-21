@@ -47,14 +47,13 @@
             cboTipoCliente = new ComboBox();
             label4 = new Label();
             label3 = new Label();
-            btnBorrar = new Button();
             SuspendLayout();
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label7.Location = new Point(148, 38);
+            label7.Location = new Point(149, 39);
             label7.Name = "label7";
             label7.Size = new Size(450, 25);
             label7.TabIndex = 81;
@@ -63,16 +62,16 @@
             // txtTelefono
             // 
             txtTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTelefono.Location = new Point(460, 296);
+            txtTelefono.Location = new Point(488, 317);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(163, 23);
-            txtTelefono.TabIndex = 80;
+            txtTelefono.TabIndex = 7;
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(338, 299);
+            label6.Location = new Point(366, 320);
             label6.Name = "label6";
             label6.Size = new Size(107, 15);
             label6.TabIndex = 79;
@@ -81,16 +80,16 @@
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(136, 293);
+            txtEmail.Location = new Point(122, 317);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(163, 23);
-            txtEmail.TabIndex = 78;
+            txtEmail.TabIndex = 6;
             // 
             // lblEmail
             // 
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(76, 296);
+            lblEmail.Location = new Point(62, 320);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(44, 15);
             lblEmail.TabIndex = 77;
@@ -99,16 +98,16 @@
             // txtRazonSocial
             // 
             txtRazonSocial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtRazonSocial.Location = new Point(460, 227);
+            txtRazonSocial.Location = new Point(488, 241);
             txtRazonSocial.Name = "txtRazonSocial";
             txtRazonSocial.Size = new Size(163, 23);
-            txtRazonSocial.TabIndex = 76;
+            txtRazonSocial.TabIndex = 5;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(369, 230);
+            label5.Location = new Point(397, 244);
             label5.Name = "label5";
             label5.Size = new Size(76, 15);
             label5.TabIndex = 75;
@@ -117,16 +116,16 @@
             // txtNroDocumento
             // 
             txtNroDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNroDocumento.Location = new Point(163, 227);
+            txtNroDocumento.Location = new Point(149, 241);
             txtNroDocumento.Name = "txtNroDocumento";
             txtNroDocumento.Size = new Size(163, 23);
-            txtNroDocumento.TabIndex = 74;
+            txtNroDocumento.TabIndex = 4;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(37, 230);
+            label2.Location = new Point(23, 244);
             label2.Name = "label2";
             label2.Size = new Size(120, 15);
             label2.TabIndex = 69;
@@ -135,16 +134,16 @@
             // txtApellido
             // 
             txtApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtApellido.Location = new Point(460, 146);
+            txtApellido.Location = new Point(488, 170);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(163, 23);
-            txtApellido.TabIndex = 68;
+            txtApellido.TabIndex = 3;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(391, 154);
+            label1.Location = new Point(419, 178);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 67;
@@ -153,16 +152,16 @@
             // txtNombre
             // 
             txtNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNombre.Location = new Point(163, 146);
+            txtNombre.Location = new Point(149, 170);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(163, 23);
-            txtNombre.TabIndex = 66;
+            txtNombre.TabIndex = 2;
             // 
             // lblCliente
             // 
             lblCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(103, 146);
+            lblCliente.Location = new Point(89, 170);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(54, 15);
             lblCliente.TabIndex = 65;
@@ -171,20 +170,21 @@
             // btnLimpiar
             // 
             btnLimpiar.Anchor = AnchorStyles.Bottom;
-            btnLimpiar.Location = new Point(260, 391);
+            btnLimpiar.Location = new Point(397, 402);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(75, 23);
-            btnLimpiar.TabIndex = 64;
+            btnLimpiar.Size = new Size(163, 23);
+            btnLimpiar.TabIndex = 9;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnCargarCliente
             // 
             btnCargarCliente.Anchor = AnchorStyles.Bottom;
-            btnCargarCliente.Location = new Point(103, 391);
+            btnCargarCliente.Location = new Point(149, 402);
             btnCargarCliente.Name = "btnCargarCliente";
-            btnCargarCliente.Size = new Size(75, 23);
-            btnCargarCliente.TabIndex = 62;
+            btnCargarCliente.Size = new Size(163, 23);
+            btnCargarCliente.TabIndex = 8;
             btnCargarCliente.Text = "Cargar";
             btnCargarCliente.UseVisualStyleBackColor = true;
             btnCargarCliente.Click += btnCargarCliente_Click;
@@ -194,26 +194,26 @@
             cboTipoDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cboTipoDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoDocumento.FormattingEnabled = true;
-            cboTipoDocumento.Location = new Point(502, 80);
+            cboTipoDocumento.Location = new Point(488, 104);
             cboTipoDocumento.Name = "cboTipoDocumento";
-            cboTipoDocumento.Size = new Size(121, 23);
-            cboTipoDocumento.TabIndex = 85;
+            cboTipoDocumento.Size = new Size(163, 23);
+            cboTipoDocumento.TabIndex = 1;
             // 
             // cboTipoCliente
             // 
             cboTipoCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cboTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoCliente.FormattingEnabled = true;
-            cboTipoCliente.Location = new Point(165, 80);
+            cboTipoCliente.Location = new Point(151, 107);
             cboTipoCliente.Name = "cboTipoCliente";
-            cboTipoCliente.Size = new Size(121, 23);
-            cboTipoCliente.TabIndex = 84;
+            cboTipoCliente.Size = new Size(163, 23);
+            cboTipoCliente.TabIndex = 0;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.Location = new Point(70, 83);
+            label4.Location = new Point(56, 107);
             label4.Name = "label4";
             label4.Size = new Size(89, 15);
             label4.TabIndex = 87;
@@ -223,29 +223,17 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(381, 80);
+            label3.Location = new Point(367, 104);
             label3.Name = "label3";
             label3.Size = new Size(115, 15);
             label3.TabIndex = 86;
             label3.Text = "Tipo de Documento:";
-            // 
-            // btnBorrar
-            // 
-            btnBorrar.Anchor = AnchorStyles.Bottom;
-            btnBorrar.Location = new Point(391, 391);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(75, 23);
-            btnBorrar.TabIndex = 88;
-            btnBorrar.Text = "Borrar";
-            btnBorrar.UseVisualStyleBackColor = true;
-            btnBorrar.Click += btnBorrar_Click;
             // 
             // frmModificarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(739, 478);
-            Controls.Add(btnBorrar);
             Controls.Add(cboTipoDocumento);
             Controls.Add(cboTipoCliente);
             Controls.Add(label4);
@@ -293,6 +281,5 @@
         private ComboBox cboTipoCliente;
         private Label label4;
         private Label label3;
-        private Button btnBorrar;
     }
 }

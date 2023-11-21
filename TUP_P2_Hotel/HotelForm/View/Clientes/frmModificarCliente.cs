@@ -11,7 +11,7 @@ namespace HotelForm.View.Clientes
         private IClienteService clienteService;
         private ClienteModel cliente;
         private ClienteModel actualizado;
-        
+
         public frmModificarCliente(IFactoryService factory, ClienteModel c)
         {
             this.factory = factory;
@@ -180,7 +180,10 @@ namespace HotelForm.View.Clientes
             }
         }
 
-  
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -54,7 +54,7 @@
             // 
             lblCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(68, 90);
+            lblCliente.Location = new Point(55, 118);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(54, 15);
             lblCliente.TabIndex = 43;
@@ -96,24 +96,24 @@
             // txtNombre
             // 
             txtNombre.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNombre.Location = new Point(128, 82);
+            txtNombre.Location = new Point(129, 110);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(163, 23);
-            txtNombre.TabIndex = 1;
+            txtNombre.Size = new Size(175, 23);
+            txtNombre.TabIndex = 0;
             // 
             // txtApellido
             // 
             txtApellido.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtApellido.Location = new Point(458, 82);
+            txtApellido.Location = new Point(459, 110);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(163, 23);
-            txtApellido.TabIndex = 2;
+            txtApellido.Size = new Size(202, 23);
+            txtApellido.TabIndex = 1;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(389, 90);
+            label1.Location = new Point(385, 113);
             label1.Name = "label1";
             label1.Size = new Size(54, 15);
             label1.TabIndex = 46;
@@ -123,7 +123,7 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(37, 251);
+            label2.Location = new Point(55, 265);
             label2.Name = "label2";
             label2.Size = new Size(120, 15);
             label2.TabIndex = 48;
@@ -134,7 +134,7 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(379, 150);
+            label3.Location = new Point(385, 183);
             label3.Name = "label3";
             label3.Size = new Size(115, 15);
             label3.TabIndex = 50;
@@ -145,17 +145,17 @@
             cboTipoCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cboTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoCliente.FormattingEnabled = true;
-            cboTipoCliente.Location = new Point(163, 150);
+            cboTipoCliente.Location = new Point(159, 175);
             cboTipoCliente.Name = "cboTipoCliente";
-            cboTipoCliente.Size = new Size(121, 23);
-            cboTipoCliente.TabIndex = 0;
+            cboTipoCliente.Size = new Size(145, 23);
+            cboTipoCliente.TabIndex = 2;
             cboTipoCliente.SelectedIndexChanged += cboTipoCliente_SelectedIndexChanged;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.Location = new Point(68, 153);
+            label4.Location = new Point(55, 178);
             label4.Name = "label4";
             label4.Size = new Size(89, 15);
             label4.TabIndex = 52;
@@ -164,18 +164,18 @@
             // txtNroDocumento
             // 
             txtNroDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtNroDocumento.Location = new Point(163, 248);
+            txtNroDocumento.Location = new Point(181, 262);
             txtNroDocumento.Name = "txtNroDocumento";
-            txtNroDocumento.Size = new Size(163, 23);
+            txtNroDocumento.Size = new Size(123, 23);
             txtNroDocumento.TabIndex = 4;
             txtNroDocumento.TextChanged += txtNroDocumento_TextChanged;
             // 
             // txtRazonSocial
             // 
             txtRazonSocial.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtRazonSocial.Location = new Point(458, 251);
+            txtRazonSocial.Location = new Point(478, 259);
             txtRazonSocial.Name = "txtRazonSocial";
-            txtRazonSocial.Size = new Size(163, 23);
+            txtRazonSocial.Size = new Size(183, 23);
             txtRazonSocial.TabIndex = 5;
             txtRazonSocial.TextChanged += txtRazonSocial_TextChanged;
             // 
@@ -183,7 +183,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(367, 254);
+            label5.Location = new Point(385, 262);
             label5.Name = "label5";
             label5.Size = new Size(76, 15);
             label5.TabIndex = 55;
@@ -193,7 +193,7 @@
             // txtTelefono
             // 
             txtTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTelefono.Location = new Point(458, 315);
+            txtTelefono.Location = new Point(498, 335);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(163, 23);
             txtTelefono.TabIndex = 7;
@@ -203,7 +203,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(336, 318);
+            label6.Location = new Point(385, 343);
             label6.Name = "label6";
             label6.Size = new Size(107, 15);
             label6.TabIndex = 59;
@@ -225,18 +225,18 @@
             cboTipoDocumento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cboTipoDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoDocumento.FormattingEnabled = true;
-            cboTipoDocumento.Location = new Point(500, 150);
+            cboTipoDocumento.Location = new Point(518, 175);
             cboTipoDocumento.Name = "cboTipoDocumento";
-            cboTipoDocumento.Size = new Size(121, 23);
+            cboTipoDocumento.Size = new Size(143, 23);
             cboTipoDocumento.TabIndex = 3;
             cboTipoDocumento.SelectedIndexChanged += cboTipoDocumento_SelectedIndexChanged;
             // 
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(128, 307);
+            txtEmail.Location = new Point(120, 335);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(163, 23);
+            txtEmail.Size = new Size(184, 23);
             txtEmail.TabIndex = 6;
             txtEmail.TextChanged += txtEmail_TextChanged;
             // 
@@ -244,7 +244,7 @@
             // 
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
-            label8.Location = new Point(68, 315);
+            label8.Location = new Point(55, 343);
             label8.Name = "label8";
             label8.Size = new Size(44, 15);
             label8.TabIndex = 63;

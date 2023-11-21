@@ -56,7 +56,7 @@
             dgvClientes.ReadOnly = true;
             dgvClientes.RowTemplate.Height = 25;
             dgvClientes.Size = new Size(626, 246);
-            dgvClientes.TabIndex = 0;
+            dgvClientes.TabIndex = 4;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             // 
             // ColModificar
@@ -80,7 +80,7 @@
             btnBuscar.Location = new Point(443, 38);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
-            btnBuscar.TabIndex = 5;
+            btnBuscar.TabIndex = 2;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
@@ -90,14 +90,14 @@
             txtBuscar.Location = new Point(88, 38);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(255, 23);
-            txtBuscar.TabIndex = 6;
+            txtBuscar.TabIndex = 0;
             // 
             // btnAtras
             // 
             btnAtras.Location = new Point(285, 415);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(75, 23);
-            btnAtras.TabIndex = 7;
+            btnAtras.TabIndex = 5;
             btnAtras.Text = "Atras";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
@@ -112,17 +112,17 @@
             gpxFiltros.Location = new Point(45, 78);
             gpxFiltros.Name = "gpxFiltros";
             gpxFiltros.Size = new Size(542, 67);
-            gpxFiltros.TabIndex = 8;
+            gpxFiltros.TabIndex = 1;
             gpxFiltros.TabStop = false;
             gpxFiltros.Text = "Filtros";
             // 
             // cbxApe
             // 
             cbxApe.AutoSize = true;
-            cbxApe.Location = new Point(151, 33);
+            cbxApe.Location = new Point(117, 33);
             cbxApe.Name = "cbxApe";
             cbxApe.Size = new Size(70, 19);
-            cbxApe.TabIndex = 4;
+            cbxApe.TabIndex = 1;
             cbxApe.Text = "Apellido";
             cbxApe.UseVisualStyleBackColor = true;
             cbxApe.CheckedChanged += cbxApe_CheckedChanged;
@@ -130,10 +130,10 @@
             // cbxRazSoc
             // 
             cbxRazSoc.AutoSize = true;
-            cbxRazSoc.Location = new Point(413, 33);
+            cbxRazSoc.Location = new Point(365, 33);
             cbxRazSoc.Name = "cbxRazSoc";
             cbxRazSoc.Size = new Size(92, 19);
-            cbxRazSoc.TabIndex = 3;
+            cbxRazSoc.TabIndex = 4;
             cbxRazSoc.Text = "Razon Social";
             cbxRazSoc.UseVisualStyleBackColor = true;
             cbxRazSoc.CheckedChanged += cbxRazSoc_CheckedChanged;
@@ -141,10 +141,10 @@
             // cbxCuil
             // 
             cbxCuil.AutoSize = true;
-            cbxCuil.Location = new Point(323, 33);
+            cbxCuil.Location = new Point(292, 33);
             cbxCuil.Name = "cbxCuil";
             cbxCuil.Size = new Size(51, 19);
-            cbxCuil.TabIndex = 2;
+            cbxCuil.TabIndex = 3;
             cbxCuil.Text = "CUIL";
             cbxCuil.UseVisualStyleBackColor = true;
             cbxCuil.CheckedChanged += cbxCuil_CheckedChanged;
@@ -152,10 +152,10 @@
             // cbxDni
             // 
             cbxDni.AutoSize = true;
-            cbxDni.Location = new Point(240, 33);
+            cbxDni.Location = new Point(217, 33);
             cbxDni.Name = "cbxDni";
             cbxDni.Size = new Size(46, 19);
-            cbxDni.TabIndex = 1;
+            cbxDni.TabIndex = 2;
             cbxDni.Text = "DNI";
             cbxDni.UseVisualStyleBackColor = true;
             cbxDni.CheckedChanged += cbxDni_CheckedChanged;
@@ -176,7 +176,7 @@
             btnLimpiar.Location = new Point(543, 37);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(75, 23);
-            btnLimpiar.TabIndex = 9;
+            btnLimpiar.TabIndex = 3;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;

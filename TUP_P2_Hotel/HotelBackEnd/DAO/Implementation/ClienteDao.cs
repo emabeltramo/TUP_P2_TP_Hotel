@@ -304,7 +304,7 @@ namespace HotelBackEnd.DAO.Implementation
         {
             ProccesData procces = new ProccesData();
             SqlCommand cmd = new SqlCommand();
-            ClienteModel result = null; // Inicializar la variable result como nula
+            ClienteModel result = null; 
             try
             {
                 string ID = id.ToString();
@@ -334,7 +334,7 @@ namespace HotelBackEnd.DAO.Implementation
             }
             catch (Exception ex)
             {
-                // Manejar la excepción, puedes imprimir el mensaje de error o lanzar una excepción, según tus necesidades.
+              
                 Console.WriteLine($"Error: {ex.Message}");
             }
             finally
