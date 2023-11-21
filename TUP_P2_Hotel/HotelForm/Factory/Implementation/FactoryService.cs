@@ -43,5 +43,9 @@ namespace HotelForm.Factory.Implementation
         {
             return new FacturaViewService();
         }
+        public IClienteService CreateClienteService()
+        {
+            return new ClienteService();
+        }
     }
 }

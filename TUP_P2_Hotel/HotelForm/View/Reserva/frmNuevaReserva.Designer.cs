@@ -77,17 +77,18 @@
             // 
             // cboClienteReserva
             // 
-            this.cboClienteReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboClienteReserva.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cboClienteReserva.FormattingEnabled = true;
-            this.cboClienteReserva.Location = new System.Drawing.Point(67, 2);
+            this.cboClienteReserva.Location = new System.Drawing.Point(67, 7);
             this.cboClienteReserva.Name = "cboClienteReserva";
             this.cboClienteReserva.Size = new System.Drawing.Size(559, 23);
             this.cboClienteReserva.TabIndex = 0;
             // 
             // btnCargarReserva
             // 
-            this.btnCargarReserva.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCargarReserva.Location = new System.Drawing.Point(382, 443);
+            this.btnCargarReserva.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCargarReserva.Location = new System.Drawing.Point(338, 418);
             this.btnCargarReserva.Name = "btnCargarReserva";
             this.btnCargarReserva.Size = new System.Drawing.Size(75, 23);
             this.btnCargarReserva.TabIndex = 9;
@@ -96,9 +97,8 @@
             // 
             // lblCliente
             // 
-            this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(14, 5);
+            this.lblCliente.Location = new System.Drawing.Point(14, 10);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(47, 15);
             this.lblCliente.TabIndex = 12;
@@ -112,7 +112,7 @@
             this.gbFechas.Controls.Add(this.dtpHasta);
             this.gbFechas.Controls.Add(this.lblDesde);
             this.gbFechas.Controls.Add(this.dtpDesde);
-            this.gbFechas.Location = new System.Drawing.Point(330, 35);
+            this.gbFechas.Location = new System.Drawing.Point(330, 54);
             this.gbFechas.Name = "gbFechas";
             this.gbFechas.Size = new System.Drawing.Size(310, 143);
             this.gbFechas.TabIndex = 2;
@@ -174,12 +174,15 @@
             // 
             // tab
             // 
+            this.tab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tab.Controls.Add(this.tbpHabitacion);
             this.tab.Controls.Add(this.tbpServicio);
-            this.tab.Location = new System.Drawing.Point(14, 179);
+            this.tab.Location = new System.Drawing.Point(14, 202);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(713, 230);
+            this.tab.Size = new System.Drawing.Size(713, 207);
             this.tab.TabIndex = 6;
             // 
             // tbpHabitacion
@@ -188,7 +191,7 @@
             this.tbpHabitacion.Location = new System.Drawing.Point(4, 24);
             this.tbpHabitacion.Name = "tbpHabitacion";
             this.tbpHabitacion.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpHabitacion.Size = new System.Drawing.Size(705, 202);
+            this.tbpHabitacion.Size = new System.Drawing.Size(705, 179);
             this.tbpHabitacion.TabIndex = 0;
             this.tbpHabitacion.Text = "Habitaciones";
             this.tbpHabitacion.UseVisualStyleBackColor = true;
@@ -210,7 +213,7 @@
             this.dgvNuevaReserva.Location = new System.Drawing.Point(3, 3);
             this.dgvNuevaReserva.Name = "dgvNuevaReserva";
             this.dgvNuevaReserva.RowTemplate.Height = 25;
-            this.dgvNuevaReserva.Size = new System.Drawing.Size(699, 196);
+            this.dgvNuevaReserva.Size = new System.Drawing.Size(699, 173);
             this.dgvNuevaReserva.TabIndex = 0;
             // 
             // Id
@@ -254,7 +257,7 @@
             this.tbpServicio.Location = new System.Drawing.Point(4, 24);
             this.tbpServicio.Name = "tbpServicio";
             this.tbpServicio.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpServicio.Size = new System.Drawing.Size(705, 202);
+            this.tbpServicio.Size = new System.Drawing.Size(705, 179);
             this.tbpServicio.TabIndex = 1;
             this.tbpServicio.Text = "Servicios";
             this.tbpServicio.UseVisualStyleBackColor = true;
@@ -275,7 +278,7 @@
             this.dgvServicios.Location = new System.Drawing.Point(3, 3);
             this.dgvServicios.Name = "dgvServicios";
             this.dgvServicios.RowTemplate.Height = 25;
-            this.dgvServicios.Size = new System.Drawing.Size(699, 196);
+            this.dgvServicios.Size = new System.Drawing.Size(699, 173);
             this.dgvServicios.TabIndex = 0;
             // 
             // IdSrv
@@ -317,7 +320,7 @@
             this.gbHotel.Controls.Add(this.cboLocalidad);
             this.gbHotel.Controls.Add(this.lblProvincias);
             this.gbHotel.Controls.Add(this.cboProvincia);
-            this.gbHotel.Location = new System.Drawing.Point(14, 35);
+            this.gbHotel.Location = new System.Drawing.Point(14, 54);
             this.gbHotel.Name = "gbHotel";
             this.gbHotel.Size = new System.Drawing.Size(310, 143);
             this.gbHotel.TabIndex = 1;
@@ -384,7 +387,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscar.Location = new System.Drawing.Point(658, 75);
+            this.btnBuscar.Location = new System.Drawing.Point(658, 80);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(61, 23);
             this.btnBuscar.TabIndex = 3;
@@ -394,7 +397,7 @@
             // btnReiniciar
             // 
             this.btnReiniciar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnReiniciar.Location = new System.Drawing.Point(658, 104);
+            this.btnReiniciar.Location = new System.Drawing.Point(658, 109);
             this.btnReiniciar.Name = "btnReiniciar";
             this.btnReiniciar.Size = new System.Drawing.Size(61, 23);
             this.btnReiniciar.TabIndex = 4;
@@ -403,7 +406,8 @@
             // 
             // txbTotal
             // 
-            this.txbTotal.Location = new System.Drawing.Point(571, 418);
+            this.txbTotal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txbTotal.Location = new System.Drawing.Point(508, 418);
             this.txbTotal.Name = "txbTotal";
             this.txbTotal.ReadOnly = true;
             this.txbTotal.Size = new System.Drawing.Size(100, 23);
@@ -411,9 +415,9 @@
             // 
             // lblTotal
             // 
-            this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(515, 423);
+            this.lblTotal.Location = new System.Drawing.Point(452, 422);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(35, 15);
             this.lblTotal.TabIndex = 76;
@@ -421,8 +425,8 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelar.Location = new System.Drawing.Point(249, 443);
+            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancelar.Location = new System.Drawing.Point(205, 418);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 8;
@@ -433,7 +437,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 478);
+            this.ClientSize = new System.Drawing.Size(739, 450);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txbTotal);
             this.Controls.Add(this.lblTotal);

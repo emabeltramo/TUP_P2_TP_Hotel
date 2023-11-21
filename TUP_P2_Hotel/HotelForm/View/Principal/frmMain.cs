@@ -1,6 +1,7 @@
 ﻿using HotelForm.Factory.Interface;
 using HotelForm.View.Factura;
 using HotelForm.View.Factura.FacturaView;
+using HotelForm.View.Clientes;
 using HotelForm.View.Login;
 using HotelForm.View.Reporte;
 using HotelForm.View.Reserva;
@@ -25,6 +26,23 @@ namespace HotelForm.View.Principal
             InitializeComponent();
             this.Load += FrmMain_Load;
             btnCargarServicio.Click += BtnCargarServicio_Click;
+            btnNvoCliente.Click += BtnNvoCliente_Click;
+            btnModificarCliente.Click += BtnModificarCliente_Click;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+        }
+
+        private void BtnModificarCliente_Click(object? sender, EventArgs e)
+        {
+            AbrirFormHijo(new frmCliente(factory));
+
+            OcultarSubmenu();
+        }
+
+        private void BtnNvoCliente_Click(object? sender, EventArgs e)
+        {
+            AbrirFormHijo(new frmAltaCliente(factory));
+            OcultarSubmenu();
         }
 
         private void BtnCargarServicio_Click(object? sender, EventArgs e)
@@ -141,18 +159,6 @@ namespace HotelForm.View.Principal
         {
             MostrarSubmenu(panelMedio2);
 
-        }
-
-        private void btnNvoCliente_Click(object sender, EventArgs e)
-        {
-            //...
-            OcultarSubmenu();
-        }
-
-        private void btnModificarCliente_Click(object sender, EventArgs e)
-        {
-            //...
-            OcultarSubmenu();
         }
         #endregion
 
